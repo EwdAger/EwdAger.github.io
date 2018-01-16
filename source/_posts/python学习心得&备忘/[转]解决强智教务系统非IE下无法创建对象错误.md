@@ -1,11 +1,10 @@
 ---
-title:
-  (转)解决强智教务系统非IE下无法创建对象错误
+title: (转)解决强智教务系统非IE下无法创建对象错误
 tags:
   - 教务网
   - 爬虫
 categories: python学习心得&备忘
-abbrlink: 824ac3d0
+abbrlink: d496c7e0
 date: 2017-06-19 20:18:10
 ---
 
@@ -13,11 +12,7 @@ date: 2017-06-19 20:18:10
 
 *** 以下内容均为转载 ***
 
-学校教务系统由于长期缺乏必要的维护，目前依旧只兼容IE8及以下浏览器
-![IE8及以下](http://upload-images.jianshu.io/upload_images/5433252-4ac3942a591ffb91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-使用非IE浏览器访问登陆界面是没有问题，但是登录进去后就会报错，并且所有功能都无法使用
-![无法创建对象](http://upload-images.jianshu.io/upload_images/5433252-1eb9c8b6ef279963.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-这对于使用非IE浏览器的用户简直就是噩梦，特别对于非Windows用户，以下是简单的解决办法
+学校教务系统由于长期缺乏必要的维护，目前依旧只兼容IE8及以下浏览器。使用非IE浏览器访问登陆界面是没有问题，但是登录进去后就会报错，并且所有功能都无法使用。这对于使用非IE浏览器的用户简直就是噩梦，特别对于非Windows用户，以下是简单的解决办法
 <!-- more -->
 **学长的修复**
 
@@ -43,6 +38,5 @@ date: 2017-06-19 20:18:10
 
 将下载好的插件拖放
 至上一步骤打开的 插件管理页面，然后会弹出如下窗口，点击添加即可
-![添加插件](http://upload-images.jianshu.io/upload_images/5433252-0b8cb0fa6c00b1e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 然后就可以开开心心的打开教务网了
