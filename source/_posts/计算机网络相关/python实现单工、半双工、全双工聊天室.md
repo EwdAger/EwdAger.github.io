@@ -1,12 +1,13 @@
 ---
 title: python实现单工、半双工、全双工聊天室
-date: 2017-12-29 08:56:16
-tags: 
- - python
- - 计算机网络
- - Socket编程
- - 聊天室
+tags:
+  - python
+  - 计算机网络
+  - Socket编程
+  - 聊天室
 categories: 计算机网络相关
+abbrlink: 14572bdc
+date: 2017-12-29 08:56:16
 ---
 
 ## 聊天室单工实现：

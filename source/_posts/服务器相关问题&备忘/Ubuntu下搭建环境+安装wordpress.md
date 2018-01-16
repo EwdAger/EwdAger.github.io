@@ -1,9 +1,10 @@
 ---
 title: Ubuntu下搭建环境+安装wordpress
-date: 2017-04-15 16:35:10
 tags:
- - Linux
+  - Linux
 categories: 服务器相关问题&备忘
+abbrlink: a6e1042e
+date: 2017-04-15 16:35:10
 ---
 
 LAMP 是Linux, Apache, MySQL, PHP, perl的缩写. 指在linux上安装Apache2，MySQL, PHP等软件包所建立的网站运行平台，是目前中小网站主要的运行环境。
@@ -30,7 +31,7 @@ Web server to reconfigure automatically: < -- apache2
 Configure database for phpmyadmin with dbconfig-common? <-- No 
 ...
 ```
-2. 初始化数据库
+2.0 初始化数据库
 ```
 sudo mysql -u root -p
 Enter Password:
@@ -47,7 +48,7 @@ mysql> exit
 sudo service apache2 restart
 sudo service mysql restart 
 ```
-3. 下载并配置WordPress
+3.0 下载并配置WordPress
 ```
 $ mkdir temp
 $ cd temp
@@ -56,6 +57,7 @@ $ tar zxf wordpress-4.x.tar.gz -C /var/www/html/
 $ mkdir -p /var/www/html/wordpress/wp-content/uploads
 ```
 
-转自http://www.cnblogs.com/R0b1n/p/5224070.html
+转自
+http://www.cnblogs.com/R0b1n/p/5224070.html
 http://blog.csdn.net/ansencumt/article/details/9000436
 目前配置wp-config.php

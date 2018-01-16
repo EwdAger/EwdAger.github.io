@@ -1,9 +1,10 @@
 ---
 title: git的ssh key创建
-date: 2017-08-14 16:56:10
-tags: 
- - Git
+tags:
+  - Git
 categories: 不知道怎么归类
+abbrlink: 7c2130d4
+date: 2017-08-14 16:56:10
 ---
 
 Git是分布式的代码管理工具，远程的代码管理是基于ssh的，所以要使用远程的git则需要ssh的配置。如果未配置ssh key将无法clone远程代码仓库到本地。

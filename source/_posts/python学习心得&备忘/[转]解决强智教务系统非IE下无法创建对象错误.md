@@ -1,15 +1,17 @@
 ---
-title: (转)解决强智教务系统非IE下无法创建对象错误
-date: 2017-06-19 20:18:10
-tags: 
- - 教务网
- - 爬虫
+title:
+  (转)解决强智教务系统非IE下无法创建对象错误
+tags:
+  - 教务网
+  - 爬虫
 categories: python学习心得&备忘
+abbrlink: 824ac3d0
+date: 2017-06-19 20:18:10
 ---
 
-**最近要弄教务网的模拟登陆，但苦于教务网只兼容IE8以下的浏览器，不能用chrome强大的F12抓包就很烦，然后发现Fly俊大佬弄了一个相当强的插件啊。但是怕[Fly俊大佬的博客](http://www.qiujun.me)失效，所以私自留了个档。侵删啊大佬~**
+** 最近要弄教务网的模拟登陆，但苦于教务网只兼容IE8以下的浏览器，不能用chrome强大的F12抓包就很烦，然后发现Fly俊大佬弄了一个相当强的插件啊。但是怕[Fly俊大佬的博客](http://www.qiujun.me)失效，所以私自留了个档。侵删啊大佬~ **
 
-***以下内容均为转载***
+*** 以下内容均为转载 ***
 
 学校教务系统由于长期缺乏必要的维护，目前依旧只兼容IE8及以下浏览器
 ![IE8及以下](http://upload-images.jianshu.io/upload_images/5433252-4ac3942a591ffb91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
