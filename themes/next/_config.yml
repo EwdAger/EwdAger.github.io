@@ -82,7 +82,7 @@ index_with_subtitle: false
 menu:
   home: / || home
   #about: /about/ || user
-  tags: /tags/ || tags
+  tags: /tags/ || tag
   categories: /categories/ || th
   archives: /archives/ || archive
   #schedule: /schedule/ || calendar
@@ -126,7 +126,7 @@ social:
   #Instagram: https://instagram.com/yourname || instagram
   #Skype: skype:yourname?call|chat || skype
   Steam: https://steamcommunity.com/id/ewdager/ || steam
-  PSN: http://psnine.com/psnid/ewdager || gamepad
+  PSN: https://my.playstation.com/profile/EwdAger || gamepad
 
 social_icons:
   enable: true

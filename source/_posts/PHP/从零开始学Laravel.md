@@ -16,7 +16,7 @@ date: 2018-02-13 16:00:00
 [下载地址](http://laravelacademy.org/resources-download)
 
 # PhpStrom安装
-编程还是离不开JB全家桶的~这步没有省略主要是因为jb全家桶更新3.4后大量激活方法和激活服务器集体失效。这里使用了[ilanyu](http://blog.lanyus.com/)大佬提供的[本地反向代理激活方法](https://github.com/ilanyu/ReverseProxy)。不过有条件还是要支持正版~
+编程还是离不开JB全家桶的~这步没有省略主要是因为jb全家桶更新3.4后大量激活方法和激活服务器集体失效。这里使用了[ilanyu](http://blog.lanyus.com/)大佬提供的[本地反向代理激活方法](https://github.com/ilanyu/ReverseProxy)不过比较麻烦的是每次打开IDE都需要启动这个反代程序，因为每次启动IDE都需要验证一下激活。不过有条件还是要支持正版~
 <!-- more -->
 # Laravel的路由
 Laravel5.5版本中把路由的routes文件拿出来单独建立了一个routes文件。这里感觉和django的urls.py文件很类似，也是起到了Controller的作用，值得一提的是必须制定http请求类型
