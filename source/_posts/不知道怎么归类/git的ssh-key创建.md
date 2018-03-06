@@ -18,7 +18,7 @@ git config --global user.email "ewdager@hotmail.com"
 1. 查看是否已经有了ssh密钥：```cd ~/.ssh```,Windows用户的路径在```C:\Users\EwdAger\.ssh```下
 如果是刚安装git则不会有此文件夹，有则备份删除
 2. 生成ssh key
-```sudo ssh-keygen -t rsa -C "ewdager@hotmail.com"```
+`sudo ssh-keygen -t rsa -C "ewdager@hotmail.com"`
 然后按三下回车
 最后得到了两个文件：id_rsa和id_rsa.pub
 3. 在github上添加ssh密钥，这要添加的是“id_rsa.pub”里面的公钥

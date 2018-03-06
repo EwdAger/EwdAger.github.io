@@ -7,7 +7,6 @@ abbrlink: '7512e895'
 date: 2017-05-04 13:48:10
 ---
 
-原文地址：[linux VPS一键搭建SS(集成速锐双通道，速度远甩openvpn)](http://www.pt3e.com/vpsss/)
 
 此脚本具有以下特色：
 一键安装Shadowsocks集成速锐
@@ -19,4 +18,5 @@ date: 2017-05-04 13:48:10
 支持 一键封禁 垃圾邮件(SMAP)/BT/PT
 
 复制命令下载并安装SS脚本﻿
-```wget -N --no-check-certificate http://omdfha276.bkt.clouddn.com/ssr.sh && chmod +x ssr.sh && bash ssr.sh```
+```wget -N --no-check-certificate https://softs.fun/Bash/ssrmu.sh && chmod +x ssrmu.sh && bash ssrmu.sh
+```
