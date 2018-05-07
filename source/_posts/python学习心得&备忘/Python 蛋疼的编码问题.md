@@ -97,7 +97,7 @@ print(s3)                   # 你好
 print(type(s3))             # <type 'str'>
 ```
 
-![转换规则](https://pic4.zhimg.com/v2-8222d78655d3b00c676c48641df8e8a7_b.jpg)
+![转换规则](https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/1.png)
 
 ### 如何验证编码转对了呢？
 
