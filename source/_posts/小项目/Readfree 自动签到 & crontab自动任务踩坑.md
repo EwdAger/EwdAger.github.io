@@ -11,7 +11,7 @@ date: 2018-08-07 10:06:00
 
 # 自动签到 Python 脚本
 
-这部分没什么难度，主要是这个网站的`cookies`的`Max-Age`有`31449600`秒，大概10年的寿命，所以直接将存好的`cookies`用`requests`发一个get请求到验证地址就行。稍微修改了[博主杨英明](http://www.yangyingming.com/article/381/)代码如下：
+这部分没什么难度，主要是这个网站的`cookies`的`Max-Age`有`31449600`秒，大概1年的寿命，所以直接将存好的`cookies`用`requests`发一个get请求到验证地址就行。稍微修改了[博主杨英明](http://www.yangyingming.com/article/381/)代码如下：
 
 ```python
 import requests
