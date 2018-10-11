@@ -22,7 +22,7 @@ def select_sort(n):
 			n[min], n[i] = n[i], n[min]
 	return n
 ```
-
+<!--more-->
 # 冒泡排序
 
 每一趟遍历把大的放前面，小的放后面，时间复杂度O(n²)
@@ -54,10 +54,29 @@ def insert_sort(n):
 
 # 快速排序
 
-从数列中挑选出一个基准元素，把比基准小的放基准前，比基准大的放基准后。然后继续把找基准重复上面动作。通常时间复杂度为O(nlogn)，最坏为O(n²)
+从数列中挑选出一个基准元素，把比基准小的放基准前，比基准大的放基准后。然后递归依次传入基准前后的序列。通常时间复杂度为O(nlogn)，最坏为O(n²)，当数列全相等、已经从小到大排好序或者从大到小排好序后为最坏情况
 
 ```python
+def sub_sort(array,low,high):
+    key = array[low]
+    while low < high:
+        while low < high and array[high] >= key:
+            high -= 1
+        while low < high and array[high] < key:
+            array[low], array[high] = array[high], array[low]
+            low += 1
+    array[low] = key
+    return low
+ 
+ 
+def quick_sort(array,low,high):
+     if low < high:
+        key_index = sub_sort(array,low,high)
+        quick_sort(array,low,key_index)
+        quick_sort(array,key_index+1,high)
 
+a = [3,4,6,8,2,1,5,8,9]
+quick_sort(a, 0, len(a)-1)
 ```
 
-To be continue
+To Be Contune
