@@ -99,10 +99,10 @@ menu_icons:
 # ---------------------------------------------------------------
 
 # Schemes
-scheme: Gemini
+#scheme: Gemini
 #scheme: Mist
 #scheme: Pisces
-#scheme: Gemini
+scheme: Muse
 
 
 # ---------------------------------------------------------------
