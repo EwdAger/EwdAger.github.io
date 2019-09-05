@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python,Numpy,数据分析,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="创建 ndarray常用方法array函数可接受一切序列类型对象123456789101112131415161718192021In [2]: data1 = [6.1, 5, 4, 3, 1]In [3]: arr1 = np.array(data1)In [4]: arr1Out[4]: array([6.1, 5, 4, 3, 1])In [5]: data2 = [[1, 2, 3, 4">
+<meta name="keywords" content="Python,Numpy,数据分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Numpy 笔记-基础篇">
+<meta property="og:url" content="http://gvoidy.cn/posts/ca37cdbd/index.html">
+<meta property="og:site_name" content="Gvoidy">
+<meta property="og:description" content="创建 ndarray常用方法array函数可接受一切序列类型对象123456789101112131415161718192021In [2]: data1 = [6.1, 5, 4, 3, 1]In [3]: arr1 = np.array(data1)In [4]: arr1Out[4]: array([6.1, 5, 4, 3, 1])In [5]: data2 = [[1, 2, 3, 4">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-03T05:47:53.663Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Numpy 笔记-基础篇">
+<meta name="twitter:description" content="创建 ndarray常用方法array函数可接受一切序列类型对象123456789101112131415161718192021In [2]: data1 = [6.1, 5, 4, 3, 1]In [3]: arr1 = np.array(data1)In [4]: arr1Out[4]: array([6.1, 5, 4, 3, 1])In [5]: data2 = [[1, 2, 3, 4">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gvoidy.cn/posts/ca37cdbd/">
+
+
+
+
+
+  <title>Numpy 笔记-基础篇 | Gvoidy</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gvoidy</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tag"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gvoidy.cn/posts/ca37cdbd/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="EwdAger">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gvoidy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Numpy 笔记-基础篇</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-22T11:17:06+08:00">
+                2019-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python数据分析笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Python数据分析笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="创建-ndarray"><a href="#创建-ndarray" class="headerlink" title="创建 ndarray"></a>创建 ndarray</h1><h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><p><code>array</code>函数可接受一切序列类型对象<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">2</span>]: data1 = [<span class="number">6.1</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: arr1 = np.array(data1)</span><br><span class="line"></span><br><span class="line">In [<span class="number">4</span>]: arr1</span><br><span class="line">Out[<span class="number">4</span>]: array([<span class="number">6.1</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">In [<span class="number">5</span>]: data2 = [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]]</span><br><span class="line"></span><br><span class="line">In [<span class="number">6</span>]: arr2 = np.array(data2)</span><br><span class="line"></span><br><span class="line">In [<span class="number">7</span>]: arr2</span><br><span class="line">Out[<span class="number">7</span>]:</span><br><span class="line">array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">       [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]])</span><br><span class="line"></span><br><span class="line">In [<span class="number">8</span>]: arr2.shape</span><br><span class="line">Out[<span class="number">8</span>]: (<span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">9</span>]: arr2.dtype</span><br><span class="line">Out[<span class="number">9</span>]: dtype(<span class="string">'int32'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>除非显式说明，<code>np.array</code>会尝试为新建的这个数组判断一个较为合适的数据类型。数据类型保存在特殊的<code>dtype</code>对象中。比如上面的两个例子中。我们有：<br><a id="more"></a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">19</span>]: arr1.dtype</span><br><span class="line">Out[<span class="number">19</span>]: dtype(<span class="string">'float64'</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">20</span>]: arr2.dtype</span><br><span class="line">Out[<span class="number">20</span>]: dtype(<span class="string">'int32'</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="其他新建数组方法"><a href="#其他新建数组方法" class="headerlink" title="其他新建数组方法"></a>其他新建数组方法</h2><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>asarray</td>
+<td>将输入转换为ndarray，如果输入本身就是一个ndarray就不进行复制</td>
+</tr>
+<tr>
+<td>arange</td>
+<td><code>np.arange(5) → array([0, 1, 2, 3, 4])</code></td>
+</tr>
+<tr>
+<td>ones</td>
+<td><code>np.ones((2,2)) → array([[1., 1.], [1., 1.]])</code></td>
+</tr>
+<tr>
+<td>ones_like</td>
+<td><code>np.ones_like([1,2,3]) → array([1, 1, 1])</code></td>
+</tr>
+<tr>
+<td>zeros</td>
+<td><code>np.zeros((2,2)) → array([[0., 0.], [0., 0.]])</code></td>
+</tr>
+<tr>
+<td>zeros_like</td>
+<td><code>np.ones_like([1,2,3]) → array([0, 0, 0])</code></td>
+</tr>
+<tr>
+<td>empty、empty_like</td>
+<td><code>np.empty(1) → array([5.06106712e+58])</code></td>
+</tr>
+<tr>
+<td>eys、identity</td>
+<td><code>np.eye(2) → array([[1., 0.], [0., 1.]])</code></td>
+</tr>
+</tbody>
+</table>
+<p><em><code>X</code> 根据指定的形状和dtype创建一个为X的数组， <code>X_like</code>以另一个数组为参数，并根据其形状和dtype创建一个为X的数组</em></p>
+<h1 id="ndarray-的数据类型"><a href="#ndarray-的数据类型" class="headerlink" title="ndarray 的数据类型"></a>ndarray 的数据类型</h1><p><strong> 调用<code>astype</code>会创建一个新的数组，而不是对原数组进行修改</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显式说明类型</span></span><br><span class="line">In [<span class="number">39</span>]: arr1 = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], dtype=np.float64)</span><br><span class="line"></span><br><span class="line">In [<span class="number">40</span>]: arr1</span><br><span class="line">Out[<span class="number">40</span>]: array([<span class="number">1.</span>, <span class="number">2.</span>, <span class="number">3.</span>])</span><br><span class="line"></span><br><span class="line">In [<span class="number">41</span>]: arr1.dtype</span><br><span class="line">Out[<span class="number">41</span>]: dtype(<span class="string">'float64'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改类型</span></span><br><span class="line">In [<span class="number">42</span>]: int_arr1 = arr1.astype(np.int64)</span><br><span class="line"></span><br><span class="line">In [<span class="number">43</span>]: int_arr1</span><br><span class="line">Out[<span class="number">43</span>]: array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], dtype=int64)</span><br><span class="line"></span><br><span class="line">In [<span class="number">44</span>]: int_arr1.dtype</span><br><span class="line">Out[<span class="number">44</span>]: dtype(<span class="string">'int64'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 另一种修改类型方法</span></span><br><span class="line">In [<span class="number">45</span>]: int_arr = np.arange(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">47</span>]: float_arr = np.array([<span class="number">.1</span>, <span class="number">.3</span>, <span class="number">.5</span>,<span class="number">.6</span>], dtype=np.float64)</span><br><span class="line"></span><br><span class="line">In [<span class="number">48</span>]: int_arr.astype(float_arr.dtype)</span><br><span class="line">Out[<span class="number">48</span>]: array([<span class="number">0.</span>, <span class="number">1.</span>, <span class="number">2.</span>, <span class="number">3.</span>, <span class="number">4.</span>, <span class="number">5.</span>, <span class="number">6.</span>, <span class="number">7.</span>, <span class="number">8.</span>, <span class="number">9.</span>])</span><br></pre></td></tr></table></figure>
+<h1 id="数组和标量之间的运算"><a href="#数组和标量之间的运算" class="headerlink" title="数组和标量之间的运算"></a>数组和标量之间的运算</h1><div class="note danger"><p>FBI WARNING！离！散！数！学！警！告！</p></div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">49</span>]: arr = np.array([[<span class="number">1.</span>, <span class="number">2.</span>, <span class="number">3.</span>], [<span class="number">4.</span>, <span class="number">5.</span>, <span class="number">6.</span>]])</span><br><span class="line"></span><br><span class="line">In [<span class="number">50</span>]: arr</span><br><span class="line">Out[<span class="number">50</span>]:</span><br><span class="line">array([[<span class="number">1.</span>, <span class="number">2.</span>, <span class="number">3.</span>],</span><br><span class="line">       [<span class="number">4.</span>, <span class="number">5.</span>, <span class="number">6.</span>]])</span><br><span class="line"></span><br><span class="line">In [<span class="number">51</span>]: arr * arr</span><br><span class="line">Out[<span class="number">51</span>]:</span><br><span class="line">array([[ <span class="number">1.</span>,  <span class="number">4.</span>,  <span class="number">9.</span>],</span><br><span class="line">       [<span class="number">16.</span>, <span class="number">25.</span>, <span class="number">36.</span>]])</span><br><span class="line"></span><br><span class="line">In [<span class="number">52</span>]: arr - arr</span><br><span class="line">Out[<span class="number">52</span>]:</span><br><span class="line">array([[<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>],</span><br><span class="line">       [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>]])</span><br><span class="line"></span><br><span class="line">In [<span class="number">53</span>]: arr + arr</span><br><span class="line">Out[<span class="number">53</span>]:</span><br><span class="line">array([[ <span class="number">2.</span>,  <span class="number">4.</span>,  <span class="number">6.</span>],</span><br><span class="line">       [ <span class="number">8.</span>, <span class="number">10.</span>, <span class="number">12.</span>]])</span><br><span class="line"></span><br><span class="line">In [<span class="number">54</span>]: arr / arr</span><br><span class="line">Out[<span class="number">54</span>]:</span><br><span class="line">array([[<span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">       [<span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>]])</span><br><span class="line"></span><br><span class="line">In [<span class="number">55</span>]: <span class="number">1</span> / arr</span><br><span class="line">Out[<span class="number">55</span>]:</span><br><span class="line">array([[<span class="number">1.</span>        , <span class="number">0.5</span>       , <span class="number">0.33333333</span>],</span><br><span class="line">       [<span class="number">0.25</span>      , <span class="number">0.2</span>       , <span class="number">0.16666667</span>]])</span><br><span class="line"></span><br><span class="line">In [<span class="number">57</span>]: arr ** <span class="number">0.5</span></span><br><span class="line">Out[<span class="number">57</span>]:</span><br><span class="line">array([[<span class="number">1.</span>        , <span class="number">1.41421356</span>, <span class="number">1.73205081</span>],</span><br><span class="line">       [<span class="number">2.</span>        , <span class="number">2.23606798</span>, <span class="number">2.44948974</span>]])</span><br></pre></td></tr></table></figure>
+<h1 id="基本的索引和切片"><a href="#基本的索引和切片" class="headerlink" title="基本的索引和切片"></a>基本的索引和切片</h1><h2 id="切片的注意事项"><a href="#切片的注意事项" class="headerlink" title="切片的注意事项"></a>切片的注意事项</h2><p><strong>NumPy中将一个标量赋值给切片，会自动修改整个选取！并且将切片赋值给一个变量，修改变量原数组也会改变！如想得到一个副本，需要copy或者deepcopy</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切片与修改切片</span></span><br><span class="line">In [<span class="number">58</span>]: arr = np.arange(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">59</span>]: arr[<span class="number">5</span>]</span><br><span class="line">Out[<span class="number">59</span>]: <span class="number">5</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">60</span>]: arr[<span class="number">5</span>:<span class="number">8</span>]</span><br><span class="line">Out[<span class="number">60</span>]: array([<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>])</span><br><span class="line"></span><br><span class="line">In [<span class="number">61</span>]: arr[<span class="number">5</span>:<span class="number">8</span>] = <span class="number">12</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">62</span>]: arr</span><br><span class="line">Out[<span class="number">62</span>]: array([ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>,  <span class="number">4</span>, <span class="number">12</span>, <span class="number">12</span>, <span class="number">12</span>,  <span class="number">8</span>,  <span class="number">9</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 赋值变量后修改切片</span></span><br><span class="line">In [<span class="number">63</span>]: arr_sli = arr[<span class="number">5</span>:<span class="number">8</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">64</span>]: arr_sli[<span class="number">1</span>] = <span class="number">1234</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">65</span>]: arr</span><br><span class="line">Out[<span class="number">65</span>]: array([   <span class="number">0</span>,    <span class="number">1</span>,    <span class="number">2</span>,    <span class="number">3</span>,    <span class="number">4</span>,   <span class="number">12</span>, <span class="number">1234</span>,   <span class="number">12</span>,    <span class="number">8</span>,    <span class="number">9</span>])</span><br><span class="line"></span><br><span class="line">In [<span class="number">66</span>]: arr_sli[:] = <span class="number">64</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">67</span>]: arr</span><br><span class="line">Out[<span class="number">67</span>]: array([ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>,  <span class="number">4</span>, <span class="number">64</span>, <span class="number">64</span>, <span class="number">64</span>,  <span class="number">8</span>,  <span class="number">9</span>])</span><br></pre></td></tr></table></figure>
+<p>由于 Numpy 是的设计目的是处理大数据，所以坚持将数据复制出来会产生极大的性能和内存问题。</p>
+<h2 id="高维数组索引"><a href="#高维数组索引" class="headerlink" title="高维数组索引"></a>高维数组索引</h2><p>类似Python基本库中的多维列表索引，但Numpy中多维数组可以使用以逗号隔开的索引列表来选取单个元素</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">89</span>]: arr2d</span><br><span class="line">Out[<span class="number">89</span>]:</span><br><span class="line">array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">       [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>],</span><br><span class="line">       [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]])</span><br><span class="line"></span><br><span class="line">In [<span class="number">90</span>]: arr2d[<span class="number">1</span>][<span class="number">1</span>]</span><br><span class="line">Out[<span class="number">90</span>]: <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 等价</span></span><br><span class="line">In [<span class="number">91</span>]: arr2d[<span class="number">1</span>,<span class="number">1</span>]</span><br><span class="line">Out[<span class="number">91</span>]: <span class="number">5</span></span><br></pre></td></tr></table></figure>
+<h2 id="切片索引"><a href="#切片索引" class="headerlink" title="切片索引"></a>切片索引</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一项切行，第二项切列</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">92</span>]: arr2d</span><br><span class="line">Out[<span class="number">92</span>]:</span><br><span class="line">array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">       [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>],</span><br><span class="line">       [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]])</span><br><span class="line"></span><br><span class="line">In [<span class="number">93</span>]: arr2d[:<span class="number">2</span>, <span class="number">1</span>:]</span><br><span class="line">Out[<span class="number">93</span>]:</span><br><span class="line">array([[<span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">       [<span class="number">5</span>, <span class="number">6</span>]])</span><br></pre></td></tr></table></figure>
+<h1 id="布尔索引"><a href="#布尔索引" class="headerlink" title="布尔索引"></a>布尔索引</h1><p>布尔型数组的长度必须跟被索引的轴长度一致，并且可以和切片、整数混合使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">95</span>]: names</span><br><span class="line">Out[<span class="number">95</span>]: array([<span class="string">'Bob'</span>, <span class="string">'Joe'</span>, <span class="string">'Will'</span>, <span class="string">'Bob'</span>, <span class="string">'Will'</span>, <span class="string">'Joe'</span>, <span class="string">'Joe'</span>], dtype=<span class="string">'&lt;U4'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">In [<span class="number">96</span>]: names == <span class="string">'Bob'</span></span><br><span class="line">Out[<span class="number">96</span>]: array([ <span class="literal">True</span>, <span class="literal">False</span>, <span class="literal">False</span>,  <span class="literal">True</span>, <span class="literal">False</span>, <span class="literal">False</span>, <span class="literal">False</span>])</span><br><span class="line"></span><br><span class="line">In [<span class="number">98</span>]: <span class="keyword">from</span> numpy.random <span class="keyword">import</span> randn</span><br><span class="line"></span><br><span class="line">In [<span class="number">99</span>]: data = randn(<span class="number">7</span>, <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">100</span>]: data</span><br><span class="line">Out[<span class="number">100</span>]:</span><br><span class="line">array([[ <span class="number">1.0414046</span> ,  <span class="number">0.27541176</span>, <span class="number">-0.28867275</span>,  <span class="number">0.43976932</span>],</span><br><span class="line">       [ <span class="number">1.41040224</span>,  <span class="number">0.85299112</span>, <span class="number">-1.25119339</span>, <span class="number">-0.22021196</span>],</span><br><span class="line">       [ <span class="number">0.6567735</span> , <span class="number">-1.68611377</span>,  <span class="number">1.21111831</span>,  <span class="number">0.30837087</span>],</span><br><span class="line">       [<span class="number">-1.71472061</span>,  <span class="number">1.83107771</span>, <span class="number">-0.4621784</span> , <span class="number">-0.44085432</span>],</span><br><span class="line">       [ <span class="number">1.62355481</span>,  <span class="number">1.05545767</span>,  <span class="number">1.03071674</span>, <span class="number">-0.58314536</span>],</span><br><span class="line">       [ <span class="number">1.42174078</span>,  <span class="number">0.37195811</span>,  <span class="number">0.33015409</span>, <span class="number">-1.5331736</span> ],</span><br><span class="line">       [ <span class="number">0.30902783</span>, <span class="number">-0.65909982</span>, <span class="number">-0.74522413</span>, <span class="number">-0.40299012</span>]])</span><br><span class="line"></span><br><span class="line">In [<span class="number">101</span>]: data[names == <span class="string">'Bob'</span>]</span><br><span class="line">Out[<span class="number">101</span>]:</span><br><span class="line">array([[ <span class="number">1.0414046</span> ,  <span class="number">0.27541176</span>, <span class="number">-0.28867275</span>,  <span class="number">0.43976932</span>],</span><br><span class="line">       [<span class="number">-1.71472061</span>,  <span class="number">1.83107771</span>, <span class="number">-0.4621784</span> , <span class="number">-0.44085432</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 混合使用</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">102</span>]: data[names==<span class="string">'Bob'</span>, <span class="number">2</span>:]</span><br><span class="line">Out[<span class="number">102</span>]:</span><br><span class="line">array([[<span class="number">-0.28867275</span>,  <span class="number">0.43976932</span>],</span><br><span class="line">       [<span class="number">-0.4621784</span> , <span class="number">-0.44085432</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 否定用法</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">103</span>]: names != <span class="string">'Bob'</span></span><br><span class="line">Out[<span class="number">103</span>]: array([<span class="literal">False</span>,  <span class="literal">True</span>,  <span class="literal">True</span>, <span class="literal">False</span>,  <span class="literal">True</span>,  <span class="literal">True</span>,  <span class="literal">True</span>])</span><br><span class="line"></span><br><span class="line">In [<span class="number">105</span>]: data[~(names==<span class="string">'Bob'</span>)]</span><br><span class="line">Out[<span class="number">105</span>]:</span><br><span class="line">array([[ <span class="number">1.41040224</span>,  <span class="number">0.85299112</span>, <span class="number">-1.25119339</span>, <span class="number">-0.22021196</span>],</span><br><span class="line">       [ <span class="number">0.6567735</span> , <span class="number">-1.68611377</span>,  <span class="number">1.21111831</span>,  <span class="number">0.30837087</span>],</span><br><span class="line">       [ <span class="number">1.62355481</span>,  <span class="number">1.05545767</span>,  <span class="number">1.03071674</span>, <span class="number">-0.58314536</span>],</span><br><span class="line">       [ <span class="number">1.42174078</span>,  <span class="number">0.37195811</span>,  <span class="number">0.33015409</span>, <span class="number">-1.5331736</span> ],</span><br><span class="line">       [ <span class="number">0.30902783</span>, <span class="number">-0.65909982</span>, <span class="number">-0.74522413</span>, <span class="number">-0.40299012</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 布尔条件 &amp; | （不可使用 and or）</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">107</span>]: mask = (names == <span class="string">'Bob'</span>) | (names == <span class="string">'Will'</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">108</span>]: mask</span><br><span class="line">Out[<span class="number">108</span>]: array([ <span class="literal">True</span>, <span class="literal">False</span>,  <span class="literal">True</span>,  <span class="literal">True</span>,  <span class="literal">True</span>, <span class="literal">False</span>, <span class="literal">False</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 布尔索引使用示例</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">110</span>]: data[data&lt;<span class="number">0</span>]=<span class="number">0</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">111</span>]: data</span><br><span class="line">Out[<span class="number">111</span>]:</span><br><span class="line">array([[<span class="number">1.0414046</span> , <span class="number">0.27541176</span>, <span class="number">0.</span>        , <span class="number">0.43976932</span>],</span><br><span class="line">       [<span class="number">1.41040224</span>, <span class="number">0.85299112</span>, <span class="number">0.</span>        , <span class="number">0.</span>        ],</span><br><span class="line">       [<span class="number">0.6567735</span> , <span class="number">0.</span>        , <span class="number">1.21111831</span>, <span class="number">0.30837087</span>],</span><br><span class="line">       [<span class="number">0.</span>        , <span class="number">1.83107771</span>, <span class="number">0.</span>        , <span class="number">0.</span>        ],</span><br><span class="line">       [<span class="number">1.62355481</span>, <span class="number">1.05545767</span>, <span class="number">1.03071674</span>, <span class="number">0.</span>        ],</span><br><span class="line">       [<span class="number">1.42174078</span>, <span class="number">0.37195811</span>, <span class="number">0.33015409</span>, <span class="number">0.</span>        ],</span><br><span class="line">       [<span class="number">0.30902783</span>, <span class="number">0.</span>        , <span class="number">0.</span>        , <span class="number">0.</span>        ]])</span><br></pre></td></tr></table></figure>
+<h1 id="花式索引"><a href="#花式索引" class="headerlink" title="花式索引"></a>花式索引</h1><p>花式索引和切片不同，他总是将数据复制进新数组</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">114</span>]: arr</span><br><span class="line">Out[<span class="number">114</span>]:</span><br><span class="line">array([[ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>],</span><br><span class="line">       [ <span class="number">4</span>,  <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>],</span><br><span class="line">       [ <span class="number">8</span>,  <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>],</span><br><span class="line">       [<span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>],</span><br><span class="line">       [<span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>],</span><br><span class="line">       [<span class="number">20</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>],</span><br><span class="line">       [<span class="number">24</span>, <span class="number">25</span>, <span class="number">26</span>, <span class="number">27</span>],</span><br><span class="line">       [<span class="number">28</span>, <span class="number">29</span>, <span class="number">30</span>, <span class="number">31</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取1,5,7,2行区域（形成新数组）</span></span><br><span class="line">In [<span class="number">115</span>]: arr[[<span class="number">1</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">2</span>]]</span><br><span class="line">Out[<span class="number">115</span>]:</span><br><span class="line">array([[ <span class="number">4</span>,  <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>],</span><br><span class="line">       [<span class="number">20</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>],</span><br><span class="line">       [<span class="number">28</span>, <span class="number">29</span>, <span class="number">30</span>, <span class="number">31</span>],</span><br><span class="line">       [ <span class="number">8</span>,  <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取(1, 0), (5, 3), (7, 1), (2, 2)位置的元素区域</span></span><br><span class="line">In [<span class="number">116</span>]: arr[[<span class="number">1</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">2</span>], [<span class="number">0</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>]]</span><br><span class="line">Out[<span class="number">116</span>]: array([ <span class="number">4</span>, <span class="number">23</span>, <span class="number">29</span>, <span class="number">10</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取1,5,7,2行区域，列按[0,3,1,2]顺序排列</span></span><br><span class="line">In [<span class="number">117</span>]: arr[[<span class="number">1</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">2</span>]][:, [<span class="number">0</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>]]</span><br><span class="line">Out[<span class="number">117</span>]:</span><br><span class="line">array([[ <span class="number">4</span>,  <span class="number">7</span>,  <span class="number">5</span>,  <span class="number">6</span>],</span><br><span class="line">       [<span class="number">20</span>, <span class="number">23</span>, <span class="number">21</span>, <span class="number">22</span>],</span><br><span class="line">       [<span class="number">28</span>, <span class="number">31</span>, <span class="number">29</span>, <span class="number">30</span>],</span><br><span class="line">       [ <span class="number">8</span>, <span class="number">11</span>,  <span class="number">9</span>, <span class="number">10</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 花式索引是生成新数组</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">122</span>]: arr2 = arr[[<span class="number">1</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">2</span>]]</span><br><span class="line"></span><br><span class="line">In [<span class="number">123</span>]: arr2</span><br><span class="line">Out[<span class="number">123</span>]:</span><br><span class="line">array([[ <span class="number">4</span>,  <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>],</span><br><span class="line">       [<span class="number">20</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>],</span><br><span class="line">       [<span class="number">28</span>, <span class="number">29</span>, <span class="number">30</span>, <span class="number">31</span>],</span><br><span class="line">       [ <span class="number">8</span>,  <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>]])</span><br><span class="line"></span><br><span class="line">In [<span class="number">124</span>]: arr2 = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">125</span>]: arr</span><br><span class="line">Out[<span class="number">125</span>]:</span><br><span class="line">array([[ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>],</span><br><span class="line">       [ <span class="number">4</span>,  <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>],</span><br><span class="line">       [ <span class="number">8</span>,  <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>],</span><br><span class="line">       [<span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>],</span><br><span class="line">       [<span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>],</span><br><span class="line">       [<span class="number">20</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>],</span><br><span class="line">       [<span class="number">24</span>, <span class="number">25</span>, <span class="number">26</span>, <span class="number">27</span>],</span><br><span class="line">       [<span class="number">28</span>, <span class="number">29</span>, <span class="number">30</span>, <span class="number">31</span>]])</span><br></pre></td></tr></table></figure>
+<h1 id="数组转置和轴对换"><a href="#数组转置和轴对换" class="headerlink" title="数组转置和轴对换"></a>数组转置和轴对换</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">127</span>]: arr</span><br><span class="line">Out[<span class="number">127</span>]:</span><br><span class="line">array([[ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>,  <span class="number">4</span>],</span><br><span class="line">       [ <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>,  <span class="number">8</span>,  <span class="number">9</span>],</span><br><span class="line">       [<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>]])</span><br><span class="line"></span><br><span class="line">In [<span class="number">128</span>]: arr.T</span><br><span class="line">Out[<span class="number">128</span>]:</span><br><span class="line">array([[ <span class="number">0</span>,  <span class="number">5</span>, <span class="number">10</span>],</span><br><span class="line">       [ <span class="number">1</span>,  <span class="number">6</span>, <span class="number">11</span>],</span><br><span class="line">       [ <span class="number">2</span>,  <span class="number">7</span>, <span class="number">12</span>],</span><br><span class="line">       [ <span class="number">3</span>,  <span class="number">8</span>, <span class="number">13</span>],</span><br><span class="line">       [ <span class="number">4</span>,  <span class="number">9</span>, <span class="number">14</span>]])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 看不懂。。</span></span><br><span class="line">In [<span class="number">130</span>]: arr</span><br><span class="line">Out[<span class="number">130</span>]:</span><br><span class="line">array([[[ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>],</span><br><span class="line">        [ <span class="number">4</span>,  <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>]],</span><br><span class="line"></span><br><span class="line">       [[ <span class="number">8</span>,  <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>],</span><br><span class="line">        [<span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>]]])</span><br><span class="line"></span><br><span class="line">In [<span class="number">132</span>]: arr.transpose((<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>))</span><br><span class="line">Out[<span class="number">132</span>]:</span><br><span class="line">array([[[ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>],</span><br><span class="line">        [ <span class="number">8</span>,  <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>]],</span><br><span class="line"></span><br><span class="line">       [[ <span class="number">4</span>,  <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>],</span><br><span class="line">        [<span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>]]])</span><br></pre></td></tr></table></figure>
+<h1 id="通用函数：快速的元素级数组函数"><a href="#通用函数：快速的元素级数组函数" class="headerlink" title="通用函数：快速的元素级数组函数"></a>通用函数：快速的元素级数组函数</h1><p>通用函数是一种能对ndarray中的数据执行元素级运算的函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">133</span>]: arr = np.arange(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 平方根</span></span><br><span class="line">In [<span class="number">134</span>]: np.sqrt(arr)</span><br><span class="line">Out[<span class="number">134</span>]:</span><br><span class="line">array([<span class="number">0.</span>        , <span class="number">1.</span>        , <span class="number">1.41421356</span>, <span class="number">1.73205081</span>, <span class="number">2.</span>        ,</span><br><span class="line">       <span class="number">2.23606798</span>, <span class="number">2.44948974</span>, <span class="number">2.64575131</span>, <span class="number">2.82842712</span>, <span class="number">3.</span>        ])</span><br><span class="line"></span><br><span class="line"><span class="comment"># e为底的指数</span></span><br><span class="line">In [<span class="number">135</span>]: np.exp(arr)</span><br><span class="line">Out[<span class="number">135</span>]:</span><br><span class="line">array([<span class="number">1.00000000e+00</span>, <span class="number">2.71828183e+00</span>, <span class="number">7.38905610e+00</span>, <span class="number">2.00855369e+01</span>,</span><br><span class="line">       <span class="number">5.45981500e+01</span>, <span class="number">1.48413159e+02</span>, <span class="number">4.03428793e+02</span>, <span class="number">1.09663316e+03</span>,</span><br><span class="line">       <span class="number">2.98095799e+03</span>, <span class="number">8.10308393e+03</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 元素级最大值</span></span><br><span class="line">In [<span class="number">136</span>]: x = randn(<span class="number">8</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">137</span>]: y = randn(<span class="number">8</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">139</span>]: x</span><br><span class="line">Out[<span class="number">139</span>]:</span><br><span class="line">array([ <span class="number">0.29123626</span>,  <span class="number">2.54672169</span>, <span class="number">-1.0185621</span> ,  <span class="number">0.46756089</span>, <span class="number">-1.72738298</span>,</span><br><span class="line">        <span class="number">0.73119483</span>, <span class="number">-0.55088788</span>, <span class="number">-0.14345012</span>])</span><br><span class="line"></span><br><span class="line">In [<span class="number">140</span>]: y</span><br><span class="line">Out[<span class="number">140</span>]:</span><br><span class="line">array([ <span class="number">1.53812286</span>,  <span class="number">0.28810153</span>, <span class="number">-0.65714547</span>, <span class="number">-1.07375593</span>,  <span class="number">1.31292609</span>,</span><br><span class="line">        <span class="number">0.5431188</span> , <span class="number">-0.18918957</span>,  <span class="number">0.30398994</span>])</span><br><span class="line"></span><br><span class="line">In [<span class="number">138</span>]: np.maximum(x, y)</span><br><span class="line">Out[<span class="number">138</span>]:</span><br><span class="line">array([ <span class="number">1.53812286</span>,  <span class="number">2.54672169</span>, <span class="number">-0.65714547</span>,  <span class="number">0.46756089</span>,  <span class="number">1.31292609</span>,</span><br><span class="line">        <span class="number">0.73119483</span>, <span class="number">-0.18918957</span>,  <span class="number">0.30398994</span>])</span><br></pre></td></tr></table></figure>
+<h2 id="一元ufunc"><a href="#一元ufunc" class="headerlink" title="一元ufunc"></a>一元ufunc</h2><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>abs、fabs</td>
+<td>计算整数、浮点数或复数的绝对值。对于非复数值，可以使用fabs更快</td>
+</tr>
+<tr>
+<td>sqrt</td>
+<td>平方根</td>
+</tr>
+<tr>
+<td>square</td>
+<td>平方</td>
+</tr>
+<tr>
+<td>exp</td>
+<td>以e为底的指数</td>
+</tr>
+<tr>
+<td>log、log10、log2、log1p</td>
+<td>自然对数、10为底、2为底、log(1+x)</td>
+</tr>
+<tr>
+<td>sign</td>
+<td>计算各元素正负号1(正数)0(零)-1(负数)</td>
+</tr>
+<tr>
+<td>ceil</td>
+<td>向上取整</td>
+</tr>
+<tr>
+<td>floor</td>
+<td>向下取整</td>
+</tr>
+<tr>
+<td>rint</td>
+<td>四舍五入，保留dtype</td>
+</tr>
+<tr>
+<td>modf</td>
+<td>将小数和整数部分以两个独立数组的形式返回</td>
+</tr>
+<tr>
+<td>isnan</td>
+<td>返回是NaN值的布尔数组</td>
+</tr>
+<tr>
+<td>isfinite、isinf</td>
+<td>返回是有穷数（非inf、非NaN）、无穷数的布尔数组</td>
+</tr>
+<tr>
+<td>cos、cosh、sin、sinh、tan、tanh</td>
+<td>普通、双曲型三角函数</td>
+</tr>
+<tr>
+<td>arccos、arccosh、arcsin、arcsinh、arctan、arctanh、</td>
+<td>反三角函数</td>
+</tr>
+<tr>
+<td>logical_not</td>
+<td>各元素not x的真值。相当于-arr</td>
+</tr>
+</tbody>
+</table>
+<h2 id="二元ufunc"><a href="#二元ufunc" class="headerlink" title="二元ufunc"></a>二元ufunc</h2><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>add</td>
+<td>对应元素相加</td>
+</tr>
+<tr>
+<td>subtract</td>
+<td>从第一个数组中减去第二个数组中的元素</td>
+</tr>
+<tr>
+<td>multiply</td>
+<td>数组相乘</td>
+</tr>
+<tr>
+<td>divide、floor_divide</td>
+<td>除法、向下圆整除法(丢弃余数)</td>
+</tr>
+<tr>
+<td>power</td>
+<td>A数组的B次方</td>
+</tr>
+<tr>
+<td>maximum、fmax</td>
+<td>最大值、fmax忽略NaN</td>
+</tr>
+<tr>
+<td>minimum、fmin</td>
+<td>最小值、fmin忽略NaN</td>
+</tr>
+<tr>
+<td>mod</td>
+<td>取模</td>
+</tr>
+<tr>
+<td>copysign</td>
+<td>将B数组值的符号复制给第一个数组</td>
+</tr>
+<tr>
+<td>greater、greater_equal、less、less_equal、equal、not_equal</td>
+<td>比较运算，生成布尔数组，&gt;、&gt;=、&lt;、&lt;=、==、!=</td>
+</tr>
+<tr>
+<td>logical_and、logical_or、logical_xor</td>
+<td>元素级真值逻辑运算，相当于&amp;、&#124; 、^</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/Numpy/" rel="tag"># Numpy</a>
+          
+            <a href="/tags/数据分析/" rel="tag"># 数据分析</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/aa2472f4/" rel="next" title="数据结构题目总结(C 语言描述)">
+                <i class="fa fa-chevron-left"></i> 数据结构题目总结(C 语言描述)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/87847f8/" rel="prev" title="Numpy笔记-进阶篇">
+                Numpy笔记-进阶篇 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="EwdAger">
+            
+              <p class="site-author-name" itemprop="name">EwdAger</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/EwdAger" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:ewdager@hotmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://steamcommunity.com/id/ewdager/" target="_blank" title="Steam">
+                    
+                      <i class="fa fa-fw fa-steam"></i>Steam</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://my.playstation.com/profile/EwdAger" target="_blank" title="PSN">
+                    
+                      <i class="fa fa-fw fa-gamepad"></i>PSN</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Friends
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xdong.me/" title="Hiccup" target="_blank">Hiccup</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jakting.com/" title="hjthjthjt" target="_blank">hjthjthjt</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建-ndarray"><span class="nav-number">1.</span> <span class="nav-text">创建 ndarray</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用方法"><span class="nav-number">1.1.</span> <span class="nav-text">常用方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他新建数组方法"><span class="nav-number">1.2.</span> <span class="nav-text">其他新建数组方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ndarray-的数据类型"><span class="nav-number">2.</span> <span class="nav-text">ndarray 的数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组和标量之间的运算"><span class="nav-number">3.</span> <span class="nav-text">数组和标量之间的运算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本的索引和切片"><span class="nav-number">4.</span> <span class="nav-text">基本的索引和切片</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#切片的注意事项"><span class="nav-number">4.1.</span> <span class="nav-text">切片的注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高维数组索引"><span class="nav-number">4.2.</span> <span class="nav-text">高维数组索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切片索引"><span class="nav-number">4.3.</span> <span class="nav-text">切片索引</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#布尔索引"><span class="nav-number">5.</span> <span class="nav-text">布尔索引</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#花式索引"><span class="nav-number">6.</span> <span class="nav-text">花式索引</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组转置和轴对换"><span class="nav-number">7.</span> <span class="nav-text">数组转置和轴对换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通用函数：快速的元素级数组函数"><span class="nav-number">8.</span> <span class="nav-text">通用函数：快速的元素级数组函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一元ufunc"><span class="nav-number">8.1.</span> <span class="nav-text">一元ufunc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二元ufunc"><span class="nav-number">8.2.</span> <span class="nav-text">二元ufunc</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">EwdAger</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+
+
+
+
+        
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=64934470";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
