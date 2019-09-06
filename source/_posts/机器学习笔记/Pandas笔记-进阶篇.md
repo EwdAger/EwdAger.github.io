@@ -5,7 +5,7 @@ tags:
   - Pandas
   - 数据分析
 abbrlink: a61b68c3
-categories: Python数据分析笔记
+categories: 机器学习笔记
 date: 2019-08-27 13:56:00
 ---
 

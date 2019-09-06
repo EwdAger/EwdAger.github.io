@@ -5,7 +5,7 @@ tags:
   - Numpy
   - 数据分析
 abbrlink: 87847f8
-categories: Python数据分析笔记
+categories: 机器学习笔记
 date: 2019-08-24 17:27:42
 ---
 

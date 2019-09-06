@@ -5,7 +5,7 @@ tags:
   - Numpy
   - 数据分析
 abbrlink: ca37cdbd
-categories: Python数据分析笔记
+categories: 机器学习笔记
 date: 2019-08-22 11:17:06
 ---
 

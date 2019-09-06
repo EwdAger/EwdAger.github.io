@@ -5,8 +5,8 @@ tags:
   - Numpy
   - 数据分析
   - 机器学习
-abbrlink: 150cb8f7
-categories: Python数据分析笔记
+abbrlink: ec7adaa1
+categories: 机器学习笔记
 date: 2019-09-05 16:11:42
 ---
 
