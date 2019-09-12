@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Gvoidy
+title: 极光技术小栈
 subtitle: 
 description: 
 author: EwdAger
@@ -92,3 +92,11 @@ search:
   field: post
   format: html
   limit: 10000
+
+# 数学公式
+math:
+  engine: 'mathjax' # or 'katex'
+  mathjax:
+    # src: custom_mathjax_source
+    config:
+      # MathJax config
