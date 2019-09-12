@@ -7,7 +7,7 @@
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
@@ -84,7 +84,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python中in的三种遍历协议">
 <meta property="og:url" content="http://gvoidy.cn/posts/b7cb2971/index.html">
-<meta property="og:site_name" content="Gvoidy">
+<meta property="og:site_name" content="极光技术小栈">
 <meta property="og:description" content="今天刷LeetCode碰到个简单题 宝石与石头想降一下时间复杂度，就没有用in list写法，直接又遍历了一遍列表，可没想到一看答案，这样做的用时比用in要慢得多。索性研究了一下in的原理。这里复制一下知乎用户（很抱歉， 这位同学账号似乎被封了，无法著名）的答案。 in 关键字实现了一套python中的遍历协议. 协议A: iter + next 循环时,  程序先使用iter (相当于iter(">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-09-03T05:47:53.663Z">
@@ -126,7 +126,7 @@
 
 
 
-  <title>Python中in的三种遍历协议 | Gvoidy</title>
+  <title>Python中in的三种遍历协议 | 极光技术小栈</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -145,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -156,7 +156,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Gvoidy</span>
+        <span class="site-title">极光技术小栈</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -294,7 +294,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Gvoidy">
+      <meta itemprop="name" content="极光技术小栈">
     </span>
 
     
@@ -521,7 +521,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -543,7 +543,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1132,6 +1132,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
 
   
 

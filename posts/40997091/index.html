@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Git,">
+  <meta name="keywords" content="机器学习,离散数学,">
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="Git是分布式的代码管理工具，远程的代码管理是基于ssh的，所以要使用远程的git则需要ssh的配置。如果未配置ssh key将无法clone远程代码仓库到本地。  第一步.创建user.name和email12git config --global user.name &amp;quot;EwdAger&amp;quot;git config --global user.email &amp;quot;ewdager@">
-<meta name="keywords" content="Git">
+<meta name="description" content="$$\sum_{i=0}^n i^3 = \frac{(n^2+n)(n+6)}{9}$$">
+<meta name="keywords" content="机器学习,离散数学">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git的ssh key创建">
-<meta property="og:url" content="http://gvoidy.cn/posts/7c2130d4/index.html">
+<meta property="og:title" content="线性回归">
+<meta property="og:url" content="http://gvoidy.cn/posts/40997091/index.html">
 <meta property="og:site_name" content="极光技术小栈">
-<meta property="og:description" content="Git是分布式的代码管理工具，远程的代码管理是基于ssh的，所以要使用远程的git则需要ssh的配置。如果未配置ssh key将无法clone远程代码仓库到本地。  第一步.创建user.name和email12git config --global user.name &amp;quot;EwdAger&amp;quot;git config --global user.email &amp;quot;ewdager@">
+<meta property="og:description" content="$$\sum_{i=0}^n i^3 = \frac{(n^2+n)(n+6)}{9}$$">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5433252-0697e396457b08da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-09-03T05:47:53.679Z">
+<meta property="og:updated_time" content="2019-09-06T05:54:41.678Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git的ssh key创建">
-<meta name="twitter:description" content="Git是分布式的代码管理工具，远程的代码管理是基于ssh的，所以要使用远程的git则需要ssh的配置。如果未配置ssh key将无法clone远程代码仓库到本地。  第一步.创建user.name和email12git config --global user.name &amp;quot;EwdAger&amp;quot;git config --global user.email &amp;quot;ewdager@">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/5433252-0697e396457b08da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="线性回归">
+<meta name="twitter:description" content="$$\sum_{i=0}^n i^3 = \frac{(n^2+n)(n+6)}{9}$$">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://gvoidy.cn/posts/7c2130d4/">
+  <link rel="canonical" href="http://gvoidy.cn/posts/40997091/">
 
 
 
 
 
-  <title>git的ssh key创建 | 极光技术小栈</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>线性回归 | 极光技术小栈</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -287,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://gvoidy.cn/posts/7c2130d4/">
+    <link itemprop="mainEntityOfPage" href="http://gvoidy.cn/posts/40997091/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="EwdAger">
@@ -304,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">git的ssh key创建</h1>
+          <h1 class="post-title" itemprop="name headline">线性回归</h1>
         
 
         <div class="post-meta">
@@ -316,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-14T16:56:10+08:00">
-                2017-08-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-06T09:59:42+08:00">
+                2019-09-06
               </time>
             
 
@@ -339,8 +337,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/不知道怎么归类/" itemprop="url" rel="index">
-                    <span itemprop="name">不知道怎么归类</span>
+                  <a href="/categories/机器学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习笔记</span>
                   </a>
                 </span>
 
@@ -376,21 +374,7 @@
       
 
       
-        <p>Git是分布式的代码管理工具，远程的代码管理是基于ssh的，所以要使用远程的git则需要ssh的配置。如果未配置ssh key将无法clone远程代码仓库到本地。</p>
-<ul>
-<li>第一步.创建user.name和email<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;EwdAger&quot;</span><br><span class="line">git config --global user.email &quot;ewdager@hotmail.com&quot;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<a id="more"></a>
-<ul>
-<li>第二步.生成SSH密钥：</li>
-</ul>
-<ol>
-<li>查看是否已经有了ssh密钥：<code>cd ~/.ssh</code>,Windows用户的路径在<code>C:\Users\EwdAger\.ssh</code>下<br>如果是刚安装git则不会有此文件夹，有则备份删除</li>
-<li>生成ssh key<br><code>sudo ssh-keygen -t rsa -C &quot;ewdager@hotmail.com&quot;</code><br>然后按三下回车<br>最后得到了两个文件：id_rsa和id_rsa.pub</li>
-<li>在github上添加ssh密钥，这要添加的是“id_rsa.pub”里面的公钥<br>用编辑器打开id_rsa.pub复制全部内容到github的settings的SSH and GPG keys设置中，title取个好记的名字就行。<br><img src="http://upload-images.jianshu.io/upload_images/5433252-0697e396457b08da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-<li>然后就能使用clone了</li>
-</ol>
+        <p>$$\sum_{i=0}^n i^3 = \frac{(n^2+n)(n+6)}{9}$$</p>
 
       
     </div>
@@ -408,7 +392,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Git/" rel="tag"># Git</a>
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+            <a href="/tags/离散数学/" rel="tag"># 离散数学</a>
           
         </div>
       
@@ -421,8 +407,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/62657fb0/" rel="next" title="Django模型的Field Types总结">
-                <i class="fa fa-chevron-left"></i> Django模型的Field Types总结
+              <a href="/posts/ec7adaa1/" rel="next" title="机器学习速查笔记-Numpy篇">
+                <i class="fa fa-chevron-left"></i> 机器学习速查笔记-Numpy篇
               </a>
             
           </div>
@@ -431,8 +417,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/posts/d4a1185/" rel="prev" title="hello world">
-                hello world <i class="fa fa-chevron-right"></i>
+              <a href="/posts/74d934ea/" rel="prev" title="机器学习速查笔记-Pandas篇">
+                机器学习速查笔记-Pandas篇 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
