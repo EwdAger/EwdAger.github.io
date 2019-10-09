@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode,">
+  <meta name="keywords" content="Python,机器学习,聚类算法,">
 
 
 
@@ -79,18 +79,21 @@
 
 
 
-<meta name="description" content="访问下标解包这其实都不算解包了吧。。 123&amp;gt;&amp;gt;&amp;gt; a = (1,2,3)&amp;gt;&amp;gt;&amp;gt; a[0]1 赋值解包12&amp;gt;&amp;gt;&amp;gt; a = (1,2,3,)&amp;gt;&amp;gt;&amp;gt; b, c, d = a 星号(*)解包要将一个tuple中的所有值作为参数，如果直接用上面两种方法就不太 pythonic了，可以用以下方法解包 1234567...&amp;gt;&amp;gt;">
-<meta name="keywords" content="LeetCode">
+<meta name="description" content="聚类与分类的区别分类： 类别是已知的，通过对已知分类的数据进行训练和学习，找到不同类的特征再对未分类的数据进行分类，属于监督学习。 聚类： 事先不知道数据会分为几类，通过聚类分析将数据聚合成几个群体。聚类不需要对数据进行训练和学习。属于无监督学习。 数据输入有标签则为监督学习，否则为无监督学习 k-means 聚类怎么算 首先输入 k 的值，即希望通过聚类得到 k 个分组； 从数据集中随机选取 k">
+<meta name="keywords" content="Python,机器学习,聚类算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python 元组解包的几种方法">
-<meta property="og:url" content="http://gvoidy.cn/posts/bba523e0/index.html">
+<meta property="og:title" content="聚类算法之K-Means(K均值)聚类">
+<meta property="og:url" content="http://gvoidy.cn/posts/dea808f4/index.html">
 <meta property="og:site_name" content="极光技术小栈">
-<meta property="og:description" content="访问下标解包这其实都不算解包了吧。。 123&amp;gt;&amp;gt;&amp;gt; a = (1,2,3)&amp;gt;&amp;gt;&amp;gt; a[0]1 赋值解包12&amp;gt;&amp;gt;&amp;gt; a = (1,2,3,)&amp;gt;&amp;gt;&amp;gt; b, c, d = a 星号(*)解包要将一个tuple中的所有值作为参数，如果直接用上面两种方法就不太 pythonic了，可以用以下方法解包 1234567...&amp;gt;&amp;gt;">
+<meta property="og:description" content="聚类与分类的区别分类： 类别是已知的，通过对已知分类的数据进行训练和学习，找到不同类的特征再对未分类的数据进行分类，属于监督学习。 聚类： 事先不知道数据会分为几类，通过聚类分析将数据聚合成几个群体。聚类不需要对数据进行训练和学习。属于无监督学习。 数据输入有标签则为监督学习，否则为无监督学习 k-means 聚类怎么算 首先输入 k 的值，即希望通过聚类得到 k 个分组； 从数据集中随机选取 k">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-03T05:47:53.663Z">
+<meta property="og:image" content="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/k-means">
+<meta property="og:image" content="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/k_clusters4.png">
+<meta property="og:updated_time" content="2019-10-09T08:49:57.304Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python 元组解包的几种方法">
-<meta name="twitter:description" content="访问下标解包这其实都不算解包了吧。。 123&amp;gt;&amp;gt;&amp;gt; a = (1,2,3)&amp;gt;&amp;gt;&amp;gt; a[0]1 赋值解包12&amp;gt;&amp;gt;&amp;gt; a = (1,2,3,)&amp;gt;&amp;gt;&amp;gt; b, c, d = a 星号(*)解包要将一个tuple中的所有值作为参数，如果直接用上面两种方法就不太 pythonic了，可以用以下方法解包 1234567...&amp;gt;&amp;gt;">
+<meta name="twitter:title" content="聚类算法之K-Means(K均值)聚类">
+<meta name="twitter:description" content="聚类与分类的区别分类： 类别是已知的，通过对已知分类的数据进行训练和学习，找到不同类的特征再对未分类的数据进行分类，属于监督学习。 聚类： 事先不知道数据会分为几类，通过聚类分析将数据聚合成几个群体。聚类不需要对数据进行训练和学习。属于无监督学习。 数据输入有标签则为监督学习，否则为无监督学习 k-means 聚类怎么算 首先输入 k 的值，即希望通过聚类得到 k 个分组； 从数据集中随机选取 k">
+<meta name="twitter:image" content="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/k-means">
 
 
 
@@ -120,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://gvoidy.cn/posts/bba523e0/">
+  <link rel="canonical" href="http://gvoidy.cn/posts/dea808f4/">
 
 
 
 
 
-  <title>Python 元组解包的几种方法 | 极光技术小栈</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>聚类算法之K-Means(K均值)聚类 | 极光技术小栈</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -285,7 +288,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://gvoidy.cn/posts/bba523e0/">
+    <link itemprop="mainEntityOfPage" href="http://gvoidy.cn/posts/dea808f4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="EwdAger">
@@ -302,7 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python 元组解包的几种方法</h1>
+          <h1 class="post-title" itemprop="name headline">聚类算法之K-Means(K均值)聚类</h1>
         
 
         <div class="post-meta">
@@ -314,8 +317,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-05T11:32:00+08:00">
-                2018-07-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-09T14:45:00+08:00">
+                2019-10-09
               </time>
             
 
@@ -337,8 +340,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode刷题总结/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode刷题总结</span>
+                  <a href="/categories/机器学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习笔记</span>
                   </a>
                 </span>
 
@@ -374,14 +377,36 @@
       
 
       
-        <h2 id="访问下标解包"><a href="#访问下标解包" class="headerlink" title="访问下标解包"></a>访问下标解包</h2><p>这其实都不算解包了吧。。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="number">0</span>]</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
-<h2 id="赋值解包"><a href="#赋值解包" class="headerlink" title="赋值解包"></a>赋值解包</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b, c, d = a</span><br></pre></td></tr></table></figure>
-<h2 id="星号-解包"><a href="#星号-解包" class="headerlink" title="星号(*)解包"></a>星号(*)解包</h2><p>要将一个<code>tuple</code>中的所有值作为参数，如果直接用上面两种方法就不太 pythonic了，可以用以下方法解包</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>brith = (<span class="number">2018</span>, <span class="number">7</span>, <span class="number">5</span>,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>datetime.date(brith)     <span class="comment"># 当然这里直接传入元组是不行的，该函数要求传入int类型</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">TypeError: an integer <span class="keyword">is</span> required (got type tuple)</span><br></pre></td></tr></table></figure>
-<p>所以正确的应该是</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> datetime</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>brith = (<span class="number">2018</span>, <span class="number">7</span>, <span class="number">5</span>,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(datetime.date(*brith))  <span class="comment"># 注意*号</span></span><br><span class="line"><span class="number">2018</span><span class="number">-7</span><span class="number">-5</span></span><br></pre></td></tr></table></figure>
-<p>来源: <a href="https://stackoverflow.com/questions/2238355/what-is-the-pythonic-way-to-unpack-tuples" target="_blank" rel="noopener">what-is-the-pythonic-way-to-unpack-tuples</a></p>
+        <h2 id="聚类与分类的区别"><a href="#聚类与分类的区别" class="headerlink" title="聚类与分类的区别"></a>聚类与分类的区别</h2><p><strong>分类</strong>： 类别是已知的，通过对已知分类的数据进行训练和学习，找到不同类的特征再对未分类的数据进行分类，属于监督学习。</p>
+<p><strong>聚类</strong>： 事先不知道数据会分为几类，通过聚类分析将数据聚合成几个群体。聚类不需要对数据进行训练和学习。属于无监督学习。</p>
+<p><em>数据输入有标签则为监督学习，否则为无监督学习</em></p>
+<h2 id="k-means-聚类怎么算"><a href="#k-means-聚类怎么算" class="headerlink" title="k-means 聚类怎么算"></a>k-means 聚类怎么算</h2><ol>
+<li>首先输入 k 的值，即希望通过聚类得到 k 个分组；</li>
+<li>从数据集中随机选取 k 个数据点作为初始质心</li>
+<li>对数据中每一个点计算与每一个质心的距离，离哪个质心近，就分为哪一类</li>
+<li>基于当前分好的类，重新计算类中的所有向量的平均值，确定新的质心</li>
+<li>重复3、4步</li>
+<li>直到新的质心与老的质心的距离小于某一个设定的阈值，可以认为达到预期，算法终止。</li>
+</ol>
+<a id="more"></a>
+<p>具体步骤如下图：<br><img src="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/k-means" alt="k-means"></p>
+<h2 id="k-means-聚类-Python-实现"><a href="#k-means-聚类-Python-实现" class="headerlink" title="k-means 聚类 Python 实现"></a>k-means 聚类 Python 实现</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> KMeans</span><br><span class="line">data = np.random.rand(<span class="number">100</span>, <span class="number">3</span>) <span class="comment">#生成一个随机数据，样本大小为100, 特征数为3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#假如我要构造一个聚类数为3的聚类器</span></span><br><span class="line">estimator = KMeans(n_clusters=<span class="number">3</span>)<span class="comment">#构造聚类器</span></span><br><span class="line">estimator.fit(data)<span class="comment">#聚类</span></span><br><span class="line">label_pred = estimator.labels_ <span class="comment">#获取聚类标签</span></span><br><span class="line">centroids = estimator.cluster_centers_ <span class="comment">#获取聚类中心</span></span><br><span class="line">inertia = estimator.inertia_ <span class="comment"># 获取聚类准则的总和</span></span><br></pre></td></tr></table></figure>
+<h2 id="主函数-KMeans-参数解释"><a href="#主函数-KMeans-参数解释" class="headerlink" title="主函数 KMeans 参数解释"></a>主函数 KMeans 参数解释</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sklearn.cluster.KMeans(n_clusters=<span class="number">8</span>,</span><br><span class="line">	init=<span class="string">'k-means++'</span>, </span><br><span class="line">	n_init=<span class="number">10</span>, </span><br><span class="line">	max_iter=<span class="number">300</span>, </span><br><span class="line">	tol=<span class="number">0.0001</span>, </span><br><span class="line">	precompute_distances=<span class="string">'auto'</span>, </span><br><span class="line">	verbose=<span class="number">0</span>, </span><br><span class="line">	random_state=<span class="literal">None</span>, </span><br><span class="line">	copy_x=<span class="literal">True</span>, </span><br><span class="line">	n_jobs=<span class="number">1</span>, </span><br><span class="line">	algorithm=<span class="string">'auto'</span></span><br><span class="line">	)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>n_clusters</code>:簇的个数，即你想聚成几类</li>
+<li><code>init</code>: 初始簇中心的获取方法</li>
+<li><code>n_init</code>: 获取初始簇中心的更迭次数，为了弥补初始质心的影响，算法默认会初始10次质心，实现算法，然后返回最好的结果。</li>
+<li><code>max_iter</code>: 最大迭代次数（因为kmeans算法的实现需要迭代）</li>
+<li><code>tol</code>: 容忍度，即kmeans运行准则收敛的条件</li>
+<li><code>precompute_distances</code>：是否需要提前计算距离，这个参数会在空间和时间之间做权衡，如果是True 会把整个距离矩阵都放到内存中，auto 会默认在数据样本大于featurs*samples 的数量大于12e6 的时候False,False 时核心实现的方法是利用Cpython 来实现的</li>
+<li><code>verbose</code>: 冗长模式（不太懂是啥意思，反正一般不去改默认值）</li>
+<li><code>random_state</code>: 随机生成簇中心的状态条件。</li>
+<li><code>copy_x</code>: 对是否修改数据的一个标记，如果True，即复制了就不会修改数据。bool 在scikit-learn 很多接口中都会有这个参数的，就是是否对输入数据继续copy 操作，以便不修改用户的输入数据。这个要理解Python 的内存机制才会比较清楚。</li>
+<li><code>n_jobs</code>: 并行设置</li>
+<li><code>algorithm</code>: kmeans的实现算法，有：<code>auto</code>, <code>full</code>, <code>elkan</code>, 其中 <code>full</code>表示用EM方式实现</li>
+</ul>
+<h2 id="具体-Python-实现"><a href="#具体-Python-实现" class="headerlink" title="具体 Python 实现"></a>具体 Python 实现</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Created on 2019/10/9 16:31</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">@author: EwdAger</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> KMeans</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">data = pd.read_csv(<span class="string">r"F:\MachineLearning\Kmeans\data\testSet.txt"</span>, sep=<span class="string">'\t'</span>,</span><br><span class="line">                   header=<span class="number">0</span>, dtype=str, na_filter=<span class="literal">False</span>).astype(np.float)</span><br><span class="line"></span><br><span class="line">k = <span class="number">4</span></span><br><span class="line">clt = KMeans(n_clusters=k)</span><br><span class="line">clt.fit(data)</span><br><span class="line">cents = clt.cluster_centers_  <span class="comment"># 获取聚类中心</span></span><br><span class="line">labels = clt.labels_  <span class="comment"># 获取聚类标签</span></span><br><span class="line">colors = [<span class="string">'b'</span>, <span class="string">'g'</span>, <span class="string">'r'</span>, <span class="string">'k'</span>, <span class="string">'c'</span>, <span class="string">'m'</span>, <span class="string">'y'</span>, <span class="string">'#e24fff'</span>, <span class="string">'#524C90'</span>, <span class="string">'#845868'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 画图</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(k):</span><br><span class="line">    <span class="comment"># 获取i组数据的index</span></span><br><span class="line">    index = np.nonzero(labels == i)[<span class="number">0</span>]</span><br><span class="line">    x0 = data.iloc[data.index.isin(index), <span class="number">0</span>].tolist()</span><br><span class="line">    x1 = data.iloc[data.index.isin(index), <span class="number">1</span>].tolist()</span><br><span class="line">    y_i = i</span><br><span class="line">    <span class="comment"># 给第i组数据涂上颜色，进行分组</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(len(x0)):</span><br><span class="line">        plt.text(x0[j], x1[j], str(y_i), color=colors[i], fontdict=&#123;<span class="string">'weight'</span>: <span class="string">'bold'</span>, <span class="string">'size'</span>: <span class="number">6</span>&#125;)</span><br><span class="line">    <span class="comment"># 绘制该组质心</span></span><br><span class="line">    plt.scatter(cents[i, <span class="number">0</span>], cents[i, <span class="number">1</span>], marker=<span class="string">'x'</span>, color=colors[i], linewidths=<span class="number">7</span>)</span><br><span class="line"></span><br><span class="line">plt.axis([<span class="number">-7</span>, <span class="number">7</span>, <span class="number">-7</span>, <span class="number">7</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>结果如下：<br><img src="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/k_clusters4.png" alt="k_clusters4"></p>
 
       
     </div>
@@ -399,7 +424,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+            <a href="/tags/聚类算法/" rel="tag"># 聚类算法</a>
           
         </div>
       
@@ -412,8 +441,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/725a38d2/" rel="next" title="Django 部署(Apache)">
-                <i class="fa fa-chevron-left"></i> Django 部署(Apache)
+              <a href="/posts/ec7adaa1/" rel="next" title="机器学习速查笔记-Numpy篇">
+                <i class="fa fa-chevron-left"></i> 机器学习速查笔记-Numpy篇
               </a>
             
           </div>
@@ -421,10 +450,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/7c092ea/" rel="prev" title="requests 代理问题">
-                requests 代理问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -602,7 +627,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#访问下标解包"><span class="nav-number">1.</span> <span class="nav-text">访问下标解包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#赋值解包"><span class="nav-number">2.</span> <span class="nav-text">赋值解包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#星号-解包"><span class="nav-number">3.</span> <span class="nav-text">星号(*)解包</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#聚类与分类的区别"><span class="nav-number">1.</span> <span class="nav-text">聚类与分类的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#k-means-聚类怎么算"><span class="nav-number">2.</span> <span class="nav-text">k-means 聚类怎么算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#k-means-聚类-Python-实现"><span class="nav-number">3.</span> <span class="nav-text">k-means 聚类 Python 实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主函数-KMeans-参数解释"><span class="nav-number">4.</span> <span class="nav-text">主函数 KMeans 参数解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体-Python-实现"><span class="nav-number">5.</span> <span class="nav-text">具体 Python 实现</span></a></li></ol></div>
             
 
           </div>
