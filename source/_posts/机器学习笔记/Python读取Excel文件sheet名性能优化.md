@@ -63,6 +63,8 @@ def get_sheet_details(file_path):
     return sheets
 ```
 
+使用该种方法，读14M的文件仅需`0.04s`。（数据都没加载，当然和文件大小无关啦）
+
 ## 一个问题
 该函数只能针对`.xlsx`文件进行解析，而低版本的`.xls`文件就直接报错了，因为`.xls`是一个二进制文件而不是压缩文件。所以要以另一种方式去解析`sheet name`。经过查阅相关资料，发现`xlrd.open_workbook`的`on_demand=True`针对低版本的Excel文件可以只取列名而不加载数据。
 
