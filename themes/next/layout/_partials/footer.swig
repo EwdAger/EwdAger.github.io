@@ -6,6 +6,8 @@
     <i class="fa fa-{{ theme.footer.icon }}"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">{{ theme.footer.copyright || config.author }}</span>
+  <span>&nbsp;湘ICP备16015728号-2</span>
+  
 
   {% if theme.post_wordcount.totalcount %}
     <span class="post-meta-divider">|</span>
