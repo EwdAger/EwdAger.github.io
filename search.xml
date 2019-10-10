@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Python读取Excel文件sheet名性能优化]]></title>
+    <url>%2Fposts%2F6b56ef63%2F</url>
+    <content type="text"><![CDATA[原始版本直接使用pandas读取整个Excel文件，再从中取列名。这种场景对于小的Excel文件还适用，但数据量上升到10M+时，取个sheet name要26s之久。几乎无法忍受。 12data = pandas.ExcelFile(file_url)names = data.sheet_names 优化查阅资料可知.xlsx文件是一个压缩格式的文件，可以直接通过zipfile读到sheet name等相关信息。所以写如下函数直接取sheet name 12345678910111213141516171819202122232425262728293031323334353637def get_sheet_details(file_path): sheets = [] file_name = os.path.splitext(os.path.split(file_path)[-1])[0] # 用文件名创建一个临时目录 directory_to_extract_to = file_name os.mkdir(directory_to_extract_to) # 提取xlsx文件，因为它只是一个zip文件 zip_ref = zipfile.ZipFile(file_path, 'r') zip_ref.extractall(directory_to_extract_to) zip_ref.close() # 建立一个临时的workbook文件 path_to_workbook = os.path.join(directory_to_extract_to, 'xl', 'workbook.xml') with open(path_to_workbook, 'r') as f: xml = f.read() dictionary = xmltodict.parse(xml) # 多个sheet if isinstance(dictionary['workbook']['sheets']['sheet'], list): for sheet in dictionary['workbook']['sheets']['sheet']: # 有些版本的sheet是@name有些是@sheetId if sheet["@name"]: meta_sheet = sheet["@name"] else: meta_sheet = sheet["@sheetId"] sheets.append(meta_sheet) # 单个sheet else: sheet_dict = dictionary['workbook']['sheets']['sheet'] if sheet_dict["@name"]: sheets.append(sheet_dict["@name"]) else: sheets.append(sheet_dict["@sheetId"]) shutil.rmtree(directory_to_extract_to) f.close() return sheets 一个问题该函数只能针对.xlsx文件进行解析，而低版本的.xls文件就直接报错了，因为.xls是一个二进制文件而不是压缩文件。所以要以另一种方式去解析sheet name。经过查阅相关资料，发现xlrd.open_workbook的on_demand=True针对低版本的Excel文件可以只取列名而不加载数据。 1234if file_url[-3:] == 'xls': names = xlrd.open_workbook(file_url, on_demand=True).sheet_names()else: names = get_sheet_details(file_url)]]></content>
+      <categories>
+        <category>机器学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>性能优化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[聚类算法之DBSCAN聚类]]></title>
+    <url>%2Fposts%2Fae704b86%2F</url>
+    <content type="text"><![CDATA[DBSCAN （Density-Based Spatial Clustering of Applications with Noise） 是一种基于密度的聚类算法，基于密度的聚类寻找被低密度区域分离的高密度区域。]]></content>
+      <categories>
+        <category>机器学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>机器学习</tag>
+        <tag>聚类算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[聚类算法之K-Means(K均值)聚类]]></title>
     <url>%2Fposts%2Fdea808f4%2F</url>
     <content type="text"><![CDATA[聚类与分类的区别分类： 类别是已知的，通过对已知分类的数据进行训练和学习，找到不同类的特征再对未分类的数据进行分类，属于监督学习。 聚类： 事先不知道数据会分为几类，通过聚类分析将数据聚合成几个群体。聚类不需要对数据进行训练和学习。属于无监督学习。 数据输入有标签则为监督学习，否则为无监督学习 k-means 聚类怎么算 首先输入 k 的值，即希望通过聚类得到 k 个分组； 从数据集中随机选取 k 个数据点作为初始质心 对数据中每一个点计算与每一个质心的距离，离哪个质心近，就分为哪一类 基于当前分好的类，重新计算类中的所有向量的平均值，确定新的质心 重复3、4步 直到新的质心与老的质心的距离小于某一个设定的阈值，可以认为达到预期，算法终止。 具体步骤如下图： k-means 聚类 Python 实现12345678910import numpy as npfrom sklearn.cluster import KMeansdata = np.random.rand(100, 3) #生成一个随机数据，样本大小为100, 特征数为3#假如我要构造一个聚类数为3的聚类器estimator = KMeans(n_clusters=3)#构造聚类器estimator.fit(data)#聚类label_pred = estimator.labels_ #获取聚类标签centroids = estimator.cluster_centers_ #获取聚类中心inertia = estimator.inertia_ # 获取聚类准则的总和 主函数 KMeans 参数解释123456789101112sklearn.cluster.KMeans(n_clusters=8, init='k-means++', n_init=10, max_iter=300, tol=0.0001, precompute_distances='auto', verbose=0, random_state=None, copy_x=True, n_jobs=1, algorithm='auto' ) n_clusters:簇的个数，即你想聚成几类 init: 初始簇中心的获取方法 n_init: 获取初始簇中心的更迭次数，为了弥补初始质心的影响，算法默认会初始10次质心，实现算法，然后返回最好的结果。 max_iter: 最大迭代次数（因为kmeans算法的实现需要迭代） tol: 容忍度，即kmeans运行准则收敛的条件 precompute_distances：是否需要提前计算距离，这个参数会在空间和时间之间做权衡，如果是True 会把整个距离矩阵都放到内存中，auto 会默认在数据样本大于featurs*samples 的数量大于12e6 的时候False,False 时核心实现的方法是利用Cpython 来实现的 verbose: 冗长模式（不太懂是啥意思，反正一般不去改默认值） random_state: 随机生成簇中心的状态条件。 copy_x: 对是否修改数据的一个标记，如果True，即复制了就不会修改数据。bool 在scikit-learn 很多接口中都会有这个参数的，就是是否对输入数据继续copy 操作，以便不修改用户的输入数据。这个要理解Python 的内存机制才会比较清楚。 n_jobs: 并行设置 algorithm: kmeans的实现算法，有：auto, full, elkan, 其中 full表示用EM方式实现 具体 Python 实现123456789101112131415161718192021222324252627282930313233343536# coding=utf-8"""Created on 2019/10/9 16:31@author: EwdAger"""import numpy as npimport pandas as pdfrom sklearn.cluster import KMeansimport matplotlib.pyplot as pltdata = pd.read_csv(r"F:\MachineLearning\Kmeans\data\testSet.txt", sep='\t', header=0, dtype=str, na_filter=False).astype(np.float)k = 4clt = KMeans(n_clusters=k)clt.fit(data)cents = clt.cluster_centers_ # 获取聚类中心labels = clt.labels_ # 获取聚类标签colors = ['b', 'g', 'r', 'k', 'c', 'm', 'y', '#e24fff', '#524C90', '#845868']# 画图for i in range(k): # 获取i组数据的index index = np.nonzero(labels == i)[0] x0 = data.iloc[data.index.isin(index), 0].tolist() x1 = data.iloc[data.index.isin(index), 1].tolist() y_i = i # 给第i组数据涂上颜色，进行分组 for j in range(len(x0)): plt.text(x0[j], x1[j], str(y_i), color=colors[i], fontdict=&#123;'weight': 'bold', 'size': 6&#125;) # 绘制该组质心 plt.scatter(cents[i, 0], cents[i, 1], marker='x', color=colors[i], linewidths=7)plt.axis([-7, 7, -7, 7])plt.show() 结果如下：]]></content>

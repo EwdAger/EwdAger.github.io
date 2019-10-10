@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Python,">
+  <meta name="keywords" content="Python,性能优化,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="构造与初始化__new__(self): 创建并返回一个类的实例，而__init__只是将传入的参数来初始化该实例，一般不需要重载__new__方法除非希望控制类的创建。 __init__(self): 可以理解为构造函数，将传入的参数初始化成实例 __del__(self): 可以理解为析构函数 属性访问控制Python缺少对于类的封装,但人们希望Python能够定义私有属性，然后提供公共可访问">
-<meta name="keywords" content="Python">
+<meta name="description" content="原始版本直接使用pandas读取整个Excel文件，再从中取列名。这种场景对于小的Excel文件还适用，但数据量上升到10M+时，取个sheet name要26s之久。几乎无法忍受。 12data = pandas.ExcelFile(file_url)names = data.sheet_names 优化查阅资料可知.xlsx文件是一个压缩格式的文件，可以直接通过zipfile读到sheet n">
+<meta name="keywords" content="Python,性能优化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python 中的魔术方法">
-<meta property="og:url" content="http://gvoidy.cn/posts/22aee029/index.html">
+<meta property="og:title" content="Python读取Excel文件sheet名性能优化">
+<meta property="og:url" content="http://gvoidy.cn/posts/6b56ef63/index.html">
 <meta property="og:site_name" content="极光技术小栈">
-<meta property="og:description" content="构造与初始化__new__(self): 创建并返回一个类的实例，而__init__只是将传入的参数来初始化该实例，一般不需要重载__new__方法除非希望控制类的创建。 __init__(self): 可以理解为构造函数，将传入的参数初始化成实例 __del__(self): 可以理解为析构函数 属性访问控制Python缺少对于类的封装,但人们希望Python能够定义私有属性，然后提供公共可访问">
+<meta property="og:description" content="原始版本直接使用pandas读取整个Excel文件，再从中取列名。这种场景对于小的Excel文件还适用，但数据量上升到10M+时，取个sheet name要26s之久。几乎无法忍受。 12data = pandas.ExcelFile(file_url)names = data.sheet_names 优化查阅资料可知.xlsx文件是一个压缩格式的文件，可以直接通过zipfile读到sheet n">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-03T05:47:53.679Z">
+<meta property="og:updated_time" content="2019-10-10T07:46:20.882Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python 中的魔术方法">
-<meta name="twitter:description" content="构造与初始化__new__(self): 创建并返回一个类的实例，而__init__只是将传入的参数来初始化该实例，一般不需要重载__new__方法除非希望控制类的创建。 __init__(self): 可以理解为构造函数，将传入的参数初始化成实例 __del__(self): 可以理解为析构函数 属性访问控制Python缺少对于类的封装,但人们希望Python能够定义私有属性，然后提供公共可访问">
+<meta name="twitter:title" content="Python读取Excel文件sheet名性能优化">
+<meta name="twitter:description" content="原始版本直接使用pandas读取整个Excel文件，再从中取列名。这种场景对于小的Excel文件还适用，但数据量上升到10M+时，取个sheet name要26s之久。几乎无法忍受。 12data = pandas.ExcelFile(file_url)names = data.sheet_names 优化查阅资料可知.xlsx文件是一个压缩格式的文件，可以直接通过zipfile读到sheet n">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://gvoidy.cn/posts/22aee029/">
+  <link rel="canonical" href="http://gvoidy.cn/posts/6b56ef63/">
 
 
 
 
 
-  <title>Python 中的魔术方法 | 极光技术小栈</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Python读取Excel文件sheet名性能优化 | 极光技术小栈</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -285,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://gvoidy.cn/posts/22aee029/">
+    <link itemprop="mainEntityOfPage" href="http://gvoidy.cn/posts/6b56ef63/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="EwdAger">
@@ -302,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python 中的魔术方法</h1>
+          <h1 class="post-title" itemprop="name headline">Python读取Excel文件sheet名性能优化</h1>
         
 
         <div class="post-meta">
@@ -314,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-25T18:39:00+08:00">
-                2018-09-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-10T15:34:00+08:00">
+                2019-10-10
               </time>
             
 
@@ -337,8 +337,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/知识储备/" itemprop="url" rel="index">
-                    <span itemprop="name">知识储备</span>
+                  <a href="/categories/机器学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习笔记</span>
                   </a>
                 </span>
 
@@ -374,14 +374,13 @@
       
 
       
-        <h1 id="构造与初始化"><a href="#构造与初始化" class="headerlink" title="构造与初始化"></a>构造与初始化</h1><p><code>__new__(self)</code>: 创建并返回一个类的实例，而<code>__init__</code>只是将传入的参数来初始化该实例，一般不需要重载<code>__new__</code>方法除非希望控制类的创建。</p>
-<p><code>__init__(self)</code>: 可以理解为构造函数，将传入的参数初始化成实例</p>
-<p><code>__del__(self)</code>: 可以理解为析构函数</p>
-<h1 id="属性访问控制"><a href="#属性访问控制" class="headerlink" title="属性访问控制"></a>属性访问控制</h1><p>Python缺少对于类的封装,但人们希望Python能够定义私有属性，然后提供公共可访问的<code>getter</code>和 <code>setter</code>。 Python其实可以通过魔术方法来实现封装。</p>
-<p><code>__getattr__(self, name)</code>: 该方法定义了你试图访问一个不存在的属性时的行为。因此，重载该方法可以实现捕获错误拼写然后进行重定向, 或者对一些废弃的属性进行警告。<br>也可用于访问私有属性</p>
-<p><code>__setattr__(self, name, value)</code>: 是实现封装的解决方案，它定义了你对属性进行赋值和修改操作时的行为。<br>不管对象的某个属性是否存在,它都允许你为该属性进行赋值,因此你可以为属性的值进行自定义操作。有一点需要注意，实现<code>__setattr__</code>时要避免”无限递归”的错误。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__setattr__</span><span class="params">(self, name, value)</span>:</span></span><br><span class="line">    self.name = value</span><br><span class="line">    <span class="comment"># 每一次属性赋值时, __setattr__都会被调用，因此不断调用自身导致无限递归了。</span></span><br></pre></td></tr></table></figure></p>
-<p>正确为：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__setattr__</span><span class="params">(self, name, value)</span>:</span></span><br><span class="line">    self.__dict__[name] = value</span><br></pre></td></tr></table></figure></p>
-
+        <h2 id="原始版本"><a href="#原始版本" class="headerlink" title="原始版本"></a>原始版本</h2><p>直接使用<code>pandas</code>读取整个Excel文件，再从中取列名。这种场景对于小的Excel文件还适用，但数据量上升到10M+时，取个<code>sheet name</code>要<code>26s</code>之久。几乎无法忍受。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = pandas.ExcelFile(file_url)</span><br><span class="line">names = data.sheet_names</span><br></pre></td></tr></table></figure>
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>查阅资料可知<code>.xlsx</code>文件是一个压缩格式的文件，可以直接通过<code>zipfile</code>读到<code>sheet name</code>等相关信息。所以写如下函数直接取<code>sheet name</code></p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_sheet_details</span><span class="params">(file_path)</span>:</span></span><br><span class="line">    sheets = []</span><br><span class="line">    file_name = os.path.splitext(os.path.split(file_path)[<span class="number">-1</span>])[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># 用文件名创建一个临时目录</span></span><br><span class="line">    directory_to_extract_to = file_name</span><br><span class="line">    os.mkdir(directory_to_extract_to)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 提取xlsx文件，因为它只是一个zip文件</span></span><br><span class="line">    zip_ref = zipfile.ZipFile(file_path, <span class="string">'r'</span>)</span><br><span class="line">    zip_ref.extractall(directory_to_extract_to)</span><br><span class="line">    zip_ref.close()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 建立一个临时的workbook文件</span></span><br><span class="line">    path_to_workbook = os.path.join(directory_to_extract_to, <span class="string">'xl'</span>, <span class="string">'workbook.xml'</span>)</span><br><span class="line">    <span class="keyword">with</span> open(path_to_workbook, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        xml = f.read()</span><br><span class="line">        dictionary = xmltodict.parse(xml)</span><br><span class="line">        <span class="comment"># 多个sheet</span></span><br><span class="line">        <span class="keyword">if</span> isinstance(dictionary[<span class="string">'workbook'</span>][<span class="string">'sheets'</span>][<span class="string">'sheet'</span>], list):</span><br><span class="line">            <span class="keyword">for</span> sheet <span class="keyword">in</span> dictionary[<span class="string">'workbook'</span>][<span class="string">'sheets'</span>][<span class="string">'sheet'</span>]:</span><br><span class="line">                <span class="comment"># 有些版本的sheet是@name有些是@sheetId</span></span><br><span class="line">                <span class="keyword">if</span> sheet[<span class="string">"@name"</span>]:</span><br><span class="line">                    meta_sheet = sheet[<span class="string">"@name"</span>]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    meta_sheet = sheet[<span class="string">"@sheetId"</span>]</span><br><span class="line">                sheets.append(meta_sheet)</span><br><span class="line">        <span class="comment"># 单个sheet</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            sheet_dict = dictionary[<span class="string">'workbook'</span>][<span class="string">'sheets'</span>][<span class="string">'sheet'</span>]</span><br><span class="line">            <span class="keyword">if</span> sheet_dict[<span class="string">"@name"</span>]:</span><br><span class="line">                sheets.append(sheet_dict[<span class="string">"@name"</span>])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                sheets.append(sheet_dict[<span class="string">"@sheetId"</span>])</span><br><span class="line"></span><br><span class="line">    shutil.rmtree(directory_to_extract_to)</span><br><span class="line">    f.close()</span><br><span class="line">    <span class="keyword">return</span> sheets</span><br></pre></td></tr></table></figure>
+<h2 id="一个问题"><a href="#一个问题" class="headerlink" title="一个问题"></a>一个问题</h2><p>该函数只能针对<code>.xlsx</code>文件进行解析，而低版本的<code>.xls</code>文件就直接报错了，因为<code>.xls</code>是一个二进制文件而不是压缩文件。所以要以另一种方式去解析<code>sheet name</code>。经过查阅相关资料，发现<code>xlrd.open_workbook</code>的<code>on_demand=True</code>针对低版本的Excel文件可以只取列名而不加载数据。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> file_url[<span class="number">-3</span>:] == <span class="string">'xls'</span>:</span><br><span class="line">    names = xlrd.open_workbook(file_url, on_demand=<span class="literal">True</span>).sheet_names()</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    names = get_sheet_details(file_url)</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -400,6 +399,8 @@
           
             <a href="/tags/Python/" rel="tag"># Python</a>
           
+            <a href="/tags/性能优化/" rel="tag"># 性能优化</a>
+          
         </div>
       
 
@@ -411,8 +412,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/7798fba3/" rel="next" title="常见设计模式 Python 实现">
-                <i class="fa fa-chevron-left"></i> 常见设计模式 Python 实现
+              <a href="/posts/ae704b86/" rel="next" title="聚类算法之DBSCAN聚类">
+                <i class="fa fa-chevron-left"></i> 聚类算法之DBSCAN聚类
               </a>
             
           </div>
@@ -420,10 +421,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/576d991f/" rel="prev" title="经典排序算法 Python 实现">
-                经典排序算法 Python 实现 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -605,7 +602,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#构造与初始化"><span class="nav-number">1.</span> <span class="nav-text">构造与初始化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#属性访问控制"><span class="nav-number">2.</span> <span class="nav-text">属性访问控制</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原始版本"><span class="nav-number">1.</span> <span class="nav-text">原始版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化"><span class="nav-number">2.</span> <span class="nav-text">优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个问题"><span class="nav-number">3.</span> <span class="nav-text">一个问题</span></a></li></ol></div>
             
 
           </div>
