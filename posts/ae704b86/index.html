@@ -79,18 +79,22 @@
 
 
 
-<meta name="description" content="DBSCAN （Density-Based Spatial Clustering of Applications with Noise） 是一种基于密度的聚类算法，基于密度的聚类寻找被低密度区域分离的高密度区域。">
+<meta name="description" content="DBSCAN （Density-Based Spatial Clustering of Applications with Noise） 是一种基于密度的聚类算法，基于密度的聚类寻找被低密度区域分离的高密度区域。常用于异常值或者离群点检测。">
 <meta name="keywords" content="Python,机器学习,聚类算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="聚类算法之DBSCAN聚类">
 <meta property="og:url" content="http://gvoidy.cn/posts/ae704b86/index.html">
 <meta property="og:site_name" content="极光技术小栈">
-<meta property="og:description" content="DBSCAN （Density-Based Spatial Clustering of Applications with Noise） 是一种基于密度的聚类算法，基于密度的聚类寻找被低密度区域分离的高密度区域。">
+<meta property="og:description" content="DBSCAN （Density-Based Spatial Clustering of Applications with Noise） 是一种基于密度的聚类算法，基于密度的聚类寻找被低密度区域分离的高密度区域。常用于异常值或者离群点检测。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-09T09:13:48.688Z">
+<meta property="og:image" content="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/DBSCAN1.webp">
+<meta property="og:image" content="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/DBSCAN2.webp">
+<meta property="og:image" content="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/dbscan_result.png">
+<meta property="og:updated_time" content="2019-10-12T05:48:24.573Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="聚类算法之DBSCAN聚类">
-<meta name="twitter:description" content="DBSCAN （Density-Based Spatial Clustering of Applications with Noise） 是一种基于密度的聚类算法，基于密度的聚类寻找被低密度区域分离的高密度区域。">
+<meta name="twitter:description" content="DBSCAN （Density-Based Spatial Clustering of Applications with Noise） 是一种基于密度的聚类算法，基于密度的聚类寻找被低密度区域分离的高密度区域。常用于异常值或者离群点检测。">
+<meta name="twitter:image" content="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/DBSCAN1.webp">
 
 
 
@@ -314,8 +318,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-09T17:12:00+08:00">
-                2019-10-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-12T11:03:00+08:00">
+                2019-10-12
               </time>
             
 
@@ -374,7 +378,36 @@
       
 
       
-        <p>DBSCAN （Density-Based Spatial Clustering of Applications with Noise） 是一种基于密度的聚类算法，基于密度的聚类寻找被低密度区域分离的高密度区域。</p>
+        <p>DBSCAN （Density-Based Spatial Clustering of Applications with Noise） 是一种基于密度的聚类算法，基于密度的聚类寻找被低密度区域分离的高密度区域。常用于异常值或者离群点检测。</p>
+<a id="more"></a>
+<h2 id="DBSCAN-怎么算"><a href="#DBSCAN-怎么算" class="headerlink" title="DBSCAN 怎么算"></a>DBSCAN 怎么算</h2><p>当某个点的密度达到算法设定的阈值，则这个点称为<strong>核心对象</strong>。（即r领域内点的数量小于minPts），其中领域的距离阈值为用户设定值。</p>
+<p>若某点p在q的r领域内，且q是核心点，则p-q<strong>直接密度可达</strong>。若有一个点的序列q0、q1、q2…qK，对任意的qi-qi+1是直接密度可达的，则称q0到qK<strong>密度可达</strong>。称为密度的传播。</p>
+<p>当一个非核心点不能发展下线，则称该点为<strong>边界点</strong>。若某一点，从任一核心地点出发都是密度不可达的，则称该点为<strong>噪声点</strong></p>
+<p>DBSCAN 聚类算法实现如下图：<br><img src="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/DBSCAN1.webp" alt="DBSCAN算法"></p>
+<p>当出现奇葩数据时，K-Means 无法正常聚类，而 DBSCAN 完全无问题</p>
+<p><img src="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/DBSCAN2.webp" alt="DBSCAN"></p>
+<p><strong>优点：</strong></p>
+<ol>
+<li><p>与K-Means相比，不需要手动确定簇的个数K，但需要确定邻域r和密度阈值minPts</p>
+</li>
+<li><p>能发现任意形状的簇</p>
+</li>
+<li><p>能有效处理噪声点（邻域r和密度阈值minPts参数的设置可以影响噪声点）</p>
+</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li><p>当数据量大时，处理速度慢，消耗大</p>
+</li>
+<li><p>当空间聚类的密度不均匀、聚类间距差相差很大时参数密度阈值minPts和邻域r参数选取困难</p>
+</li>
+<li><p>对于高维数据，容易产生“维数灾难”（聚类算法基于欧式距离的通病）</p>
+</li>
+</ol>
+<h2 id="DBSCAN-聚类-Python-实现"><a href="#DBSCAN-聚类-Python-实现" class="headerlink" title="DBSCAN 聚类 Python 实现"></a>DBSCAN 聚类 Python 实现</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Created on 2019/10/12 11:42</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">@author: EwdAger</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> DBSCAN</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> metrics</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets.samples_generator <span class="keyword">import</span> make_blobs</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">centers = [[<span class="number">1</span>, <span class="number">1</span>], [<span class="number">-1</span>, <span class="number">-1</span>], [<span class="number">1</span>, <span class="number">-1</span>]]  <span class="comment"># 生成聚类中心点</span></span><br><span class="line">X, labels_true = make_blobs(n_samples=<span class="number">750</span>, centers=centers, cluster_std=<span class="number">0.4</span>,random_state=<span class="number">0</span>)</span><br><span class="line"><span class="comment"># 生成样本数据集</span></span><br><span class="line"></span><br><span class="line">X = StandardScaler().fit_transform(X)</span><br><span class="line"><span class="comment"># StandardScaler 标准化处理。且是针对每一个特征维度来做的，而不是针对样本。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用密度聚类  DBSCAN</span></span><br><span class="line">db = DBSCAN(eps=<span class="number">0.3</span>, min_samples=<span class="number">10</span>).fit(X)</span><br><span class="line"><span class="comment"># print(db.labels_)  # db.labels_为所有样本的聚类索引，没有聚类索引为-1</span></span><br><span class="line"><span class="comment"># print(db.core_sample_indices_) # 所有核心样本的索引</span></span><br><span class="line"></span><br><span class="line">core_samples_mask = np.zeros_like(db.labels_, dtype=bool)  <span class="comment"># 设置一个样本个数长度的全false向量</span></span><br><span class="line">core_samples_mask[db.core_sample_indices_] = <span class="literal">True</span> <span class="comment">#将核心样本部分设置为true</span></span><br><span class="line">labels = db.labels_</span><br><span class="line"></span><br><span class="line">n_clusters_ = len(set(labels)) - (<span class="number">1</span> <span class="keyword">if</span> <span class="number">-1</span> <span class="keyword">in</span> labels <span class="keyword">else</span> <span class="number">0</span>)</span><br><span class="line"><span class="comment"># 获取聚类个数。（聚类结果中-1表示没有聚类为离散点）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型评估</span></span><br><span class="line">print(<span class="string">'估计的聚类个数为: %d'</span> % n_clusters_)</span><br><span class="line">print(<span class="string">"同质性: %0.3f"</span> % metrics.homogeneity_score(labels_true, labels))  <span class="comment"># 每个群集只包含单个类的成员。</span></span><br><span class="line">print(<span class="string">"完整性: %0.3f"</span> % metrics.completeness_score(labels_true, labels))  <span class="comment"># 给定类的所有成员都分配给同一个群集。</span></span><br><span class="line">print(<span class="string">"V-measure: %0.3f"</span> % metrics.v_measure_score(labels_true, labels))  <span class="comment"># 同质性和完整性的调和平均</span></span><br><span class="line">print(<span class="string">"调整兰德指数: %0.3f"</span> % metrics.adjusted_rand_score(labels_true, labels))</span><br><span class="line">print(<span class="string">"调整互信息: %0.3f"</span> % metrics.adjusted_mutual_info_score(labels_true, labels))</span><br><span class="line">print(<span class="string">"轮廓系数: %0.3f"</span> % metrics.silhouette_score(X, labels))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot result</span></span><br><span class="line"></span><br><span class="line">unique_labels = set(labels)</span><br><span class="line">colors = [plt.cm.Spectral(each) <span class="keyword">for</span> each <span class="keyword">in</span> np.linspace(<span class="number">0</span>, <span class="number">1</span>, len(unique_labels))]</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>,<span class="number">6</span>))</span><br><span class="line"><span class="keyword">for</span> k, col <span class="keyword">in</span> zip(unique_labels, colors):</span><br><span class="line">    <span class="keyword">if</span> k == <span class="number">-1</span>:  <span class="comment"># 聚类结果为-1的样本为离散点</span></span><br><span class="line">        <span class="comment"># 使用黑色绘制离散点</span></span><br><span class="line">        col = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    class_member_mask = (labels == k)  <span class="comment"># 将所有属于该聚类的样本位置置为true</span></span><br><span class="line"></span><br><span class="line">    xy = X[class_member_mask &amp; core_samples_mask]  <span class="comment"># 将所有属于该类的核心样本取出，使用大图标绘制</span></span><br><span class="line">    plt.plot(xy[:, <span class="number">0</span>], xy[:, <span class="number">1</span>], <span class="string">'o'</span>, markerfacecolor=tuple(col), markeredgecolor=<span class="string">'k'</span>, markersize=<span class="number">14</span>)</span><br><span class="line"></span><br><span class="line">    xy = X[class_member_mask &amp; ~core_samples_mask]  <span class="comment"># 将所有属于该类的非核心样本取出，使用小图标绘制</span></span><br><span class="line">    plt.plot(xy[:, <span class="number">0</span>], xy[:, <span class="number">1</span>], <span class="string">'o'</span>, markerfacecolor=tuple(col), markeredgecolor=<span class="string">'k'</span>, markersize=<span class="number">6</span>)</span><br><span class="line"></span><br><span class="line">plt.title(<span class="string">'Estimated number of clusters: %d'</span> % n_clusters_)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">估计的聚类个数为: <span class="number">3</span></span><br><span class="line">同质性: <span class="number">0.953</span></span><br><span class="line">完整性: <span class="number">0.883</span></span><br><span class="line">V-measure: <span class="number">0.917</span></span><br><span class="line">调整兰德指数: <span class="number">0.952</span></span><br><span class="line">调整互信息: <span class="number">0.883</span></span><br><span class="line">轮廓系数: <span class="number">0.626</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/dbscan_result.png" alt="result"></p>
 
       
     </div>
@@ -409,8 +442,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/dea808f4/" rel="next" title="聚类算法之K-Means(K均值)聚类">
-                <i class="fa fa-chevron-left"></i> 聚类算法之K-Means(K均值)聚类
+              <a href="/posts/1a6c337e/" rel="next" title="Python异常处理traceback和exc_info">
+                <i class="fa fa-chevron-left"></i> Python异常处理traceback和exc_info
               </a>
             
           </div>
@@ -418,10 +451,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/6b56ef63/" rel="prev" title="Python读取Excel文件sheet名性能优化">
-                Python读取Excel文件sheet名性能优化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -471,8 +500,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -584,6 +622,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DBSCAN-怎么算"><span class="nav-number">1.</span> <span class="nav-text">DBSCAN 怎么算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DBSCAN-聚类-Python-实现"><span class="nav-number">2.</span> <span class="nav-text">DBSCAN 聚类 Python 实现</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

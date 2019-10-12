@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[聚类算法之DBSCAN聚类]]></title>
+    <url>%2Fposts%2Fae704b86%2F</url>
+    <content type="text"><![CDATA[DBSCAN （Density-Based Spatial Clustering of Applications with Noise） 是一种基于密度的聚类算法，基于密度的聚类寻找被低密度区域分离的高密度区域。常用于异常值或者离群点检测。 DBSCAN 怎么算当某个点的密度达到算法设定的阈值，则这个点称为核心对象。（即r领域内点的数量小于minPts），其中领域的距离阈值为用户设定值。 若某点p在q的r领域内，且q是核心点，则p-q直接密度可达。若有一个点的序列q0、q1、q2…qK，对任意的qi-qi+1是直接密度可达的，则称q0到qK密度可达。称为密度的传播。 当一个非核心点不能发展下线，则称该点为边界点。若某一点，从任一核心地点出发都是密度不可达的，则称该点为噪声点 DBSCAN 聚类算法实现如下图： 当出现奇葩数据时，K-Means 无法正常聚类，而 DBSCAN 完全无问题 优点： 与K-Means相比，不需要手动确定簇的个数K，但需要确定邻域r和密度阈值minPts 能发现任意形状的簇 能有效处理噪声点（邻域r和密度阈值minPts参数的设置可以影响噪声点） 缺点： 当数据量大时，处理速度慢，消耗大 当空间聚类的密度不均匀、聚类间距差相差很大时参数密度阈值minPts和邻域r参数选取困难 对于高维数据，容易产生“维数灾难”（聚类算法基于欧式距离的通病） DBSCAN 聚类 Python 实现12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364# coding=utf-8"""Created on 2019/10/12 11:42@author: EwdAger"""import numpy as npfrom sklearn.cluster import DBSCANfrom sklearn import metricsfrom sklearn.datasets.samples_generator import make_blobsfrom sklearn.preprocessing import StandardScalerimport matplotlib.pyplot as pltcenters = [[1, 1], [-1, -1], [1, -1]] # 生成聚类中心点X, labels_true = make_blobs(n_samples=750, centers=centers, cluster_std=0.4,random_state=0)# 生成样本数据集X = StandardScaler().fit_transform(X)# StandardScaler 标准化处理。且是针对每一个特征维度来做的，而不是针对样本。# 调用密度聚类 DBSCANdb = DBSCAN(eps=0.3, min_samples=10).fit(X)# print(db.labels_) # db.labels_为所有样本的聚类索引，没有聚类索引为-1# print(db.core_sample_indices_) # 所有核心样本的索引core_samples_mask = np.zeros_like(db.labels_, dtype=bool) # 设置一个样本个数长度的全false向量core_samples_mask[db.core_sample_indices_] = True #将核心样本部分设置为truelabels = db.labels_n_clusters_ = len(set(labels)) - (1 if -1 in labels else 0)# 获取聚类个数。（聚类结果中-1表示没有聚类为离散点）# 模型评估print('估计的聚类个数为: %d' % n_clusters_)print("同质性: %0.3f" % metrics.homogeneity_score(labels_true, labels)) # 每个群集只包含单个类的成员。print("完整性: %0.3f" % metrics.completeness_score(labels_true, labels)) # 给定类的所有成员都分配给同一个群集。print("V-measure: %0.3f" % metrics.v_measure_score(labels_true, labels)) # 同质性和完整性的调和平均print("调整兰德指数: %0.3f" % metrics.adjusted_rand_score(labels_true, labels))print("调整互信息: %0.3f" % metrics.adjusted_mutual_info_score(labels_true, labels))print("轮廓系数: %0.3f" % metrics.silhouette_score(X, labels))# Plot resultunique_labels = set(labels)colors = [plt.cm.Spectral(each) for each in np.linspace(0, 1, len(unique_labels))]plt.figure(figsize=(10,6))for k, col in zip(unique_labels, colors): if k == -1: # 聚类结果为-1的样本为离散点 # 使用黑色绘制离散点 col = [0, 0, 0, 1] class_member_mask = (labels == k) # 将所有属于该聚类的样本位置置为true xy = X[class_member_mask &amp; core_samples_mask] # 将所有属于该类的核心样本取出，使用大图标绘制 plt.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=tuple(col), markeredgecolor='k', markersize=14) xy = X[class_member_mask &amp; ~core_samples_mask] # 将所有属于该类的非核心样本取出，使用小图标绘制 plt.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=tuple(col), markeredgecolor='k', markersize=6)plt.title('Estimated number of clusters: %d' % n_clusters_)plt.show() 输出 1234567估计的聚类个数为: 3同质性: 0.953完整性: 0.883V-measure: 0.917调整兰德指数: 0.952调整互信息: 0.883轮廓系数: 0.626]]></content>
+      <categories>
+        <category>机器学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>机器学习</tag>
+        <tag>聚类算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Python异常处理traceback和exc_info]]></title>
     <url>%2Fposts%2F1a6c337e%2F</url>
     <content type="text"><![CDATA[开发过程中一般都会使用traceback将捕获到的异常打印出来。 123456789101112import tracebackdef fake_exception(): 1 / 0def catch_exception(): try: fake_exception() except: traceback.print_exc()catch_exception() 结果123456Traceback (most recent call last): File ".\test.py", line 9, in catch_exception fake_exception() File ".\test.py", line 5, in fake_exception 1 / 0ZeroDivisionError: integer division or modulo by zero 事实上，traceback里的所有信息都是从exc_info里面获取的。12traceback.print_exc([limit[, file]])In fact, it uses sys.exc_info() to retrieve the same information in a thread-safe way instead of using the deprecated variables. 那么我们再来看一下exc_info()这个方法。https://docs.python.org/2/library/sys.html?highlight=sys#module-sys该方法返回三个值：type, value, traceback. type (异常类别) get the exception type of the exception being handled (a class object) value (异常说明，可带参数) get the exception parameter (a class instance) traceback (traceback对象，包含更丰富的信息) get a traceback object which encapsulates the call stack at the point where the exception originally occurred (a traceback object) 其中traceback中还包含了更为丰富的信息，比如文件名，行号等等。如果觉得系统默认的traceback打印格式不好看的话，可以利用exc_info的返回值自定义格式。 1234567891011121314151617import sysdef fake_exception(): 1 / 0def catch_exception(): try: fake_exception() except: e_type, e_value, e_traceback = sys.exc_info() print "type ==&gt; %s" % (e_type.__name__) print "value ==&gt; %s" %(e_value) print "traceback ==&gt; file name: %s" %(e_traceback.tb_frame.f_code.co_filename) print "traceback ==&gt; line no: %s" %(e_traceback.tb_lineno) print "traceback ==&gt; function name: %s" %(e_traceback.tb_frame.f_code.co_name)catch_exception() 结果显示12345type ==&gt; typename: ZeroDivisionErrorvalue ==&gt; message: integer division or modulo by zerotraceback ==&gt; fielname: .\test.pytraceback ==&gt; lineno: 8traceback ==&gt; name: catch_exception 原文地址]]></content>
@@ -22,19 +35,6 @@
       <tags>
         <tag>Python</tag>
         <tag>性能优化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[聚类算法之DBSCAN聚类]]></title>
-    <url>%2Fposts%2Fae704b86%2F</url>
-    <content type="text"><![CDATA[DBSCAN （Density-Based Spatial Clustering of Applications with Noise） 是一种基于密度的聚类算法，基于密度的聚类寻找被低密度区域分离的高密度区域。]]></content>
-      <categories>
-        <category>机器学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>机器学习</tag>
-        <tag>聚类算法</tag>
       </tags>
   </entry>
   <entry>
