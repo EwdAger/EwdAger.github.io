@@ -1,383 +1,132 @@
+
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html lang="zh-CN" class="loading">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="操作系统,课程设计,">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="实验内容本实验通过编程模拟实现几种常见的磁盘调度算法 简直可怕，怎么可能写出来磁盘调度算法啊喂！算法实现倒还好说，就是一个排序算法。但是！访问的柱面就是随机生成的所以还要写iterator？！这里简单描述一下各种磁盘调度算法。  例:假定某磁盘共有200个柱面，编号为0-199，如果在为访问143号柱面的请求者服务后，当前正在为访问125号柱面的请求服务，同时有若干请求者在等待服务，它们每次要访问">
-<meta name="keywords" content="操作系统,课程设计">
-<meta property="og:type" content="article">
-<meta property="og:title" content="操作系统实验六">
-<meta property="og:url" content="http://gvoidy.cn/posts/cfee3b66/index.html">
-<meta property="og:site_name" content="极光技术小栈">
-<meta property="og:description" content="实验内容本实验通过编程模拟实现几种常见的磁盘调度算法 简直可怕，怎么可能写出来磁盘调度算法啊喂！算法实现倒还好说，就是一个排序算法。但是！访问的柱面就是随机生成的所以还要写iterator？！这里简单描述一下各种磁盘调度算法。  例:假定某磁盘共有200个柱面，编号为0-199，如果在为访问143号柱面的请求者服务后，当前正在为访问125号柱面的请求服务，同时有若干请求者在等待服务，它们每次要访问">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-03T05:47:53.679Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="操作系统实验六">
-<meta name="twitter:description" content="实验内容本实验通过编程模拟实现几种常见的磁盘调度算法 简直可怕，怎么可能写出来磁盘调度算法啊喂！算法实现倒还好说，就是一个排序算法。但是！访问的柱面就是随机生成的所以还要写iterator？！这里简单描述一下各种磁盘调度算法。  例:假定某磁盘共有200个柱面，编号为0-199，如果在为访问143号柱面的请求者服务后，当前正在为访问125号柱面的请求服务，同时有若干请求者在等待服务，它们每次要访问">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '5.1.3',
-    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://gvoidy.cn/posts/cfee3b66/">
-
-
-
-
-
-  <title>操作系统实验六 | 极光技术小栈</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-  
-
-
-
-
-
-
-
-
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>操作系统实验六 - 极光技术小栈</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
+    <meta name="description" content="实验内容本实验通过编程模拟实现几种常见的磁盘调度算法
+简直可怕，怎么可能写出来磁盘调度算法啊喂！算法实现倒还好说，就是一个排序算法。但是！访问的柱面就是随机生成的所以还要写iterator？！这里简,"> 
+    <meta name="author" content="EwdAger"> 
+    <link rel="alternative" href="atom.xml" title="极光技术小栈" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_xjbfxy4nzcj.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">极光技术小栈</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tag"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
-            
-            搜索
-          </a>
-        </li>
-      
-    </ul>
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://gvoidy.cn/posts/cfee3b66/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="EwdAger">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="极光技术小栈">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">操作系统实验六</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-22T16:42:10+08:00">
-                2017-06-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/课程设计/" itemprop="url" rel="index">
-                    <span itemprop="name">课程设计</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+</html>
+<body class="loading">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
-      </header>
-    
+    </div>
+    <span id="config-title" style="display:none">极光技术小栈</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://gvoidy.cn">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">操作系统实验六</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+    <div class="section">
+        <div class= article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg);">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                    <a href="/categories/课程设计"><b>「 </b>课程设计<b> 」</b></a>
+                
+                六月 22, 2017
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/cfee3b66/" title="操作系统实验六">操作系统实验六</a></h3>
+            
+                <p class="post-count animated fadeInDown">
+                    
+                        <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        9.6k
+                    </span>
+                    
+                    
+                        <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        9 mins.
+                    </span>
+                    
+                    
+                    
+                        <span id="busuanzi_container_page_pv">
+                            <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                            <span id="busuanzi_value_page_pv">0</span>
+                        </span>
+                    
+                </p>
+            
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/操作系统/">操作系统</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/课程设计/">课程设计</a></li></ul>
+            
+        </div>
+    </div>
+</div>
 
-      
-      
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 
-      
-        <h2 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h2><p><strong>本实验通过编程模拟实现几种常见的磁盘调度算法</strong></p>
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn slower">
+            <h2 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h2><p><strong>本实验通过编程模拟实现几种常见的磁盘调度算法</strong></p>
 <p>简直可怕，怎么可能写出来磁盘调度算法啊喂！算法实现倒还好说，就是一个排序算法。但是！访问的柱面就是随机生成的所以还要写iterator？！这里简单描述一下各种磁盘调度算法。</p>
 <blockquote>
-<p>例:假定某磁盘共有200个柱面，编号为0-199，如果在为访问143号柱面的请求者服务后，当前正在为访问125号柱面的请求服务，同时有若干请求者在等待服务，它们每次要访问的柱面号为   86，147，91，177，94，150，102，175，130<br> <a id="more"></a></p>
+<p>例:假定某磁盘共有200个柱面，编号为0-199，如果在为访问143号柱面的请求者服务后，当前正在为访问125号柱面的请求服务，同时有若干请求者在等待服务，它们每次要访问的柱面号为   86，147，91，177，94，150，102，175，130</p>
 </blockquote>
 <p><strong>1、先来先服务算法（FCFS）First Come First Service</strong><br>这是一种比较简单的磁盘调度算法。它根据进程请求访问磁盘的先后次序进行调度。此算法的优点是公平、简单，且每个进程的请求都能依次得到处理，不会出现某一进程的请求长期得不到满足的情况。此算法由于未对寻道进行优化，在对磁盘的访问请求比较多的情况下，此算法将降低设备服务的吞吐量，致使平均寻道时间可能较长，但各进程得到服务的响应时间的变化幅度较小。<br>先来先服务 （125）86.147.91.177.94.150.102.175.130</p>
 <p><strong>2、最短寻道时间优先算法（SSTF） Shortest Seek Time First</strong><br>该算法选择这样的进程，其要求访问的磁道与当前磁头所在的磁道距离最近，以使每次的寻道时间最短，该算法可以得到比较好的吞吐量，但却不能保证平均寻道时间最短。其缺点是对用户的服务请求的响应机会不是均等的，因而导致响应时间的变化幅度很大。在服务请求很多的情况下，对内外边缘磁道的请求将会无限期的被延迟，有些请求的响应时间将不可预期。<br>最短寻道时间优先（125）130.147.150.175.177.102.94.91.86</p>
@@ -386,771 +135,451 @@
 <blockquote>
 <p>转自<a href="http://gengning938.blog.163.com/blog/static/128225381201161884614990/" target="_blank" rel="noopener">枫叶</a></p>
 </blockquote>
-<h2 id="以下是抄的代码"><a href="#以下是抄的代码" class="headerlink" title="以下是抄的代码"></a>以下是抄的代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;  </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">int</span> position = <span class="number">0</span>;      <span class="comment">//当前磁道位置  </span></span><br><span class="line"><span class="keyword">int</span> dis = <span class="number">0</span>;  </span><br><span class="line"><span class="keyword">double</span> average_distance = <span class="number">0</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">request</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp;m_vec,ofstream &amp;outfile)</span></span>&#123;  </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"随机生成磁盘序列："</span>&lt;&lt;<span class="built_in">endl</span>;  </span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>;  </span><br><span class="line">    srand(time(<span class="literal">NULL</span>));     <span class="comment">//添加随机数种子  </span></span><br><span class="line">    n = rand() % <span class="number">20</span> + <span class="number">1</span>;  </span><br><span class="line">    <span class="keyword">int</span> temp = <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;  </span><br><span class="line">        temp = rand() % <span class="number">100</span>;  </span><br><span class="line">        m_vec.push_back(temp);  </span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;temp&lt;&lt;<span class="string">" "</span>;  </span><br><span class="line">        outfile&lt;&lt;temp&lt;&lt;<span class="built_in">endl</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;  </span><br><span class="line">    position = rand() % <span class="number">100</span>;  </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"当前磁道："</span>&lt;&lt;position&lt;&lt;<span class="built_in">endl</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">compute_dis</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;m_vec,<span class="keyword">int</span> &amp;dis,<span class="keyword">double</span> &amp;average_distance)</span></span>&#123;  </span><br><span class="line">    average_distance = (<span class="keyword">double</span>)dis / (<span class="keyword">double</span>)m_vec.size();  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FIFO</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;m_vec,<span class="keyword">int</span> position)</span></span>&#123;     <span class="comment">//先来先服务算法  </span></span><br><span class="line">    dis = <span class="number">0</span>;  </span><br><span class="line">    average_distance = <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it=m_vec.begin();it!=m_vec.end();it++)&#123;  </span><br><span class="line">        dis += <span class="built_in">abs</span>(position-*it);  </span><br><span class="line">        Sleep(<span class="number">500</span>);  </span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"-&gt;"</span>&lt;&lt;*it;  </span><br><span class="line">        position = *it;  </span><br><span class="line">    &#125;  </span><br><span class="line">    compute_dis(m_vec,dis,average_distance);  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SSTF</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;m_vec,<span class="keyword">int</span> position)</span></span>&#123;   <span class="comment">//最短寻道时间算法  </span></span><br><span class="line">    dis = <span class="number">0</span>;  </span><br><span class="line">    average_distance = <span class="number">0</span>;  </span><br><span class="line">    sort(m_vec.begin(),m_vec.end());    <span class="comment">//从小到大排序  </span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it=m_vec.begin();it!=m_vec.end();it++)&#123;  </span><br><span class="line">        <span class="keyword">if</span>(position &gt;= *it)  </span><br><span class="line">            i++;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">int</span> left = i<span class="number">-1</span>;  </span><br><span class="line">    <span class="keyword">int</span> right = i;  </span><br><span class="line">    <span class="keyword">while</span>(count&lt;m_vec.size())&#123;  </span><br><span class="line">        <span class="keyword">if</span>((left &gt;=<span class="number">0</span> &amp;&amp; <span class="built_in">abs</span>(m_vec[right]-position) &gt; <span class="built_in">abs</span>(m_vec[left]-position)) || right&gt;=m_vec.size())&#123;  </span><br><span class="line">            dis += <span class="built_in">abs</span>(m_vec[left]-position);  </span><br><span class="line">            Sleep(<span class="number">500</span>);  </span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">"-&gt;"</span>&lt;&lt;m_vec[left];  </span><br><span class="line">            position = m_vec[left];  </span><br><span class="line">            left--;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">else</span>&#123;  </span><br><span class="line">            dis += <span class="built_in">abs</span>(m_vec[right]-position);  </span><br><span class="line">            Sleep(<span class="number">500</span>);  </span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">"-&gt;"</span>&lt;&lt;m_vec[right];  </span><br><span class="line">            position = m_vec[right];  </span><br><span class="line">            right++;  </span><br><span class="line">        &#125;  </span><br><span class="line">        count++;  </span><br><span class="line">    &#125;  </span><br><span class="line">    compute_dis(m_vec,dis,average_distance);  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SCAN</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;m_vec,<span class="keyword">int</span> position)</span></span>&#123;   <span class="comment">//电梯调度算法  </span></span><br><span class="line">    dis = <span class="number">0</span>;  </span><br><span class="line">    average_distance = <span class="number">0</span>;  </span><br><span class="line">    sort(m_vec.begin(),m_vec.end());    <span class="comment">//从小到大排序  </span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it=m_vec.begin();it!=m_vec.end();it++)&#123;  </span><br><span class="line">        <span class="keyword">if</span>(position &gt;= *it)  </span><br><span class="line">            i++;      <span class="comment">//找到position所在的磁道  </span></span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">int</span> left = i - <span class="number">1</span>;   <span class="comment">//先从外到内扫描  </span></span><br><span class="line">    <span class="keyword">int</span> right = i;  </span><br><span class="line">    <span class="keyword">while</span>(left &gt;= <span class="number">0</span>)&#123;  </span><br><span class="line">        dis += <span class="built_in">abs</span>(position - m_vec[left]);  </span><br><span class="line">        Sleep(<span class="number">500</span>);  </span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"-&gt;"</span>&lt;&lt;m_vec[left];  </span><br><span class="line">        position = m_vec[left];  </span><br><span class="line">        left --;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">while</span>(right &lt; m_vec.size())&#123;  </span><br><span class="line">        dis += <span class="built_in">abs</span>(position - m_vec[right]);  </span><br><span class="line">        Sleep(<span class="number">500</span>);  </span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"-&gt;"</span>&lt;&lt;m_vec[right];  </span><br><span class="line">        position = m_vec[right];  </span><br><span class="line">        right ++;  </span><br><span class="line">    &#125;  </span><br><span class="line">    compute_dis(m_vec,dis,average_distance);  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CSCAN</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;m_vec,<span class="keyword">int</span> position)</span></span>&#123;   <span class="comment">//循环扫描算法  </span></span><br><span class="line">    dis = <span class="number">0</span>;  </span><br><span class="line">    average_distance = <span class="number">0</span>;  </span><br><span class="line">    sort(m_vec.begin(),m_vec.end());    <span class="comment">//从小到大排序  </span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it=m_vec.begin();it!=m_vec.end();it++)&#123;  </span><br><span class="line">        <span class="keyword">if</span>(position &gt;= *it)  </span><br><span class="line">            i++;      <span class="comment">//找到position所在的磁道  </span></span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">int</span> left = i - <span class="number">1</span>;   <span class="comment">//先从外到内扫描  </span></span><br><span class="line">    <span class="keyword">int</span> right = i;  </span><br><span class="line">    <span class="keyword">while</span>(left &gt;= <span class="number">0</span>)&#123;  </span><br><span class="line">        dis += <span class="built_in">abs</span>(position - m_vec[left]);  </span><br><span class="line">        Sleep(<span class="number">500</span>);  </span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"-&gt;"</span>&lt;&lt;m_vec[left];  </span><br><span class="line">        position = m_vec[left];  </span><br><span class="line">        left --;  </span><br><span class="line">    &#125;  </span><br><span class="line">    position = <span class="number">100</span>;     <span class="comment">//立即到最外侧的磁道  </span></span><br><span class="line">    <span class="keyword">int</span> len = m_vec.size()<span class="number">-1</span>;  </span><br><span class="line">    <span class="keyword">while</span>(len &gt;= right)&#123;  </span><br><span class="line">        dis += <span class="built_in">abs</span>(position - m_vec[len]);  </span><br><span class="line">        Sleep(<span class="number">500</span>);  </span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"-&gt;"</span>&lt;&lt;m_vec[len];  </span><br><span class="line">        position = m_vec[len];  </span><br><span class="line">        len --;  </span><br><span class="line">    &#125;  </span><br><span class="line">    compute_dis(m_vec,dis,average_distance);  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FSCAN</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;m_vec,<span class="keyword">int</span> position)</span></span>&#123;   <span class="comment">//分步电梯调度算法，。分两个队列  </span></span><br><span class="line">    dis = <span class="number">0</span>;  </span><br><span class="line">    average_distance = <span class="number">0</span>;  </span><br><span class="line">    <span class="comment">//SCAN(m_vec,position);  </span></span><br><span class="line">    sort(m_vec.begin(),m_vec.end());    <span class="comment">//从小到大排序  </span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it=m_vec.begin();it!=m_vec.end();it++)&#123;  </span><br><span class="line">        <span class="keyword">if</span>(position &gt;= *it)  </span><br><span class="line">            i++;      <span class="comment">//找到position所在的磁道  </span></span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">int</span> left = i - <span class="number">1</span>;   <span class="comment">//先从外到内扫描  </span></span><br><span class="line">    <span class="keyword">int</span> right = i;  </span><br><span class="line">    <span class="keyword">while</span>(left &gt;= <span class="number">0</span>)&#123;  </span><br><span class="line">        dis += <span class="built_in">abs</span>(position - m_vec[left]);  </span><br><span class="line">        Sleep(<span class="number">500</span>);  </span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"-&gt;"</span>&lt;&lt;m_vec[left];  </span><br><span class="line">        position = m_vec[left];  </span><br><span class="line">        left --;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">while</span>(right &lt; m_vec.size())&#123;  </span><br><span class="line">        dis += <span class="built_in">abs</span>(position - m_vec[right]);  </span><br><span class="line">        Sleep(<span class="number">500</span>);  </span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"-&gt;"</span>&lt;&lt;m_vec[right];  </span><br><span class="line">        position = m_vec[right];  </span><br><span class="line">        right ++;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"在扫描的过程中新产生的服务序列："</span>&lt;&lt;<span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;ve;  </span><br><span class="line">    <span class="keyword">while</span>(!ve.empty())  </span><br><span class="line">        ve.pop_back();  </span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>;  </span><br><span class="line">    n = rand() % <span class="number">20</span> + <span class="number">1</span>;  </span><br><span class="line">    <span class="keyword">int</span> temp = <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;  </span><br><span class="line">        temp = rand() % <span class="number">100</span>;  </span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;temp&lt;&lt;<span class="string">"　"</span>;  </span><br><span class="line">        ve.push_back(temp);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;position;  </span><br><span class="line">    SCAN(ve,position);  </span><br><span class="line">    average_distance = (<span class="keyword">double</span>)dis / (<span class="keyword">double</span>)(m_vec.size()+ve.size());  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;  </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>&lt;&lt;<span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"经计算，磁头移动的总距离为:"</span>&lt;&lt;dis&lt;&lt;<span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"磁头平均移动距离:"</span>&lt;&lt;average_distance&lt;&lt;<span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>&lt;&lt;<span class="built_in">endl</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">choose_algorithm</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;m_vec)</span></span>&#123;  </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>&lt;&lt;<span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"本实验可用的调度算法有以下5种："</span>&lt;&lt;<span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"1.FIFO  2.SSTF  3.SCAN  4.CSCAN  5.FSCAN  6.结束本序列的调度  7.结束程序"</span>&lt;&lt;<span class="built_in">endl</span>;  </span><br><span class="line">    <span class="keyword">int</span> choice = <span class="number">0</span>;  </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"选择："</span>&lt;&lt;<span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;choice;  </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;  </span><br><span class="line">    <span class="keyword">while</span>(choice!=<span class="number">6</span> &amp;&amp; choice!=<span class="number">7</span>)&#123;  </span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"磁盘请求的服务状况："</span>&lt;&lt;<span class="built_in">endl</span>;  </span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;position;  </span><br><span class="line">        <span class="keyword">switch</span>(choice)&#123;  </span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:  </span><br><span class="line">                FIFO(m_vec,position);<span class="keyword">break</span>;  </span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:  </span><br><span class="line">                SSTF(m_vec,position);<span class="keyword">break</span>;  </span><br><span class="line">            <span class="keyword">case</span> <span class="number">3</span>:  </span><br><span class="line">                SCAN(m_vec,position);<span class="keyword">break</span>;  </span><br><span class="line">            <span class="keyword">case</span> <span class="number">4</span>:  </span><br><span class="line">                CSCAN(m_vec,position);<span class="keyword">break</span>;  </span><br><span class="line">            <span class="keyword">case</span> <span class="number">5</span>:  </span><br><span class="line">                FSCAN(m_vec,position);<span class="keyword">break</span>;  </span><br><span class="line">            <span class="keyword">default</span>:  </span><br><span class="line">                <span class="built_in">cout</span>&lt;&lt;<span class="string">"******非法输入！******"</span>&lt;&lt;<span class="built_in">endl</span>&lt;&lt;<span class="built_in">endl</span>;<span class="keyword">break</span>;   </span><br><span class="line">        &#125;   </span><br><span class="line">        <span class="keyword">if</span>(choice&lt;=<span class="number">7</span> &amp;&amp; choice&gt;=<span class="number">1</span>)   </span><br><span class="line">            print();  </span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"选择："</span>&lt;&lt;<span class="built_in">endl</span>;  </span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;choice;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">if</span>(choice == <span class="number">7</span>)  </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">else</span>  </span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>&lt;&lt;<span class="built_in">endl</span>;  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;  </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"---------------磁盘调度算法模拟实验-----------------"</span>&lt;&lt;<span class="built_in">endl</span>;  </span><br><span class="line">    ofstream outfile;  </span><br><span class="line">    outfile.open(<span class="string">"data.txt"</span>);  </span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;  </span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;  </span><br><span class="line">        <span class="keyword">while</span>(!vec.empty())  </span><br><span class="line">            vec.pop_back();  </span><br><span class="line">        request(vec,outfile);         <span class="comment">//请求服务序列   </span></span><br><span class="line">        <span class="keyword">int</span> flag = choose_algorithm(vec);  </span><br><span class="line">        <span class="keyword">if</span>(flag == <span class="number">0</span>)  </span><br><span class="line">            <span class="keyword">break</span>;  </span><br><span class="line">    &#125;   </span><br><span class="line">    outfile.close();  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="以下是抄的代码"><a href="#以下是抄的代码" class="headerlink" title="以下是抄的代码"></a>以下是抄的代码</h2><pre><code class="c++">#include &lt;iostream&gt;  
+#include &lt;time.h&gt;  
+#include &lt;vector&gt;  
+#include &lt;math.h&gt;  
+#include &lt;stdlib.h&gt;  
+#include &lt;algorithm&gt;  
+#include &lt;cstring&gt;  
+#include &lt;windows.h&gt;  
+#include &lt;fstream&gt;  
+using namespace std;  
 
-      
-    </div>
-    
-    
-    
+int position = 0;      //当前磁道位置  
+int dis = 0;  
+double average_distance = 0;  
 
-    
+void request(vector&lt;int&gt;&amp;m_vec,ofstream &amp;outfile){  
+    cout&lt;&lt;&quot;随机生成磁盘序列：&quot;&lt;&lt;endl;  
+    int n = 0;  
+    srand(time(NULL));     //添加随机数种子  
+    n = rand() % 20 + 1;  
+    int temp = 0;  
+    for(int i=0;i&lt;n;i++){  
+        temp = rand() % 100;  
+        m_vec.push_back(temp);  
+        cout&lt;&lt;temp&lt;&lt;&quot; &quot;;  
+        outfile&lt;&lt;temp&lt;&lt;endl;  
+    }  
+    cout&lt;&lt;endl;  
+    position = rand() % 100;  
+    cout&lt;&lt;&quot;当前磁道：&quot;&lt;&lt;position&lt;&lt;endl;  
+}  
 
-    
+void compute_dis(vector&lt;int&gt;m_vec,int &amp;dis,double &amp;average_distance){  
+    average_distance = (double)dis / (double)m_vec.size();  
+}  
 
-    
+void FIFO(vector&lt;int&gt;m_vec,int position){     //先来先服务算法  
+    dis = 0;  
+    average_distance = 0;  
+    for(vector&lt;int&gt;::iterator it=m_vec.begin();it!=m_vec.end();it++){  
+        dis += abs(position-*it);  
+        Sleep(500);  
+        cout&lt;&lt;&quot;-&gt;&quot;&lt;&lt;*it;  
+        position = *it;  
+    }  
+    compute_dis(m_vec,dis,average_distance);  
+}  
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/操作系统/" rel="tag"># 操作系统</a>
-          
-            <a href="/tags/课程设计/" rel="tag"># 课程设计</a>
-          
+void SSTF(vector&lt;int&gt;m_vec,int position){   //最短寻道时间算法  
+    dis = 0;  
+    average_distance = 0;  
+    sort(m_vec.begin(),m_vec.end());    //从小到大排序  
+    int i = 0;  
+    for(vector&lt;int&gt;::iterator it=m_vec.begin();it!=m_vec.end();it++){  
+        if(position &gt;= *it)  
+            i++;  
+    }  
+    int count = 0;  
+    int left = i-1;  
+    int right = i;  
+    while(count&lt;m_vec.size()){  
+        if((left &gt;=0 &amp;&amp; abs(m_vec[right]-position) &gt; abs(m_vec[left]-position)) || right&gt;=m_vec.size()){  
+            dis += abs(m_vec[left]-position);  
+            Sleep(500);  
+            cout&lt;&lt;&quot;-&gt;&quot;&lt;&lt;m_vec[left];  
+            position = m_vec[left];  
+            left--;  
+        }  
+        else{  
+            dis += abs(m_vec[right]-position);  
+            Sleep(500);  
+            cout&lt;&lt;&quot;-&gt;&quot;&lt;&lt;m_vec[right];  
+            position = m_vec[right];  
+            right++;  
+        }  
+        count++;  
+    }  
+    compute_dis(m_vec,dis,average_distance);  
+}  
+
+void SCAN(vector&lt;int&gt;m_vec,int position){   //电梯调度算法  
+    dis = 0;  
+    average_distance = 0;  
+    sort(m_vec.begin(),m_vec.end());    //从小到大排序  
+    int i = 0;  
+    for(vector&lt;int&gt;::iterator it=m_vec.begin();it!=m_vec.end();it++){  
+        if(position &gt;= *it)  
+            i++;      //找到position所在的磁道  
+    }  
+    int left = i - 1;   //先从外到内扫描  
+    int right = i;  
+    while(left &gt;= 0){  
+        dis += abs(position - m_vec[left]);  
+        Sleep(500);  
+        cout&lt;&lt;&quot;-&gt;&quot;&lt;&lt;m_vec[left];  
+        position = m_vec[left];  
+        left --;  
+    }  
+    while(right &lt; m_vec.size()){  
+        dis += abs(position - m_vec[right]);  
+        Sleep(500);  
+        cout&lt;&lt;&quot;-&gt;&quot;&lt;&lt;m_vec[right];  
+        position = m_vec[right];  
+        right ++;  
+    }  
+    compute_dis(m_vec,dis,average_distance);  
+}  
+
+void CSCAN(vector&lt;int&gt;m_vec,int position){   //循环扫描算法  
+    dis = 0;  
+    average_distance = 0;  
+    sort(m_vec.begin(),m_vec.end());    //从小到大排序  
+    int i = 0;  
+    for(vector&lt;int&gt;::iterator it=m_vec.begin();it!=m_vec.end();it++){  
+        if(position &gt;= *it)  
+            i++;      //找到position所在的磁道  
+    }  
+    int left = i - 1;   //先从外到内扫描  
+    int right = i;  
+    while(left &gt;= 0){  
+        dis += abs(position - m_vec[left]);  
+        Sleep(500);  
+        cout&lt;&lt;&quot;-&gt;&quot;&lt;&lt;m_vec[left];  
+        position = m_vec[left];  
+        left --;  
+    }  
+    position = 100;     //立即到最外侧的磁道  
+    int len = m_vec.size()-1;  
+    while(len &gt;= right){  
+        dis += abs(position - m_vec[len]);  
+        Sleep(500);  
+        cout&lt;&lt;&quot;-&gt;&quot;&lt;&lt;m_vec[len];  
+        position = m_vec[len];  
+        len --;  
+    }  
+    compute_dis(m_vec,dis,average_distance);  
+}  
+
+void FSCAN(vector&lt;int&gt;m_vec,int position){   //分步电梯调度算法，。分两个队列  
+    dis = 0;  
+    average_distance = 0;  
+    //SCAN(m_vec,position);  
+    sort(m_vec.begin(),m_vec.end());    //从小到大排序  
+    int i = 0;  
+    for(vector&lt;int&gt;::iterator it=m_vec.begin();it!=m_vec.end();it++){  
+        if(position &gt;= *it)  
+            i++;      //找到position所在的磁道  
+    }  
+    int left = i - 1;   //先从外到内扫描  
+    int right = i;  
+    while(left &gt;= 0){  
+        dis += abs(position - m_vec[left]);  
+        Sleep(500);  
+        cout&lt;&lt;&quot;-&gt;&quot;&lt;&lt;m_vec[left];  
+        position = m_vec[left];  
+        left --;  
+    }  
+    while(right &lt; m_vec.size()){  
+        dis += abs(position - m_vec[right]);  
+        Sleep(500);  
+        cout&lt;&lt;&quot;-&gt;&quot;&lt;&lt;m_vec[right];  
+        position = m_vec[right];  
+        right ++;  
+    }  
+    cout&lt;&lt;endl;  
+    cout&lt;&lt;&quot;在扫描的过程中新产生的服务序列：&quot;&lt;&lt;endl;  
+    vector&lt;int&gt;ve;  
+    while(!ve.empty())  
+        ve.pop_back();  
+    int n = 0;  
+    n = rand() % 20 + 1;  
+    int temp = 0;  
+    for(i=0;i&lt;n;i++){  
+        temp = rand() % 100;  
+        cout&lt;&lt;temp&lt;&lt;&quot;　&quot;;  
+        ve.push_back(temp);  
+    }  
+    cout&lt;&lt;endl;  
+    cout&lt;&lt;position;  
+    SCAN(ve,position);  
+    average_distance = (double)dis / (double)(m_vec.size()+ve.size());  
+}  
+
+void print(){  
+    cout&lt;&lt;endl&lt;&lt;endl;  
+    cout&lt;&lt;&quot;经计算，磁头移动的总距离为:&quot;&lt;&lt;dis&lt;&lt;endl;  
+    cout&lt;&lt;&quot;磁头平均移动距离:&quot;&lt;&lt;average_distance&lt;&lt;endl;  
+    cout&lt;&lt;endl&lt;&lt;endl;  
+}  
+
+int choose_algorithm(vector&lt;int&gt;m_vec){  
+    cout&lt;&lt;endl&lt;&lt;endl;  
+    cout&lt;&lt;&quot;本实验可用的调度算法有以下5种：&quot;&lt;&lt;endl;  
+    cout&lt;&lt;&quot;1.FIFO  2.SSTF  3.SCAN  4.CSCAN  5.FSCAN  6.结束本序列的调度  7.结束程序&quot;&lt;&lt;endl;  
+    int choice = 0;  
+    cout&lt;&lt;&quot;选择：&quot;&lt;&lt;endl;  
+    cin&gt;&gt;choice;  
+    cout&lt;&lt;endl;  
+    while(choice!=6 &amp;&amp; choice!=7){  
+        cout&lt;&lt;&quot;磁盘请求的服务状况：&quot;&lt;&lt;endl;  
+        cout&lt;&lt;position;  
+        switch(choice){  
+            case 1:  
+                FIFO(m_vec,position);break;  
+            case 2:  
+                SSTF(m_vec,position);break;  
+            case 3:  
+                SCAN(m_vec,position);break;  
+            case 4:  
+                CSCAN(m_vec,position);break;  
+            case 5:  
+                FSCAN(m_vec,position);break;  
+            default:  
+                cout&lt;&lt;&quot;******非法输入！******&quot;&lt;&lt;endl&lt;&lt;endl;break;   
+        }   
+        if(choice&lt;=7 &amp;&amp; choice&gt;=1)   
+            print();  
+        cout&lt;&lt;&quot;选择：&quot;&lt;&lt;endl;  
+        cin&gt;&gt;choice;  
+    }  
+    if(choice == 7)  
+        return 0;  
+    else  
+        cout&lt;&lt;endl&lt;&lt;endl;  
+    return 1;  
+}  
+
+int main(){  
+    cout&lt;&lt;&quot;---------------磁盘调度算法模拟实验-----------------&quot;&lt;&lt;endl;  
+    ofstream outfile;  
+    outfile.open(&quot;data.txt&quot;);  
+    while(1){  
+        vector&lt;int&gt; vec;  
+        while(!vec.empty())  
+            vec.pop_back();  
+        request(vec,outfile);         //请求服务序列   
+        int flag = choose_algorithm(vec);  
+        if(flag == 0)  
+            break;  
+    }   
+    outfile.close();  
+    return 0;  
+}  
+</code></pre>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='/statics/Kaer Morhen.mp3'></li>
+                        
+                    
+                </ul>
+            
+            
+            
         </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/posts/c9f7f365/" rel="next" title="操作系统实验五">
-                <i class="fa fa-chevron-left"></i> 操作系统实验五
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/62657fb0/" rel="prev" title="Django模型的Field Types总结">
-                Django模型的Field Types总结 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="EwdAger">
-            
-              <p class="site-author-name" itemprop="name">EwdAger</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">51</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          <div class="links-of-author motion-element">
-            
-              
-                <span class="links-of-author-item">
-                  <a href="https://github.com/EwdAger" target="_blank" title="GitHub">
-                    
-                      <i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="mailto:ewdager@hotmail.com" target="_blank" title="E-Mail">
-                    
-                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="https://steamcommunity.com/id/ewdager/" target="_blank" title="Steam">
-                    
-                      <i class="fa fa-fw fa-steam"></i>Steam</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="https://my.playstation.com/profile/EwdAger" target="_blank" title="PSN">
-                    
-                      <i class="fa fa-fw fa-gamepad"></i>PSN</a>
-                </span>
-              
-            
-          </div>
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-globe"></i>
-                Friends
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://xdong.me/" title="Hiccup" target="_blank">Hiccup</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://jakting.com/" title="hjthjthjt" target="_blank">hjthjthjt</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://shushugo.com/" title="pjs的小窝" target="_blank">pjs的小窝</a>
-                  </li>
-                
-              </ul>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/EwdAger" target="_blank"><span class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">52 <p>文章</p></a></li>
+                    <li><a href="/categories">11 <p>分类</p></a></li>
+                    <li><a href="/tags">37 <p>标签</p></a></li>
+                </ul>
             </div>
-          
-
-          
-
+            
+                
+                
+                    <div class="box sticky animated fadeInRight faster">
+                        <div id="toc" class="subbox">
+                            <h4>目录</h4>
+                            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#实验内容"><span class="toc-number">1.</span> <span class="toc-text">实验内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#以下是抄的代码"><span class="toc-number">2.</span> <span class="toc-text">以下是抄的代码</span></a></li></ol>
+                        </div>
+                    </div>
+                
+            
         </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实验内容"><span class="nav-number">1.</span> <span class="nav-text">实验内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以下是抄的代码"><span class="nav-number">2.</span> <span class="nav-text">以下是抄的代码</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
     </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">EwdAger</span>
-  <span>&nbsp;湘ICP备16015728号-2</span>
-  
-
-  
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2019
+        <span class="gradient-text">
+            EwdAger
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.3.5" target="_blank" rel="noopener">v1.3.5</a></small>
+    </p>
+</footer>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
 
 
 
-  <span class="post-meta-divider">|</span>
+    <script src="/js/busuanzi.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('span[id^="busuanzi_"]').length) {
+                initialBusuanzi();
+            }
+        });
+    </script>
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-149874671-1');
+    </script>
 
 
 
 
-        
 
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["Farewell,good hunter.May you find your worth in the waking world.", "再见，善良的猎人。愿你能在清醒的世界中找到自己的价值。"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
 
-
-
-  <script type="text/javascript">
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//tajs.qq.com/stats?sId=64934470";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
 </script>
 
 
-
-
-
-
-
-
-
-  
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-  
-  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-  
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-  
-
-
-  
-
-  
-
-</body>
 </html>

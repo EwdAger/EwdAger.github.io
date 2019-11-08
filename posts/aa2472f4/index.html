@@ -1,413 +1,666 @@
+
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html lang="zh-CN" class="loading">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="数据结构,">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="~正文隐藏~">
-<meta name="keywords" content="数据结构">
-<meta property="og:type" content="article">
-<meta property="og:title" content="数据结构题目总结(C 语言描述)">
-<meta property="og:url" content="http://gvoidy.cn/posts/aa2472f4/index.html">
-<meta property="og:site_name" content="极光技术小栈">
-<meta property="og:description" content="~正文隐藏~">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-03T05:47:53.679Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据结构题目总结(C 语言描述)">
-<meta name="twitter:description" content="~正文隐藏~">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '5.1.3',
-    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://gvoidy.cn/posts/aa2472f4/">
-
-
-
-
-
-  <title>数据结构题目总结(C 语言描述) | 极光技术小栈</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-  
-
-
-
-
-
-
-
-
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>数据结构题目总结(C 语言描述) - 极光技术小栈</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
+    <meta name="description" content="~正文隐藏~
+
+2007 年*完成排序的归并算法template&amp;lt;class T&amp;gt; void merge(T* a, int n1, int n2){
+    //将数组 a 中下标分别,"> 
+    <meta name="author" content="EwdAger"> 
+    <link rel="alternative" href="atom.xml" title="极光技术小栈" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_xjbfxy4nzcj.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">极光技术小栈</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tag"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
-            
-            搜索
-          </a>
-        </li>
-      
-    </ul>
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://gvoidy.cn/posts/aa2472f4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="EwdAger">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="极光技术小栈">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">数据结构题目总结(C 语言描述)</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-09T20:00:00+08:00">
-                2018-11-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/知识储备/" itemprop="url" rel="index">
-                    <span itemprop="name">知识储备</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+</html>
+<body class="loading">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
-      </header>
-    
+    </div>
+    <span id="config-title" style="display:none">极光技术小栈</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://gvoidy.cn">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">数据结构题目总结(C 语言描述)</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+    <div class="section">
+        <div class= article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg);">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                    <a href="/categories/知识储备"><b>「 </b>知识储备<b> 」</b></a>
+                
+                十一月 09, 2018
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/aa2472f4/" title="数据结构题目总结(C 语言描述)">数据结构题目总结(C 语言描述)</a></h3>
+            
+                <p class="post-count animated fadeInDown">
+                    
+                        <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        24k
+                    </span>
+                    
+                    
+                        <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        22 mins.
+                    </span>
+                    
+                    
+                    
+                        <span id="busuanzi_container_page_pv">
+                            <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                            <span id="busuanzi_value_page_pv">0</span>
+                        </span>
+                    
+                </p>
+            
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+            
+        </div>
+    </div>
+</div>
 
-      
-      
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 
-      
-        <p><blockquote class="blockquote-center">~正文隐藏~</blockquote><br><a id="more"></a></p>
-<h1 id="2007-年"><a href="#2007-年" class="headerlink" title="2007 年"></a>2007 年</h1><h2 id="完成排序的归并算法"><a href="#完成排序的归并算法" class="headerlink" title="*完成排序的归并算法"></a>*完成排序的归并算法</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt; <span class="title">void</span> <span class="title">merge</span>(<span class="title">T</span>* <span class="title">a</span>, <span class="title">int</span> <span class="title">n1</span>, <span class="title">int</span> <span class="title">n2</span>)&#123;</span></span><br><span class="line">	<span class="comment">//将数组 a 中下标分别从 0...n1-1 和 n1...n1+n2-1 的两个有序序列归并为一个有序序列</span></span><br><span class="line"></span><br><span class="line">	T* temp = <span class="keyword">new</span> T(n1 + n2);</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>, j1 = <span class="number">0</span>, j2 = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (j1&lt;n1 &amp; j2&lt;n2)</span><br><span class="line">		temp[i++] = (a[j1] &lt;= a[n1+j2] ? a[j1++] : a[n1+j2++]);</span><br><span class="line">	<span class="keyword">while</span> (j1&lt;n1)</span><br><span class="line">		temp[j++] = a[j1++];</span><br><span class="line">	<span class="keyword">while</span> (j2&lt;n2)</span><br><span class="line">		temp[j++] = a[n1+j2++];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n1+n2; i++)</span><br><span class="line">		a[i] = temp[i];</span><br><span class="line">	<span class="keyword">delete</span>[]temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt; <span class="title">void</span> <span class="title">sort</span>(<span class="title">T</span>* <span class="title">a</span>, <span class="title">int</span> <span class="title">n</span>)&#123;</span></span><br><span class="line">	<span class="keyword">if</span> (n&gt;<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">int</span> n1 = n / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">int</span> n2 = n - n1;</span><br><span class="line">		sort(a, n1);         <span class="comment">// 递归使 a 中前 n1 个元素有序</span></span><br><span class="line">		sort(a+n1, n2);      <span class="comment">// 递归使 a 中后 n2 个元素有序</span></span><br><span class="line">		merge(a, n1, n2);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn slower">
+            <blockquote class="blockquote-center">~正文隐藏~</blockquote>
+
+<h1 id="2007-年"><a href="#2007-年" class="headerlink" title="2007 年"></a>2007 年</h1><h2 id="完成排序的归并算法"><a href="#完成排序的归并算法" class="headerlink" title="*完成排序的归并算法"></a>*完成排序的归并算法</h2><pre><code class="C">template&lt;class T&gt; void merge(T* a, int n1, int n2){
+    //将数组 a 中下标分别从 0...n1-1 和 n1...n1+n2-1 的两个有序序列归并为一个有序序列
+
+    T* temp = new T(n1 + n2);
+    int i = 0, j1 = 0, j2 = 0;
+    while (j1&lt;n1 &amp; j2&lt;n2)
+        temp[i++] = (a[j1] &lt;= a[n1+j2] ? a[j1++] : a[n1+j2++]);
+    while (j1&lt;n1)
+        temp[j++] = a[j1++];
+    while (j2&lt;n2)
+        temp[j++] = a[n1+j2++];
+    for (int i=0; i&lt;n1+n2; i++)
+        a[i] = temp[i];
+    delete[]temp;
+}
+
+template&lt;class T&gt; void sort(T* a, int n){
+    if (n&gt;1){
+        int n1 = n / 2;
+        int n2 = n - n1;
+        sort(a, n1);         // 递归使 a 中前 n1 个元素有序
+        sort(a+n1, n2);      // 递归使 a 中后 n2 个元素有序
+        merge(a, n1, n2);
+    }
+}
+</code></pre>
 <p><a href="https://www.cnblogs.com/chengxiao/p/6194356.html" target="_blank" rel="noopener">归并排序图解请点击此处</a></p>
-<h2 id="试完成求最短路径的-Dijkstra-算法"><a href="#试完成求最短路径的-Dijkstra-算法" class="headerlink" title="*试完成求最短路径的 Dijkstra 算法"></a>*试完成求最短路径的 <code>Dijkstra</code> 算法</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShortestPath_DU</span><span class="params">(MGaph G, <span class="keyword">int</span> v0, PathMatrix &amp; P, ShortPathTable &amp; D)</span></span>&#123;</span><br><span class="line">	<span class="comment">// 用 dijkstra 算法求有向图 G 的 v0 顶点到其余顶点 v 的最短路径 P[v] 及其带权长度 D[v]</span></span><br><span class="line">	<span class="comment">// 若 P[v][w] 为 True 则 w 是从 v0 到 v 当前求得最短路径上的顶点</span></span><br><span class="line">	<span class="comment">// final[v] 为 True 当且仅当 v∈S，即已经求得 v0 到 v 的最短路径</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>, j, v, w, min;</span><br><span class="line">	<span class="keyword">bool</span> final[MAX_VERTEX_NUM];</span><br><span class="line">	<span class="keyword">for</span> (v=<span class="number">0</span>; v&lt;G.vexnum; ++v)&#123;</span><br><span class="line">		final[v] = FALSE;</span><br><span class="line">		D[v] = G.arcs[v0][v].adj;</span><br><span class="line">		<span class="keyword">for</span> (w=<span class="number">0</span>; w&lt;G.vexnum; ++w)</span><br><span class="line">			P[v][w] = FALSE;          <span class="comment">// 设空路径</span></span><br><span class="line">		<span class="keyword">if</span> (D[v] &lt; INFINITY)&#123;</span><br><span class="line">			P[v][v0] = TRUE;</span><br><span class="line">			p[v][v] = TRUE;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 初始化， v0 顶点属于 S 集</span></span><br><span class="line">	D[v0] = <span class="number">0</span>;</span><br><span class="line">	final[v0] = TRUE;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 开始主循环，每次求得 v0 到某个 v 顶点的最短路径，并加 v 到 S 集合</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">1</span>; i&lt;G.vexnum; i++)&#123; <span class="comment">//其余 G.vexnum-1 个顶点</span></span><br><span class="line">		min = INFINITY;        <span class="comment">// 当前所知离 v0 顶点的最短距离</span></span><br><span class="line">		<span class="keyword">for</span> (w=<span class="number">0</span>; w&lt;G.vexnum; w++)</span><br><span class="line">			<span class="keyword">if</span> (!final[w]) <span class="comment">// w 顶点在 V-S 中</span></span><br><span class="line">				<span class="keyword">if</span> (D[w]&lt;min)&#123; <span class="comment">// 顶点离 v0 顶点更加</span></span><br><span class="line">					v = w;</span><br><span class="line">					min = D[w];</span><br><span class="line">				&#125;</span><br><span class="line">		final[v] = TRUE; <span class="comment">// 离 v0 顶点最近的 v 添加 S 集</span></span><br><span class="line">		<span class="keyword">for</span> (w=<span class="number">0</span>; i&lt;G.vexnum; w++)   <span class="comment">// 更新当前最短路径及距离</span></span><br><span class="line">			<span class="keyword">if</span> (!final[w] &amp;&amp; (min+G.arcs[v][w].adj &lt; D[w]))&#123;</span><br><span class="line">				<span class="comment">// 修改 D[w] 和 P[w], w∈V-S</span></span><br><span class="line">				D[w] = min + G.arcs[v][w].adj;</span><br><span class="line">				<span class="keyword">for</span> (j=<span class="number">0</span>; j&lt;G.vexnum; j++)</span><br><span class="line">					p[w][j] = P[v][j];    <span class="comment">// 第 v 行赋值于第 w 行</span></span><br><span class="line">				p[w][w] = TRUE;</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="若找到指定结点，将该节点与其前驱结点交换，使得经常被查找的结点尽量位于前端，试设计线性表的顺序存储结构和链式存储结构。并写出上面策略的顺从查找算法。"><a href="#若找到指定结点，将该节点与其前驱结点交换，使得经常被查找的结点尽量位于前端，试设计线性表的顺序存储结构和链式存储结构。并写出上面策略的顺从查找算法。" class="headerlink" title="*若找到指定结点，将该节点与其前驱结点交换，使得经常被查找的结点尽量位于前端，试设计线性表的顺序存储结构和链式存储结构。并写出上面策略的顺从查找算法。"></a>*若找到指定结点，将该节点与其前驱结点交换，使得经常被查找的结点尽量位于前端，试设计线性表的顺序存储结构和链式存储结构。并写出上面策略的顺从查找算法。</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">search_seq</span><span class="params">(SSTable ST, KeyType key)</span></span>&#123;</span><br><span class="line">	<span class="comment">// 在顺序表中查找关键字等于 key 的数据元素</span></span><br><span class="line">	<span class="comment">// 若找到，则将该元素与其前驱交换（若存在），并返回其在表中的位置（交换后），否则为-1</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;ST.length; i++)&#123;</span><br><span class="line">		<span class="keyword">if</span> (key == ST.elem[i])&#123;     <span class="comment">// 找到 key 数据元素</span></span><br><span class="line">			<span class="keyword">if</span> (i&gt;<span class="number">0</span>)&#123;     <span class="comment">// 存在前驱，交换</span></span><br><span class="line">				ElemType temp = ST.elem[i];</span><br><span class="line">				ST.elem[i] = ST.elem[i<span class="number">-1</span>];</span><br><span class="line">				ST.elem[i<span class="number">-1</span>] = temp;</span><br><span class="line">				<span class="keyword">return</span> i<span class="number">-1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;    <span class="comment">// 不存在前驱</span></span><br><span class="line">				<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">LinkNode* search_seq2(LinkList L, KeyType key)&#123;</span><br><span class="line">	<span class="comment">// 在链表中 L（带头结点）查找关键字等于 key 的数据元素</span></span><br><span class="line">	<span class="comment">// 若找到，则将该元素与其前驱交换（若存在），并返回其在表中的位置（交换后），否则为 NULL</span></span><br><span class="line"></span><br><span class="line">	LinkNode* p = L-&gt;next, pre = L;</span><br><span class="line">	<span class="keyword">while</span> (p != <span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span> (key == p-&gt;data)&#123;   <span class="comment">// 找到 key 数据元素</span></span><br><span class="line">			<span class="keyword">if</span> (pre != L)&#123;    <span class="comment">// 存在前驱，交换</span></span><br><span class="line">				ElemType temp = pre-&gt;data;</span><br><span class="line">				pre-&gt;data = p-&gt;data;</span><br><span class="line">				p-&gt;data = temp;</span><br><span class="line">				<span class="keyword">return</span> pre;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;      <span class="comment">// 不存在前驱</span></span><br><span class="line">				<span class="keyword">return</span> p;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="2008-年"><a href="#2008-年" class="headerlink" title="2008 年"></a>2008 年</h1><h2 id="编写递归算法，统计并返回以-BT-为树根指针的二叉树叶子结点个数"><a href="#编写递归算法，统计并返回以-BT-为树根指针的二叉树叶子结点个数" class="headerlink" title="*编写递归算法，统计并返回以 BT 为树根指针的二叉树叶子结点个数"></a>*编写递归算法，统计并返回以 <code>BT</code> 为树根指针的二叉树叶子结点个数</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 采用先序遍历整棵二叉树，统计叶子结点个数</span></span><br><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Count</span><span class="params">(BTreeNode* BT)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (BT!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span> (BT-&gt;lchild == <span class="literal">NULL</span> &amp;&amp; BT-&gt;rchild == <span class="literal">NULL</span>)</span><br><span class="line">            count++;</span><br><span class="line">        Count(BT-&gt;lchild);</span><br><span class="line">        Count(BT-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="编写以-BST-为树根指针的二叉搜索树上进行查找值为-Item-的结点的非递归算法"><a href="#编写以-BST-为树根指针的二叉搜索树上进行查找值为-Item-的结点的非递归算法" class="headerlink" title="*编写以 BST 为树根指针的二叉搜索树上进行查找值为 Item 的结点的非递归算法"></a>*编写以 <code>BST</code> 为树根指针的二叉搜索树上进行查找值为 <code>Item</code> 的结点的非递归算法</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根据 item 的值和当前节点的比较，如果相等就找到返回，如果小于，当前节点移动到右孩子，否则移动找左孩子，重复上述过程。如果最后没有找到，返回 false</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Find</span><span class="params">(BTreeNode* BST, ElemType &amp;item)</span></span>&#123;</span><br><span class="line">    BTreeNode* p = BST;</span><br><span class="line">    <span class="keyword">while</span>(!p)&#123;</span><br><span class="line">        <span class="keyword">if</span> (item == p-&gt;data)&#123;</span><br><span class="line">            item = p-&gt;data;</span><br><span class="line">            <span class="keyword">return</span> TRUE;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (item &lt; p-&gt;data)</span><br><span class="line">            p = p-&gt;left;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            p = p-&gt;right;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> FALSE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="2009-年"><a href="#2009-年" class="headerlink" title="2009 年"></a>2009 年</h1><h2 id="设计在顺序有序表中实现二分查找的算法"><a href="#设计在顺序有序表中实现二分查找的算法" class="headerlink" title="*设计在顺序有序表中实现二分查找的算法"></a>*设计在顺序有序表中实现二分查找的算法</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BinarySearch</span><span class="params">(SeqList L, ElemType key)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 在有序表 L 中查找关键字为 key 的元素，若存在则返回位置，不存在则返回-1</span></span><br><span class="line">    <span class="keyword">int</span> low = <span class="number">0</span>, high = L.TableLen<span class="number">-1</span>, mid;</span><br><span class="line">    <span class="keyword">while</span> (low &lt;= high)&#123;</span><br><span class="line">        mid = (low + high) / <span class="number">2</span>;     <span class="comment">// 取中间位置</span></span><br><span class="line">        <span class="keyword">if</span> (L.elem[mid] == key)     <span class="comment">// 查找成功返回所在位置</span></span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (L.elem[mid] &gt; key)  <span class="comment">// 从前半部分查找</span></span><br><span class="line">            high = mid - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            low = mid + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="编写一个算法作为将线性表-L-的数据建立一棵二叉排序树"><a href="#编写一个算法作为将线性表-L-的数据建立一棵二叉排序树" class="headerlink" title="编写一个算法作为将线性表 L 的数据建立一棵二叉排序树"></a>编写一个算法作为将线性表 <code>L</code> 的数据建立一棵二叉排序树</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BST_Insert</span><span class="params">(BiTree &amp;T, KeyType k)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 在二叉排序树 T 中插入一个关键字 k 的节点</span></span><br><span class="line">    <span class="keyword">if</span> (T == <span class="literal">NULL</span>)&#123;                         <span class="comment">// 原树为空，新插入的记录为根节点</span></span><br><span class="line">        T = (BiTree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BSTNode));</span><br><span class="line">        T-&gt;key = k;</span><br><span class="line">        T-&gt;lchild = T-&gt;rchild = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>                            <span class="comment">// 返回 1，表示树空间申请成功，并建立根节点</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (k == T-&gt;key)                  <span class="comment">// 树中存在相同的关键字节点，跳过该节点</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (k &lt; T-&gt;key)</span><br><span class="line">        <span class="keyword">return</span> BST_Insert(T-&gt;lchild, k);   <span class="comment">// 插入到 T 的左子树</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> BST_Insert(T-&gt;rchild, k);  <span class="comment">// 插入到 T 的右子树</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Create_BST</span><span class="params">(BiTree &amp;T, KeyType L[], <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 用长度为 n 的线性表建立一个二叉排序树</span></span><br><span class="line">    T = <span class="literal">NULL</span>;          <span class="comment">// 初始化 T 为空</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">        BST_Insert(T, L[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="带头结点的单链表中，所有节点值递增排序，编写函数。删除表-L-中所有其值大于等于-min-小于等于max-的结点"><a href="#带头结点的单链表中，所有节点值递增排序，编写函数。删除表-L-中所有其值大于等于-min-小于等于max-的结点" class="headerlink" title="带头结点的单链表中，所有节点值递增排序，编写函数。删除表 L 中所有其值大于等于 min 小于等于max 的结点"></a>带头结点的单链表中，所有节点值递增排序，编写函数。删除表 <code>L</code> 中所有其值大于等于 <code>min</code> 小于等于<code>max</code> 的结点</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rangeDelete</span><span class="params">(LinkList &amp; L, ElemType min, ElemType max)</span></span>&#123;</span><br><span class="line">    <span class="comment">// q 初始化指向待处理链表的头结点指针，而p始终为下一节点指针</span></span><br><span class="line">    <span class="comment">// 如果 q 的下一节点（p）不在min-max范围内，则将 q 的下一节点变为下下一节点(p-&gt;next)</span></span><br><span class="line">    ListNode* q = L, *p = L-&gt;next;</span><br><span class="line">    <span class="keyword">while</span> (p!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span> (p-&gt;data &gt;= min &amp;&amp; p-&gt;data &lt;= max)&#123;  <span class="comment">// 需要删除</span></span><br><span class="line">            q-&gt;next = p-&gt;next;                  <span class="comment">// 将 q 的下一节点取代为下下一节点</span></span><br><span class="line">            <span class="built_in">free</span>(p);                            <span class="comment">// 清理下一节点的空间</span></span><br><span class="line">            p = q-&gt;next                         <span class="comment">// 重置 p 为删除后链表 L 的下一节点</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            q = p;             <span class="comment">// 同等于 q = q-&gt;next;</span></span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="写出求-DFS-生成树（生成森林）的算法，并打印所有的树边"><a href="#写出求-DFS-生成树（生成森林）的算法，并打印所有的树边" class="headerlink" title="*写出求 DFS 生成树（生成森林）的算法，并打印所有的树边"></a>*写出求 <code>DFS</code> 生成树（生成森林）的算法，并打印所有的树边</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> visited[MAXNUM]; <span class="comment">// 访问标致数组</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFSTraverseTree</span> <span class="params">(ALGraph *G)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 求深度优先生成树（以邻接表表示的图 G)</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">        visited[i] = FALSE;      <span class="comment">// 初始化访问标志数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">        <span class="keyword">if</span> (!visited[i])       <span class="comment">// 第 i 个结点没有访问过</span></span><br><span class="line">            DFSTree(G, i);    <span class="comment">// 以 vi 为源点开始 DFS 遍历 G</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFSTree</span> <span class="params">(ALGraph* G, <span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 以 vi 为出发点对邻接表表示的图 G 进行深度优先搜索，打印出生成树的边</span></span><br><span class="line">    EdgeNode *p;</span><br><span class="line">    visited[i] = TRUE;   <span class="comment">// 标记 vi 已访问</span></span><br><span class="line">    p = G-&gt;adjlist[i].firstEdge;     <span class="comment">// 取 vi 边表的头指针</span></span><br><span class="line">    <span class="keyword">while</span>(p)&#123;</span><br><span class="line">        <span class="comment">// 依次搜索 vi 的邻接点vj， 这里 j=p-&gt;adjvex;</span></span><br><span class="line">        <span class="keyword">if</span> (!visited[p-&gt;adjvex])&#123;   <span class="comment">// 若 vj 尚未被访问</span></span><br><span class="line">            <span class="comment">// 打印边</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"(%c, %c)\n"</span>, G.vertex[i]-&gt;adjlist, G.vertex[p-&gt;adjvex]-adjlist);</span><br><span class="line">            DFSTree(G, p-&gt;adjvex);</span><br><span class="line">        &#125;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="2010-年"><a href="#2010-年" class="headerlink" title="2010 年"></a>2010 年</h1><h2 id="线性表插入删除一个结点"><a href="#线性表插入删除一个结点" class="headerlink" title="线性表插入删除一个结点"></a>线性表插入删除一个结点</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">ListInsert</span><span class="params">(Sqlist &amp;L, <span class="keyword">int</span> i, ElemType e)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 本算法实现将元素 e 插入到顺序表 L 中第 i 个位置</span></span><br><span class="line">    <span class="keyword">if</span> (i&lt;<span class="number">1</span> || i&gt;L.length+<span class="number">1</span>) <span class="comment">// 判断 i 的范围是否有效</span></span><br><span class="line">        <span class="keyword">return</span> FALSE;</span><br><span class="line">    <span class="keyword">if</span> (L.length &gt;= MaxSize)  <span class="comment">//当前存储空间已满，不能插入</span></span><br><span class="line">        <span class="keyword">return</span> FALSE;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j=L.length; j&gt;=i; j--)  <span class="comment">// 将第 i 个元素及之后的元素后移</span></span><br><span class="line">        L.data[j] = L.data[j<span class="number">-1</span>];</span><br><span class="line">    L.data[i<span class="number">-1</span>] = e;         <span class="comment">// 在位置 i 处放入 e</span></span><br><span class="line">    L.length++;</span><br><span class="line">    <span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">ListDelete</span><span class="params">(Sqlist &amp;L, <span class="keyword">int</span> i, <span class="keyword">int</span> &amp;e)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 本算法实现删除顺序表 L 中第 i 个位置的元素</span></span><br><span class="line">    <span class="keyword">if</span> (i&lt;<span class="number">1</span> || i&gt;L.length)   <span class="comment">// 判断 i 的范围是否有效</span></span><br><span class="line">        <span class="keyword">return</span> FALSE;</span><br><span class="line">    e = L.data[i<span class="number">-1</span>];         <span class="comment">// 在位置 i 处放入 e</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j=i; j&lt;L.length; j++)   <span class="comment">// 将第 i 个位置之后的元素前移</span></span><br><span class="line">        L.data[j<span class="number">-1</span>] = L.data[j];</span><br><span class="line">    L.length--;</span><br><span class="line">    <span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="二叉排序树采用二叉链表存储，删除结点值-X-的结点。删除后仍为二叉排序树（不考虑-X为根）"><a href="#二叉排序树采用二叉链表存储，删除结点值-X-的结点。删除后仍为二叉排序树（不考虑-X为根）" class="headerlink" title="*二叉排序树采用二叉链表存储，删除结点值 X 的结点。删除后仍为二叉排序树（不考虑 X为根）"></a>*二叉排序树采用二叉链表存储，删除结点值 <code>X</code> 的结点。删除后仍为二叉排序树（不考虑 <code>X</code>为根）</h2><p>思路：先用层次遍历思想查找到值为 X 的结点， 然后根据其是否有左右孩子情况删除处理。如果无左孩子，直接将右子树代替它。同理如果没有右孩子，直接将左子树代替它。如果左右孩子都存在，边在左子树中找一个值最大的结点代替它。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">DeleteBST</span> <span class="params">(BiTree &amp;T, ElemType X)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 删除二叉排序树 T 中，结点值为 X 的结点</span></span><br><span class="line">    <span class="keyword">if</span> (!T)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;  <span class="comment">//不存在这样的结点</span></span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (X==T.key)</span><br><span class="line">            <span class="keyword">return</span> Delete(T);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (X&lt;T.key)</span><br><span class="line">            <span class="keyword">return</span> DeleteBST(T-&gt;lchild, X);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> DeleteBST(T-&gt;rchild, X);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Delete</span><span class="params">(BiTree &amp; p)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 从二叉树排序树中删除结点 p，并且重接他的左或右子树</span></span><br><span class="line">    <span class="keyword">if</span> (!p-&gt;rchild)&#123;   <span class="comment">// 右子树为空，只需重接左子树</span></span><br><span class="line">        q = p;</span><br><span class="line">        p = p-&gt;lchild;</span><br><span class="line">        <span class="built_in">free</span>(q);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (!p-&gt;rchild)&#123;  <span class="comment">// 左子树为空，只需要重接右子树</span></span><br><span class="line">        q = p;</span><br><span class="line">        p = p-&gt;rchild;</span><br><span class="line">        <span class="built_in">free</span>(q);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;    <span class="comment">// 左右子树均不空</span></span><br><span class="line">        q = p;</span><br><span class="line">        s = p-&gt;lchild;</span><br><span class="line">        <span class="keyword">while</span> (s-&gt;rchild)&#123;   <span class="comment">// 找到左子树中结点值最大的结点 s</span></span><br><span class="line">            q = s;</span><br><span class="line">            s = s-&gt;rchild;</span><br><span class="line">        &#125;</span><br><span class="line">        p-&gt;key = s-&gt;key;</span><br><span class="line">        <span class="keyword">if</span> (q != p)</span><br><span class="line">            q-&gt;rchild = s-&gt;lchild;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            q-&gt;lchild = s-&gt;lchild;</span><br><span class="line">        <span class="built_in">free</span>(s);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="设-X-和-Y-是表示成单链表的两个串，找出-X-中第一个不在-Y-中出现的字符"><a href="#设-X-和-Y-是表示成单链表的两个串，找出-X-中第一个不在-Y-中出现的字符" class="headerlink" title="*设 X 和 Y 是表示成单链表的两个串，找出 X 中第一个不在 Y 中出现的字符"></a>*设 <code>X</code> 和 <code>Y</code> 是表示成单链表的两个串，找出 <code>X</code> 中第一个不在 <code>Y</code> 中出现的字符</h2><p>采用带头结点的单链表作为串的存储结构，找出 X 中第一个不在 Y 中出现的结点的算法<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">find</span><span class="params">(LinkList X, LinkList Y)</span></span>&#123;</span><br><span class="line">    LNode* p = X-&gt;next, *q;</span><br><span class="line">    <span class="keyword">while</span>(p)&#123;</span><br><span class="line">        <span class="comment">// 遍历 Y，查找是否存在值为 p-&gt;data 的结点</span></span><br><span class="line">        q = Y-&gt;next;</span><br><span class="line">        <span class="keyword">while</span>(q)&#123;</span><br><span class="line">            <span class="keyword">if</span> (p-&gt;data == q-&gt;data)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                q = q-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!q)</span><br><span class="line">            <span class="keyword">return</span> p-&gt;data;  <span class="comment">// Y 中没有找到</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            p = p-&gt;next;   <span class="comment">// Y 中找到，继续查找下一个元素</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="2011-年"><a href="#2011-年" class="headerlink" title="2011 年"></a>2011 年</h1><h2 id="求带头结点的单链表-L-中所含元素的个数，并给出单链表的数据结构示意图"><a href="#求带头结点的单链表-L-中所含元素的个数，并给出单链表的数据结构示意图" class="headerlink" title="求带头结点的单链表 L 中所含元素的个数，并给出单链表的数据结构示意图"></a>求带头结点的单链表 <code>L</code> 中所含元素的个数，并给出单链表的数据结构示意图</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CountNode</span><span class="params">(LinkList L)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    LNode * p = L-&gt;next;</span><br><span class="line">    <span class="keyword">while</span>(p)&#123;</span><br><span class="line">        count++;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 示意图：</span><br><span class="line">#</span><br><span class="line"># A-&gt;B-&gt;C...-&gt;N</span><br></pre></td></tr></table></figure>
-<h2 id="递归函数求二叉树的高度"><a href="#递归函数求二叉树的高度" class="headerlink" title="递归函数求二叉树的高度"></a>递归函数求二叉树的高度</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Height</span><span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (T == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> ld = Height(T-&gt;lc);</span><br><span class="line">    <span class="keyword">int</span> rd = Height(T-&gt;rc);</span><br><span class="line">    <span class="keyword">return</span> (ld&gt;rd ? ld+<span class="number">1</span> : rd+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="2012-年"><a href="#2012-年" class="headerlink" title="2012 年"></a>2012 年</h1><h2 id="对一棵孩子-兄弟链表示的树统计其叶子的个数"><a href="#对一棵孩子-兄弟链表示的树统计其叶子的个数" class="headerlink" title="*对一棵孩子 - 兄弟链表示的树统计其叶子的个数"></a>*对一棵孩子 - 兄弟链表示的树统计其叶子的个数</h2><p>思路：采用还在兄弟链表示的树 T，对其从所有结点进行遍历。在访问结点是判定当前结点是否有孩子，如果没有孩子则该结点是叶子结点，计数器加一，遍历结束后，就能得到叶子结点数。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CountLeafNode</span><span class="params">(CSTree T)</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (T)&#123;</span><br><span class="line">        <span class="keyword">if</span> (!T-&gt;firstchild)&#123;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            CountLeafNode(T-&gt;nextsibling);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="试完成求最短路径的-Dijkstra-算法"><a href="#试完成求最短路径的-Dijkstra-算法" class="headerlink" title="*试完成求最短路径的 Dijkstra 算法"></a>*试完成求最短路径的 <code>Dijkstra</code> 算法</h2><pre><code class="C">void ShortestPath_DU(MGaph G, int v0, PathMatrix &amp; P, ShortPathTable &amp; D){
+    // 用 dijkstra 算法求有向图 G 的 v0 顶点到其余顶点 v 的最短路径 P[v] 及其带权长度 D[v]
+    // 若 P[v][w] 为 True 则 w 是从 v0 到 v 当前求得最短路径上的顶点
+    // final[v] 为 True 当且仅当 v∈S，即已经求得 v0 到 v 的最短路径
+
+    int i=0, j, v, w, min;
+    bool final[MAX_VERTEX_NUM];
+    for (v=0; v&lt;G.vexnum; ++v){
+        final[v] = FALSE;
+        D[v] = G.arcs[v0][v].adj;
+        for (w=0; w&lt;G.vexnum; ++w)
+            P[v][w] = FALSE;          // 设空路径
+        if (D[v] &lt; INFINITY){
+            P[v][v0] = TRUE;
+            p[v][v] = TRUE;
+        }
+    }
+    // 初始化， v0 顶点属于 S 集
+    D[v0] = 0;
+    final[v0] = TRUE;
+
+    // 开始主循环，每次求得 v0 到某个 v 顶点的最短路径，并加 v 到 S 集合
+
+    for (i=1; i&lt;G.vexnum; i++){ //其余 G.vexnum-1 个顶点
+        min = INFINITY;        // 当前所知离 v0 顶点的最短距离
+        for (w=0; w&lt;G.vexnum; w++)
+            if (!final[w]) // w 顶点在 V-S 中
+                if (D[w]&lt;min){ // 顶点离 v0 顶点更加
+                    v = w;
+                    min = D[w];
+                }
+        final[v] = TRUE; // 离 v0 顶点最近的 v 添加 S 集
+        for (w=0; i&lt;G.vexnum; w++)   // 更新当前最短路径及距离
+            if (!final[w] &amp;&amp; (min+G.arcs[v][w].adj &lt; D[w])){
+                // 修改 D[w] 和 P[w], w∈V-S
+                D[w] = min + G.arcs[v][w].adj;
+                for (j=0; j&lt;G.vexnum; j++)
+                    p[w][j] = P[v][j];    // 第 v 行赋值于第 w 行
+                p[w][w] = TRUE;
+            }
+    }
+}
+</code></pre>
+<h2 id="若找到指定结点，将该节点与其前驱结点交换，使得经常被查找的结点尽量位于前端，试设计线性表的顺序存储结构和链式存储结构。并写出上面策略的顺从查找算法。"><a href="#若找到指定结点，将该节点与其前驱结点交换，使得经常被查找的结点尽量位于前端，试设计线性表的顺序存储结构和链式存储结构。并写出上面策略的顺从查找算法。" class="headerlink" title="*若找到指定结点，将该节点与其前驱结点交换，使得经常被查找的结点尽量位于前端，试设计线性表的顺序存储结构和链式存储结构。并写出上面策略的顺从查找算法。"></a>*若找到指定结点，将该节点与其前驱结点交换，使得经常被查找的结点尽量位于前端，试设计线性表的顺序存储结构和链式存储结构。并写出上面策略的顺从查找算法。</h2><pre><code class="c">int search_seq(SSTable ST, KeyType key){
+    // 在顺序表中查找关键字等于 key 的数据元素
+    // 若找到，则将该元素与其前驱交换（若存在），并返回其在表中的位置（交换后），否则为-1
+
+    for (int i=0; i&lt;ST.length; i++){
+        if (key == ST.elem[i]){     // 找到 key 数据元素
+            if (i&gt;0){     // 存在前驱，交换
+                ElemType temp = ST.elem[i];
+                ST.elem[i] = ST.elem[i-1];
+                ST.elem[i-1] = temp;
+                return i-1;
+            }
+            else{    // 不存在前驱
+                return 0
+            }
+        }
+    }
+    return -1
+}
+
+LinkNode* search_seq2(LinkList L, KeyType key){
+    // 在链表中 L（带头结点）查找关键字等于 key 的数据元素
+    // 若找到，则将该元素与其前驱交换（若存在），并返回其在表中的位置（交换后），否则为 NULL
+
+    LinkNode* p = L-&gt;next, pre = L;
+    while (p != NULL){
+        if (key == p-&gt;data){   // 找到 key 数据元素
+            if (pre != L){    // 存在前驱，交换
+                ElemType temp = pre-&gt;data;
+                pre-&gt;data = p-&gt;data;
+                p-&gt;data = temp;
+                return pre;
+            }
+            else{      // 不存在前驱
+                return p;
+            }
+        }
+    }
+    return NULL;
+}
+</code></pre>
+<h1 id="2008-年"><a href="#2008-年" class="headerlink" title="2008 年"></a>2008 年</h1><h2 id="编写递归算法，统计并返回以-BT-为树根指针的二叉树叶子结点个数"><a href="#编写递归算法，统计并返回以-BT-为树根指针的二叉树叶子结点个数" class="headerlink" title="*编写递归算法，统计并返回以 BT 为树根指针的二叉树叶子结点个数"></a>*编写递归算法，统计并返回以 <code>BT</code> 为树根指针的二叉树叶子结点个数</h2><pre><code class="c">// 采用先序遍历整棵二叉树，统计叶子结点个数
+int count = 0;
+void Count(BTreeNode* BT){
+    if (BT!=NULL){
+        if (BT-&gt;lchild == NULL &amp;&amp; BT-&gt;rchild == NULL)
+            count++;
+        Count(BT-&gt;lchild);
+        Count(BT-&gt;rchild);
+    }
+}
+</code></pre>
+<h2 id="编写以-BST-为树根指针的二叉搜索树上进行查找值为-Item-的结点的非递归算法"><a href="#编写以-BST-为树根指针的二叉搜索树上进行查找值为-Item-的结点的非递归算法" class="headerlink" title="*编写以 BST 为树根指针的二叉搜索树上进行查找值为 Item 的结点的非递归算法"></a>*编写以 <code>BST</code> 为树根指针的二叉搜索树上进行查找值为 <code>Item</code> 的结点的非递归算法</h2><pre><code class="c">// 根据 item 的值和当前节点的比较，如果相等就找到返回，如果小于，当前节点移动到右孩子，否则移动找左孩子，重复上述过程。如果最后没有找到，返回 false
+
+bool Find(BTreeNode* BST, ElemType &amp;item){
+    BTreeNode* p = BST;
+    while(!p){
+        if (item == p-&gt;data){
+            item = p-&gt;data;
+            return TRUE;
+        }
+        else if (item &lt; p-&gt;data)
+            p = p-&gt;left;
+        else
+            p = p-&gt;right;
+    }
+    return FALSE;
+}
+</code></pre>
+<h1 id="2009-年"><a href="#2009-年" class="headerlink" title="2009 年"></a>2009 年</h1><h2 id="设计在顺序有序表中实现二分查找的算法"><a href="#设计在顺序有序表中实现二分查找的算法" class="headerlink" title="*设计在顺序有序表中实现二分查找的算法"></a>*设计在顺序有序表中实现二分查找的算法</h2><pre><code class="c">int BinarySearch(SeqList L, ElemType key){
+    // 在有序表 L 中查找关键字为 key 的元素，若存在则返回位置，不存在则返回-1
+    int low = 0, high = L.TableLen-1, mid;
+    while (low &lt;= high){
+        mid = (low + high) / 2;     // 取中间位置
+        if (L.elem[mid] == key)     // 查找成功返回所在位置
+            return mid;
+        else if (L.elem[mid] &gt; key)  // 从前半部分查找
+            high = mid - 1;
+        else
+            low = mid + 1;
+
+    }
+    return -1
+}
+</code></pre>
+<h2 id="编写一个算法作为将线性表-L-的数据建立一棵二叉排序树"><a href="#编写一个算法作为将线性表-L-的数据建立一棵二叉排序树" class="headerlink" title="编写一个算法作为将线性表 L 的数据建立一棵二叉排序树"></a>编写一个算法作为将线性表 <code>L</code> 的数据建立一棵二叉排序树</h2><pre><code class="c">int BST_Insert(BiTree &amp;T, KeyType k){
+    // 在二叉排序树 T 中插入一个关键字 k 的节点
+    if (T == NULL){                         // 原树为空，新插入的记录为根节点
+        T = (BiTree)malloc(sizeof(BSTNode));
+        T-&gt;key = k;
+        T-&gt;lchild = T-&gt;rchild = NULL;
+        return 1                            // 返回 1，表示树空间申请成功，并建立根节点
+    }
+    else if (k == T-&gt;key)                  // 树中存在相同的关键字节点，跳过该节点
+    else if (k &lt; T-&gt;key)
+        return BST_Insert(T-&gt;lchild, k);   // 插入到 T 的左子树
+    else
+        return BST_Insert(T-&gt;rchild, k);  // 插入到 T 的右子树
+}
+
+void Create_BST(BiTree &amp;T, KeyType L[], int n){
+    // 用长度为 n 的线性表建立一个二叉排序树
+    T = NULL;          // 初始化 T 为空
+    for (int i=0; i&lt;n; i++)
+        BST_Insert(T, L[i]);
+}
+</code></pre>
+<h2 id="带头结点的单链表中，所有节点值递增排序，编写函数。删除表-L-中所有其值大于等于-min-小于等于max-的结点"><a href="#带头结点的单链表中，所有节点值递增排序，编写函数。删除表-L-中所有其值大于等于-min-小于等于max-的结点" class="headerlink" title="带头结点的单链表中，所有节点值递增排序，编写函数。删除表 L 中所有其值大于等于 min 小于等于max 的结点"></a>带头结点的单链表中，所有节点值递增排序，编写函数。删除表 <code>L</code> 中所有其值大于等于 <code>min</code> 小于等于<code>max</code> 的结点</h2><pre><code class="c">void rangeDelete(LinkList &amp; L, ElemType min, ElemType max){
+    // q 初始化指向待处理链表的头结点指针，而p始终为下一节点指针
+    // 如果 q 的下一节点（p）不在min-max范围内，则将 q 的下一节点变为下下一节点(p-&gt;next)
+    ListNode* q = L, *p = L-&gt;next;
+    while (p!=NULL){
+        if (p-&gt;data &gt;= min &amp;&amp; p-&gt;data &lt;= max){  // 需要删除
+            q-&gt;next = p-&gt;next;                  // 将 q 的下一节点取代为下下一节点
+            free(p);                            // 清理下一节点的空间
+            p = q-&gt;next                         // 重置 p 为删除后链表 L 的下一节点
+        }
+        else{
+            q = p;             // 同等于 q = q-&gt;next;
+            p = p-&gt;next;
+        }
+    }
+}
+</code></pre>
+<h2 id="写出求-DFS-生成树（生成森林）的算法，并打印所有的树边"><a href="#写出求-DFS-生成树（生成森林）的算法，并打印所有的树边" class="headerlink" title="*写出求 DFS 生成树（生成森林）的算法，并打印所有的树边"></a>*写出求 <code>DFS</code> 生成树（生成森林）的算法，并打印所有的树边</h2><pre><code class="c">int visited[MAXNUM]; // 访问标致数组
+void DFSTraverseTree (ALGraph *G){
+    // 求深度优先生成树（以邻接表表示的图 G)
+    for (int i=0; i&lt;n; i++)
+        visited[i] = FALSE;      // 初始化访问标志数组
+    for (int i=0; i&lt;n; i++)
+        if (!visited[i])       // 第 i 个结点没有访问过
+            DFSTree(G, i);    // 以 vi 为源点开始 DFS 遍历 G
+}
+
+void DFSTree (ALGraph* G, int i){
+    // 以 vi 为出发点对邻接表表示的图 G 进行深度优先搜索，打印出生成树的边
+    EdgeNode *p;
+    visited[i] = TRUE;   // 标记 vi 已访问
+    p = G-&gt;adjlist[i].firstEdge;     // 取 vi 边表的头指针
+    while(p){
+        // 依次搜索 vi 的邻接点vj， 这里 j=p-&gt;adjvex;
+        if (!visited[p-&gt;adjvex]){   // 若 vj 尚未被访问
+            // 打印边
+            printf(&quot;(%c, %c)\n&quot;, G.vertex[i]-&gt;adjlist, G.vertex[p-&gt;adjvex]-adjlist);
+            DFSTree(G, p-&gt;adjvex);
+        }
+        p = p-&gt;next;
+    }
+}
+</code></pre>
+<h1 id="2010-年"><a href="#2010-年" class="headerlink" title="2010 年"></a>2010 年</h1><h2 id="线性表插入删除一个结点"><a href="#线性表插入删除一个结点" class="headerlink" title="线性表插入删除一个结点"></a>线性表插入删除一个结点</h2><pre><code class="c">bool ListInsert(Sqlist &amp;L, int i, ElemType e){
+    // 本算法实现将元素 e 插入到顺序表 L 中第 i 个位置
+    if (i&lt;1 || i&gt;L.length+1) // 判断 i 的范围是否有效
+        return FALSE;
+    if (L.length &gt;= MaxSize)  //当前存储空间已满，不能插入
+        return FALSE;
+    for (int j=L.length; j&gt;=i; j--)  // 将第 i 个元素及之后的元素后移
+        L.data[j] = L.data[j-1];
+    L.data[i-1] = e;         // 在位置 i 处放入 e
+    L.length++;
+    return TRUE;
+}
+
+bool ListDelete(Sqlist &amp;L, int i, int &amp;e){
+    // 本算法实现删除顺序表 L 中第 i 个位置的元素
+    if (i&lt;1 || i&gt;L.length)   // 判断 i 的范围是否有效
+        return FALSE;
+    e = L.data[i-1];         // 在位置 i 处放入 e
+    for (int j=i; j&lt;L.length; j++)   // 将第 i 个位置之后的元素前移
+        L.data[j-1] = L.data[j];
+    L.length--;
+    return TRUE;
+}
+</code></pre>
+<h2 id="二叉排序树采用二叉链表存储，删除结点值-X-的结点。删除后仍为二叉排序树（不考虑-X为根）"><a href="#二叉排序树采用二叉链表存储，删除结点值-X-的结点。删除后仍为二叉排序树（不考虑-X为根）" class="headerlink" title="*二叉排序树采用二叉链表存储，删除结点值 X 的结点。删除后仍为二叉排序树（不考虑 X为根）"></a>*二叉排序树采用二叉链表存储，删除结点值 <code>X</code> 的结点。删除后仍为二叉排序树（不考虑 <code>X</code>为根）</h2><p>思路：先用层次遍历思想查找到值为 X 的结点， 然后根据其是否有左右孩子情况删除处理。如果无左孩子，直接将右子树代替它。同理如果没有右孩子，直接将左子树代替它。如果左右孩子都存在，边在左子树中找一个值最大的结点代替它。</p>
+<pre><code class="c">int DeleteBST (BiTree &amp;T, ElemType X){
+    // 删除二叉排序树 T 中，结点值为 X 的结点
+    if (!T)
+        return 0;  //不存在这样的结点
+    else{
+        if (X==T.key)
+            return Delete(T);
+        else if (X&lt;T.key)
+            return DeleteBST(T-&gt;lchild, X);
+        else
+            return DeleteBST(T-&gt;rchild, X);
+    }
+}
+
+int Delete(BiTree &amp; p){
+    // 从二叉树排序树中删除结点 p，并且重接他的左或右子树
+    if (!p-&gt;rchild){   // 右子树为空，只需重接左子树
+        q = p;
+        p = p-&gt;lchild;
+        free(q);
+    }
+    else if (!p-&gt;rchild){  // 左子树为空，只需要重接右子树
+        q = p;
+        p = p-&gt;rchild;
+        free(q);
+    }
+    else{    // 左右子树均不空
+        q = p;
+        s = p-&gt;lchild;
+        while (s-&gt;rchild){   // 找到左子树中结点值最大的结点 s
+            q = s;
+            s = s-&gt;rchild;
+        }
+        p-&gt;key = s-&gt;key;
+        if (q != p)
+            q-&gt;rchild = s-&gt;lchild;
+        else
+            q-&gt;lchild = s-&gt;lchild;
+        free(s);
+    }
+    return 1;
+}
+</code></pre>
+<h2 id="设-X-和-Y-是表示成单链表的两个串，找出-X-中第一个不在-Y-中出现的字符"><a href="#设-X-和-Y-是表示成单链表的两个串，找出-X-中第一个不在-Y-中出现的字符" class="headerlink" title="*设 X 和 Y 是表示成单链表的两个串，找出 X 中第一个不在 Y 中出现的字符"></a>*设 <code>X</code> 和 <code>Y</code> 是表示成单链表的两个串，找出 <code>X</code> 中第一个不在 <code>Y</code> 中出现的字符</h2><p>采用带头结点的单链表作为串的存储结构，找出 X 中第一个不在 Y 中出现的结点的算法</p>
+<pre><code class="c">char find(LinkList X, LinkList Y){
+    LNode* p = X-&gt;next, *q;
+    while(p){
+        // 遍历 Y，查找是否存在值为 p-&gt;data 的结点
+        q = Y-&gt;next;
+        while(q){
+            if (p-&gt;data == q-&gt;data)
+                break;
+            else
+                q = q-&gt;next;
+        }
+        if (!q)
+            return p-&gt;data;  // Y 中没有找到
+        else
+            p = p-&gt;next;   // Y 中找到，继续查找下一个元素
+    }
+}
+</code></pre>
+<h1 id="2011-年"><a href="#2011-年" class="headerlink" title="2011 年"></a>2011 年</h1><h2 id="求带头结点的单链表-L-中所含元素的个数，并给出单链表的数据结构示意图"><a href="#求带头结点的单链表-L-中所含元素的个数，并给出单链表的数据结构示意图" class="headerlink" title="求带头结点的单链表 L 中所含元素的个数，并给出单链表的数据结构示意图"></a>求带头结点的单链表 <code>L</code> 中所含元素的个数，并给出单链表的数据结构示意图</h2><pre><code class="c">int CountNode(LinkList L){
+    int count = 0;
+    LNode * p = L-&gt;next;
+    while(p){
+        count++;
+        p = p-&gt;next;
+    }
+    return count;
+}
+
+# 示意图：
+#
+# A-&gt;B-&gt;C...-&gt;N
+</code></pre>
+<h2 id="递归函数求二叉树的高度"><a href="#递归函数求二叉树的高度" class="headerlink" title="递归函数求二叉树的高度"></a>递归函数求二叉树的高度</h2><pre><code class="c">int Height(BiTree T){
+    if (T == NULL)
+        return 0;
+    int ld = Height(T-&gt;lc);
+    int rd = Height(T-&gt;rc);
+    return (ld&gt;rd ? ld+1 : rd+1);
+}
+</code></pre>
+<h1 id="2012-年"><a href="#2012-年" class="headerlink" title="2012 年"></a>2012 年</h1><h2 id="对一棵孩子-兄弟链表示的树统计其叶子的个数"><a href="#对一棵孩子-兄弟链表示的树统计其叶子的个数" class="headerlink" title="*对一棵孩子 - 兄弟链表示的树统计其叶子的个数"></a>*对一棵孩子 - 兄弟链表示的树统计其叶子的个数</h2><p>思路：采用还在兄弟链表示的树 T，对其从所有结点进行遍历。在访问结点是判定当前结点是否有孩子，如果没有孩子则该结点是叶子结点，计数器加一，遍历结束后，就能得到叶子结点数。</p>
+<pre><code class="c">int CountLeafNode(CSTree T){
+    static int count = 0;
+    if (T){
+        if (!T-&gt;firstchild){
+            count++;
+        }
+        else{
+            CountLeafNode(T-&gt;nextsibling);
+        }
+        return count;
+    }
+}
+</code></pre>
 <h2 id="查找值为-X-的结点（二叉树中）。用-C-语言打印值为-X-的结点的所有祖先并分析时间复杂度"><a href="#查找值为-X-的结点（二叉树中）。用-C-语言打印值为-X-的结点的所有祖先并分析时间复杂度" class="headerlink" title="*查找值为 X 的结点（二叉树中）。用 C 语言打印值为 X 的结点的所有祖先并分析时间复杂度"></a>*查找值为 <code>X</code> 的结点（二叉树中）。用 C 语言打印值为 <code>X</code> 的结点的所有祖先并分析时间复杂度</h2><p>思路：采用非递归后序遍历，最后访问根节点，当访问到值为 x 的结点时，栈中所有元素均为该节点的祖先。因为采用的是后序遍历算法，故时间复杂度为O(n)</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">search</span><span class="params">(BiTree bt, ElemType x)</span></span>&#123;</span><br><span class="line">    BiTree t;</span><br><span class="line">    <span class="keyword">int</span> tag;</span><br><span class="line">&#125;<span class="built_in">stack</span>;    <span class="comment">// tag = 0 表示左子树被方法，tag = 1 表示左子树被访问</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Search</span><span class="params">(BiTree bt, ElemType x)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 在二叉树 bt 中，查找值为 x 的结点，并打印其所有祖先</span></span><br><span class="line">    <span class="built_in">stack</span> s[];</span><br><span class="line">    top = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (bt != <span class="literal">NULL</span> &amp;&amp; bt-&gt;data != x)&#123; <span class="comment">// 结点入栈</span></span><br><span class="line">        s[++top].t = bt;</span><br><span class="line">        s[top].tag = <span class="number">0</span>;</span><br><span class="line">        bt = bt-&gt;lchild;   <span class="comment">// 沿左分支向下</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (bt-&gt;data == x)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"所查结点的所有祖先结点的值为:\n"</span>);  <span class="comment">// 找到 x</span></span><br><span class="line">        <span class="keyword">for</span> (i=<span class="number">1</span>; i&lt;=top; i++)&#123;  <span class="comment">// 输出祖先值后结束</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, s[i].t-&gt;data);</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">        &#125;   </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (top != <span class="number">0</span> &amp;&amp; s[top].tag == <span class="number">1</span>)     <span class="comment">// 退栈(空遍历)</span></span><br><span class="line">        top--;</span><br><span class="line">    <span class="keyword">if</span> (top!=<span class="number">0</span>)&#123;</span><br><span class="line">        s[top].tag = <span class="number">1</span>;</span><br><span class="line">        bt = s[top].t-&gt;rchild;  <span class="comment">// 沿右分支向下遍历 </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="c">void search(BiTree bt, ElemType x){
+    BiTree t;
+    int tag;
+}stack;    // tag = 0 表示左子树被方法，tag = 1 表示左子树被访问
+
+void Search(BiTree bt, ElemType x){
+    // 在二叉树 bt 中，查找值为 x 的结点，并打印其所有祖先
+    stack s[];
+    top = 0;
+    while (bt != NULL &amp;&amp; bt-&gt;data != x){ // 结点入栈
+        s[++top].t = bt;
+        s[top].tag = 0;
+        bt = bt-&gt;lchild;   // 沿左分支向下
+    }
+    if (bt-&gt;data == x){
+        printf(&quot;所查结点的所有祖先结点的值为:\n&quot;);  // 找到 x
+        for (i=1; i&lt;=top; i++){  // 输出祖先值后结束
+            printf(&quot;%d\n&quot;, s[i].t-&gt;data);
+            exit(1);
+        }   
+    }
+    while (top != 0 &amp;&amp; s[top].tag == 1)     // 退栈(空遍历)
+        top--;
+    if (top!=0){
+        s[top].tag = 1;
+        bt = s[top].t-&gt;rchild;  // 沿右分支向下遍历 
+    }
+}
+</code></pre>
 <h2 id="L1、L2为两循环单链表的头结点指针。m，n分别为数据结点个数。用最快速度将两表并成一个带头结点的循环单链表"><a href="#L1、L2为两循环单链表的头结点指针。m，n分别为数据结点个数。用最快速度将两表并成一个带头结点的循环单链表" class="headerlink" title="*L1、L2为两循环单链表的头结点指针。m，n分别为数据结点个数。用最快速度将两表并成一个带头结点的循环单链表"></a>*<code>L1</code>、<code>L2</code>为两循环单链表的头结点指针。<code>m</code>，<code>n</code>分别为数据结点个数。用最快速度将两表并成一个带头结点的循环单链表</h2><p>思路：采用头插法，将短链表插入到长链表中。时间复杂度为O(min(n, m))</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(LinkList &amp;L1, LinkList &amp;L2)</span></span>&#123;</span><br><span class="line">    LinkList *p = L1-&gt;next, *q = L2-&gt;next;</span><br><span class="line">    <span class="keyword">if</span> (m&gt;n)&#123;</span><br><span class="line">        L3 = L1;</span><br><span class="line">        L3-&gt;next = q;</span><br><span class="line">        <span class="keyword">while</span> (q-&gt;next != L2)</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">        q-&gt;next = p;</span><br><span class="line">        <span class="built_in">free</span>(L2);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        L3 = L2;</span><br><span class="line">        L3-&gt;next = p;</span><br><span class="line">        <span class="keyword">while</span> (p-&gt;next != L1)</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        p-&gt;next = q;</span><br><span class="line">        <span class="built_in">free</span>(L1)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="c">void merge(LinkList &amp;L1, LinkList &amp;L2){
+    LinkList *p = L1-&gt;next, *q = L2-&gt;next;
+    if (m&gt;n){
+        L3 = L1;
+        L3-&gt;next = q;
+        while (q-&gt;next != L2)
+            q = q-&gt;next;
+        q-&gt;next = p;
+        free(L2);
+    }
+    else{
+        L3 = L2;
+        L3-&gt;next = p;
+        while (p-&gt;next != L1)
+            p = p-&gt;next;
+        p-&gt;next = q;
+        free(L1)
+    }
+}
+</code></pre>
 <h2 id="求无向图-G-（采用邻接表存储）的连通分量的个数"><a href="#求无向图-G-（采用邻接表存储）的连通分量的个数" class="headerlink" title="*求无向图 G （采用邻接表存储）的连通分量的个数"></a>*求无向图 <code>G</code> （采用邻接表存储）的连通分量的个数</h2><p>思路：利用 DFS 算法一次遍历图中的一个连通分量，统计遍历完图总共调用 DFS 算法的次数即该图的连通块的个数。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从顶点 v 出发深度优先访问 G 的一个连通块</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(Graph G, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    visited[v] = TRUE;  <span class="comment">// 标记访问 v 顶点</span></span><br><span class="line">    <span class="keyword">for</span> (w=FirstAdjVex(G, v); w&gt;=<span class="number">0</span>; w=NextAdjVex(G, v, w))&#123;</span><br><span class="line">        <span class="keyword">if</span> (!visited[w])</span><br><span class="line">            DFS(G, w);  <span class="comment">// 对 v 的尚未访问的邻接顶点调用 DFS 访问</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetConnSubGraphNum</span><span class="params">(Graph G)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 初始化访问标记数组</span></span><br><span class="line">    <span class="keyword">for</span> (v=<span class="number">0</span>; v&lt;G.vexnum; v++)</span><br><span class="line">        visited[v] = FALSE;</span><br><span class="line">    <span class="keyword">for</span> (v=<span class="number">0</span>; v&lt;G.vexnum; v++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (!visited[v])&#123;</span><br><span class="line">            count++;   <span class="comment">// 连通块数量+1</span></span><br><span class="line">            DFS(G, v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="c">// 从顶点 v 出发深度优先访问 G 的一个连通块
+void DFS(Graph G, int v){
+    visited[v] = TRUE;  // 标记访问 v 顶点
+    for (w=FirstAdjVex(G, v); w&gt;=0; w=NextAdjVex(G, v, w)){
+        if (!visited[w])
+            DFS(G, w);  // 对 v 的尚未访问的邻接顶点调用 DFS 访问
+    }
+}
+
+int GetConnSubGraphNum(Graph G){
+    int count = 0;
+    // 初始化访问标记数组
+    for (v=0; v&lt;G.vexnum; v++)
+        visited[v] = FALSE;
+    for (v=0; v&lt;G.vexnum; v++){
+        if (!visited[v]){
+            count++;   // 连通块数量+1
+            DFS(G, v);
+        }
+    }
+    return count;
+}
+
+</code></pre>
 <h1 id="2013-年"><a href="#2013-年" class="headerlink" title="2013 年"></a>2013 年</h1><h2 id="给定二叉树-T-。统计二叉树-T-中结点的个数"><a href="#给定二叉树-T-。统计二叉树-T-中结点的个数" class="headerlink" title="*给定二叉树 T 。统计二叉树 T 中结点的个数"></a>*给定二叉树 <code>T</code> 。统计二叉树 <code>T</code> 中结点的个数</h2><p>思路：一棵树的总结点数等于它的左子树上的结点数加上右子树上的节点数再加上其本身，空树的结点数为0，利用递归思想，求树 T 的总结点数</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CountNode</span> <span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (T == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;     <span class="comment">// 空树的结点数为 0</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    <span class="comment">// 非空树结点数等于它的左子树上的结点数加上右子树上的结点数再加上其本身</span></span><br><span class="line">        <span class="keyword">return</span> (<span class="number">1</span>+CountNode(T-&gt;lc)+CountNode(T-&gt;rc));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="c">int CountNode (BiTree T){
+    if (T == NULL)
+        return 0;     // 空树的结点数为 0
+    else
+    // 非空树结点数等于它的左子树上的结点数加上右子树上的结点数再加上其本身
+        return (1+CountNode(T-&gt;lc)+CountNode(T-&gt;rc));
+}
+</code></pre>
 <h1 id="2014-年"><a href="#2014-年" class="headerlink" title="2014 年"></a>2014 年</h1><h2 id="线性表（a1-a2-…-an）设计把所有偶数移动所有奇数前面。（时间最少，辅助空间最多）"><a href="#线性表（a1-a2-…-an）设计把所有偶数移动所有奇数前面。（时间最少，辅助空间最多）" class="headerlink" title="*线性表（a1, a2, … , an）设计把所有偶数移动所有奇数前面。（时间最少，辅助空间最多）"></a>*线性表<code>（a1, a2, … , an）</code>设计把所有偶数移动所有奇数前面。（时间最少，辅助空间最多）</h2><p>思路：采用快速排序思想，整个算法只需仿照快速排序的第一趟，只是判别条件不再是当前元素和枢轴值比较而是判断当前元素的奇偶性。时间复杂度O(n), 空间复杂度为O(1)</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sheft</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 将长度为n的线性表a中的偶数移动到奇数前面</span></span><br><span class="line">    <span class="keyword">int</span> temp = a[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, j = n<span class="number">-1</span>;  <span class="comment">// 记录当前区间的小标</span></span><br><span class="line">    <span class="keyword">while</span> (i&lt;j)&#123;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;j &amp;&amp; a[j]%<span class="number">2</span>!=<span class="number">0</span>)</span><br><span class="line">            j--;    <span class="comment">// 查找从前区间的最后面的一个偶数</span></span><br><span class="line">        a[i] = a[j]; <span class="comment">// 将这个偶数移动到当前区间的最前面</span></span><br><span class="line">        <span class="keyword">while</span> (i&lt;j &amp;&amp; a[i]%<span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">            i++;  <span class="comment">// 查找从前区间的最前面的一个奇数</span></span><br><span class="line">        a[j] = a[i];  <span class="comment">// 将这个奇数移动到当前区间的最后面</span></span><br><span class="line">    &#125;</span><br><span class="line">    a[i] = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="c">void sheft(int *a, int n){
+    // 将长度为n的线性表a中的偶数移动到奇数前面
+    int temp = a[0];
+    int i = 0, j = n-1;  // 记录当前区间的小标
+    while (i&lt;j){
+        while(i&lt;j &amp;&amp; a[j]%2!=0)
+            j--;    // 查找从前区间的最后面的一个偶数
+        a[i] = a[j]; // 将这个偶数移动到当前区间的最前面
+        while (i&lt;j &amp;&amp; a[i]%2 == 0)
+            i++;  // 查找从前区间的最前面的一个奇数
+        a[j] = a[i];  // 将这个奇数移动到当前区间的最后面
+    }
+    a[i] = temp;
+}
+</code></pre>
 <h2 id="求二叉树中以权值为-X-的-结点为根的子树的深度"><a href="#求二叉树中以权值为-X-的-结点为根的子树的深度" class="headerlink" title="*求二叉树中以权值为 X 的 结点为根的子树的深度"></a>*求二叉树中以权值为 <code>X</code> 的 结点为根的子树的深度</h2><p>思路：求二叉树的深度可以递归求左右子树的深度，然后取其较大者加一</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getDeepth</span><span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 求二叉树 T 的深度</span></span><br><span class="line">    <span class="keyword">int</span> ld, rd;</span><br><span class="line">    <span class="keyword">if</span> (T == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;   <span class="comment">// 空树</span></span><br><span class="line">    ld = getDeepth(T-&gt;lchild);</span><br><span class="line">    rd = getDeepth(T-&gt;rchild);</span><br><span class="line">    <span class="keyword">return</span> (ld&gt;rd ?ld:rd)+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(BiTree, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 对结点进行访问，如果结点权值为 x 时，打印以该节点的根的子树的深度</span></span><br><span class="line">    <span class="keyword">if</span> (T-&gt;data == x)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, getDeepth(T));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 先序遍历二叉树</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">preOrderVisit</span><span class="params">(BiTree T, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (T!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        visit(T, x);</span><br><span class="line">        preOrderVisit(T-&gt;lchild);</span><br><span class="line">        preOrderVisit(T-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="c">int getDeepth(BiTree T){
+    // 求二叉树 T 的深度
+    int ld, rd;
+    if (T == NULL)
+        return 0;   // 空树
+    ld = getDeepth(T-&gt;lchild);
+    rd = getDeepth(T-&gt;rchild);
+    return (ld&gt;rd ?ld:rd)+1;
+}
+
+void visit(BiTree, int x){
+    // 对结点进行访问，如果结点权值为 x 时，打印以该节点的根的子树的深度
+    if (T-&gt;data == x){
+        printf(&quot;%d\n&quot;, getDeepth(T));
+    }
+}
+
+// 先序遍历二叉树
+void preOrderVisit(BiTree T, int x){
+    if (T!=NULL){
+        visit(T, x);
+        preOrderVisit(T-&gt;lchild);
+        preOrderVisit(T-&gt;rchild);
+    }
+}
+</code></pre>
 <h1 id="2015-年"><a href="#2015-年" class="headerlink" title="2015 年"></a>2015 年</h1><h2 id="判断二叉树是否为二叉排序树"><a href="#判断二叉树是否为二叉排序树" class="headerlink" title="*判断二叉树是否为二叉排序树"></a>*判断二叉树是否为二叉排序树</h2><p>思路：对于二叉排序树来说，其中序遍历序列为一个递增有序序列。因此，对给定的二叉树进行中序遍历，如果始终能保持前一个值比后一个值小，则说明该二叉树是一棵二叉排序树</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">KeyType predt = <span class="number">-32767</span>;    <span class="comment">// predt 为全局变量。保存当前节点中序前驱的值</span></span><br><span class="line">                           <span class="comment">// 初值为负无穷</span></span><br><span class="line"><span class="comment">// 若二叉树 bt 是二叉排序树 jugedBST 返回值 1，否则返回 0</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">JugedBST</span><span class="params">(BiTree bt)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> b1, b2;</span><br><span class="line">    <span class="keyword">if</span> (bt == <span class="literal">NULL</span>)     <span class="comment">// 空树</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        b1 = JugedBST(bt-&gt;lchild);   <span class="comment">// 判断左子树是否是二叉排序树</span></span><br><span class="line">        <span class="keyword">if</span> (b1==<span class="number">0</span> || predt&gt;=bt-&gt;data)  <span class="comment">// 若左子树返回值0或前驱大于等于当前节点</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;            <span class="comment">// 则不是二叉排序树</span></span><br><span class="line">        predt = bt-&gt;data;   <span class="comment">// 保存当前节点的关键字</span></span><br><span class="line">        b2 = JugedBST(bt-&gt;rchild);   <span class="comment">// 判断右子树</span></span><br><span class="line">        <span class="keyword">return</span> b2;        <span class="comment">// 返回右子树的结果</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="c">KeyType predt = -32767;    // predt 为全局变量。保存当前节点中序前驱的值
+                           // 初值为负无穷
+// 若二叉树 bt 是二叉排序树 jugedBST 返回值 1，否则返回 0
+int JugedBST(BiTree bt){
+    int b1, b2;
+    if (bt == NULL)     // 空树
+        return 1;
+    else{
+        b1 = JugedBST(bt-&gt;lchild);   // 判断左子树是否是二叉排序树
+        if (b1==0 || predt&gt;=bt-&gt;data)  // 若左子树返回值0或前驱大于等于当前节点
+            return 0;            // 则不是二叉排序树
+        predt = bt-&gt;data;   // 保存当前节点的关键字
+        b2 = JugedBST(bt-&gt;rchild);   // 判断右子树
+        return b2;        // 返回右子树的结果
+    }
+}
+
+
+</code></pre>
 <h2 id="将无向图邻接矩阵转为对应的邻接表的算法"><a href="#将无向图邻接矩阵转为对应的邻接表的算法" class="headerlink" title="*将无向图邻接矩阵转为对应的邻接表的算法"></a>*将无向图邻接矩阵转为对应的邻接表的算法</h2><p>思路： 首先初始化邻接表。遍历邻接矩阵，在遍历顶点 i 时，若发现v[i][j] 不等于 0 或无穷，则表示i, j有边，将这条边节点插入到邻接表的第i个表头节点之前。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> INF = <span class="number">32767</span>;                <span class="comment">// 全局变量表示无穷</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Convert</span><span class="params">(<span class="keyword">int</span> G[N][N], ALGraph &amp;ALGraph)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 此算法将邻接矩阵 G 转换为邻居表 ALGraph</span></span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;N; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span> (i=<span class="number">0</span>; j&lt;N; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (G[i][j]!=<span class="number">0</span> &amp;&amp; G[i][j]!=INF)&#123;   <span class="comment">// 顶点 i 和 j 有边</span></span><br><span class="line">                ArcNode *p = (ArcNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(ArcNode)); <span class="comment">// 创建边表节点 p</span></span><br><span class="line">                p-&gt;adjvex = j;</span><br><span class="line">                p-&gt;next = ALGraph[i].frist;    <span class="comment">// 将 p 插入顶点表节点之后</span></span><br><span class="line">                ALGraph[i].first = p;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="给定图-G-V-E-其中-G-包含-n-个点和-m-条边。统计-G-中连通块分量的个数"><a href="#给定图-G-V-E-其中-G-包含-n-个点和-m-条边。统计-G-中连通块分量的个数" class="headerlink" title="*给定图 G = (V, E) 其中 G 包含 n 个点和 m 条边。统计 G 中连通块分量的个数"></a>*给定图 <code>G = (V, E)</code> 其中 <code>G</code> 包含 <code>n</code> 个点和 <code>m</code> 条边。统计 <code>G</code> 中连通块分量的个数</h2><p>思路：由于深度优先搜素算法每次能遍历一个连通块，故只需统计调用 DFS 调用的次数即可。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;    <span class="comment">// 全局变量，记录图G连通块的数目</span></span><br><span class="line"><span class="keyword">bool</span> visited[MAX_VERTEX_NUM];    <span class="comment">// 访问标记数组</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CountConnectedBlock</span><span class="params">(Graph G)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 该算法统计图 G 的连通块数目</span></span><br><span class="line">    <span class="keyword">for</span> (v=<span class="number">0</span>; v&lt;G.vexnum; v++)</span><br><span class="line">        visited[v] = FALSE;   <span class="comment">// 初始化访问标记数组</span></span><br><span class="line">    <span class="keyword">for</span> (v=<span class="number">0</span>; v&lt;G.vexnum; v++)&#123;</span><br><span class="line">        <span class="comment">// 如果没有访问，从该顶点出发，调用 DFS，访问该顶点所在的连通块，并将连通数量+1</span></span><br><span class="line">        <span class="keyword">if</span> (!visited[v])&#123;</span><br><span class="line">            count++;</span><br><span class="line">            DFS(G, v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(Graph G, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 从顶点 v 出发，采用递归思想，深度优先遍历图 G</span></span><br><span class="line">    visit(v);         <span class="comment">// 访问顶点 v</span></span><br><span class="line">    visited[v] = TRUE;   <span class="comment">// 设已访问标记、</span></span><br><span class="line">    <span class="keyword">for</span> (w=FirstNeigbor(G, v); w&gt;=<span class="number">0</span>; w=NextNeighbor(G, v, w))&#123;</span><br><span class="line">        <span class="keyword">if</span> (!visited[w])&#123;       <span class="comment">// w 为 v 的尚未访问邻接节点</span></span><br><span class="line">            DFS(G, w);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<pre><code class="c">int INF = 32767;                // 全局变量表示无穷
+void Convert(int G[N][N], ALGraph &amp;ALGraph){
+    // 此算法将邻接矩阵 G 转换为邻居表 ALGraph
+    for (i=0; i&lt;N; i++){
+        for (i=0; j&lt;N; j++){
+            if (G[i][j]!=0 &amp;&amp; G[i][j]!=INF){   // 顶点 i 和 j 有边
+                ArcNode *p = (ArcNode*)malloc(sizeof(ArcNode)); // 创建边表节点 p
+                p-&gt;adjvex = j;
+                p-&gt;next = ALGraph[i].frist;    // 将 p 插入顶点表节点之后
+                ALGraph[i].first = p;
+            }
+        }
+    }
+}
+</code></pre>
+<h2 id="给定图-G-V-E-其中-G-包含-n-个点和-m-条边。统计-G-中连通块分量的个数"><a href="#给定图-G-V-E-其中-G-包含-n-个点和-m-条边。统计-G-中连通块分量的个数" class="headerlink" title="*给定图 G = (V, E) 其中 G 包含 n 个点和 m 条边。统计 G 中连通块分量的个数"></a>*给定图 <code>G = (V, E)</code> 其中 <code>G</code> 包含 <code>n</code> 个点和 <code>m</code> 条边。统计 <code>G</code> 中连通块分量的个数</h2><p>思路：由于深度优先搜素算法每次能遍历一个连通块，故只需统计调用 DFS 调用的次数即可。</p>
+<pre><code class="c">int count = 0;    // 全局变量，记录图G连通块的数目
+bool visited[MAX_VERTEX_NUM];    // 访问标记数组
+void CountConnectedBlock(Graph G){
+    // 该算法统计图 G 的连通块数目
+    for (v=0; v&lt;G.vexnum; v++)
+        visited[v] = FALSE;   // 初始化访问标记数组
+    for (v=0; v&lt;G.vexnum; v++){
+        // 如果没有访问，从该顶点出发，调用 DFS，访问该顶点所在的连通块，并将连通数量+1
+        if (!visited[v]){
+            count++;
+            DFS(G, v);
+        }
+    }
+}
+
+void DFS(Graph G, int v){
+    // 从顶点 v 出发，采用递归思想，深度优先遍历图 G
+    visit(v);         // 访问顶点 v
+    visited[v] = TRUE;   // 设已访问标记、
+    for (w=FirstNeigbor(G, v); w&gt;=0; w=NextNeighbor(G, v, w)){
+        if (!visited[w]){       // w 为 v 的尚未访问邻接节点
+            DFS(G, w);
+        }
+    }
+}
+</code></pre>
 <h1 id="2016-年"><a href="#2016-年" class="headerlink" title="2016 年"></a>2016 年</h1><h2 id="线性表元素递增，单链表存储。删除表中有值相同的多余元素并释放空间"><a href="#线性表元素递增，单链表存储。删除表中有值相同的多余元素并释放空间" class="headerlink" title="*线性表元素递增，单链表存储。删除表中有值相同的多余元素并释放空间"></a>*线性表元素递增，单链表存储。删除表中有值相同的多余元素并释放空间</h2><p>TODO</p>
 <h2 id="算法判别给定表达式中开括号是否配对出现"><a href="#算法判别给定表达式中开括号是否配对出现" class="headerlink" title="*算法判别给定表达式中开括号是否配对出现"></a>*算法判别给定表达式中开括号是否配对出现</h2><p>TODO</p>
 <h2 id="给定二叉树-T-设计算法复制二叉树-T"><a href="#给定二叉树-T-设计算法复制二叉树-T" class="headerlink" title="*给定二叉树 T 设计算法复制二叉树 T"></a>*给定二叉树 <code>T</code> 设计算法复制二叉树 <code>T</code></h2><p>TODO</p>
@@ -419,767 +672,206 @@
 <h1 id="2018-年"><a href="#2018-年" class="headerlink" title="2018 年"></a>2018 年</h1><h2 id="计算两个多项式乘积（给定-La、Lb-两个带头结点单链表表示的多项式）"><a href="#计算两个多项式乘积（给定-La、Lb-两个带头结点单链表表示的多项式）" class="headerlink" title="*计算两个多项式乘积（给定 La、Lb 两个带头结点单链表表示的多项式）"></a>*计算两个多项式乘积（给定 <code>La</code>、<code>Lb</code> 两个带头结点单链表表示的多项式）</h2><p>TODO</p>
 <h2 id="给定二叉树，以先序形式输出所有结点的值和结点所在层次"><a href="#给定二叉树，以先序形式输出所有结点的值和结点所在层次" class="headerlink" title="*给定二叉树，以先序形式输出所有结点的值和结点所在层次"></a>*给定二叉树，以先序形式输出所有结点的值和结点所在层次</h2><p>TODO</p>
 
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
-          
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='/statics/Kaer Morhen.mp3'></li>
+                        
+                    
+                </ul>
+            
+            
+            
         </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/posts/4a1a5b83/" rel="next" title="OSI 模型分层作用及实例">
-                <i class="fa fa-chevron-left"></i> OSI 模型分层作用及实例
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/ca37cdbd/" rel="prev" title="Numpy 笔记-基础篇">
-                Numpy 笔记-基础篇 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="EwdAger">
-            
-              <p class="site-author-name" itemprop="name">EwdAger</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">51</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          <div class="links-of-author motion-element">
-            
-              
-                <span class="links-of-author-item">
-                  <a href="https://github.com/EwdAger" target="_blank" title="GitHub">
-                    
-                      <i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="mailto:ewdager@hotmail.com" target="_blank" title="E-Mail">
-                    
-                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="https://steamcommunity.com/id/ewdager/" target="_blank" title="Steam">
-                    
-                      <i class="fa fa-fw fa-steam"></i>Steam</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="https://my.playstation.com/profile/EwdAger" target="_blank" title="PSN">
-                    
-                      <i class="fa fa-fw fa-gamepad"></i>PSN</a>
-                </span>
-              
-            
-          </div>
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-globe"></i>
-                Friends
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://xdong.me/" title="Hiccup" target="_blank">Hiccup</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://jakting.com/" title="hjthjthjt" target="_blank">hjthjthjt</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://shushugo.com/" title="pjs的小窝" target="_blank">pjs的小窝</a>
-                  </li>
-                
-              </ul>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/EwdAger" target="_blank"><span class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">52 <p>文章</p></a></li>
+                    <li><a href="/categories">11 <p>分类</p></a></li>
+                    <li><a href="/tags">37 <p>标签</p></a></li>
+                </ul>
             </div>
-          
-
-          
-
+            
+                
+                
+                    <div class="box sticky animated fadeInRight faster">
+                        <div id="toc" class="subbox">
+                            <h4>目录</h4>
+                            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2007-年"><span class="toc-number">1.</span> <span class="toc-text">2007 年</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#完成排序的归并算法"><span class="toc-number">1.1.</span> <span class="toc-text">*完成排序的归并算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#试完成求最短路径的-Dijkstra-算法"><span class="toc-number">1.2.</span> <span class="toc-text">*试完成求最短路径的 Dijkstra 算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#若找到指定结点，将该节点与其前驱结点交换，使得经常被查找的结点尽量位于前端，试设计线性表的顺序存储结构和链式存储结构。并写出上面策略的顺从查找算法。"><span class="toc-number">1.3.</span> <span class="toc-text">*若找到指定结点，将该节点与其前驱结点交换，使得经常被查找的结点尽量位于前端，试设计线性表的顺序存储结构和链式存储结构。并写出上面策略的顺从查找算法。</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2008-年"><span class="toc-number">2.</span> <span class="toc-text">2008 年</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#编写递归算法，统计并返回以-BT-为树根指针的二叉树叶子结点个数"><span class="toc-number">2.1.</span> <span class="toc-text">*编写递归算法，统计并返回以 BT 为树根指针的二叉树叶子结点个数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编写以-BST-为树根指针的二叉搜索树上进行查找值为-Item-的结点的非递归算法"><span class="toc-number">2.2.</span> <span class="toc-text">*编写以 BST 为树根指针的二叉搜索树上进行查找值为 Item 的结点的非递归算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2009-年"><span class="toc-number">3.</span> <span class="toc-text">2009 年</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#设计在顺序有序表中实现二分查找的算法"><span class="toc-number">3.1.</span> <span class="toc-text">*设计在顺序有序表中实现二分查找的算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编写一个算法作为将线性表-L-的数据建立一棵二叉排序树"><span class="toc-number">3.2.</span> <span class="toc-text">编写一个算法作为将线性表 L 的数据建立一棵二叉排序树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#带头结点的单链表中，所有节点值递增排序，编写函数。删除表-L-中所有其值大于等于-min-小于等于max-的结点"><span class="toc-number">3.3.</span> <span class="toc-text">带头结点的单链表中，所有节点值递增排序，编写函数。删除表 L 中所有其值大于等于 min 小于等于max 的结点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写出求-DFS-生成树（生成森林）的算法，并打印所有的树边"><span class="toc-number">3.4.</span> <span class="toc-text">*写出求 DFS 生成树（生成森林）的算法，并打印所有的树边</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2010-年"><span class="toc-number">4.</span> <span class="toc-text">2010 年</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#线性表插入删除一个结点"><span class="toc-number">4.1.</span> <span class="toc-text">线性表插入删除一个结点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉排序树采用二叉链表存储，删除结点值-X-的结点。删除后仍为二叉排序树（不考虑-X为根）"><span class="toc-number">4.2.</span> <span class="toc-text">*二叉排序树采用二叉链表存储，删除结点值 X 的结点。删除后仍为二叉排序树（不考虑 X为根）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设-X-和-Y-是表示成单链表的两个串，找出-X-中第一个不在-Y-中出现的字符"><span class="toc-number">4.3.</span> <span class="toc-text">*设 X 和 Y 是表示成单链表的两个串，找出 X 中第一个不在 Y 中出现的字符</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2011-年"><span class="toc-number">5.</span> <span class="toc-text">2011 年</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#求带头结点的单链表-L-中所含元素的个数，并给出单链表的数据结构示意图"><span class="toc-number">5.1.</span> <span class="toc-text">求带头结点的单链表 L 中所含元素的个数，并给出单链表的数据结构示意图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#递归函数求二叉树的高度"><span class="toc-number">5.2.</span> <span class="toc-text">递归函数求二叉树的高度</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2012-年"><span class="toc-number">6.</span> <span class="toc-text">2012 年</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对一棵孩子-兄弟链表示的树统计其叶子的个数"><span class="toc-number">6.1.</span> <span class="toc-text">*对一棵孩子 - 兄弟链表示的树统计其叶子的个数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查找值为-X-的结点（二叉树中）。用-C-语言打印值为-X-的结点的所有祖先并分析时间复杂度"><span class="toc-number">6.2.</span> <span class="toc-text">*查找值为 X 的结点（二叉树中）。用 C 语言打印值为 X 的结点的所有祖先并分析时间复杂度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#L1、L2为两循环单链表的头结点指针。m，n分别为数据结点个数。用最快速度将两表并成一个带头结点的循环单链表"><span class="toc-number">6.3.</span> <span class="toc-text">*L1、L2为两循环单链表的头结点指针。m，n分别为数据结点个数。用最快速度将两表并成一个带头结点的循环单链表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#求无向图-G-（采用邻接表存储）的连通分量的个数"><span class="toc-number">6.4.</span> <span class="toc-text">*求无向图 G （采用邻接表存储）的连通分量的个数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2013-年"><span class="toc-number">7.</span> <span class="toc-text">2013 年</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#给定二叉树-T-。统计二叉树-T-中结点的个数"><span class="toc-number">7.1.</span> <span class="toc-text">*给定二叉树 T 。统计二叉树 T 中结点的个数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2014-年"><span class="toc-number">8.</span> <span class="toc-text">2014 年</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#线性表（a1-a2-…-an）设计把所有偶数移动所有奇数前面。（时间最少，辅助空间最多）"><span class="toc-number">8.1.</span> <span class="toc-text">*线性表（a1, a2, … , an）设计把所有偶数移动所有奇数前面。（时间最少，辅助空间最多）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#求二叉树中以权值为-X-的-结点为根的子树的深度"><span class="toc-number">8.2.</span> <span class="toc-text">*求二叉树中以权值为 X 的 结点为根的子树的深度</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2015-年"><span class="toc-number">9.</span> <span class="toc-text">2015 年</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#判断二叉树是否为二叉排序树"><span class="toc-number">9.1.</span> <span class="toc-text">*判断二叉树是否为二叉排序树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将无向图邻接矩阵转为对应的邻接表的算法"><span class="toc-number">9.2.</span> <span class="toc-text">*将无向图邻接矩阵转为对应的邻接表的算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#给定图-G-V-E-其中-G-包含-n-个点和-m-条边。统计-G-中连通块分量的个数"><span class="toc-number">9.3.</span> <span class="toc-text">*给定图 G = (V, E) 其中 G 包含 n 个点和 m 条边。统计 G 中连通块分量的个数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2016-年"><span class="toc-number">10.</span> <span class="toc-text">2016 年</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#线性表元素递增，单链表存储。删除表中有值相同的多余元素并释放空间"><span class="toc-number">10.1.</span> <span class="toc-text">*线性表元素递增，单链表存储。删除表中有值相同的多余元素并释放空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法判别给定表达式中开括号是否配对出现"><span class="toc-number">10.2.</span> <span class="toc-text">*算法判别给定表达式中开括号是否配对出现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#给定二叉树-T-设计算法复制二叉树-T"><span class="toc-number">10.3.</span> <span class="toc-text">*给定二叉树 T 设计算法复制二叉树 T</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#给图-G-V-E-和-G-中两个顶点-S-T-求一条顶点-t-到顶点-S-的简单路径"><span class="toc-number">10.4.</span> <span class="toc-text">*给图 G = (V, E) 和 G 中两个顶点 S, T 求一条顶点 t 到顶点 S 的简单路径</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2017-年"><span class="toc-number">11.</span> <span class="toc-text">2017 年</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#中序遍历二叉树-T-非递归"><span class="toc-number">11.1.</span> <span class="toc-text">*中序遍历二叉树 T (非递归)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#给定两个非空集合-A-和-B-分别用线性表-L1-和-L2-存储。算法求解-A∪B"><span class="toc-number">11.2.</span> <span class="toc-text">*给定两个非空集合 A 和 B 分别用线性表 L1 和 L2 存储。算法求解 A∪B</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#给定表达式-A-B-C-D-E后缀表达式为ABC-DE-设计算法将原表达式转为为后缀表达式"><span class="toc-number">11.3.</span> <span class="toc-text">给定表达式 `A + B  C - D | E后缀表达式为ABC *+ DE /-` 设计算法将原表达式转为为后缀表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#给定两棵树-T1-和-T2-判断-T1-与-T2-是否相同（二叉树）"><span class="toc-number">11.4.</span> <span class="toc-text">*给定两棵树 T1 和 T2 判断 T1 与 T2 是否相同（二叉树）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2018-年"><span class="toc-number">12.</span> <span class="toc-text">2018 年</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#计算两个多项式乘积（给定-La、Lb-两个带头结点单链表表示的多项式）"><span class="toc-number">12.1.</span> <span class="toc-text">*计算两个多项式乘积（给定 La、Lb 两个带头结点单链表表示的多项式）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#给定二叉树，以先序形式输出所有结点的值和结点所在层次"><span class="toc-number">12.2.</span> <span class="toc-text">*给定二叉树，以先序形式输出所有结点的值和结点所在层次</span></a></li></ol></li></ol>
+                        </div>
+                    </div>
+                
+            
         </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2007-年"><span class="nav-number">1.</span> <span class="nav-text">2007 年</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#完成排序的归并算法"><span class="nav-number">1.1.</span> <span class="nav-text">*完成排序的归并算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#试完成求最短路径的-Dijkstra-算法"><span class="nav-number">1.2.</span> <span class="nav-text">*试完成求最短路径的 Dijkstra 算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#若找到指定结点，将该节点与其前驱结点交换，使得经常被查找的结点尽量位于前端，试设计线性表的顺序存储结构和链式存储结构。并写出上面策略的顺从查找算法。"><span class="nav-number">1.3.</span> <span class="nav-text">*若找到指定结点，将该节点与其前驱结点交换，使得经常被查找的结点尽量位于前端，试设计线性表的顺序存储结构和链式存储结构。并写出上面策略的顺从查找算法。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2008-年"><span class="nav-number">2.</span> <span class="nav-text">2008 年</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编写递归算法，统计并返回以-BT-为树根指针的二叉树叶子结点个数"><span class="nav-number">2.1.</span> <span class="nav-text">*编写递归算法，统计并返回以 BT 为树根指针的二叉树叶子结点个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写以-BST-为树根指针的二叉搜索树上进行查找值为-Item-的结点的非递归算法"><span class="nav-number">2.2.</span> <span class="nav-text">*编写以 BST 为树根指针的二叉搜索树上进行查找值为 Item 的结点的非递归算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2009-年"><span class="nav-number">3.</span> <span class="nav-text">2009 年</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#设计在顺序有序表中实现二分查找的算法"><span class="nav-number">3.1.</span> <span class="nav-text">*设计在顺序有序表中实现二分查找的算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写一个算法作为将线性表-L-的数据建立一棵二叉排序树"><span class="nav-number">3.2.</span> <span class="nav-text">编写一个算法作为将线性表 L 的数据建立一棵二叉排序树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#带头结点的单链表中，所有节点值递增排序，编写函数。删除表-L-中所有其值大于等于-min-小于等于max-的结点"><span class="nav-number">3.3.</span> <span class="nav-text">带头结点的单链表中，所有节点值递增排序，编写函数。删除表 L 中所有其值大于等于 min 小于等于max 的结点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写出求-DFS-生成树（生成森林）的算法，并打印所有的树边"><span class="nav-number">3.4.</span> <span class="nav-text">*写出求 DFS 生成树（生成森林）的算法，并打印所有的树边</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2010-年"><span class="nav-number">4.</span> <span class="nav-text">2010 年</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性表插入删除一个结点"><span class="nav-number">4.1.</span> <span class="nav-text">线性表插入删除一个结点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉排序树采用二叉链表存储，删除结点值-X-的结点。删除后仍为二叉排序树（不考虑-X为根）"><span class="nav-number">4.2.</span> <span class="nav-text">*二叉排序树采用二叉链表存储，删除结点值 X 的结点。删除后仍为二叉排序树（不考虑 X为根）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设-X-和-Y-是表示成单链表的两个串，找出-X-中第一个不在-Y-中出现的字符"><span class="nav-number">4.3.</span> <span class="nav-text">*设 X 和 Y 是表示成单链表的两个串，找出 X 中第一个不在 Y 中出现的字符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2011-年"><span class="nav-number">5.</span> <span class="nav-text">2011 年</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#求带头结点的单链表-L-中所含元素的个数，并给出单链表的数据结构示意图"><span class="nav-number">5.1.</span> <span class="nav-text">求带头结点的单链表 L 中所含元素的个数，并给出单链表的数据结构示意图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归函数求二叉树的高度"><span class="nav-number">5.2.</span> <span class="nav-text">递归函数求二叉树的高度</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2012-年"><span class="nav-number">6.</span> <span class="nav-text">2012 年</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对一棵孩子-兄弟链表示的树统计其叶子的个数"><span class="nav-number">6.1.</span> <span class="nav-text">*对一棵孩子 - 兄弟链表示的树统计其叶子的个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找值为-X-的结点（二叉树中）。用-C-语言打印值为-X-的结点的所有祖先并分析时间复杂度"><span class="nav-number">6.2.</span> <span class="nav-text">*查找值为 X 的结点（二叉树中）。用 C 语言打印值为 X 的结点的所有祖先并分析时间复杂度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L1、L2为两循环单链表的头结点指针。m，n分别为数据结点个数。用最快速度将两表并成一个带头结点的循环单链表"><span class="nav-number">6.3.</span> <span class="nav-text">*L1、L2为两循环单链表的头结点指针。m，n分别为数据结点个数。用最快速度将两表并成一个带头结点的循环单链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求无向图-G-（采用邻接表存储）的连通分量的个数"><span class="nav-number">6.4.</span> <span class="nav-text">*求无向图 G （采用邻接表存储）的连通分量的个数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2013-年"><span class="nav-number">7.</span> <span class="nav-text">2013 年</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#给定二叉树-T-。统计二叉树-T-中结点的个数"><span class="nav-number">7.1.</span> <span class="nav-text">*给定二叉树 T 。统计二叉树 T 中结点的个数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2014-年"><span class="nav-number">8.</span> <span class="nav-text">2014 年</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性表（a1-a2-…-an）设计把所有偶数移动所有奇数前面。（时间最少，辅助空间最多）"><span class="nav-number">8.1.</span> <span class="nav-text">*线性表（a1, a2, … , an）设计把所有偶数移动所有奇数前面。（时间最少，辅助空间最多）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求二叉树中以权值为-X-的-结点为根的子树的深度"><span class="nav-number">8.2.</span> <span class="nav-text">*求二叉树中以权值为 X 的 结点为根的子树的深度</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015-年"><span class="nav-number">9.</span> <span class="nav-text">2015 年</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#判断二叉树是否为二叉排序树"><span class="nav-number">9.1.</span> <span class="nav-text">*判断二叉树是否为二叉排序树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将无向图邻接矩阵转为对应的邻接表的算法"><span class="nav-number">9.2.</span> <span class="nav-text">*将无向图邻接矩阵转为对应的邻接表的算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给定图-G-V-E-其中-G-包含-n-个点和-m-条边。统计-G-中连通块分量的个数"><span class="nav-number">9.3.</span> <span class="nav-text">*给定图 G = (V, E) 其中 G 包含 n 个点和 m 条边。统计 G 中连通块分量的个数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016-年"><span class="nav-number">10.</span> <span class="nav-text">2016 年</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性表元素递增，单链表存储。删除表中有值相同的多余元素并释放空间"><span class="nav-number">10.1.</span> <span class="nav-text">*线性表元素递增，单链表存储。删除表中有值相同的多余元素并释放空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法判别给定表达式中开括号是否配对出现"><span class="nav-number">10.2.</span> <span class="nav-text">*算法判别给定表达式中开括号是否配对出现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给定二叉树-T-设计算法复制二叉树-T"><span class="nav-number">10.3.</span> <span class="nav-text">*给定二叉树 T 设计算法复制二叉树 T</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给图-G-V-E-和-G-中两个顶点-S-T-求一条顶点-t-到顶点-S-的简单路径"><span class="nav-number">10.4.</span> <span class="nav-text">*给图 G = (V, E) 和 G 中两个顶点 S, T 求一条顶点 t 到顶点 S 的简单路径</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2017-年"><span class="nav-number">11.</span> <span class="nav-text">2017 年</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#中序遍历二叉树-T-非递归"><span class="nav-number">11.1.</span> <span class="nav-text">*中序遍历二叉树 T (非递归)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给定两个非空集合-A-和-B-分别用线性表-L1-和-L2-存储。算法求解-A∪B"><span class="nav-number">11.2.</span> <span class="nav-text">*给定两个非空集合 A 和 B 分别用线性表 L1 和 L2 存储。算法求解 A∪B</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给定表达式-A-B-C-D-E后缀表达式为ABC-DE-设计算法将原表达式转为为后缀表达式"><span class="nav-number">11.3.</span> <span class="nav-text">给定表达式 `A + B  C - D | E后缀表达式为ABC *+ DE /-` 设计算法将原表达式转为为后缀表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给定两棵树-T1-和-T2-判断-T1-与-T2-是否相同（二叉树）"><span class="nav-number">11.4.</span> <span class="nav-text">*给定两棵树 T1 和 T2 判断 T1 与 T2 是否相同（二叉树）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2018-年"><span class="nav-number">12.</span> <span class="nav-text">2018 年</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算两个多项式乘积（给定-La、Lb-两个带头结点单链表表示的多项式）"><span class="nav-number">12.1.</span> <span class="nav-text">*计算两个多项式乘积（给定 La、Lb 两个带头结点单链表表示的多项式）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给定二叉树，以先序形式输出所有结点的值和结点所在层次"><span class="nav-number">12.2.</span> <span class="nav-text">*给定二叉树，以先序形式输出所有结点的值和结点所在层次</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
     </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">EwdAger</span>
-  <span>&nbsp;湘ICP备16015728号-2</span>
-  
-
-  
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2019
+        <span class="gradient-text">
+            EwdAger
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.3.5" target="_blank" rel="noopener">v1.3.5</a></small>
+    </p>
+</footer>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
 
 
 
-  <span class="post-meta-divider">|</span>
+    <script src="/js/busuanzi.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('span[id^="busuanzi_"]').length) {
+                initialBusuanzi();
+            }
+        });
+    </script>
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-149874671-1');
+    </script>
 
 
 
 
-        
 
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["Farewell,good hunter.May you find your worth in the waking world.", "再见，善良的猎人。愿你能在清醒的世界中找到自己的价值。"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
 
-
-
-  <script type="text/javascript">
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//tajs.qq.com/stats?sId=64934470";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
 </script>
 
 
-
-
-
-
-
-
-
-  
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-  
-  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-  
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-  
-
-
-  
-
-  
-
-</body>
 </html>

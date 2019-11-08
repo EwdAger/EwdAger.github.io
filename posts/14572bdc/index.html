@@ -1,1177 +1,880 @@
+
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html lang="zh-CN" class="loading">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="python,计算机网络,Socket编程,聊天室,">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="聊天室单工实现：单工版非常简单，只能客户端单方面向服务端发消息，服务端回复固定模板消息。 Server: 12345678910111213141516171819202122232425262728# -*- coding: utf-8 -*-import socketimport threadingimport timedef tcplink(sock, addr):    print &apos;Ac">
-<meta name="keywords" content="python,计算机网络,Socket编程,聊天室">
-<meta property="og:type" content="article">
-<meta property="og:title" content="python实现单工、半双工、全双工聊天室">
-<meta property="og:url" content="http://gvoidy.cn/posts/14572bdc/index.html">
-<meta property="og:site_name" content="极光技术小栈">
-<meta property="og:description" content="聊天室单工实现：单工版非常简单，只能客户端单方面向服务端发消息，服务端回复固定模板消息。 Server: 12345678910111213141516171819202122232425262728# -*- coding: utf-8 -*-import socketimport threadingimport timedef tcplink(sock, addr):    print &apos;Ac">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-03T05:47:53.679Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python实现单工、半双工、全双工聊天室">
-<meta name="twitter:description" content="聊天室单工实现：单工版非常简单，只能客户端单方面向服务端发消息，服务端回复固定模板消息。 Server: 12345678910111213141516171819202122232425262728# -*- coding: utf-8 -*-import socketimport threadingimport timedef tcplink(sock, addr):    print &apos;Ac">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '5.1.3',
-    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://gvoidy.cn/posts/14572bdc/">
-
-
-
-
-
-  <title>python实现单工、半双工、全双工聊天室 | 极光技术小栈</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-  
-
-
-
-
-
-
-
-
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>python实现单工、半双工、全双工聊天室 - 极光技术小栈</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
+    <meta name="description" content="聊天室单工实现：单工版非常简单，只能客户端单方面向服务端发消息，服务端回复固定模板消息。
+Server:
+# -*- coding: utf-8 -*-
+
+import socket
+import ,"> 
+    <meta name="author" content="EwdAger"> 
+    <link rel="alternative" href="atom.xml" title="极光技术小栈" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_xjbfxy4nzcj.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">极光技术小栈</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tag"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
-            
-            搜索
-          </a>
-        </li>
-      
-    </ul>
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://gvoidy.cn/posts/14572bdc/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="EwdAger">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="极光技术小栈">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">python实现单工、半双工、全双工聊天室</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-29T08:56:16+08:00">
-                2017-12-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机网络相关/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机网络相关</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+</html>
+<body class="loading">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
-      </header>
-    
+    </div>
+    <span id="config-title" style="display:none">极光技术小栈</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://gvoidy.cn">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">python实现单工、半双工、全双工聊天室</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+    <div class="section">
+        <div class= article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg);">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                    <a href="/categories/计算机网络相关"><b>「 </b>计算机网络相关<b> 」</b></a>
+                
+                十二月 29, 2017
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/14572bdc/" title="python实现单工、半双工、全双工聊天室">python实现单工、半双工、全双工聊天室</a></h3>
+            
+                <p class="post-count animated fadeInDown">
+                    
+                        <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        16k
+                    </span>
+                    
+                    
+                        <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        15 mins.
+                    </span>
+                    
+                    
+                    
+                        <span id="busuanzi_container_page_pv">
+                            <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                            <span id="busuanzi_value_page_pv">0</span>
+                        </span>
+                    
+                </p>
+            
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Socket编程/">Socket编程</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/聊天室/">聊天室</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
+            
+        </div>
+    </div>
+</div>
 
-      
-      
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 
-      
-        <h2 id="聊天室单工实现："><a href="#聊天室单工实现：" class="headerlink" title="聊天室单工实现："></a>聊天室单工实现：</h2><p>单工版非常简单，只能客户端单方面向服务端发消息，服务端回复固定模板消息。</p>
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn slower">
+            <h2 id="聊天室单工实现："><a href="#聊天室单工实现：" class="headerlink" title="聊天室单工实现："></a>聊天室单工实现：</h2><p>单工版非常简单，只能客户端单方面向服务端发消息，服务端回复固定模板消息。</p>
 <p><strong>Server:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tcplink</span><span class="params">(sock, addr)</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Accept new connection from %s:%s...'</span> % addr</span><br><span class="line">    sock.send(<span class="string">'Welcome!'</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        data = sock.recv(<span class="number">1024</span>)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span> data == <span class="string">'exit'</span> <span class="keyword">or</span> <span class="keyword">not</span> data:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        sock.send(<span class="string">'Hello, %s!'</span> % data)</span><br><span class="line">    sock.close()</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Connection from %s:%s closed.'</span> % addr</span><br><span class="line"></span><br><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">s.bind((<span class="string">'127.0.0.1'</span>, <span class="number">9999</span>))</span><br><span class="line">s.listen(<span class="number">5</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Waiting for connection...'</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="comment"># 接受一个新连接:</span></span><br><span class="line">    sock, addr = s.accept()</span><br><span class="line">    <span class="comment"># 创建新线程来处理TCP连接:</span></span><br><span class="line">    t = threading.Thread(target=tcplink, args=(sock, addr))</span><br><span class="line">    t.start()</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p><strong>Client:</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line"><span class="comment"># 建立连接:</span></span><br><span class="line">s.connect((<span class="string">'127.0.0.1'</span>, <span class="number">9999</span>))</span><br><span class="line"><span class="comment"># 接收欢迎消息:</span></span><br><span class="line"><span class="keyword">print</span> s.recv(<span class="number">1024</span>)</span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> [<span class="string">'Michael'</span>, <span class="string">'Tracy'</span>, <span class="string">'Sarah'</span>]:</span><br><span class="line">    <span class="comment"># 发送数据:</span></span><br><span class="line">    s.send(data)</span><br><span class="line">    <span class="keyword">print</span> s.recv(<span class="number">1024</span>)</span><br><span class="line">s.send(<span class="string">'exit'</span>)</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure></p>
+<pre><code class="python"># -*- coding: utf-8 -*-
+
+import socket
+import threading
+import time
+
+def tcplink(sock, addr):
+    print &#39;Accept new connection from %s:%s...&#39; % addr
+    sock.send(&#39;Welcome!&#39;)
+    while True:
+        data = sock.recv(1024)
+        time.sleep(1)
+        if data == &#39;exit&#39; or not data:
+            break
+        sock.send(&#39;Hello, %s!&#39; % data)
+    sock.close()
+    print &#39;Connection from %s:%s closed.&#39; % addr
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.bind((&#39;127.0.0.1&#39;, 9999))
+s.listen(5)
+print &#39;Waiting for connection...&#39;
+while True:
+    # 接受一个新连接:
+    sock, addr = s.accept()
+    # 创建新线程来处理TCP连接:
+    t = threading.Thread(target=tcplink, args=(sock, addr))
+    t.start()
+</code></pre>
+<p><strong>Client:</strong></p>
+<pre><code class="python"># -*- coding: utf-8 -*-
+
+import socket
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# 建立连接:
+s.connect((&#39;127.0.0.1&#39;, 9999))
+# 接收欢迎消息:
+print s.recv(1024)
+for data in [&#39;Michael&#39;, &#39;Tracy&#39;, &#39;Sarah&#39;]:
+    # 发送数据:
+    s.send(data)
+    print s.recv(1024)
+s.send(&#39;exit&#39;)
+s.close()
+</code></pre>
 <p>此为最基础的基于TCP协议的聊天程序，实现了Socket编程的主要流程。</p>
 <blockquote>
 <p>服务器进程首先要绑定一个端口并监听来自其他客户端的连接。如果某个客户端连接过来了，服务器就与该客户端建立Socket连接，随后的通信就靠这个Socket连接了。<br>所以，服务器会打开固定端口（比如80）监听，每来一个客户端连接，就创建该Socket连接。由于服务器会有大量来自客户端的连接，所以，服务器要能够区分一个Socket连接是和哪个客户端绑定的。一个Socket依赖4项：服务器地址、服务器端口、客户端地址、客户端端口来唯一确定一个Socket。<br>但是服务器还需要同时响应多个客户端的请求，所以，每个连接都需要一个新的进程或者新的线程来处理，否则，服务器一次就只能服务一个客户端了。</p>
 </blockquote>
 <h2 id="聊天室半双工实现："><a href="#聊天室半双工实现：" class="headerlink" title="聊天室半双工实现："></a>聊天室半双工实现：</h2><p>半双工实现是连接建立以后，服务器等待客户端发送消息，客户端发送消息后等待接收服务器，这样一来一回循环往复下去。直到出现quit，关闭连接。</p>
-<p><strong>Server:</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> ctime</span><br><span class="line"></span><br><span class="line">HOST = <span class="string">'localhost'</span></span><br><span class="line">PORT = <span class="number">3300</span></span><br><span class="line">BUSIZ = <span class="number">1024</span></span><br><span class="line">ADDR = (HOST, PORT)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">closeTCnt</span><span class="params">()</span>:</span></span><br><span class="line">    TCntSock.close()</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"Session closing.."</span></span><br><span class="line"></span><br><span class="line">TSerSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">TSerSock.bind(ADDR)</span><br><span class="line">TSerSock.listen(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'Waitting for connection...'</span></span><br><span class="line">        (TCntSock, cntAddr) = TSerSock.accept()</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'...connection from:'</span>, cntAddr</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">                rData = TCntSock.recv(BUSIZ)</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> rData:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">elif</span> rData == <span class="string">'quit'</span>:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">print</span> <span class="string">'From [%s] %s \n  %s'</span> % (cntAddr[<span class="number">0</span>], ctime(), rData)</span><br><span class="line"></span><br><span class="line">                <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">                    sData = raw_input(<span class="string">'&gt;  '</span>)</span><br><span class="line">                    <span class="keyword">if</span> <span class="keyword">not</span> sData:</span><br><span class="line">                        <span class="keyword">continue</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        TCntSock.send(<span class="string">'From [%s] %s \n  %s'</span> %</span><br><span class="line">                                      (cntAddr[<span class="number">0</span>], ctime(), sData))</span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">except</span> socket.error, detail:</span><br><span class="line">            <span class="keyword">print</span> detail</span><br><span class="line">        closeTCnt()</span><br><span class="line"></span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    TSerSock.close()</span><br></pre></td></tr></table></figure></p>
-<p><strong>Client:</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line">HOST = <span class="string">'localhost'</span></span><br><span class="line">PORT = <span class="number">3300</span></span><br><span class="line">BUFSIZ = <span class="number">1024</span></span><br><span class="line">ADDR = (HOST, PORT)</span><br><span class="line">tryCon = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">TCnt</span><span class="params">()</span>:</span></span><br><span class="line">    tcpCliSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            tcpCliSock.connect(ADDR)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">print</span> <span class="string">u"正在尝试连接远程主机 "</span></span><br><span class="line">            <span class="keyword">global</span> tryCon</span><br><span class="line">            tryCon += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> tryCon == <span class="number">3</span>:</span><br><span class="line">                <span class="keyword">print</span> <span class="string">u"无法连接上远程主机，请稍后再试"</span></span><br><span class="line">                exit()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">u'登陆成功（通讯结束请输入"quit"退出）\n'</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            data = raw_input(<span class="string">'&gt;  '</span>)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> data:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">elif</span> data == <span class="string">'quit'</span>:</span><br><span class="line">                tcpCliSock.send(data)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                tcpCliSock.send(data)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">                data = tcpCliSock.recv(BUFSIZ)</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> data:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">print</span> data</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">except</span> socket.error, e:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"Session closing"</span></span><br><span class="line">        <span class="keyword">print</span> e</span><br><span class="line">    tcpCliSock.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    TCnt()</span><br></pre></td></tr></table></figure></p>
+<p><strong>Server:</strong></p>
+<pre><code class="python"># -*- coding: utf-8 -*-
+
+import socket
+from time import ctime
+
+HOST = &#39;localhost&#39;
+PORT = 3300
+BUSIZ = 1024
+ADDR = (HOST, PORT)
+
+def closeTCnt():
+    TCntSock.close()
+    print &quot;Session closing..&quot;
+
+TSerSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+TSerSock.bind(ADDR)
+TSerSock.listen(1)
+try:
+    while True:
+        print &#39;Waitting for connection...&#39;
+        (TCntSock, cntAddr) = TSerSock.accept()
+        print &#39;...connection from:&#39;, cntAddr
+
+        try:
+
+            while True:
+                rData = TCntSock.recv(BUSIZ)
+                if not rData:
+                    continue
+                elif rData == &#39;quit&#39;:
+                    break
+                else:
+                    print &#39;From [%s] %s \n  %s&#39; % (cntAddr[0], ctime(), rData)
+
+                while True:
+                    sData = raw_input(&#39;&gt;  &#39;)
+                    if not sData:
+                        continue
+                    else:
+                        TCntSock.send(&#39;From [%s] %s \n  %s&#39; %
+                                      (cntAddr[0], ctime(), sData))
+                        break
+
+        except socket.error, detail:
+            print detail
+        closeTCnt()
+
+finally:
+    TSerSock.close()
+</code></pre>
+<p><strong>Client:</strong></p>
+<pre><code class="python"># -*- coding: utf-8 -*-
+
+import socket
+
+HOST = &#39;localhost&#39;
+PORT = 3300
+BUFSIZ = 1024
+ADDR = (HOST, PORT)
+tryCon = 0
+
+def TCnt():
+    tcpCliSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    while True:
+        try:
+            tcpCliSock.connect(ADDR)
+        except:
+            print u&quot;正在尝试连接远程主机 &quot;
+            global tryCon
+            tryCon += 1
+            if tryCon == 3:
+                print u&quot;无法连接上远程主机，请稍后再试&quot;
+                exit()
+        else:
+            break
+    print u&#39;登陆成功（通讯结束请输入&quot;quit&quot;退出）\n&#39;
+
+    try:
+        while True:
+            data = raw_input(&#39;&gt;  &#39;)
+            if not data:
+                continue
+            elif data == &#39;quit&#39;:
+                tcpCliSock.send(data)
+                break
+            else:
+                tcpCliSock.send(data)
+
+            while True:
+                data = tcpCliSock.recv(BUFSIZ)
+
+                if not data:
+                    continue
+                else:
+                    print data
+                    break
+    except socket.error, e:
+        print &quot;Session closing&quot;
+        print e
+    tcpCliSock.close()
+
+
+if __name__ == &quot;__main__&quot;:
+    TCnt()
+
+</code></pre>
 <p>这里就出现了一个有趣的问题，为什么这段代码只能一来一回的发送消息呢？讲道理应该发完消息不应该可以接着发消息吗？凭什么发了一条消息必须等待另一端发消息回来才能继续发？这就引出了全双工实现的原理。</p>
 <h2 id="聊天室全双工-P2P-实现："><a href="#聊天室全双工-P2P-实现：" class="headerlink" title="聊天室全双工(P2P)实现："></a>聊天室全双工(P2P)实现：</h2><p>因为TCP连接是一个流，所以Socket模块的recv()是<strong>直到Scoket连接终断不会停止等待接受从另一端发送</strong>的消息的。全双工实现比半双工工多了个线程处理，所以服务器与客户端必须开两个线程，一个收消息一个发消息，并且发消息的线程需要阻塞收消息的线程。</p>
-<p><strong>Server:</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> ctime</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">HOST = <span class="string">''</span></span><br><span class="line">PORT = <span class="number">9999</span></span><br><span class="line">BUFSIZ = <span class="number">1024</span></span><br><span class="line">ADDR = (HOST, PORT)</span><br><span class="line"></span><br><span class="line">tcpSerSock = socket(AF_INET, SOCK_STREAM)</span><br><span class="line">tcpSerSock.bind(ADDR)</span><br><span class="line">tcpSerSock.listen(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">clients = &#123;&#125;  <span class="comment"># username -&gt; socket</span></span><br><span class="line">chatwith = &#123;&#125;  <span class="comment"># user1.socket -&gt; user2.socket</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># clients字典中记录了连接的客户端的用户名和套接字的对应关系</span></span><br><span class="line"><span class="comment"># chatwith字典中记录了通信双方的套接字的对应</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># messageTransform()处理客户端确定用户名之后发送的文本</span></span><br><span class="line"><span class="comment"># 文本只有四种类型：</span></span><br><span class="line"><span class="comment">#   None</span></span><br><span class="line"><span class="comment">#   Quit</span></span><br><span class="line"><span class="comment">#   To:someone</span></span><br><span class="line"><span class="comment">#   其他文本</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">messageTransform</span><span class="params">(sock, user)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        data = sock.recv(BUFSIZ)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> data:</span><br><span class="line">            <span class="keyword">if</span> chatwith.has_key(sock):</span><br><span class="line">                chatwith[sock].send(data)</span><br><span class="line">                <span class="keyword">del</span> chatwith[chatwith[sock]]</span><br><span class="line">                <span class="keyword">del</span> chatwith[sock]</span><br><span class="line">            <span class="keyword">del</span> clients[user]</span><br><span class="line">            sock.close()</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> data == <span class="string">'Quit'</span>:</span><br><span class="line">            sock.send(data)</span><br><span class="line">            <span class="keyword">if</span> chatwith.has_key(sock):</span><br><span class="line">                data = <span class="string">'%s.'</span> % data</span><br><span class="line">                chatwith[sock].send(data)</span><br><span class="line">                <span class="keyword">del</span> chatwith[chatwith[sock]]</span><br><span class="line">                <span class="keyword">del</span> chatwith[sock]</span><br><span class="line">            <span class="keyword">del</span> clients[user]</span><br><span class="line">            sock.close()</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">elif</span> re.match(<span class="string">'^To:.+'</span>, data) <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            data = data[<span class="number">3</span>:]</span><br><span class="line">            <span class="keyword">if</span> clients.has_key(data):</span><br><span class="line">                <span class="keyword">if</span> data == user:</span><br><span class="line">                    sock.send(<span class="string">'Please don\'t try to talk with yourself.'</span>)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    chatwith[sock] = clients[data]</span><br><span class="line">                    chatwith[clients[data]] = sock</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                sock.send(<span class="string">'the user %s is not exist'</span> % data)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> chatwith.has_key(sock):</span><br><span class="line">                chatwith[sock].send(<span class="string">'[%s] %s: (%s)'</span> % (ctime(), user, data))</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                sock.send(<span class="string">'Nobody is chating with you. Maybe the one talked with you is talking with someone else'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 每个客户端连接之后，都会启动一个新线程</span></span><br><span class="line"><span class="comment"># 连接成功后需要输入用户名</span></span><br><span class="line"><span class="comment"># 输入的用户名可能会：</span></span><br><span class="line"><span class="comment">#   已存在</span></span><br><span class="line"><span class="comment">#   (客户端直接输入ctrl+c退出)</span></span><br><span class="line"><span class="comment">#   合法用户名</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">connectThread</span><span class="params">(sock, test)</span>:</span>  <span class="comment"># client's socket</span></span><br><span class="line"></span><br><span class="line">    user = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:  <span class="comment"># receive the username</span></span><br><span class="line">        username = sock.recv(BUFSIZ)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> username:  <span class="comment"># the client logout without input a name</span></span><br><span class="line">            print(<span class="string">'The client logout without input a name'</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> clients.has_key(username):  <span class="comment"># username existed</span></span><br><span class="line">            sock.send(<span class="string">'Reuse'</span>)</span><br><span class="line">        <span class="keyword">else</span>:  <span class="comment"># correct username</span></span><br><span class="line">            sock.send(<span class="string">'OK'</span>)</span><br><span class="line">            clients[username] = sock  <span class="comment"># username -&gt; socket</span></span><br><span class="line">            user = username</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> user:</span><br><span class="line">        sock.close()</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    print(<span class="string">'The username is: %s'</span> % user)</span><br><span class="line">    <span class="comment"># get the correct username</span></span><br><span class="line"></span><br><span class="line">    messageTransform(sock, user)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        print(<span class="string">'...WAITING FOR CONNECTION'</span>)</span><br><span class="line">        tcpCliSock, addr = tcpSerSock.accept()</span><br><span class="line">        print(<span class="string">'CONNECTED FROM: '</span>, addr)</span><br><span class="line">        chat = threading.Thread(target=connectThread, args=(tcpCliSock, <span class="literal">None</span>))</span><br><span class="line">        chat.start()</span><br></pre></td></tr></table></figure></p>
-<p><strong>Client:</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line">HOST = <span class="string">'127.0.0.1'</span></span><br><span class="line">PORT = <span class="number">9999</span></span><br><span class="line">BUFSIZ = <span class="number">1024</span></span><br><span class="line">ADDR = (HOST, PORT)</span><br><span class="line"></span><br><span class="line">tcpCliSock = socket(AF_INET, SOCK_STREAM)</span><br><span class="line">tcpCliSock.connect(ADDR)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">因为每个客户端接收消息和发送消息是相互独立的，</span></span><br><span class="line"><span class="string">所以这里将两者分开，开启两个线程处理</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Send</span><span class="params">(sock, test)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            data = raw_input()</span><br><span class="line">            sock.send(data)</span><br><span class="line">            <span class="keyword">if</span> data == <span class="string">'Quit'</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span> KeyboardInterrupt:</span><br><span class="line">            sock.send(<span class="string">'Quit'</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Recv</span><span class="params">(sock, test)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        data = sock.recv(BUFSIZ)</span><br><span class="line">        <span class="keyword">if</span> data == <span class="string">'Quit.'</span>:</span><br><span class="line">            print(<span class="string">'He/She logout'</span>)</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">if</span> data == <span class="string">'Quit'</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        print(<span class="string">'         %s'</span> % data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    print(<span class="string">'Successful connection'</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        username = raw_input(<span class="string">'Your name(press only Enter to quit): '</span>)</span><br><span class="line">        tcpCliSock.send(username)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> username:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="comment"># username is not None</span></span><br><span class="line">        response = tcpCliSock.recv(BUFSIZ)</span><br><span class="line">        <span class="keyword">if</span> response == <span class="string">'Reuse'</span>:</span><br><span class="line">            print(<span class="string">'The name is reuse, please set a new one'</span>)</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'Welcome! %s'</span> % username)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> username:</span><br><span class="line">        tcpCliSock.close()</span><br><span class="line"></span><br><span class="line">    recvMessage = threading.Thread(target=Recv, args=(tcpCliSock, <span class="literal">None</span>))</span><br><span class="line">    sendMessage = threading.Thread(target=Send, args=(tcpCliSock, <span class="literal">None</span>))</span><br><span class="line">    sendMessage.start()</span><br><span class="line">    recvMessage.start()</span><br><span class="line">    sendMessage.join()</span><br><span class="line">    recvMessage.join()</span><br></pre></td></tr></table></figure></p>
+<p><strong>Server:</strong></p>
+<pre><code class="python"># -*- coding: utf-8 -*-
+
+from socket import *
+from time import ctime
+import threading
+import re
+
+HOST = &#39;&#39;
+PORT = 9999
+BUFSIZ = 1024
+ADDR = (HOST, PORT)
+
+tcpSerSock = socket(AF_INET, SOCK_STREAM)
+tcpSerSock.bind(ADDR)
+tcpSerSock.listen(5)
+
+clients = {}  # username -&gt; socket
+chatwith = {}  # user1.socket -&gt; user2.socket
+
+
+# clients字典中记录了连接的客户端的用户名和套接字的对应关系
+# chatwith字典中记录了通信双方的套接字的对应
+
+# messageTransform()处理客户端确定用户名之后发送的文本
+# 文本只有四种类型：
+#   None
+#   Quit
+#   To:someone
+#   其他文本
+def messageTransform(sock, user):
+    while True:
+        data = sock.recv(BUFSIZ)
+        if not data:
+            if chatwith.has_key(sock):
+                chatwith[sock].send(data)
+                del chatwith[chatwith[sock]]
+                del chatwith[sock]
+            del clients[user]
+            sock.close()
+            break
+        if data == &#39;Quit&#39;:
+            sock.send(data)
+            if chatwith.has_key(sock):
+                data = &#39;%s.&#39; % data
+                chatwith[sock].send(data)
+                del chatwith[chatwith[sock]]
+                del chatwith[sock]
+            del clients[user]
+            sock.close()
+            break
+        elif re.match(&#39;^To:.+&#39;, data) is not None:
+            data = data[3:]
+            if clients.has_key(data):
+                if data == user:
+                    sock.send(&#39;Please don\&#39;t try to talk with yourself.&#39;)
+                else:
+                    chatwith[sock] = clients[data]
+                    chatwith[clients[data]] = sock
+            else:
+                sock.send(&#39;the user %s is not exist&#39; % data)
+        else:
+            if chatwith.has_key(sock):
+                chatwith[sock].send(&#39;[%s] %s: (%s)&#39; % (ctime(), user, data))
+            else:
+                sock.send(&#39;Nobody is chating with you. Maybe the one talked with you is talking with someone else&#39;)
+
+
+# 每个客户端连接之后，都会启动一个新线程
+# 连接成功后需要输入用户名
+# 输入的用户名可能会：
+#   已存在
+#   (客户端直接输入ctrl+c退出)
+#   合法用户名
+def connectThread(sock, test):  # client&#39;s socket
+
+    user = None
+    while True:  # receive the username
+        username = sock.recv(BUFSIZ)
+        if not username:  # the client logout without input a name
+            print(&#39;The client logout without input a name&#39;)
+            break
+        if clients.has_key(username):  # username existed
+            sock.send(&#39;Reuse&#39;)
+        else:  # correct username
+            sock.send(&#39;OK&#39;)
+            clients[username] = sock  # username -&gt; socket
+            user = username
+            break
+    if not user:
+        sock.close()
+        return
+    print(&#39;The username is: %s&#39; % user)
+    # get the correct username
+
+    messageTransform(sock, user)
+
+
+if __name__ == &#39;__main__&#39;:
+    while True:
+        print(&#39;...WAITING FOR CONNECTION&#39;)
+        tcpCliSock, addr = tcpSerSock.accept()
+        print(&#39;CONNECTED FROM: &#39;, addr)
+        chat = threading.Thread(target=connectThread, args=(tcpCliSock, None))
+        chat.start()
+</code></pre>
+<p><strong>Client:</strong></p>
+<pre><code class="python"># -*- coding: utf-8 -*-
+
+from socket import *
+import threading
+
+HOST = &#39;127.0.0.1&#39;
+PORT = 9999
+BUFSIZ = 1024
+ADDR = (HOST, PORT)
+
+tcpCliSock = socket(AF_INET, SOCK_STREAM)
+tcpCliSock.connect(ADDR)
+&#39;&#39;&#39;
+因为每个客户端接收消息和发送消息是相互独立的，
+所以这里将两者分开，开启两个线程处理
+&#39;&#39;&#39;
+
+def Send(sock, test):
+    while True:
+        try:
+            data = raw_input()
+            sock.send(data)
+            if data == &#39;Quit&#39;:
+                break
+        except KeyboardInterrupt:
+            sock.send(&#39;Quit&#39;)
+            break
+
+
+def Recv(sock, test):
+    while True:
+        data = sock.recv(BUFSIZ)
+        if data == &#39;Quit.&#39;:
+            print(&#39;He/She logout&#39;)
+            continue
+        if data == &#39;Quit&#39;:
+            break
+        print(&#39;         %s&#39; % data)
+
+if __name__ == &#39;__main__&#39;:
+    print(&#39;Successful connection&#39;)
+    while True:
+        username = raw_input(&#39;Your name(press only Enter to quit): &#39;)
+        tcpCliSock.send(username)
+        if not username:
+            break
+        # username is not None
+        response = tcpCliSock.recv(BUFSIZ)
+        if response == &#39;Reuse&#39;:
+            print(&#39;The name is reuse, please set a new one&#39;)
+            continue
+        else:
+            print(&#39;Welcome! %s&#39; % username)
+            break
+
+    if not username:
+        tcpCliSock.close()
+
+    recvMessage = threading.Thread(target=Recv, args=(tcpCliSock, None))
+    sendMessage = threading.Thread(target=Send, args=(tcpCliSock, None))
+    sendMessage.start()
+    recvMessage.start()
+    sendMessage.join()
+    recvMessage.join()
+
+</code></pre>
 <p>这里的实现逻辑是，每当一个客户端连接进服务端，客户端需要向服务端申请一个ID，服务端将这个ID与客户端连接的Socket对象存入字典，然后监听客户端向服务端发出的消息中有没有”To:”如果有就取出至三个字符后的字符，与字典中的key去比对，如果有存在的ID(不能是当前客户端自己的ID)，就将这两个Socket对象存入一个chatwith的字典中。实现A客户端发消息给服务端，服务端从chatwith字典中查询当前客户端对应的连接，再将A客户端的消息发送给连接的B客户端。</p>
 <p>不过这里出现了一个问题，如果客户端A在和B聊天的过程中，进来了一个客户端C。客户端C也想加入AB的聊天，但是我们的服务端将C的Socket对象覆盖掉了B的，于是B发送什么消息A都接受不到了，而A发的消息只有C能收到了。</p>
 <p>这里通过广播(P2M)的形式解决。</p>
 <h2 id="聊天室全双工-P2M-实现："><a href="#聊天室全双工-P2M-实现：" class="headerlink" title="聊天室全双工(P2M)实现："></a>聊天室全双工(P2M)实现：</h2><p>这里稍微修改了P2P实现的服务端逻辑，不在将Socket连接一一对应，而是将所有的Socket连接存入一个列表，每当一个客户端发送消息，服务端就将这段消息广播给所有的客户端。</p>
 <p><strong>Server:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> socket, select</span><br><span class="line"></span><br><span class="line">host = socket.gethostname()</span><br><span class="line">port = <span class="number">8080</span></span><br><span class="line">addr = (host, port)</span><br><span class="line"></span><br><span class="line">inputs = []</span><br><span class="line">fd_name = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">who_in_room</span><span class="params">(w)</span>:</span></span><br><span class="line">    name_list = []</span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> w:</span><br><span class="line">        name_list.append(w[k])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> name_list</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conn</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'...WAITING FOR CONNECTION'</span></span><br><span class="line">    ss = socket.socket()</span><br><span class="line">    ss.bind(addr)</span><br><span class="line">    ss.listen(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ss</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">new_coming</span><span class="params">(ss)</span>:</span></span><br><span class="line">    client, add = ss.accept()</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'welcome %s %s'</span> % (client, add)</span><br><span class="line">    wel = <span class="string">'''''Your name(press only Enter to quit): '''</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        client.send(wel)</span><br><span class="line">        name = client.recv(<span class="number">1024</span>)</span><br><span class="line">        inputs.append(client)</span><br><span class="line">        fd_name[client] = name</span><br><span class="line"></span><br><span class="line">        nameList = <span class="string">"Some people in talking room, these are %s"</span> % (who_in_room(fd_name))</span><br><span class="line">        client.send(nameList)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">except</span> Exception, e:</span><br><span class="line">        <span class="keyword">print</span> e</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">server_run</span><span class="params">()</span>:</span></span><br><span class="line">    ss = conn()</span><br><span class="line">    inputs.append(ss)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        r, w, e = select.select(inputs, [], [])</span><br><span class="line">        <span class="keyword">for</span> temp <span class="keyword">in</span> r:</span><br><span class="line">            <span class="keyword">if</span> temp <span class="keyword">is</span> ss:</span><br><span class="line">                new_coming(ss)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                disconnect = <span class="literal">False</span></span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    data = temp.recv(<span class="number">1024</span>)</span><br><span class="line">                    data = fd_name[temp] + <span class="string">' say : '</span> + data</span><br><span class="line">                <span class="keyword">except</span> socket.error:</span><br><span class="line">                    data = fd_name[temp] + <span class="string">' leave the room'</span></span><br><span class="line">                    disconnect = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> disconnect:</span><br><span class="line">                    inputs.remove(temp)</span><br><span class="line">                    <span class="keyword">print</span> data</span><br><span class="line">                    <span class="keyword">for</span> other <span class="keyword">in</span> inputs:</span><br><span class="line">                        <span class="keyword">if</span> other != ss <span class="keyword">and</span> other != temp:</span><br><span class="line">                            <span class="keyword">try</span>:</span><br><span class="line">                                other.send(data)</span><br><span class="line">                            <span class="keyword">except</span> Exception, e:</span><br><span class="line">                                <span class="keyword">print</span> e</span><br><span class="line">                    <span class="keyword">del</span> fd_name[temp]</span><br><span class="line"></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">print</span> data</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">for</span> other <span class="keyword">in</span> inputs:</span><br><span class="line">                        <span class="keyword">if</span> other != ss <span class="keyword">and</span> other != temp:</span><br><span class="line">                            <span class="keyword">try</span>:</span><br><span class="line">                                other.send(data)</span><br><span class="line">                            <span class="keyword">except</span> Exception, e:</span><br><span class="line">                                <span class="keyword">print</span> e</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    server_run()</span><br></pre></td></tr></table></figure>
+<pre><code class="python"># -*- coding: utf-8 -*-
+
+import socket, select
+
+host = socket.gethostname()
+port = 8080
+addr = (host, port)
+
+inputs = []
+fd_name = {}
+
+def who_in_room(w):
+    name_list = []
+    for k in w:
+        name_list.append(w[k])
+
+    return name_list
+
+def conn():
+    print &#39;...WAITING FOR CONNECTION&#39;
+    ss = socket.socket()
+    ss.bind(addr)
+    ss.listen(5)
+
+    return ss
+
+def new_coming(ss):
+    client, add = ss.accept()
+    print &#39;welcome %s %s&#39; % (client, add)
+    wel = &#39;&#39;&#39;&#39;&#39;Your name(press only Enter to quit): &#39;&#39;&#39;
+    try:
+        client.send(wel)
+        name = client.recv(1024)
+        inputs.append(client)
+        fd_name[client] = name
+
+        nameList = &quot;Some people in talking room, these are %s&quot; % (who_in_room(fd_name))
+        client.send(nameList)
+
+    except Exception, e:
+        print e
+
+def server_run():
+    ss = conn()
+    inputs.append(ss)
+
+    while True:
+        r, w, e = select.select(inputs, [], [])
+        for temp in r:
+            if temp is ss:
+                new_coming(ss)
+            else:
+                disconnect = False
+                try:
+                    data = temp.recv(1024)
+                    data = fd_name[temp] + &#39; say : &#39; + data
+                except socket.error:
+                    data = fd_name[temp] + &#39; leave the room&#39;
+                    disconnect = True
+
+                if disconnect:
+                    inputs.remove(temp)
+                    print data
+                    for other in inputs:
+                        if other != ss and other != temp:
+                            try:
+                                other.send(data)
+                            except Exception, e:
+                                print e
+                    del fd_name[temp]
+
+                else:
+                    print data
+
+                    for other in inputs:
+                        if other != ss and other != temp:
+                            try:
+                                other.send(data)
+                            except Exception, e:
+                                print e
+
+if __name__ == &#39;__main__&#39;:
+    server_run()  
+</code></pre>
 <p><strong>Client:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> socket, select, threading</span><br><span class="line"></span><br><span class="line">host = socket.gethostname()</span><br><span class="line"></span><br><span class="line">addr = (host, <span class="number">8080</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conn</span><span class="params">()</span>:</span></span><br><span class="line">    s = socket.socket()</span><br><span class="line">    s.connect(addr)</span><br><span class="line">    <span class="keyword">return</span> s</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lis</span><span class="params">(s)</span>:</span></span><br><span class="line">    my = [s]</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        r, w, e = select.select(my, [], [])</span><br><span class="line">        <span class="keyword">if</span> s <span class="keyword">in</span> r:</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                <span class="keyword">print</span> s.recv(<span class="number">1024</span>)</span><br><span class="line">            <span class="keyword">except</span> socket.error:</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'socket is error'</span></span><br><span class="line">                exit()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">talk</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            info = raw_input()</span><br><span class="line">        <span class="keyword">except</span> Exception, e:</span><br><span class="line">            <span class="keyword">print</span> <span class="string">'can\'t input'</span></span><br><span class="line">            exit()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            s.send(info)</span><br><span class="line">        <span class="keyword">except</span> Exception, e:</span><br><span class="line">            <span class="keyword">print</span> e</span><br><span class="line">            exit()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    ss = conn()</span><br><span class="line">    t = threading.Thread(target=lis, args=(ss,))</span><br><span class="line">    t.start()</span><br><span class="line">    t1 = threading.Thread(target=talk, args=(ss,))</span><br><span class="line">    t1.start()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<pre><code class="python"># -*- coding: utf-8 -*-
+
+import socket, select, threading
+
+host = socket.gethostname()
+
+addr = (host, 8080)
+
+def conn():
+    s = socket.socket()
+    s.connect(addr)
+    return s
+
+def lis(s):
+    my = [s]
+    while True:
+        r, w, e = select.select(my, [], [])
+        if s in r:
+            try:
+                print s.recv(1024)
+            except socket.error:
+                print &#39;socket is error&#39;
+                exit()
+
+def talk(s):
+    while True:
+        try:
+            info = raw_input()
+        except Exception, e:
+            print &#39;can\&#39;t input&#39;
+            exit()
+        try:
+            s.send(info)
+        except Exception, e:
+            print e
+            exit()
+
+def main():
+    ss = conn()
+    t = threading.Thread(target=lis, args=(ss,))
+    t.start()
+    t1 = threading.Thread(target=talk, args=(ss,))
+    t1.start()
+
+if __name__ == &#39;__main__&#39;:
+    main()  
+</code></pre>
 <h2 id="聊天室全双工-P2M-WebSocket实现："><a href="#聊天室全双工-P2M-WebSocket实现：" class="headerlink" title="聊天室全双工(P2M)WebSocket实现："></a>聊天室全双工(P2M)WebSocket实现：</h2><p>这里又有一个奇思妙想出现了，因为在学习Socket编程的时候接触到了一个叫WebSocket的好玩的东西，于是实现了一个以浏览器为客户端的聊天室程序。使用Nodejs编写聊天室不仅代码简洁优雅功能强大，并且逼格都高很多。</p>
 <blockquote>
 <p>此处以node.js + nodejs-websocket实现，首先需要安装Node.js和这个第三方模块</p>
 </blockquote>
-<p><strong>Server:</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ws = <span class="built_in">require</span>(<span class="string">"nodejs-websocket"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> clientCount = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Scream server example: "hi" -&gt; "HI!!!"</span></span><br><span class="line"><span class="keyword">var</span> server = ws.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">conn</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"New connection"</span>)</span><br><span class="line">	clientCount++</span><br><span class="line">	conn.nickname = <span class="string">'user'</span> + clientCount</span><br><span class="line">	broadcast(conn.nickname + <span class="string">' comes in'</span>)</span><br><span class="line">	conn.on(<span class="string">"text"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">str</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"Received "</span>+str)</span><br><span class="line">		broadcast(conn.nickname + <span class="string">": "</span> + str)</span><br><span class="line">	&#125;)</span><br><span class="line">	conn.on(<span class="string">"close"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">code, reason</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"Connection closed"</span>)</span><br><span class="line">		broadcast(conn.nickname + <span class="string">' left'</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">	conn.on(<span class="string">"error"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"handle err"</span>)</span><br><span class="line">		<span class="built_in">console</span>.log(err)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;).listen(<span class="number">8001</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"connect is close"</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">broadcast</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">	server.connections.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">connection</span>)</span>&#123;</span><br><span class="line">		connection.sendText(str)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Server:</strong></p>
+<pre><code class="js">var ws = require(&quot;nodejs-websocket&quot;)
+
+var clientCount = 0
+
+// Scream server example: &quot;hi&quot; -&gt; &quot;HI!!!&quot;
+var server = ws.createServer(function (conn) {
+    console.log(&quot;New connection&quot;)
+    clientCount++
+    conn.nickname = &#39;user&#39; + clientCount
+    broadcast(conn.nickname + &#39; comes in&#39;)
+    conn.on(&quot;text&quot;, function (str) {
+        console.log(&quot;Received &quot;+str)
+        broadcast(conn.nickname + &quot;: &quot; + str)
+    })
+    conn.on(&quot;close&quot;, function (code, reason) {
+        console.log(&quot;Connection closed&quot;)
+        broadcast(conn.nickname + &#39; left&#39;)
+    })
+    conn.on(&quot;error&quot;, function(err) {
+        console.log(&quot;handle err&quot;)
+        console.log(err)
+    })
+}).listen(8001)
+
+console.log(&quot;connect is close&quot;);
+
+function broadcast(str){
+    server.connections.forEach(function(connection){
+        connection.sendText(str)
+    })
+}
+</code></pre>
 <p><strong>Client:</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>WebSocket<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h1</span>&gt;</span>Chat Room<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"sendTxt"</span> <span class="attr">type</span>=<span class="string">"text"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"sendBtn"</span>&gt;</span>发送<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> websocket = <span class="keyword">new</span> WebSocket(<span class="string">"ws://localhost:8001/"</span>);</span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">showMessage</span>(<span class="params">str</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span></span><br><span class="line">			div.innerHTML = str;</span><br><span class="line"><span class="javascript">			<span class="built_in">document</span>.body.appendChild(div);</span></span><br><span class="line">		&#125;</span><br><span class="line"><span class="javascript">		websocket.onopen = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="built_in">console</span>.log(<span class="string">"websocket open"</span>);</span></span><br><span class="line"><span class="javascript">			<span class="built_in">document</span>.getElementById(<span class="string">"sendBtn"</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> txt = <span class="built_in">document</span>.getElementById(<span class="string">"sendTxt"</span>).value;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">if</span>(txt) &#123;</span></span><br><span class="line">					websocket.send(txt);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"><span class="javascript">		websocket.onclose = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="built_in">console</span>.log(<span class="string">"websocket close"</span>);</span></span><br><span class="line">		&#125;</span><br><span class="line"><span class="javascript">		websocket.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="built_in">console</span>.log(e.data);</span></span><br><span class="line">			showMessage(e.data);</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    
-    
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;WebSocket&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Chat Room&lt;/h1&gt;
+    &lt;input id=&quot;sendTxt&quot; type=&quot;text&quot; /&gt;
+    &lt;button id=&quot;sendBtn&quot;&gt;发送&lt;/button&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var websocket = new WebSocket(&quot;ws://localhost:8001/&quot;);
+        function showMessage(str) {
+            var div = document.createElement(&#39;div&#39;);
+            div.innerHTML = str;
+            document.body.appendChild(div);
+        }
+        websocket.onopen = function() {
+            console.log(&quot;websocket open&quot;);
+            document.getElementById(&quot;sendBtn&quot;).onclick = function(){
+                var txt = document.getElementById(&quot;sendTxt&quot;).value;
+                if(txt) {
+                    websocket.send(txt);
+                }
+            }
+        }
+        websocket.onclose = function() {
+            console.log(&quot;websocket close&quot;);
+        }
+        websocket.onmessage = function(e) {
+            console.log(e.data);
+            showMessage(e.data);
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/python/" rel="tag"># python</a>
-          
-            <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
-          
-            <a href="/tags/Socket编程/" rel="tag"># Socket编程</a>
-          
-            <a href="/tags/聊天室/" rel="tag"># 聊天室</a>
-          
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='/statics/Kaer Morhen.mp3'></li>
+                        
+                    
+                </ul>
+            
+            
+            
         </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/posts/d4a1185/" rel="next" title="hello world">
-                <i class="fa fa-chevron-left"></i> hello world
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/ed36993e/" rel="prev" title="小吐槽">
-                小吐槽 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="EwdAger">
-            
-              <p class="site-author-name" itemprop="name">EwdAger</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">51</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          <div class="links-of-author motion-element">
-            
-              
-                <span class="links-of-author-item">
-                  <a href="https://github.com/EwdAger" target="_blank" title="GitHub">
-                    
-                      <i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="mailto:ewdager@hotmail.com" target="_blank" title="E-Mail">
-                    
-                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="https://steamcommunity.com/id/ewdager/" target="_blank" title="Steam">
-                    
-                      <i class="fa fa-fw fa-steam"></i>Steam</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="https://my.playstation.com/profile/EwdAger" target="_blank" title="PSN">
-                    
-                      <i class="fa fa-fw fa-gamepad"></i>PSN</a>
-                </span>
-              
-            
-          </div>
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-globe"></i>
-                Friends
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://xdong.me/" title="Hiccup" target="_blank">Hiccup</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://jakting.com/" title="hjthjthjt" target="_blank">hjthjthjt</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://shushugo.com/" title="pjs的小窝" target="_blank">pjs的小窝</a>
-                  </li>
-                
-              </ul>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/EwdAger" target="_blank"><span class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">52 <p>文章</p></a></li>
+                    <li><a href="/categories">11 <p>分类</p></a></li>
+                    <li><a href="/tags">37 <p>标签</p></a></li>
+                </ul>
             </div>
-          
-
-          
-
+            
+                
+                
+                    <div class="box sticky animated fadeInRight faster">
+                        <div id="toc" class="subbox">
+                            <h4>目录</h4>
+                            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#聊天室单工实现："><span class="toc-number">1.</span> <span class="toc-text">聊天室单工实现：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#聊天室半双工实现："><span class="toc-number">2.</span> <span class="toc-text">聊天室半双工实现：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#聊天室全双工-P2P-实现："><span class="toc-number">3.</span> <span class="toc-text">聊天室全双工(P2P)实现：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#聊天室全双工-P2M-实现："><span class="toc-number">4.</span> <span class="toc-text">聊天室全双工(P2M)实现：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#聊天室全双工-P2M-WebSocket实现："><span class="toc-number">5.</span> <span class="toc-text">聊天室全双工(P2M)WebSocket实现：</span></a></li></ol>
+                        </div>
+                    </div>
+                
+            
         </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#聊天室单工实现："><span class="nav-number">1.</span> <span class="nav-text">聊天室单工实现：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聊天室半双工实现："><span class="nav-number">2.</span> <span class="nav-text">聊天室半双工实现：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聊天室全双工-P2P-实现："><span class="nav-number">3.</span> <span class="nav-text">聊天室全双工(P2P)实现：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聊天室全双工-P2M-实现："><span class="nav-number">4.</span> <span class="nav-text">聊天室全双工(P2M)实现：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聊天室全双工-P2M-WebSocket实现："><span class="nav-number">5.</span> <span class="nav-text">聊天室全双工(P2M)WebSocket实现：</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
     </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">EwdAger</span>
-  <span>&nbsp;湘ICP备16015728号-2</span>
-  
-
-  
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2019
+        <span class="gradient-text">
+            EwdAger
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.3.5" target="_blank" rel="noopener">v1.3.5</a></small>
+    </p>
+</footer>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
 
 
 
-  <span class="post-meta-divider">|</span>
+    <script src="/js/busuanzi.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('span[id^="busuanzi_"]').length) {
+                initialBusuanzi();
+            }
+        });
+    </script>
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-149874671-1');
+    </script>
 
 
 
 
-        
 
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["Farewell,good hunter.May you find your worth in the waking world.", "再见，善良的猎人。愿你能在清醒的世界中找到自己的价值。"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
 
-
-
-  <script type="text/javascript">
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//tajs.qq.com/stats?sId=64934470";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
 </script>
 
 
-
-
-
-
-
-
-
-  
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-  
-  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-  
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-  
-
-
-  
-
-  
-
-</body>
 </html>

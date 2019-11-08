@@ -1,384 +1,183 @@
+
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html lang="zh-CN" class="loading">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Python,Numpy,数据分析,">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="利用数组进行数据分析np.where是三元表达式x if condition else y的矢量化版 123456789101112131415161718192021222324252627282930In [169]: arrOut[169]:array([[-2.09280349e-01, -2.08776777e+00,  1.18959772e+00,        -1.3055581">
-<meta name="keywords" content="Python,Numpy,数据分析">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Numpy笔记-进阶篇">
-<meta property="og:url" content="http://gvoidy.cn/posts/87847f8/index.html">
-<meta property="og:site_name" content="极光技术小栈">
-<meta property="og:description" content="利用数组进行数据分析np.where是三元表达式x if condition else y的矢量化版 123456789101112131415161718192021222324252627282930In [169]: arrOut[169]:array([[-2.09280349e-01, -2.08776777e+00,  1.18959772e+00,        -1.3055581">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-06T01:55:48.994Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Numpy笔记-进阶篇">
-<meta name="twitter:description" content="利用数组进行数据分析np.where是三元表达式x if condition else y的矢量化版 123456789101112131415161718192021222324252627282930In [169]: arrOut[169]:array([[-2.09280349e-01, -2.08776777e+00,  1.18959772e+00,        -1.3055581">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '5.1.3',
-    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://gvoidy.cn/posts/87847f8/">
-
-
-
-
-
-  <title>Numpy笔记-进阶篇 | 极光技术小栈</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-  
-
-
-
-
-
-
-
-
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Numpy笔记-进阶篇 - 极光技术小栈</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
+    <meta name="description" content="利用数组进行数据分析np.where是三元表达式x if condition else y的矢量化版
+In [169]: arr
+Out[169]:
+array([[-2.09280349e-01,,"> 
+    <meta name="author" content="EwdAger"> 
+    <link rel="alternative" href="atom.xml" title="极光技术小栈" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_xjbfxy4nzcj.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">极光技术小栈</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tag"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
-            
-            搜索
-          </a>
-        </li>
-      
-    </ul>
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://gvoidy.cn/posts/87847f8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="EwdAger">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="极光技术小栈">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">Numpy笔记-进阶篇</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-24T17:27:42+08:00">
-                2019-08-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+</html>
+<body class="loading">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
-      </header>
-    
+    </div>
+    <span id="config-title" style="display:none">极光技术小栈</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://gvoidy.cn">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">Numpy笔记-进阶篇</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+    <div class="section">
+        <div class= article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg);">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                    <a href="/categories/机器学习笔记"><b>「 </b>机器学习笔记<b> 」</b></a>
+                
+                八月 24, 2019
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/87847f8/" title="Numpy笔记-进阶篇">Numpy笔记-进阶篇</a></h3>
+            
+                <p class="post-count animated fadeInDown">
+                    
+                        <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        7.6k
+                    </span>
+                    
+                    
+                        <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        7 mins.
+                    </span>
+                    
+                    
+                    
+                        <span id="busuanzi_container_page_pv">
+                            <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                            <span id="busuanzi_value_page_pv">0</span>
+                        </span>
+                    
+                </p>
+            
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Numpy/">Numpy</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据分析/">数据分析</a></li></ul>
+            
+        </div>
+    </div>
+</div>
 
-      
-      
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 
-      
-        <h1 id="利用数组进行数据分析"><a href="#利用数组进行数据分析" class="headerlink" title="利用数组进行数据分析"></a>利用数组进行数据分析</h1><p><code>np.where</code>是三元表达式<code>x if condition else y</code>的矢量化版</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">169</span>]: arr</span><br><span class="line">Out[<span class="number">169</span>]:</span><br><span class="line">array([[<span class="number">-2.09280349e-01</span>, <span class="number">-2.08776777e+00</span>,  <span class="number">1.18959772e+00</span>,</span><br><span class="line">        <span class="number">-1.30555812e-01</span>],</span><br><span class="line">       [<span class="number">-1.05658371e+00</span>,  <span class="number">2.66633933e+00</span>,  <span class="number">4.47784003e-01</span>,</span><br><span class="line">         <span class="number">5.22445402e-01</span>],</span><br><span class="line">       [ <span class="number">9.67780972e-01</span>, <span class="number">-1.00148828e+00</span>, <span class="number">-1.83185363e-03</span>,</span><br><span class="line">         <span class="number">4.53542100e-01</span>],</span><br><span class="line">       [ <span class="number">1.33135003e+00</span>,  <span class="number">1.33233678e-01</span>, <span class="number">-4.89156202e-01</span>,</span><br><span class="line">         <span class="number">1.16725743e+00</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 大于零替换成2，小于零替换成-2</span></span><br><span class="line">In [<span class="number">170</span>]: np.where(arr&gt;<span class="number">0</span>, <span class="number">2</span>, <span class="number">-2</span>)</span><br><span class="line">Out[<span class="number">170</span>]:</span><br><span class="line">array([[<span class="number">-2</span>, <span class="number">-2</span>,  <span class="number">2</span>, <span class="number">-2</span>],</span><br><span class="line">       [<span class="number">-2</span>,  <span class="number">2</span>,  <span class="number">2</span>,  <span class="number">2</span>],</span><br><span class="line">       [ <span class="number">2</span>, <span class="number">-2</span>, <span class="number">-2</span>,  <span class="number">2</span>],</span><br><span class="line">       [ <span class="number">2</span>,  <span class="number">2</span>, <span class="number">-2</span>,  <span class="number">2</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 大于零替换成2，小于零则不变</span></span><br><span class="line">In [<span class="number">171</span>]: np.where(arr&gt;<span class="number">0</span>, <span class="number">2</span>, arr)</span><br><span class="line">Out[<span class="number">171</span>]:</span><br><span class="line">array([[<span class="number">-2.09280349e-01</span>, <span class="number">-2.08776777e+00</span>,  <span class="number">2.00000000e+00</span>,</span><br><span class="line">        <span class="number">-1.30555812e-01</span>],</span><br><span class="line">       [<span class="number">-1.05658371e+00</span>,  <span class="number">2.00000000e+00</span>,  <span class="number">2.00000000e+00</span>,</span><br><span class="line">         <span class="number">2.00000000e+00</span>],</span><br><span class="line">       [ <span class="number">2.00000000e+00</span>, <span class="number">-1.00148828e+00</span>, <span class="number">-1.83185363e-03</span>,</span><br><span class="line">         <span class="number">2.00000000e+00</span>],</span><br><span class="line">       [ <span class="number">2.00000000e+00</span>,  <span class="number">2.00000000e+00</span>, <span class="number">-4.89156202e-01</span>,</span><br><span class="line">         <span class="number">2.00000000e+00</span>]])</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn slower">
+            <h1 id="利用数组进行数据分析"><a href="#利用数组进行数据分析" class="headerlink" title="利用数组进行数据分析"></a>利用数组进行数据分析</h1><p><code>np.where</code>是三元表达式<code>x if condition else y</code>的矢量化版</p>
+<pre><code class="python">In [169]: arr
+Out[169]:
+array([[-2.09280349e-01, -2.08776777e+00,  1.18959772e+00,
+        -1.30555812e-01],
+       [-1.05658371e+00,  2.66633933e+00,  4.47784003e-01,
+         5.22445402e-01],
+       [ 9.67780972e-01, -1.00148828e+00, -1.83185363e-03,
+         4.53542100e-01],
+       [ 1.33135003e+00,  1.33233678e-01, -4.89156202e-01,
+         1.16725743e+00]])
+
+# 大于零替换成2，小于零替换成-2
+In [170]: np.where(arr&gt;0, 2, -2)
+Out[170]:
+array([[-2, -2,  2, -2],
+       [-2,  2,  2,  2],
+       [ 2, -2, -2,  2],
+       [ 2,  2, -2,  2]])
+
+# 大于零替换成2，小于零则不变
+In [171]: np.where(arr&gt;0, 2, arr)
+Out[171]:
+array([[-2.09280349e-01, -2.08776777e+00,  2.00000000e+00,
+        -1.30555812e-01],
+       [-1.05658371e+00,  2.00000000e+00,  2.00000000e+00,
+         2.00000000e+00],
+       [ 2.00000000e+00, -1.00148828e+00, -1.83185363e-03,
+         2.00000000e+00],
+       [ 2.00000000e+00,  2.00000000e+00, -4.89156202e-01,
+         2.00000000e+00]])
+
+</code></pre>
 <h2 id="数学和统计方法"><a href="#数学和统计方法" class="headerlink" title="数学和统计方法"></a>数学和统计方法</h2><p>以下方法可以在对某个轴向的数据进行统计，（axis=1,纵向；axis=0，横向）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">24</span>]: arr</span><br><span class="line">Out[<span class="number">24</span>]:</span><br><span class="line">array([[ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>],</span><br><span class="line">       [ <span class="number">4</span>,  <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>],</span><br><span class="line">       [ <span class="number">8</span>,  <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>],</span><br><span class="line">       [<span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>],</span><br><span class="line">       [<span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>]])</span><br><span class="line"></span><br><span class="line">In [<span class="number">25</span>]: arr.sum()</span><br><span class="line">Out[<span class="number">25</span>]: <span class="number">190</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">26</span>]: arr.sum(axis=<span class="number">1</span>)</span><br><span class="line">Out[<span class="number">26</span>]: array([ <span class="number">6</span>, <span class="number">22</span>, <span class="number">38</span>, <span class="number">54</span>, <span class="number">70</span>])</span><br><span class="line"></span><br><span class="line">In [<span class="number">27</span>]: arr.sum(axis=<span class="number">0</span>)</span><br><span class="line">Out[<span class="number">27</span>]: array([<span class="number">40</span>, <span class="number">45</span>, <span class="number">50</span>, <span class="number">55</span>])</span><br></pre></td></tr></table></figure>
+<pre><code class="python">In [24]: arr
+Out[24]:
+array([[ 0,  1,  2,  3],
+       [ 4,  5,  6,  7],
+       [ 8,  9, 10, 11],
+       [12, 13, 14, 15],
+       [16, 17, 18, 19]])
+
+In [25]: arr.sum()
+Out[25]: 190
+
+In [26]: arr.sum(axis=1)
+Out[26]: array([ 6, 22, 38, 54, 70])
+
+In [27]: arr.sum(axis=0)
+Out[27]: array([40, 45, 50, 55])
+
+
+</code></pre>
 <table>
 <thead>
 <tr>
@@ -418,13 +217,70 @@
 </tbody>
 </table>
 <h2 id="用于布尔型数组的方法"><a href="#用于布尔型数组的方法" class="headerlink" title="用于布尔型数组的方法"></a>用于布尔型数组的方法</h2><p>用于上面的方法中，布尔值会被强制转换成1和0。因此可以使用sum对布尔型数组的True值进行计数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">38</span>]: arr &gt; <span class="number">5</span></span><br><span class="line">Out[<span class="number">38</span>]:</span><br><span class="line">array([[<span class="literal">False</span>, <span class="literal">False</span>, <span class="literal">False</span>, <span class="literal">False</span>],</span><br><span class="line">       [<span class="literal">False</span>, <span class="literal">False</span>,  <span class="literal">True</span>,  <span class="literal">True</span>],</span><br><span class="line">       [ <span class="literal">True</span>,  <span class="literal">True</span>,  <span class="literal">True</span>,  <span class="literal">True</span>],</span><br><span class="line">       [ <span class="literal">True</span>,  <span class="literal">True</span>,  <span class="literal">True</span>,  <span class="literal">True</span>],</span><br><span class="line">       [ <span class="literal">True</span>,  <span class="literal">True</span>,  <span class="literal">True</span>,  <span class="literal">True</span>]])</span><br><span class="line"></span><br><span class="line">In [<span class="number">40</span>]: (arr&gt;<span class="number">5</span>).sum()</span><br><span class="line">Out[<span class="number">40</span>]: <span class="number">14</span></span><br></pre></td></tr></table></figure>
+<pre><code class="python">In [38]: arr &gt; 5
+Out[38]:
+array([[False, False, False, False],
+       [False, False,  True,  True],
+       [ True,  True,  True,  True],
+       [ True,  True,  True,  True],
+       [ True,  True,  True,  True]])
+
+In [40]: (arr&gt;5).sum()
+Out[40]: 14
+</code></pre>
 <p>更有<code>any</code>和<code>all</code>方法可以判断布尔型数组中是否存在/全是<code>True</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">41</span>]: bools = np.array([<span class="literal">False</span>, <span class="literal">False</span>, <span class="literal">True</span>, <span class="literal">True</span>, <span class="literal">False</span>])</span><br><span class="line"></span><br><span class="line">In [<span class="number">42</span>]: bools.any()</span><br><span class="line">Out[<span class="number">42</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">43</span>]: bools.all()</span><br><span class="line">Out[<span class="number">43</span>]: <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<pre><code class="python">In [41]: bools = np.array([False, False, True, True, False])
+
+In [42]: bools.any()
+Out[42]: True
+
+In [43]: bools.all()
+Out[43]: False
+</code></pre>
 <h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><p>Numpy数组也可以使用<code>sort</code>方法就地排序，而<code>np.sort()</code>方法生成的是数组的副本，两者都可以在多维数组任意一个轴向上排序。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">In [<span class="number">79</span>]: arr</span><br><span class="line">Out[<span class="number">79</span>]:</span><br><span class="line">array([[<span class="number">20</span>, <span class="number">19</span>, <span class="number">18</span>, <span class="number">17</span>],</span><br><span class="line">       [<span class="number">16</span>, <span class="number">15</span>, <span class="number">14</span>, <span class="number">13</span>],</span><br><span class="line">       [<span class="number">12</span>, <span class="number">11</span>, <span class="number">10</span>,  <span class="number">9</span>],</span><br><span class="line">       [ <span class="number">8</span>,  <span class="number">7</span>,  <span class="number">6</span>,  <span class="number">5</span>],</span><br><span class="line">       [ <span class="number">4</span>,  <span class="number">3</span>,  <span class="number">2</span>,  <span class="number">1</span>]])</span><br><span class="line"></span><br><span class="line">In [<span class="number">80</span>]: arr.sort(axis=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">81</span>]: arr</span><br><span class="line">Out[<span class="number">81</span>]:</span><br><span class="line">array([[<span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span>],</span><br><span class="line">       [<span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>, <span class="number">16</span>],</span><br><span class="line">       [ <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>],</span><br><span class="line">       [ <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>,  <span class="number">8</span>],</span><br><span class="line">       [ <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>,  <span class="number">4</span>]])</span><br><span class="line"></span><br><span class="line">In [<span class="number">82</span>]: arr.sort(axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">83</span>]: arr</span><br><span class="line">Out[<span class="number">83</span>]:</span><br><span class="line">array([[ <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>,  <span class="number">4</span>],</span><br><span class="line">       [ <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>,  <span class="number">8</span>],</span><br><span class="line">       [ <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>],</span><br><span class="line">       [<span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>, <span class="number">16</span>],</span><br><span class="line">       [<span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span>]])</span><br></pre></td></tr></table></figure>
+<pre><code class="python">
+In [79]: arr
+Out[79]:
+array([[20, 19, 18, 17],
+       [16, 15, 14, 13],
+       [12, 11, 10,  9],
+       [ 8,  7,  6,  5],
+       [ 4,  3,  2,  1]])
+
+In [80]: arr.sort(axis=1)
+
+In [81]: arr
+Out[81]:
+array([[17, 18, 19, 20],
+       [13, 14, 15, 16],
+       [ 9, 10, 11, 12],
+       [ 5,  6,  7,  8],
+       [ 1,  2,  3,  4]])
+
+In [82]: arr.sort(axis=0)
+
+In [83]: arr
+Out[83]:
+array([[ 1,  2,  3,  4],
+       [ 5,  6,  7,  8],
+       [ 9, 10, 11, 12],
+       [13, 14, 15, 16],
+       [17, 18, 19, 20]])
+
+</code></pre>
 <h2 id="唯一化以及其他的集合逻辑"><a href="#唯一化以及其他的集合逻辑" class="headerlink" title="唯一化以及其他的集合逻辑"></a>唯一化以及其他的集合逻辑</h2><p><code>np.unique()</code>方法可计算数组中的唯一值；<code>np.in1d()</code>可测试数组值得成员资格，返回布尔数组。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 唯一值</span></span><br><span class="line">In [<span class="number">89</span>]: names = np.array([<span class="string">'Bob'</span>, <span class="string">'Bob'</span>, <span class="string">'Bob'</span>, <span class="string">'Will'</span>, <span class="string">'Will'</span>, <span class="string">'Joe'</span>])</span><br><span class="line"></span><br><span class="line">In [<span class="number">90</span>]: np.unique(names)</span><br><span class="line">Out[<span class="number">90</span>]: array([<span class="string">'Bob'</span>, <span class="string">'Joe'</span>, <span class="string">'Will'</span>], dtype=<span class="string">'&lt;U4'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 成员资格</span></span><br><span class="line">In [<span class="number">91</span>]: values = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br><span class="line"></span><br><span class="line">In [<span class="number">92</span>]: np.in1d(values, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>])</span><br><span class="line">Out[<span class="number">92</span>]: array([ <span class="literal">True</span>,  <span class="literal">True</span>, <span class="literal">False</span>, <span class="literal">False</span>, <span class="literal">False</span>,  <span class="literal">True</span>, <span class="literal">False</span>])</span><br></pre></td></tr></table></figure>
+<pre><code class="python"># 唯一值
+In [89]: names = np.array([&#39;Bob&#39;, &#39;Bob&#39;, &#39;Bob&#39;, &#39;Will&#39;, &#39;Will&#39;, &#39;Joe&#39;])
+
+In [90]: np.unique(names)
+Out[90]: array([&#39;Bob&#39;, &#39;Joe&#39;, &#39;Will&#39;], dtype=&#39;&lt;U4&#39;)
+
+# 成员资格
+In [91]: values = np.array([1,2,3,3,3,4,5])
+
+In [92]: np.in1d(values, [1,2,4])
+Out[92]: array([ True,  True, False, False, False,  True, False])
+</code></pre>
 <table>
 <thead>
 <tr>
@@ -573,776 +429,258 @@
 </tr>
 </tbody>
 </table>
-<h1 id="范例：随机漫步"><a href="#范例：随机漫步" class="headerlink" title="范例：随机漫步"></a>范例：随机漫步</h1><div class="note info"><p><strong>随机漫步理论(Random Walk Theory)</strong>认为，证券价格的波动是随机的，像一个在广场上行走的人一样，价格的下一步将走向哪里，是没有规律的。证券市场中，价格的走向受到多方面因素的影响。一件不起眼的小事也可能对市场产生巨大的影响。从长时间的价格走势图上也可以看出，价格的上下起伏的机会差不多是均等的。</p></div>
-<h2 id="Python标准库实现"><a href="#Python标准库实现" class="headerlink" title="Python标准库实现"></a>Python标准库实现</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">position = <span class="number">0</span></span><br><span class="line">walk = [position]</span><br><span class="line">steps = <span class="number">1000</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(steps):</span><br><span class="line">  step = <span class="number">1</span> <span class="keyword">if</span> random.randint(<span class="number">0</span>, <span class="number">1</span>) <span class="keyword">else</span> <span class="number">-1</span></span><br><span class="line">  position += step</span><br><span class="line">  walk.append(position)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出最大值</span></span><br><span class="line">print(max(walk))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出最小值</span></span><br><span class="line">print(min(walk))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出第一个到10时的索引</span></span><br><span class="line">start, end = <span class="number">0</span>, <span class="number">10</span></span><br><span class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> enumerate(walk):</span><br><span class="line">  <span class="keyword">if</span> start == end:</span><br><span class="line">    print(k)</span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line">  start += v</span><br><span class="line">  <span class="keyword">if</span> k == len(walk):</span><br><span class="line">    print(<span class="string">"最终都没有到10"</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="使用Numpy"><a href="#使用Numpy" class="headerlink" title="使用Numpy"></a>使用Numpy</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">In [<span class="number">98</span>]: nsteps = <span class="number">1000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 随机生成nsteps个[0,2)之间的随机值</span></span><br><span class="line">In [<span class="number">99</span>]: draws = np.random.randint(<span class="number">0</span>, <span class="number">2</span>, size=nsteps)</span><br><span class="line"></span><br><span class="line">In [<span class="number">100</span>]: steps = np.where(draws&gt;<span class="number">0</span>, <span class="number">1</span>, <span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 元素累计和的数组</span></span><br><span class="line">In [<span class="number">101</span>]: walk = steps.cumsum()</span><br><span class="line"></span><br><span class="line">In [<span class="number">104</span>]: walk.min()</span><br><span class="line">Out[<span class="number">104</span>]: <span class="number">-10</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">105</span>]: walk.max()</span><br><span class="line">Out[<span class="number">105</span>]: <span class="number">28</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 得到数组中第一个最大值的索引(第一个True)</span></span><br><span class="line">In [<span class="number">106</span>]: (walk &gt;= <span class="number">10</span>).argmax()</span><br><span class="line">Out[<span class="number">106</span>]: <span class="number">171</span></span><br></pre></td></tr></table></figure>
+<h1 id="范例：随机漫步"><a href="#范例：随机漫步" class="headerlink" title="范例：随机漫步"></a>范例：随机漫步</h1><p><strong>随机漫步理论(Random Walk Theory)</strong>认为，证券价格的波动是随机的，像一个在广场上行走的人一样，价格的下一步将走向哪里，是没有规律的。证券市场中，价格的走向受到多方面因素的影响。一件不起眼的小事也可能对市场产生巨大的影响。从长时间的价格走势图上也可以看出，价格的上下起伏的机会差不多是均等的。</p>
+<h2 id="Python标准库实现"><a href="#Python标准库实现" class="headerlink" title="Python标准库实现"></a>Python标准库实现</h2><pre><code class="python">import random
+
+position = 0
+walk = [position]
+steps = 1000
+for i in range(steps):
+  step = 1 if random.randint(0, 1) else -1
+  position += step
+  walk.append(position)
+
+# 输出最大值
+print(max(walk))
+
+# 输出最小值
+print(min(walk))
+
+# 输出第一个到10时的索引
+start, end = 0, 10
+for k, v in enumerate(walk):
+  if start == end:
+    print(k)
+    break
+  start += v
+  if k == len(walk):
+    print(&quot;最终都没有到10&quot;)
+
+</code></pre>
+<h2 id="使用Numpy"><a href="#使用Numpy" class="headerlink" title="使用Numpy"></a>使用Numpy</h2><pre><code class="python">
+In [98]: nsteps = 1000
+
+# 随机生成nsteps个[0,2)之间的随机值
+In [99]: draws = np.random.randint(0, 2, size=nsteps)
+
+In [100]: steps = np.where(draws&gt;0, 1, -1)
+
+# 元素累计和的数组
+In [101]: walk = steps.cumsum()
+
+In [104]: walk.min()
+Out[104]: -10
+
+In [105]: walk.max()
+Out[105]: 28
+
+# 得到数组中第一个最大值的索引(第一个True)
+In [106]: (walk &gt;= 10).argmax()
+Out[106]: 171
+
+</code></pre>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>很明显的可以看出，使用Numpy代码更加优雅易读，且通过IPython的<code>%timeit</code>测试两个版本的速度，使用标准库的平均时间为<code>4.57 ms</code>，而使用Numpy的平均时间为<code>2.68 ms</code>。</p>
 
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Python/" rel="tag"># Python</a>
-          
-            <a href="/tags/Numpy/" rel="tag"># Numpy</a>
-          
-            <a href="/tags/数据分析/" rel="tag"># 数据分析</a>
-          
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='/statics/Kaer Morhen.mp3'></li>
+                        
+                    
+                </ul>
+            
+            
+            
         </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/posts/ca37cdbd/" rel="next" title="Numpy 笔记-基础篇">
-                <i class="fa fa-chevron-left"></i> Numpy 笔记-基础篇
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/8493c310/" rel="prev" title="Pandas笔记-基础篇">
-                Pandas笔记-基础篇 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="EwdAger">
-            
-              <p class="site-author-name" itemprop="name">EwdAger</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">51</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          <div class="links-of-author motion-element">
-            
-              
-                <span class="links-of-author-item">
-                  <a href="https://github.com/EwdAger" target="_blank" title="GitHub">
-                    
-                      <i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="mailto:ewdager@hotmail.com" target="_blank" title="E-Mail">
-                    
-                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="https://steamcommunity.com/id/ewdager/" target="_blank" title="Steam">
-                    
-                      <i class="fa fa-fw fa-steam"></i>Steam</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="https://my.playstation.com/profile/EwdAger" target="_blank" title="PSN">
-                    
-                      <i class="fa fa-fw fa-gamepad"></i>PSN</a>
-                </span>
-              
-            
-          </div>
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-globe"></i>
-                Friends
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://xdong.me/" title="Hiccup" target="_blank">Hiccup</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://jakting.com/" title="hjthjthjt" target="_blank">hjthjthjt</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://shushugo.com/" title="pjs的小窝" target="_blank">pjs的小窝</a>
-                  </li>
-                
-              </ul>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/EwdAger" target="_blank"><span class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">52 <p>文章</p></a></li>
+                    <li><a href="/categories">11 <p>分类</p></a></li>
+                    <li><a href="/tags">37 <p>标签</p></a></li>
+                </ul>
             </div>
-          
-
-          
-
+            
+                
+                
+                    <div class="box sticky animated fadeInRight faster">
+                        <div id="toc" class="subbox">
+                            <h4>目录</h4>
+                            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#利用数组进行数据分析"><span class="toc-number">1.</span> <span class="toc-text">利用数组进行数据分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数学和统计方法"><span class="toc-number">1.1.</span> <span class="toc-text">数学和统计方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用于布尔型数组的方法"><span class="toc-number">1.2.</span> <span class="toc-text">用于布尔型数组的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#排序"><span class="toc-number">1.3.</span> <span class="toc-text">排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#唯一化以及其他的集合逻辑"><span class="toc-number">1.4.</span> <span class="toc-text">唯一化以及其他的集合逻辑</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线性代数"><span class="toc-number">2.</span> <span class="toc-text">线性代数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#随机数生成"><span class="toc-number">3.</span> <span class="toc-text">随机数生成</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#范例：随机漫步"><span class="toc-number">4.</span> <span class="toc-text">范例：随机漫步</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python标准库实现"><span class="toc-number">4.1.</span> <span class="toc-text">Python标准库实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Numpy"><span class="toc-number">4.2.</span> <span class="toc-text">使用Numpy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.3.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+                        </div>
+                    </div>
+                
+            
         </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#利用数组进行数据分析"><span class="nav-number">1.</span> <span class="nav-text">利用数组进行数据分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数学和统计方法"><span class="nav-number">1.1.</span> <span class="nav-text">数学和统计方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用于布尔型数组的方法"><span class="nav-number">1.2.</span> <span class="nav-text">用于布尔型数组的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序"><span class="nav-number">1.3.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#唯一化以及其他的集合逻辑"><span class="nav-number">1.4.</span> <span class="nav-text">唯一化以及其他的集合逻辑</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线性代数"><span class="nav-number">2.</span> <span class="nav-text">线性代数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#随机数生成"><span class="nav-number">3.</span> <span class="nav-text">随机数生成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#范例：随机漫步"><span class="nav-number">4.</span> <span class="nav-text">范例：随机漫步</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python标准库实现"><span class="nav-number">4.1.</span> <span class="nav-text">Python标准库实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Numpy"><span class="nav-number">4.2.</span> <span class="nav-text">使用Numpy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.3.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
     </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">EwdAger</span>
-  <span>&nbsp;湘ICP备16015728号-2</span>
-  
-
-  
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2019
+        <span class="gradient-text">
+            EwdAger
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.3.5" target="_blank" rel="noopener">v1.3.5</a></small>
+    </p>
+</footer>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
 
 
 
-  <span class="post-meta-divider">|</span>
+    <script src="/js/busuanzi.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('span[id^="busuanzi_"]').length) {
+                initialBusuanzi();
+            }
+        });
+    </script>
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-149874671-1');
+    </script>
 
 
 
 
-        
 
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["Farewell,good hunter.May you find your worth in the waking world.", "再见，善良的猎人。愿你能在清醒的世界中找到自己的价值。"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
 
-
-
-  <script type="text/javascript">
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//tajs.qq.com/stats?sId=64934470";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
 </script>
 
 
-
-
-
-
-
-
-
-  
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-  
-  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-  
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-  
-
-
-  
-
-  
-
-</body>
 </html>
