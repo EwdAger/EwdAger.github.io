@@ -5,7 +5,7 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Tag: python - 极光技术小栈</title>
+    <title>Tag: Python - 极光技术小栈</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
@@ -15,7 +15,7 @@
     <link rel="alternative" href="atom.xml" title="极光技术小栈" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
     <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_xjbfxy4nzcj.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
@@ -64,6 +64,23 @@
 
 <div id="container">
     
+<div class="search-box">
+    <form class="site-search-form">
+        <span class="iconfont icon-search"></span>
+        <input type="text" id="local-search-input" class="st-search-input" />
+        <div class="iconfont icon-cross search-box-close"></div>
+    </form>
+    <div class="search-scrollable">
+      <div id="local-search-result"
+           class="local-search-result-cls"
+           data-initialise="首次搜索，正在载入索引文件，请稍后……"
+           data-start="输入关键词搜索。"
+           data-empty="没有找到内容，请尝试更换检索词。"
+      >
+        <span>输入关键词搜索。</span>
+      </div>
+    </div>
+</div>
 <div id="header">
     <div>
         <div class="logo animated fadeInDown">
@@ -88,6 +105,9 @@
                 <a href="/archives/" title="归档" class="menu-link">归档</a>
             </li>
             
+            
+                <li class="animated fadeInDown search-bar iconfont icon-search"></li>
+            
         </ul>
         <div class="iconfont icon-menu switchmenu gradient-text animated fadeInDown"></div>
     </div>
@@ -97,7 +117,7 @@
         <div class="cover animated fadeIn" style="
             animation-delay: 900ms;
             animation-duration: 2.8s;
-            background-image: 
+            background-image:
                 radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.56), #100e17),
                 url(/img/cover.jpg);">
         </div>
@@ -106,36 +126,38 @@
     <div id="post0" class="else">
         <p class="animated fadeInDown">
             
-                <a href="/categories/小项目"><b>「 </b>小项目<b> 」</b></a>
+                <a href="/categories/机器学习笔记"><b>「 </b>机器学习笔记<b> 」</b></a>
             
-            八月 07, 2018
+            十月 28, 2019
         </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/2ba86c7b/" title="Readfree 自动签到 & crontab自动任务踩坑" class="posttitle">Readfree 自动签到 & crontab自动任务踩坑</a></h3>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/aedf7706/" title="聚类算法之层次聚类" class="posttitle">聚类算法之层次聚类</a></h3>
         
             <p class="post-count animated fadeInDown">
                 
                     <span>
                         <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        4.5k
+                        3k
                     </span>
                 
                 
                     <span>
                         <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        4 mins.
+                        3 mins.
                     </span>
                 
                 
             </p>
         
         
-            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/小项目/">小项目</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/机器学习/">机器学习</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/聚类算法/">聚类算法</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-                <p>这部分没什么难度，主要是这个网站的<code>cookies</code>的<code>Max-Age</code>有<code>31449600</code>秒，大概1年的寿命，所以直接将存好的<code>cookies</code>用<code>requests</code>发一个get请求到验证地址就行。稍微修改了<a href="http://www.yangyingming.com/article/381/" target="_blank" rel="noopener">博主杨英...</a></p>
+                <p></p>
+<p>层次聚类(Hierarchical Clustering)是聚类算法的一种，通过计算不同类别的相似度类创建一个有层次的嵌套的树。</p>
+<p>层次聚类分为<strong>自底向上</strong>和<strong>自顶向下</strong>两种，这里仅采用<code>scikit-learn...</code></p>
             
-            <span class="read-more gradient-text"><a href="/posts/2ba86c7b/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/aedf7706/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
     
@@ -147,7 +169,7 @@
             <div class="bold-underline-links screen-gradient-sponsor">
                 <p>
                   <span class="typed-text"></span>
-                </p> 
+                </p>
             </div>
         </div>
     </div>
@@ -164,157 +186,40 @@
     <div class="else">
         <p class="animated fadeInDown">
             
-                <a href="/categories/LeetCode刷题总结">
-                  <b>「 </b>LEETCODE刷题总结<b> 」</b>
+                <a href="/categories/机器学习笔记">
+                  <b>「 </b>机器学习笔记<b> 」</b>
                 </a>
             
-            四月 26, 2018
+            十月 12, 2019
         </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/8924f3f8/" title="python中进制互换" class="posttitle">python中进制互换</a></h3>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/ae704b86/" title="聚类算法之DBSCAN聚类" class="posttitle">聚类算法之DBSCAN聚类</a></h3>
         
             <p class="post-count animated fadeInDown">
                 
                     <span>
                         <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        2.3k
+                        4k
                     </span>
                 
                 
                     <span>
                         <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        2 mins.
+                        4 mins.
                     </span>
                 
                 
             </p>
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/LeetCode/">LeetCode</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li></ul>
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/机器学习/">机器学习</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/聚类算法/">聚类算法</a></li></ul>
             
         
         <div class="md-content animated fadeIn">
             
-                <p>bin() 返回一个整数 int 或者长整数 long int 的二进制表示。</p>
-<pre><code class="python">&gt;&gt;&gt;bin(10)
-&#39;0b1010&#39;
-&gt;&gt;&gt; bin(20)
-&#39;0b10100&#39;
-</code></pre>
-<pre><code class="python">&gt;&gt;&gt;int(&#39;0b1010&#39;, 2)
-&#39;10&#39;
-&gt;&gt;&gt;int(&#39;0b10100&#39;, 2)
-&#39;20&#39;
-</code></pre>
-<p>给定一个正整数，输出它的补数。补数是对该数的二进制表示取反。</p>
-...
+                <p>DBSCAN （Density-Based Spatial Clustering of Applications with Noise） 是一种基于密度的聚类算法，基于密度的聚类寻找被低密度区域分离的高密度区域。常用于异常值或者离群点检测。</p>
+<p>当某个点的密度达到算法设定的阈值，则这个点称为<strong>核心对象</strong>。（即r领域内点的数量小于minPts），其中领域的距离阈值为用户设定值。</p>
+<p>若某点p在q的r领域内，且q是核心点，则p-q<strong>直接密度可达</strong>。若有一个点的序列q0、q1、q2…qK，对任意的qi-qi+1是直接...</p>
             
-            <span class="read-more gradient-text"><a href="/posts/8924f3f8/" title="查看全文" class="posttitle">查看全文</a></span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/LeetCode刷题总结">
-                  <b>「 </b>LEETCODE刷题总结<b> 」</b>
-                </a>
-            
-            四月 18, 2018
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/b7cb2971/" title="Python中in的三种遍历协议" class="posttitle">Python中in的三种遍历协议</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        2.8k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        3 mins.
-                    </span>
-                
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/LeetCode/">LeetCode</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p>今天刷LeetCode碰到个简单题 <a href="https://leetcode-cn.com/problems/jewels-and-stones/description/" target="_blank" rel="noopener">宝石与石头</a>想降一下时间复杂度，就没有用<code>in</code> list写法，直接又遍历了一遍列表，可没想到一看答案，这样做的用时比用<code>in</code>要慢得多。索性研究了一下<code>in</code>的原理。这里复制一下知乎用户（很抱歉， 这位同学账号似乎被封了，无法著名）的答案。</p>
-<p><code>in</code> 关键字实现了一套python中的遍历协议.</p>
-<blockquote>
-<p>循环时,  程序先使用<strong>iter</strong> (相当于iter(instance))获取具有next方法的对象, 然后通过其返回的对象, 不断调用其next方法, 直到StopIteration错误...</p></blockquote>
-            
-            <span class="read-more gradient-text"><a href="/posts/b7cb2971/" title="查看全文" class="posttitle">查看全文</a></span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/计算机网络相关">
-                  <b>「 </b>计算机网络相关<b> 」</b>
-                </a>
-            
-            十二月 29, 2017
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/14572bdc/" title="python实现单工、半双工、全双工聊天室" class="posttitle">python实现单工、半双工、全双工聊天室</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        16k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        15 mins.
-                    </span>
-                
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Socket编程/">Socket编程</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/聊天室/">聊天室</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p>单工版非常简单，只能客户端单方面向服务端发消息，服务端回复固定模板消息。</p>
-<p><strong>Server:</strong></p>
-<pre><code class="python"># -*- coding: utf-8 -*-
-
-import socket
-import threading
-import time
-
-def tcplink(sock, addr):
-    print &#39;Accept new connection from %s:%s...&#39; % addr
-    sock.send(&#39;Welcome!&#39;)
-    while True:
-        data = sock....</code></pre>
-            
-            <span class="read-more gradient-text"><a href="/posts/14572bdc/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/ae704b86/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -333,205 +238,316 @@ def tcplink(sock, addr):
                   <b>「 </b>PYTHON学习心得&备忘<b> 」</b>
                 </a>
             
-            六月 05, 2017
+            十月 11, 2019
         </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/824ac3d0/" title="virtualenv各python版本的虚拟环境创建及常用命令说明" class="posttitle">virtualenv各python版本的虚拟环境创建及常用命令说明</a></h3>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/1a6c337e/" title="Python异常处理traceback和exc_info" class="posttitle">Python异常处理traceback和exc_info</a></h3>
         
             <p class="post-count animated fadeInDown">
                 
                     <span>
                         <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        723
+                        2.6k
                     </span>
                 
                 
                     <span>
                         <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        1 mins.
+                        2 mins.
                     </span>
                 
                 
             </p>
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/virtualenv/">virtualenv</a></li></ul>
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/异常处理/">异常处理</a></li></ul>
             
         
         <div class="md-content animated fadeIn">
             
-                <p>首先</p>
-<pre><code>pip install virtualenvwrapper-win
-</code></pre><p>创建py2环境</p>
-<pre><code>mkvirtualenv -p C:\python27\python.exe(解释器绝对路径) py2env(虚拟环境名)
-</code></pre><p>创建py3环境</p>
-<pre><code>mkvirtualenv -p C:\python34\python.exe(解释器绝对路径) py3env(虚拟环境名)
-</code></pre><p>首先也是一样安装virtualenv</p>
-<pre><code>pip install virtualenvwrapper
-</code></pre><p>然后确定系统中Python的安装位置，比如我的位...</p>
+                <p>开发过程中一般都会使用<code>traceback</code>将捕获到的异常打印出来。</p>
+<pre><code class="python">import traceback
+
+def fake_exception():
+    1 / 0
+
+def catch_exception():
+    try:
+        fake_exception()
+    except:
+        traceback.print_exc()
+
+catch_exception()
+</code></pre>
+<p>结果</p>
+<pre><code class="python">Traceback (most recent call last):
+  File &quot;.\test.py&quot;, line 9, in catch_excep...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/824ac3d0/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/1a6c337e/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
 
 
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
     </div>
-    
-</div>
-<div id="preview"></div>
-
-
-    <div id="back-to-top" class="animated fadeIn faster">
-        <div class="flow"></div>
-        <span class="percentage animated fadeIn faster">0%</span>
-        <span class="iconfont icon-top02 animated fadeIn faster"></span>
-    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-</body>
-<footer>
-    <p class="copyright" id="copyright">
-        &copy; 2019
-        <span class="gradient-text">
-            EwdAger
-        </span>.
-        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
-        Theme
-        <span class="gradient-text">
-            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
-        </span>
-        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.3.5" target="_blank" rel="noopener">v1.3.5</a></small>
-    </p>
-</footer>
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="/js/plugin.js"></script>
-<script src="/js/obsidian.js"></script>
-<script src="/js/jquery.truncate.js"></script>
-<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
-<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
-
-<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
-
-    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
-
-    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
-
-    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
-
-    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
-
-    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
-
-    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
-
-    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
-
-    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
-
-
-
-    <script src="/js/busuanzi.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            if ($('span[id^="busuanzi_"]').length) {
-                initialBusuanzi();
-            }
-        });
-    </script>
-
-
-<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
-<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
-<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
-<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-                <!--  Controls are self-explanatory. Order can be changed. -->
-                <div class="pswp__counter"></div>
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/机器学习笔记">
+                  <b>「 </b>机器学习笔记<b> 」</b>
+                </a>
+            
+            十月 10, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/6b56ef63/" title="Python读取Excel文件sheet名性能优化" class="posttitle">Python读取Excel文件sheet名性能优化</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        2.6k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        2 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/性能优化/">性能优化</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>直接使用<code>pandas</code>读取整个Excel文件，再从中取列名。这种场景对于小的Excel文件还适用，但数据量上升到10M+时，取个<code>sheet name</code>要<code>26s</code>之久。几乎无法忍受。</p>
+<pre><code class="python">data = pandas.ExcelFile(file_url)
+names = data.sheet_names
+</code></pre>
+<p>查阅资料可知<code>.xlsx</code>文件是一个压缩格式的文件，可以直接通过<code>zipfile</code>读到<code>sheet name</code>等相关信息。所以写如下函数直接取<code>sheet name</code></p>
+<pre><code class="python">def get_sheet_details(file_path...</code></pre>
+            
+            <span class="read-more"><a href="/posts/6b56ef63/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
 
 
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/机器学习笔记">
+                  <b>「 </b>机器学习笔记<b> 」</b>
+                </a>
+            
+            十月 09, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/dea808f4/" title="聚类算法之K-Means(K均值)聚类" class="posttitle">聚类算法之K-Means(K均值)聚类</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        4k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        4 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/机器学习/">机器学习</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/聚类算法/">聚类算法</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p><strong>分类</strong>： 类别是已知的，通过对已知分类的数据进行训练和学习，找到不同类的特征再对未分类的数据进行分类，属于监督学习。</p>
+<p><strong>聚类</strong>： 事先不知道数据会分为几类，通过聚类分析将数据聚合成几个群体。聚类不需要对数据进行训练和学习。属于无监督学习。</p>
+<p><em>数据输入有标签则为监督学习，否则为无监督学习</em></p>
+<ol>
+<li>首先输入 k 的值，即希望通过聚类得到 k 个分组；</li>
+<li>从数据集中随机选取 k 个数据点作为初始质心</li>
+<li>对数据中每一个点计算与每一个质心的距离，离哪个质心近，就分为哪一类</li>
+<li>基于当前分好的类，重新计算类中的所有向量的平均值，...</li></ol>
+            
+            <span class="read-more"><a href="/posts/dea808f4/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
 
-        gtag('config', 'UA-149874671-1');
-    </script>
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/机器学习笔记">
+                  <b>「 </b>机器学习笔记<b> 」</b>
+                </a>
+            
+            九月 05, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/ec7adaa1/" title="机器学习速查笔记-Numpy篇" class="posttitle">机器学习速查笔记-Numpy篇</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        9.7k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        9 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Numpy/">Numpy</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据分析/">数据分析</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>对于一维数组或者列表，unique函数去除其中重复的元素，并按元素由大到小返回一个新的无元素重复的元组或者列表</p>
+<pre><code class="python">A = [1,1,2,3,4,4,5,5,6]
+a = np.unique(A)
+print(a)   # [1 2 3 4 5 6]
+</code></pre>
+<p>生成随机的指定维度的列表</p>
+<pre><code class="python">a=np.random.rand(4)
+for var in range(10):
+    print(a)
+    a = np.random.rand(4)
+</code></pre>
+<p>结果：</p>
+<pre><code>[0.21849839 0.06253395 0.10794774 0....</code></pre>
+            
+            <span class="read-more"><a href="/posts/ec7adaa1/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
 
 
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/机器学习笔记">
+                  <b>「 </b>机器学习笔记<b> 」</b>
+                </a>
+            
+            八月 27, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/a61b68c3/" title="Pandas笔记-进阶篇" class="posttitle">Pandas笔记-进阶篇</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        8.1k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        7 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Pandas/">Pandas</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据分析/">数据分析</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p><code>panda</code>对象拥有一组常用的数学和统计方法，他们大部分都属于简约统计，NA值会自动被排除，除非通过<code>skipna=False</code>禁用</p>
+<pre><code class="python">In [78]: df
+Out[78]:
+    one  two
+a  1.40  NaN
+b  7.10 -4.5
+c   NaN  NaN
+d  0.75 -1.3
+
+In [79]: df.sum()
+Out[79]:
+one    9.25
+two   -5.80
+dtype: float64
+
+In [80]: df.sum(axis=1)
+Out[80]:
+a    1.40
+b    2.60
+c    0....</code></pre>
+            
+            <span class="read-more"><a href="/posts/a61b68c3/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
 
 
-
-<script>
-    function initialTyped () {
-        var typedTextEl = $('.typed-text');
-        if (typedTextEl && typedTextEl.length > 0) {
-            var typed = new Typed('.typed-text', {
-                strings: ["Farewell,good hunter.May you find your worth in the waking world.", "再见，善良的猎人。愿你能在清醒的世界中找到自己的价值。"],
-                typeSpeed: 90,
-                loop: true,
-                loopCount: Infinity,
-                backSpeed: 20,
-            });
-        }
-    }
-
-    if ($('.article-header') && $('.article-header').length) {
-        $(document).ready(function () {
-            initialTyped();
-        });
-    }
-</script>
-
-
-</html>
-ted fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Pandas/">Pandas</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据分析/">数据分析</a></li></ul>
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/机器学习笔记">
+                  <b>「 </b>机器学习笔记<b> 」</b>
+                </a>
+            
+            八月 26, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/8493c310/" title="Pandas笔记-基础篇" class="posttitle">Pandas笔记-基础篇</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        15k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        14 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Pandas/">Pandas</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据分析/">数据分析</a></li></ul>
             
         
         <div class="md-content animated fadeIn">
@@ -547,7 +563,7 @@ Out[11]: array([ 4,  7, -5,  3], dtype=int64)
 
 In [12]: obj2 = Series([4,7,-5,3], index=[&#39;d&#...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/8493c310/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/8493c310/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -600,7 +616,7 @@ array([[-2.09280349e-01, -2.08776777e+00,  1.18959772e+00,
          5.22445402e-01],
        [ 9.67780972e-01, -1.00148828e+00, -1.83185363e...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/87847f8/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/87847f8/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -661,7 +677,7 @@ Out[7]:
 array([[1, 2, 3, 4],
        [5...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/ca37cdbd/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/ca37cdbd/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -700,6 +716,7 @@ array([[1, 2, 3, 4],
 <script src="/js/plugin.js"></script>
 <script src="/js/obsidian.js"></script>
 <script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
 <script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
 <script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
@@ -823,6 +840,7 @@ array([[1, 2, 3, 4],
         });
     }
 </script>
+
 
 
 </html>

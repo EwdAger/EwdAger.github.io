@@ -15,7 +15,7 @@
     <link rel="alternative" href="atom.xml" title="极光技术小栈" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
     <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_xjbfxy4nzcj.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
@@ -64,6 +64,23 @@
 
 <div id="container">
     
+<div class="search-box">
+    <form class="site-search-form">
+        <span class="iconfont icon-search"></span>
+        <input type="text" id="local-search-input" class="st-search-input" />
+        <div class="iconfont icon-cross search-box-close"></div>
+    </form>
+    <div class="search-scrollable">
+      <div id="local-search-result"
+           class="local-search-result-cls"
+           data-initialise="首次搜索，正在载入索引文件，请稍后……"
+           data-start="输入关键词搜索。"
+           data-empty="没有找到内容，请尝试更换检索词。"
+      >
+        <span>输入关键词搜索。</span>
+      </div>
+    </div>
+</div>
 <div id="header">
     <div>
         <div class="logo animated fadeInDown">
@@ -88,6 +105,9 @@
                 <a href="/archives/" title="归档" class="menu-link">归档</a>
             </li>
             
+            
+                <li class="animated fadeInDown search-bar iconfont icon-search"></li>
+            
         </ul>
         <div class="iconfont icon-menu switchmenu gradient-text animated fadeInDown"></div>
     </div>
@@ -97,7 +117,7 @@
         <div class="cover animated fadeIn" style="
             animation-delay: 900ms;
             animation-duration: 2.8s;
-            background-image: 
+            background-image:
                 radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.56), #100e17),
                 url(/img/cover.jpg);">
         </div>
@@ -141,7 +161,7 @@ In [3]: arr1 = np.array(data1)
 In [4]: arr1
 Out...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/ca37cdbd/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/ca37cdbd/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
     
@@ -153,7 +173,7 @@ Out...</code></pre>
             <div class="bold-underline-links screen-gradient-sponsor">
                 <p>
                   <span class="typed-text"></span>
-                </p> 
+                </p>
             </div>
         </div>
     </div>
@@ -216,7 +236,7 @@ Out[7]:
 array([[1, 2, 3, 4],
        [5...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/ca37cdbd/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/ca37cdbd/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -270,7 +290,7 @@ array([[1, 2, 3, 4],
     while (j1&lt;n1 &amp; j2&lt;n2)
         temp[i++] = (a[j1] &lt;= a[n1+j2] ? a[j1++] ...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/aa2472f4/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/aa2472f4/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -318,7 +338,7 @@ array([[1, 2, 3, 4],
 <p>比如发送电子邮件，从用户输入完内容并点击“发送”的那一刻，就进入应用层协议处理了。协议会在数据首部添加收件人</p>
 
             
-            <span class="read-more gradient-text"><a href="/posts/4a1a5b83/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/4a1a5b83/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -377,7 +397,7 @@ array([[1, 2, 3, 4],
 <pre><code class="python">def dubble_sort(n):
     for i in range(...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/576d991f/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/576d991f/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -427,7 +447,7 @@ array([[1, 2, 3, 4],
 <p>Python缺少对于类的封装,但人们希望Python能够定义私有属性，然后提供公共可访问的<code>getter</code>和 <code>setter</code>。 Python其实可以通过魔术方法来实现封装。</p>
 <p><code>__getattr__(self, name...</code></p>
             
-            <span class="read-more gradient-text"><a href="/posts/22aee029/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/22aee029/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -490,7 +510,7 @@ class Undef(op):
 
 class Factory(op)...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/7798fba3/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/7798fba3/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -542,7 +562,7 @@ git commit -m &quot;message&quot; # 将缓存区所有任务保存到仓库，�
 git status   
 # 查看当前仓库状态，会显示无修改、有修改但未提交缓存、提交...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/5fddf106/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/5fddf106/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -598,7 +618,7 @@ git status
         buff =[[0] * x] * y
         for i in range...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/995b78a8/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/995b78a8/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -658,7 +678,7 @@ class LList:
     # 前端插入
     def...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/2870634a/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/2870634a/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -712,7 +732,7 @@ check_url = &#39;http://readfree.me/accounts/checkin&#39;
 # 记录程序运行时的时间
 fp = open(&#39;./auto_signon_readfree...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/2ba86c7b/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/2ba86c7b/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -750,6 +770,7 @@ fp = open(&#39;./auto_signon_readfree...</code></pre>
 <script src="/js/plugin.js"></script>
 <script src="/js/obsidian.js"></script>
 <script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
 <script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
 <script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
@@ -873,6 +894,7 @@ fp = open(&#39;./auto_signon_readfree...</code></pre>
         });
     }
 </script>
+
 
 
 </html>

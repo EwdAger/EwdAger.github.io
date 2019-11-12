@@ -15,7 +15,7 @@
     <link rel="alternative" href="atom.xml" title="极光技术小栈" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
     <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_xjbfxy4nzcj.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
@@ -64,6 +64,23 @@
 
 <div id="container">
     
+<div class="search-box">
+    <form class="site-search-form">
+        <span class="iconfont icon-search"></span>
+        <input type="text" id="local-search-input" class="st-search-input" />
+        <div class="iconfont icon-cross search-box-close"></div>
+    </form>
+    <div class="search-scrollable">
+      <div id="local-search-result"
+           class="local-search-result-cls"
+           data-initialise="首次搜索，正在载入索引文件，请稍后……"
+           data-start="输入关键词搜索。"
+           data-empty="没有找到内容，请尝试更换检索词。"
+      >
+        <span>输入关键词搜索。</span>
+      </div>
+    </div>
+</div>
 <div id="header">
     <div>
         <div class="logo animated fadeInDown">
@@ -88,6 +105,9 @@
                 <a href="/archives/" title="归档" class="menu-link">归档</a>
             </li>
             
+            
+                <li class="animated fadeInDown search-bar iconfont icon-search"></li>
+            
         </ul>
         <div class="iconfont icon-menu switchmenu gradient-text animated fadeInDown"></div>
     </div>
@@ -97,7 +117,7 @@
         <div class="cover animated fadeIn" style="
             animation-delay: 900ms;
             animation-duration: 2.8s;
-            background-image: 
+            background-image:
                 radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.56), #100e17),
                 url(/img/cover.jpg);">
         </div>
@@ -141,7 +161,7 @@ def fake_exception():
 
 def catch_exception():...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/1a6c337e/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/1a6c337e/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
     
@@ -153,7 +173,7 @@ def catch_exception():...</code></pre>
             <div class="bold-underline-links screen-gradient-sponsor">
                 <p>
                   <span class="typed-text"></span>
-                </p> 
+                </p>
             </div>
         </div>
     </div>
@@ -208,7 +228,7 @@ start_time = time.time()
 curr_dir = os.path.abspath(&#39;.&#39;)
 parent_path = sys.argv[1] if len...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/a2a2ab6a/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/a2a2ab6a/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -267,7 +287,7 @@ parent_path = sys.argv[1] if len...</code></pre>
 <pre><code class="python">def dubble_sort(n):
     for i in range(...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/576d991f/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/576d991f/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -323,7 +343,7 @@ parent_path = sys.argv[1] if len...</code></pre>
         buff =[[0] * x] * y
         for i in range...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/995b78a8/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/995b78a8/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -383,7 +403,7 @@ class LList:
     # 前端插入
     def...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/2870634a/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/2870634a/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -436,7 +456,7 @@ import requests
 os.environ[&#39;NO_PROXY&#39;] = &#39;127.0.0.1&#39;
 r = requests.get(&#39;http://127.0.0.1...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/7c092ea/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/7c092ea/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -488,7 +508,7 @@ sudo apt-get install pip              // 安装python包管理
 <p>如果项目内有<code>requrements.txt</code>文件，进行如下操作安装项目依赖</p>
 <pre><code>pip install -r requrements...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/725a38d2/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/725a38d2/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -543,7 +563,7 @@ sudo apt-get install pip              // 安装python包管理
 </ul>
 <p>由于每个国家都有自己的字符，所以其对应关系也涵盖了自己国家的字符，但是以上编码都存在局限性，即：仅涵盖本国字符，无其他国家...</p>
             
-            <span class="read-more gradient-text"><a href="/posts/7ed6f334/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/7ed6f334/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -591,7 +611,7 @@ sudo apt-get install pip              // 安装python包管理
 <pre><code>YEAR_IN_SCHOOL_CHOICES = (
     (u&#39;FR&#39...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/62657fb0/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/62657fb0/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -640,7 +660,7 @@ sudo apt-get install pip              // 安装python包管理
 <p>学校教务系统由于长期缺乏必要的维护，目前依旧只兼容IE8及以下浏览器。使用非IE浏览器访问登陆界面是没有问题，但是登录进去后就会报错，并且所有功能都无法使用。这对于使用非IE浏览器的用户简直就是噩梦，特别对于非Windows用户，以下是简单的解决办法</p>
 <p><strong>学长的修复...</strong></p>
             
-            <span class="read-more gradient-text"><a href="/posts/d496c7e0/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/d496c7e0/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -678,6 +698,7 @@ sudo apt-get install pip              // 安装python包管理
 <script src="/js/plugin.js"></script>
 <script src="/js/obsidian.js"></script>
 <script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
 <script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
 <script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
@@ -801,6 +822,7 @@ sudo apt-get install pip              // 安装python包管理
         });
     }
 </script>
+
 
 
 </html>

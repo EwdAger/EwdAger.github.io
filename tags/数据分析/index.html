@@ -15,7 +15,7 @@
     <link rel="alternative" href="atom.xml" title="极光技术小栈" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
     <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_xjbfxy4nzcj.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
@@ -64,6 +64,23 @@
 
 <div id="container">
     
+<div class="search-box">
+    <form class="site-search-form">
+        <span class="iconfont icon-search"></span>
+        <input type="text" id="local-search-input" class="st-search-input" />
+        <div class="iconfont icon-cross search-box-close"></div>
+    </form>
+    <div class="search-scrollable">
+      <div id="local-search-result"
+           class="local-search-result-cls"
+           data-initialise="首次搜索，正在载入索引文件，请稍后……"
+           data-start="输入关键词搜索。"
+           data-empty="没有找到内容，请尝试更换检索词。"
+      >
+        <span>输入关键词搜索。</span>
+      </div>
+    </div>
+</div>
 <div id="header">
     <div>
         <div class="logo animated fadeInDown">
@@ -88,6 +105,9 @@
                 <a href="/archives/" title="归档" class="menu-link">归档</a>
             </li>
             
+            
+                <li class="animated fadeInDown search-bar iconfont icon-search"></li>
+            
         </ul>
         <div class="iconfont icon-menu switchmenu gradient-text animated fadeInDown"></div>
     </div>
@@ -97,7 +117,7 @@
         <div class="cover animated fadeIn" style="
             animation-delay: 900ms;
             animation-duration: 2.8s;
-            background-image: 
+            background-image:
                 radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.56), #100e17),
                 url(/img/cover.jpg);">
         </div>
@@ -138,7 +158,7 @@
 a = np.unique(A)
 print...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/ec7adaa1/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/ec7adaa1/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
     
@@ -150,7 +170,7 @@ print...</code></pre>
             <div class="bold-underline-links screen-gradient-sponsor">
                 <p>
                   <span class="typed-text"></span>
-                </p> 
+                </p>
             </div>
         </div>
     </div>
@@ -217,7 +237,7 @@ a    1.40
 b    2.60
 c    0....</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/a61b68c3/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/a61b68c3/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -272,7 +292,7 @@ Out[11]: array([ 4,  7, -5,  3], dtype=int64)
 
 In [12]: obj2 = Series([4,7,-5,3], index=[&#39;d&#...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/8493c310/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/8493c310/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -325,7 +345,7 @@ array([[-2.09280349e-01, -2.08776777e+00,  1.18959772e+00,
          5.22445402e-01],
        [ 9.67780972e-01, -1.00148828e+00, -1.83185363e...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/87847f8/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/87847f8/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -386,7 +406,7 @@ Out[7]:
 array([[1, 2, 3, 4],
        [5...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/ca37cdbd/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/ca37cdbd/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -423,6 +443,7 @@ array([[1, 2, 3, 4],
 <script src="/js/plugin.js"></script>
 <script src="/js/obsidian.js"></script>
 <script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
 <script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
 <script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
@@ -546,6 +567,7 @@ array([[1, 2, 3, 4],
         });
     }
 </script>
+
 
 
 </html>

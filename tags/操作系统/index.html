@@ -15,7 +15,7 @@
     <link rel="alternative" href="atom.xml" title="极光技术小栈" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
     <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_xjbfxy4nzcj.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
@@ -64,6 +64,23 @@
 
 <div id="container">
     
+<div class="search-box">
+    <form class="site-search-form">
+        <span class="iconfont icon-search"></span>
+        <input type="text" id="local-search-input" class="st-search-input" />
+        <div class="iconfont icon-cross search-box-close"></div>
+    </form>
+    <div class="search-scrollable">
+      <div id="local-search-result"
+           class="local-search-result-cls"
+           data-initialise="首次搜索，正在载入索引文件，请稍后……"
+           data-start="输入关键词搜索。"
+           data-empty="没有找到内容，请尝试更换检索词。"
+      >
+        <span>输入关键词搜索。</span>
+      </div>
+    </div>
+</div>
 <div id="header">
     <div>
         <div class="logo animated fadeInDown">
@@ -88,6 +105,9 @@
                 <a href="/archives/" title="归档" class="menu-link">归档</a>
             </li>
             
+            
+                <li class="animated fadeInDown search-bar iconfont icon-search"></li>
+            
         </ul>
         <div class="iconfont icon-menu switchmenu gradient-text animated fadeInDown"></div>
     </div>
@@ -97,7 +117,7 @@
         <div class="cover animated fadeIn" style="
             animation-delay: 900ms;
             animation-duration: 2.8s;
-            background-image: 
+            background-image:
                 radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.56), #100e17),
                 url(/img/cover.jpg);">
         </div>
@@ -136,7 +156,7 @@
                 <p><strong>本实验通过编程模拟实现几种常见的磁盘调度算法</strong></p>
 <p>简直可怕，怎么可能写出来磁盘调度算法啊喂！算法实现倒还好说，就是一个排序算法。但是！访问的柱面就是随机生成的所以还要写iterator？！这里简单描述一下...</p>
             
-            <span class="read-more gradient-text"><a href="/posts/cfee3b66/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/cfee3b66/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
     
@@ -148,7 +168,7 @@
             <div class="bold-underline-links screen-gradient-sponsor">
                 <p>
                   <span class="typed-text"></span>
-                </p> 
+                </p>
             </div>
         </div>
     </div>
@@ -196,7 +216,7 @@
             
                 <p><strong>- 什么是分页过程</strong><br>当 Windows 求助于硬盘以获得虚拟内存时，这个过程被称为分页 (paging) 。具体是通过MMU（Memory Management Unit 内存管理单元）将硬盘上的虚拟地址映射为物理内存地址。优点是使大内存占用程序不至于异常退出。缺点是虚拟内存要远慢于物理内存（访问虚拟内存大约要4-10毫秒，访问物理内存只要60 us）<br><strong>- 什么是内存共享</strong><br>共享内存是被多个进程共享的一部分物理内存。共享内存是进程间共享数据的一种最快的方法，一个进程向共享内存区域写入了数据，共享这个内存...</p>
             
-            <span class="read-more gradient-text"><a href="/posts/c9f7f365/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/c9f7f365/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -258,7 +278,7 @@ int finished;
 
 bool IsAvailable...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/9a468f74/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/9a468f74/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -312,7 +332,7 @@ unsigned short ConsumeID = 0; //将被消耗的产品号
 unsigned short in = 0; //产品进缓冲区时的缓冲区下标
 unsigned short out = 0; /...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/b2a42beb/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/b2a42beb/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -371,7 +391,7 @@ int main (){
     else
         printf(&...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/6ee94925/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/6ee94925/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -419,7 +439,7 @@ int main (){
 <blockquote>
 <p>句柄（handle），有多种意义，其中第一种是指程序设计，第二种是指Windows编程。现在大部分都是指程序设计/程序开发这类。<br>第一种解释：句柄是一种特殊的<a href="http://baike.baidu.com/item/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88" target="_blank" rel="noopener">智能指针</a> 。当一个应用程序要引用其他系统（如数据库、操作系统）所管理的内存块或对象时，就要使用句柄。<br>第二种解释：整个Windows编程的基础。一个句柄是指使用的一个唯一的整数值，即一个4字节...</p></blockquote>
             
-            <span class="read-more gradient-text"><a href="/posts/a46183c6/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/a46183c6/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -456,6 +476,7 @@ int main (){
 <script src="/js/plugin.js"></script>
 <script src="/js/obsidian.js"></script>
 <script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
 <script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
 <script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
@@ -579,6 +600,7 @@ int main (){
         });
     }
 </script>
+
 
 
 </html>

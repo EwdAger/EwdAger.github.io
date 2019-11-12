@@ -15,7 +15,7 @@
     <link rel="alternative" href="atom.xml" title="极光技术小栈" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
     <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_xjbfxy4nzcj.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
@@ -64,6 +64,23 @@
 
 <div id="container">
     
+<div class="search-box">
+    <form class="site-search-form">
+        <span class="iconfont icon-search"></span>
+        <input type="text" id="local-search-input" class="st-search-input" />
+        <div class="iconfont icon-cross search-box-close"></div>
+    </form>
+    <div class="search-scrollable">
+      <div id="local-search-result"
+           class="local-search-result-cls"
+           data-initialise="首次搜索，正在载入索引文件，请稍后……"
+           data-start="输入关键词搜索。"
+           data-empty="没有找到内容，请尝试更换检索词。"
+      >
+        <span>输入关键词搜索。</span>
+      </div>
+    </div>
+</div>
 <div id="header">
     <div>
         <div class="logo animated fadeInDown">
@@ -88,6 +105,9 @@
                 <a href="/archives/" title="归档" class="menu-link">归档</a>
             </li>
             
+            
+                <li class="animated fadeInDown search-bar iconfont icon-search"></li>
+            
         </ul>
         <div class="iconfont icon-menu switchmenu gradient-text animated fadeInDown"></div>
     </div>
@@ -97,7 +117,7 @@
         <div class="cover animated fadeIn" style="
             animation-delay: 900ms;
             animation-duration: 2.8s;
-            background-image: 
+            background-image:
                 radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.56), #100e17),
                 url(/img/cover.jpg);">
         </div>
@@ -135,7 +155,7 @@
             
                 <p>今天翻github惊奇的发现，我这个辣鸡博客竟然被<a href="https://github.com/Hiccup1" target="_blank" rel="noopener">@兴栋大佬</a>的博客做了友链。不胜惶恐，但发现友链是之前没填坑的无法访问的裸域名，所以这个坑必须赶紧填啊。之前TX云送的学生cdn+域名解析中@记录和www...</p>
             
-            <span class="read-more gradient-text"><a href="/posts/bd4cc0f1/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/bd4cc0f1/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
     
@@ -147,7 +167,7 @@
             <div class="bold-underline-links screen-gradient-sponsor">
                 <p>
                   <span class="typed-text"></span>
-                </p> 
+                </p>
             </div>
         </div>
     </div>
@@ -196,7 +216,7 @@
                 <p>今天翻github惊奇的发现，我这个辣鸡博客竟然被<a href="https://github.com/Hiccup1" target="_blank" rel="noopener">@兴栋大佬</a>的博客做了友链。不胜惶恐，但发现友链是之前没填坑的无法访问的裸域名，所以这个坑必须赶紧填啊。之前TX云送的学生cdn+域名解析中@记录和www记录都是设置的CNAME跳转到cdn。。结果访问gvoidy.cn出现404，简直神奇。试过很多次之后还是不行，不知道这是什么鬼。。最后解决方法还是把@记录重定向到<a href="https://www.gvoidy.cn" target="_blank" rel="noopener">https://www.gvoidy.cn</a> 上才解决。有点迷。先留坑以后再研究是什么操作。</p>
 <p><strong> 2.21 21:00 Update </strong><br><s>今天...</s></p>
             
-            <span class="read-more gradient-text"><a href="/posts/bd4cc0f1/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/bd4cc0f1/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -244,7 +264,7 @@
 <p>附上Laravel一键安装包<br><a href="http://laravelacademy.org/resources-download" target="_blank" rel="noopener">下载地址</a></p>
 <p>编程还是离不开JB全家桶的~这步没有省略主要是因为jb全家桶更新3.4后大量激活方法和激活服务器集体失效。这里使用了<a href="http://blog.lanyus.com/" target="_blank" rel="noopener">ilanyu</a>大佬提供的<a href="https://github.com/ilanyu/ReverseProxy" target="_blank" rel="noopener">本地反向代理激活方法</a>，或者自...</p>
             
-            <span class="read-more gradient-text"><a href="/posts/19653b91/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/19653b91/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -302,7 +322,7 @@ echo $string1;
 </code></pre>
 <p><strong> 单双引号区别 </strong><br>单引号串和双引号串在PHP...</p>
             
-            <span class="read-more gradient-text"><a href="/posts/ea2f965e/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/ea2f965e/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -355,7 +375,7 @@ echo $string1;
 <ul>
 <li>在source...</li></ul>
             
-            <span class="read-more gradient-text"><a href="/posts/ed36993e/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/ed36993e/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -413,7 +433,7 @@ def tcplink(sock, addr):
     while True:
         data = sock....</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/14572bdc/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/14572bdc/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -460,7 +480,7 @@ def tcplink(sock, addr):
 </code></pre>
 
             
-            <span class="read-more gradient-text"><a href="/posts/d4a1185/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/d4a1185/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -516,7 +536,7 @@ git config --global user.email &quot;ewdager@hotmail.com&quot;
 <ol>
 <li>查看是否已经有了ssh密钥：<code>cd...</code></li></ol>
             
-            <span class="read-more gradient-text"><a href="/posts/7c2130d4/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/7c2130d4/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -564,7 +584,7 @@ git config --global user.email &quot;ewdager@hotmail.com&quot;
 <pre><code>YEAR_IN_SCHOOL_CHOICES = (
     (u&#39;FR&#39...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/posts/62657fb0/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/62657fb0/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -615,7 +635,7 @@ git config --global user.email &quot;ewdager@hotmail.com&quot;
 </blockquote>
 <p><strong>1、先来先服务算法（FCFS...</strong></p>
             
-            <span class="read-more gradient-text"><a href="/posts/cfee3b66/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/cfee3b66/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -661,7 +681,7 @@ git config --global user.email &quot;ewdager@hotmail.com&quot;
             
                 <p><strong>- 什么是分页过程</strong><br>当 Windows 求助于硬盘以获得虚拟内存时，这个过程被称为分页 (paging) 。具体是通过MMU（Memory Management Unit 内存管理单元）将硬盘上的虚拟地址映射为物理内存地址。优点是使大内存占用程序不至于异常退出。缺点是虚拟内存要远慢于物理内存（访问虚拟内存大约要4-10毫秒，访问物理内存只要60 us）<br><strong>- 什么是内存共享</strong><br>共享内存是被多个进程共享的一部分物理内存。共享内存是进程间共享数据的一种最快的方法，一个进程向共享内存区域写入了数据，共享这个内存...</p>
             
-            <span class="read-more gradient-text"><a href="/posts/c9f7f365/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more"><a href="/posts/c9f7f365/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -699,6 +719,7 @@ git config --global user.email &quot;ewdager@hotmail.com&quot;
 <script src="/js/plugin.js"></script>
 <script src="/js/obsidian.js"></script>
 <script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
 <script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
 <script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
@@ -822,6 +843,7 @@ git config --global user.email &quot;ewdager@hotmail.com&quot;
         });
     }
 </script>
+
 
 
 </html>
