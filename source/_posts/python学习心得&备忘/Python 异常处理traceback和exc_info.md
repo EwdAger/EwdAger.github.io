@@ -35,7 +35,7 @@ Traceback (most recent call last):
 ZeroDivisionError: integer division or modulo by zero
 ```
 
-<!--more-->
+
 
 事实上，`traceback`里的所有信息都是从`exc_info`里面获取的。
 ```

@@ -45,7 +45,7 @@ res = requests.get(check_url,cookies=cookie)
 print (res)
 fp.write('%s\n\n'%res)
 ```
-<!-- more -->
+
 
 # crontab 自动任务
 

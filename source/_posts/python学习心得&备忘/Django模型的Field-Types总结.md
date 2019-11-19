@@ -25,7 +25,7 @@ YEAR_IN_SCHOOL_CHOICES = (
     (u'GR', u'Graduate'),
 )
 ```
-<!-- more -->
+
 2元元组的第一个元素是要存入 database 的数据，第二个元素是 admin 的界面 显示的数据。 
 使用了 choices 参数的 field 在其 model 示例里，可以用 "get_field的名 字_display" 方法 显示 choices 的显示字串（就是2元元组的第二个数据）。示 例：
 ```

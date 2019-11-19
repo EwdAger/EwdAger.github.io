@@ -13,7 +13,7 @@ Git是分布式的代码管理工具，远程的代码管理是基于ssh的，�
 git config --global user.name "EwdAger"
 git config --global user.email "ewdager@hotmail.com"
 ```
-<!-- more -->
+
 - 第二步.生成SSH密钥：
 1. 查看是否已经有了ssh密钥：```cd ~/.ssh```,Windows用户的路径在```C:\Users\EwdAger\.ssh```下
 如果是刚安装git则不会有此文件夹，有则备份删除

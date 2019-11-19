@@ -40,7 +40,7 @@ git tag v0.9 f52c633 # 给f52c633创建tag v0.9
 git tag -d v1.0 # 删除这个tag
 
 ```
-<!--more-->
+
 # 远程库&分支管理
 
 ```bash

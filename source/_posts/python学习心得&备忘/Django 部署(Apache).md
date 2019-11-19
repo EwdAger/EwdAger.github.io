@@ -24,7 +24,7 @@ pip install -r requrements.txt
 
 首先将django项目放入`/var/www/`目录下，然后修改`/etc/apache2/site-enabled/000-default.conf/`文件
 
-<!--more-->
+
 ```bash
 <VirtualHost *:80>
 

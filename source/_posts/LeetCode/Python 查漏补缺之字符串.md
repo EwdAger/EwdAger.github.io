@@ -23,7 +23,7 @@ str.count(sub, start= 0,end=len(string))
 
 该方法返回子字符串在字符串中出现的次数。
 
-<!--more-->
+
 
 ### LeetCode 相关题目 [461. 汉明距离](https://leetcode-cn.com/problems/hamming-distance/description/)
 

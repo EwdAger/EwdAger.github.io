@@ -38,7 +38,7 @@ Out[9]: dtype('int32')
 ```
 
 除非显式说明，`np.array`会尝试为新建的这个数组判断一个较为合适的数据类型。数据类型保存在特殊的`dtype`对象中。比如上面的两个例子中。我们有：
-<!-- more -->
+
 ```python
 In [19]: arr1.dtype
 Out[19]: dtype('float64')
@@ -97,7 +97,7 @@ Out[48]: array([0., 1., 2., 3., 4., 5., 6., 7., 8., 9.])
 
 # 数组和标量之间的运算
 
-{% note danger %}FBI WARNING！离！散！数！学！警！告！{% endnote %}
+FBI WARNING！离！散！数！学！警！告！
 
 
 ```python

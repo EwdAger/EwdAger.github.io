@@ -38,7 +38,7 @@ for x in A():
     print x
 ```
 
-<!--more-->
+
 打印结果：
 
 

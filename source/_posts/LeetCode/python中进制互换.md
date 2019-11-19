@@ -29,7 +29,7 @@ bin() 返回一个整数 int 或者长整数 long int 的二进制表示。
 ```
 
 ## LeetCode 相关题目 [476. 数字的补数](https://leetcode-cn.com/problems/number-complement/description/)
-<!-- more -->
+
 
 给定一个正整数，输出它的补数。补数是对该数的二进制表示取反。
 

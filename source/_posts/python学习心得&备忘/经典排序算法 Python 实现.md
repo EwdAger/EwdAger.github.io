@@ -22,7 +22,7 @@ def select_sort(n):
 			n[min], n[i] = n[i], n[min]
 	return n
 ```
-<!--more-->
+
 # 冒泡排序
 
 每一趟遍历把大的放前面，小的放后面，时间复杂度O(n²)

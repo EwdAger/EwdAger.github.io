@@ -20,7 +20,7 @@ date: 2018-05-14 20:14:00
          self.right = None
 ```
 
-<!--more-->
+
 ## [617.合并二叉树](https://leetcode-cn.com/problems/merge-two-binary-trees/description/)
 
 ![合并二叉树](https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/leetcode-617.png)

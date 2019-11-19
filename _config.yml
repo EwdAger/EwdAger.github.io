@@ -7,7 +7,7 @@ title: 极光技术小栈
 subtitle: 
 description: 
 author: EwdAger
-language: zh-Hans
+language: zh-CN
 timezone: 
 
 # URL
@@ -38,9 +38,9 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
-  auto_detect: false
+  auto_detect: true
   tab_replace:
   
 # Home page setting
@@ -72,7 +72,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: obsidian
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -90,8 +90,8 @@ abbrlink:
 search:
   path: search.xml
   field: post
-  format: html
-  limit: 10000
+  content: true
+
 
 # 数学公式
 math:

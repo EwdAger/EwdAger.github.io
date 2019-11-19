@@ -21,7 +21,7 @@ names = data.sheet_names
 
 查阅资料可知`.xlsx`文件是一个压缩格式的文件，可以直接通过`zipfile`读到`sheet name`等相关信息。所以写如下函数直接取`sheet name`
 
-<!--more-->
+
 
 ```python
 def get_sheet_details(file_path):

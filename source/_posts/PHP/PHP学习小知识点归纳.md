@@ -29,7 +29,7 @@ $str='hello';
 echo "str is $str"; //运行结果: str is hello
 echo 'str is $str'; //运行结果: str is $str
 ```
-<!-- more -->
+
 ** 资源类型 **
 这里和python比较类似，不过还是留档一下。
 ```php

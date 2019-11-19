@@ -7,3 +7,4 @@ public/
 .deploy*/
 /.deploy_git
 debug.log
+/themes/obsidian/.git

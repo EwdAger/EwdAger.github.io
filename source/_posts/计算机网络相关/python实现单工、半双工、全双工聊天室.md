@@ -47,7 +47,7 @@ while True:
     t.start()
 ```
 
-<!-- more -->
+
 
 **Client:**
 ```python

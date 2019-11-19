@@ -8,7 +8,7 @@ date: 2017-04-15 16:35:10
 ---
 
 LAMP 是Linux, Apache, MySQL, PHP, perl的缩写. 指在linux上安装Apache2，MySQL, PHP等软件包所建立的网站运行平台，是目前中小网站主要的运行环境。
-<!-- more -->
+
 1.1 安装Apache2
 
 `sudo apt-get install apache2`

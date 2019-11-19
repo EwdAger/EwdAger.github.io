@@ -36,7 +36,7 @@ for var in range(10):
 [0.3782018  0.74330012 0.33034715 0.74607596]
 [0.07583301 0.71505934 0.66028763 0.54293845]
 ```
-<!--more-->
+
 ## np.random.uniform(low,high,size)
 [参考原文](https://blog.csdn.net/u013920434/article/details/52507173)
 

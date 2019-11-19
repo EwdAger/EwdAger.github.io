@@ -12,7 +12,7 @@ date: 2019-09-02 11:26:10
 
 将下述代码保存为`setup.py`至需打包项目根目录，安装`cython`后执行`python setup.py`即可打包。
 
-<!--more-->
+
 
 ```python
 import sys, os, shutil, time

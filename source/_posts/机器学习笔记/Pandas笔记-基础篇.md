@@ -38,7 +38,7 @@ a    3
 dtype: int64
 
 ```
-<!--more-->
+
 Numpy 数组运算都会保留索引和值之间的链接，但这些操作并不会改变原`Series`本身（与`ndarray`的选区操作相对）
 
 ```python

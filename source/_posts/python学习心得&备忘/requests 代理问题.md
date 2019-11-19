@@ -25,7 +25,7 @@ print(r.content)
 
 设置不走代理的url，而不是直接把请求的proxies设置为本地代理！
 
-<!--more-->
+
 参考：
 
 [stackoverflow: requests-how-to-disable-bypass-proxy](https://stackoverflow.com/questions/28521535/requests-how-to-disable-bypass-proxy)
