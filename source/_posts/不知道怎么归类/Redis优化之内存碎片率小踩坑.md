@@ -6,10 +6,6 @@ abbrlink: 9779499d
 date: 2019-11-21 10:34:00
 ---
 
-<script type="text/javascript"
-   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
 
 ## 起因
 
