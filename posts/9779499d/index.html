@@ -5,13 +5,17 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>requests 代理问题 - 极光技术小栈</title>
+    <title>Redis优化之内存碎片小踩坑 - 极光技术小栈</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
-    <meta name="description" content="在给一个本地的Flask项目测试post接口时遇到一个问题，无论用requests的get还是post请求localhost全部都会超时。
-经过仔细分析后，发现是开了系统代理的锅(毕竟写代码少不了G,"> 
+    <meta name="description" content="
+
+
+
+起因近来项目里引用了Redis，本来用这高端玩意就是为了加速项目跑的速度。然而，用着用着越来越慢。而之前就做着性能优化的活，也顺手接下了优化Redis的活
+内存碎片率mem_fragment,"> 
     <meta name="author" content="EwdAger"> 
     <link rel="alternative" href="atom.xml" title="极光技术小栈" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -43,7 +47,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://gvoidy.cn">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">requests 代理问题</h3>
+        <h3 class="subtitle">Redis优化之内存碎片小踩坑</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -73,23 +77,23 @@
         <div class="else">
             <p class="animated fadeInDown">
                 
-                    <a href="/categories/python学习心得&备忘"><b>「 </b>PYTHON学习心得&备忘<b> 」</b></a>
+                    <a href="/categories/不知道怎么归类"><b>「 </b>不知道怎么归类<b> 」</b></a>
                 
-                七月 13, 2018
+                十一月 21, 2019
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/posts/7c092ea/" title="requests 代理问题">requests 代理问题</a></h3>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/9779499d/" title="Redis优化之内存碎片小踩坑">Redis优化之内存碎片小踩坑</a></h3>
             
                 <p class="post-count animated fadeInDown">
                     
                         <span>
                         <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        961
+                        4.4k
                     </span>
                     
                     
                         <span>
                         <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        1 mins.
+                        4 mins.
                     </span>
                     
                     
@@ -102,7 +106,7 @@
                 </p>
             
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/requests/">requests</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Redis/">Redis</a></li></ul>
             
         </div>
     </div>
@@ -123,21 +127,70 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn slower">
-            <p>在给一个本地的Flask项目测试post接口时遇到一个问题，无论用requests的get还是post请求localhost全部都会超时。</p>
-<p>经过仔细分析后，发现是开了系统代理的锅(毕竟写代码少不了Google)，然而直接关闭系统代理仍然超时。</p>
-<p>最后的解决方案如下：</p>
-<pre><code class="python">import os
-import requests
+            <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
-os.environ[&#39;NO_PROXY&#39;] = &#39;127.0.0.1&#39;
-r = requests.get(&#39;http://127.0.0.1:5000&#39;)
-print(r.content)
+
+<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>近来项目里引用了Redis，本来用这高端玩意就是为了加速项目跑的速度。然而，用着用着越来越慢。而之前就做着性能优化的活，也顺手接下了优化Redis的活</p>
+<h2 id="内存碎片率mem-fragmentation-ratio"><a href="#内存碎片率mem-fragmentation-ratio" class="headerlink" title="内存碎片率mem_fragmentation_ratio"></a>内存碎片率<code>mem_fragmentation_ratio</code></h2><p>查阅相关资料得知，速度过慢很有可能是因为内存不足使用了<code>swap</code>导致。而<code>mem_fragmentation_ratio</code>是一个很明显的是否使用了<code>swap</code>的指标。</p>
+<p><code>mem_fragmentation_ratio</code>的计算公式为</p>
+<p>$$MemFragmentationRatio = \frac {UsedMemoryRss} {UsedMemory}$$</p>
+<p>而我Redis执行info命令结果为：</p>
+<pre><code class="bash"># Memory
+used_memory:3803742104
+used_memory_human:3.54G
+used_memory_rss:3531386880
+used_memory_rss_human:3.29G
+used_memory_peak:3940788176
+used_memory_peak_human:3.67G
+total_system_memory:33567162368
+total_system_memory_human:31.26G
+used_memory_lua:37888
+used_memory_lua_human:37.00K
+maxmemory:21474836480
+maxmemory_human:20G
+maxmemory_policy:noeviction
+mem_fragmentation_ratio:0.93
+mem_allocator:jemalloc-3.6.0
 </code></pre>
-<p>设置不走代理的url，而不是直接把请求的proxies设置为本地代理！</p>
-<p>参考：</p>
-<p><a href="https://stackoverflow.com/questions/28521535/requests-how-to-disable-bypass-proxy" target="_blank" rel="noopener">stackoverflow: requests-how-to-disable-bypass-proxy</a></p>
-<p><a href="https://stackoverflow.com/questions/43254103/python-requests-return-504-in-localhost" target="_blank" rel="noopener">stackoverflow: python-requests-return-504-in-localhost</a></p>
-<p><a href="https://github.com/requests/requests/issues/879" target="_blank" rel="noopener">github: Issues with HTTP proxy and accessing localhost - does requests ignore no_proxy?</a></p>
+<p>而相关资料显示，ratio值正常范围在1~1.5左右。</p>
+<ul>
+<li>大于1.5表示，系统分配的内存大于Redis实际使用的内存，Redis没有把这部分内存返还给系统，产生了很多内存碎片。在Redis 4.0版以前，只能通过安全重启解决这个问题。</li>
+<li>小于1表示，系统分配的内存小于Redis实际使用的内存，而Redis很有可能在使用Swap了！使用swap是相当影响性能的。</li>
+</ul>
+<p>而我这个ratio小于1，那么说明很有可能使用Swap了。</p>
+<h2 id="初步尝试"><a href="#初步尝试" class="headerlink" title="初步尝试"></a>初步尝试</h2><pre><code class="bash">$ free -h
+total        used        free      shared  buff/cache   available
+Mem:            31G        5.6G        326M         49M         25G         25G
+Swap:            0B          0B          0B
+</code></pre>
+<p>woc,没有使用Swap？那是什么鬼，那为啥我的ratio还小于1？</p>
+<h2 id="死马当活马医"><a href="#死马当活马医" class="headerlink" title="死马当活马医"></a>死马当活马医</h2><p>然后尝试ratio大于1的方法，重启大法尝试。然后发现日志</p>
+<pre><code class="bash">(error) MISCONF Redis is configured to save RDB snapshots, but is currently not able to persist on disk. Commands that may modify the data set are disabled. Please check Redis logs for details about the error
+</code></pre>
+<p>噫？竟然没有写持久化文件RDB的权限，根据Redis配置文件查询到RDB位置，后访问发现文件夹权限为</p>
+<pre><code class="bash">drwxrwxr-x  2 hdfs  hdfs   36 Oct 29 18:56 analysis_flink
+drwxrwxr-x 11 hdfs  hdfs  286 Nov 16 14:24 flink-1.9.0
+drwxrwxr-x  8 hdfs  hdfs  155 Nov  2 18:18 kafka-manager
+drwxr-xr-x 10 hdfs  hdfs  203 Sep 25 11:47 kafka-manager-2.0.0.2
+drwxrwxrwx  3 hdfs  hdfs   23 Sep 16 21:11 local
+drwxr-xr-x  2 root root  61 Nov 21 11:22 redis_data
+drwxrwxr-x  3 hdfs  hdfs   81 Oct 26 16:39 yhc_spark
+</code></pre>
+<p>好吧，权限竟然是root，实际应该<code>chown</code>为redis用户及用户组。</p>
+<p>然后Redis就能正常关闭了。</p>
+<p>可是，在Redis-cli中执行<code>info memory</code>，ratio值仍然为0.93</p>
+<p>手动微笑 ：）</p>
+<h2 id="无穷无尽的谷歌"><a href="#无穷无尽的谷歌" class="headerlink" title="无穷无尽的谷歌"></a>无穷无尽的谷歌</h2><p>不得不佩服CSDN的污染搜索引擎的实力，中文搜索Google第一页几乎都是互相抄。经过各种奇巧淫技终于在Github issue中找到原因.</p>
+<p> <a href="https://github.com/antirez/redis/issues/946" target="_blank" rel="noopener">Fragmentation ratio &lt; 1 but not swapping. #946</a></p>
+<blockquote>
+<p><em>antirez commented on 15 Feb 2013</em><br>Hello, in your case used physical memory appears to be smaller than virtual memory but you report no swapped pages. It is likely that in your data set there are many blank pages (all filled with zero) so multiple pages are actually mapped to the same zero page.<br><br>Anyway this is never going to be an issue, the worst condition may be an error in the way Redis reports memory, but will have no effects in the stability and functionality of the server.<br><br>Thanks for reporting, closing because it is not a bug but just an effect of OS memory management.</p>
+</blockquote>
+<p>翻译过来大意就是数据集中有很多全部填充为零的数据，他们会全部映射到同一个内存区域。所以会导致实际使用内存大于系统分配的内存！</p>
+<p>综上所述，<code>mem_fragmentation_ratio</code>只是一个<strong>可能</strong>反应性能指标的东西，而并不完全能反应性能指标。</p>
+<h2 id="那为啥我的Redis这么慢"><a href="#那为啥我的Redis这么慢" class="headerlink" title="那为啥我的Redis这么慢"></a>那为啥我的Redis这么慢</h2><p><img src="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/redis%E6%85%A2" alt="网络延迟测试"></p>
+<p>emm…本机连接远程Redis服务器的速度大约<code>3M/s</code>。反观项目中存储方式，是将一个巨大的存有数据集的对象直接使用<code>pickle</code>序列化成一个巨大的字符串存进Redis中的….所以Redis中一个Key大小为<code>20~30M</code>不慢才怪。</p>
+<p>最后只好老老实实优化代码，改存为<code>Hash</code>格式，每次只存取需要的东西，果然速度提升了很多。</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
@@ -175,6 +228,13 @@ print(r.content)
             </div>
             
                 
+                
+                    <div class="box sticky animated fadeInRight faster">
+                        <div id="toc" class="subbox">
+                            <h4>目录</h4>
+                            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#起因"><span class="toc-number">1.</span> <span class="toc-text">起因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存碎片率mem-fragmentation-ratio"><span class="toc-number">2.</span> <span class="toc-text">内存碎片率mem_fragmentation_ratio</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#初步尝试"><span class="toc-number">3.</span> <span class="toc-text">初步尝试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#死马当活马医"><span class="toc-number">4.</span> <span class="toc-text">死马当活马医</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#无穷无尽的谷歌"><span class="toc-number">5.</span> <span class="toc-text">无穷无尽的谷歌</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#那为啥我的Redis这么慢"><span class="toc-number">6.</span> <span class="toc-text">那为啥我的Redis这么慢</span></a></li></ol>
+                        </div>
+                    </div>
                 
             
         </div>

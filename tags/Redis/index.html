@@ -5,13 +5,12 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>requests 代理问题 - 极光技术小栈</title>
+    <title>Tag: Redis - 极光技术小栈</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
-    <meta name="description" content="在给一个本地的Flask项目测试post接口时遇到一个问题，无论用requests的get还是post请求localhost全部都会超时。
-经过仔细分析后，发现是开了系统代理的锅(毕竟写代码少不了G,"> 
+    
     <meta name="author" content="EwdAger"> 
     <link rel="alternative" href="atom.xml" title="极光技术小栈" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -36,76 +35,134 @@
     </div>
     <span id="config-title" style="display:none">极光技术小栈</span>
     <div id="loader"></div>
-    <div id="single">
-    <div class="scrollbar gradient-bg-rev"></div>
-<div id="top" style="display: block;">
-    <div class="bar" style="width: 0;"></div>
-    <div class="navigation animated fadeIn fast delay-1s">
-        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://gvoidy.cn">
-        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">requests 代理问题</h3>
-        <div class="social">
-            <!--        <div class="like-icon">-->
-            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
-            <!--        </div>-->
-            <div>
-                <div class="share">
-                    
-                        <a href="javascript:;" class="iconfont icon-share1"></a>
-                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="nav">
+    <ul id="menu-menu" class="menu">
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/whoami/" title="关于">关于</a>
+        </li>
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/categories/" title="目录">目录</a>
+        </li>
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/tags/" title="标签">标签</a>
+        </li>
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/archives/" title="归档">归档</a>
+        </li>
+        
+    </ul>
+    <p class="copyright" id="copyright">
+        &copy; 2019 EwdAger.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+    </p>
 </div>
 
-    <div class="section">
-        <div class= article-header-wrapper>
-    <div class="article-header">
-        <div class="article-cover animated fadeIn" style="
-            animation-delay: 600ms;
-            animation-duration: 1.2s;
-            background-image: 
-                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+<div id="container">
+    
+<div class="search-box">
+    <form class="site-search-form">
+        <span class="iconfont icon-search"></span>
+        <input type="text" id="local-search-input" class="st-search-input" />
+        <div class="iconfont icon-cross search-box-close"></div>
+    </form>
+    <div class="search-scrollable">
+      <div id="local-search-result"
+           class="local-search-result-cls"
+           data-initialise="首次搜索，正在载入索引文件，请稍后……"
+           data-start="输入关键词搜索。"
+           data-empty="没有找到内容，请尝试更换检索词。"
+      >
+        <span>输入关键词搜索。</span>
+      </div>
+    </div>
+</div>
+<div id="header">
+    <div>
+        <div class="logo animated fadeInDown">
+            <img src="/img/favicon.png" alt="">
+            <a class="image-logo" href="/"></a>
+        </div>
+        <ul id="menu-menu" class="menu text-menu">
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/whoami/" title="关于" class="menu-link">关于</a>
+            </li>
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/categories/" title="目录" class="menu-link">目录</a>
+            </li>
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/tags/" title="标签" class="menu-link">标签</a>
+            </li>
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/archives/" title="归档" class="menu-link">归档</a>
+            </li>
+            
+            
+                <li class="animated fadeInDown search-bar iconfont icon-search"></li>
+            
+        </ul>
+        <div class="iconfont icon-menu switchmenu gradient-text animated fadeInDown"></div>
+    </div>
+</div>
+<div id="screen">
+    <div id="mark">
+        <div class="cover animated fadeIn" style="
+            animation-delay: 900ms;
+            animation-duration: 2.8s;
+            background-image:
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.56), #100e17),
                 url(/img/cover.jpg);">
         </div>
-        <div class="else">
-            <p class="animated fadeInDown">
-                
-                    <a href="/categories/python学习心得&备忘"><b>「 </b>PYTHON学习心得&备忘<b> 」</b></a>
-                
-                七月 13, 2018
-            </p>
-            <h3 class="post-title animated fadeInDown"><a href="/posts/7c092ea/" title="requests 代理问题">requests 代理问题</a></h3>
+    </div>
+    
+    <div id="post0" class="else">
+        <p class="animated fadeInDown">
             
-                <p class="post-count animated fadeInDown">
-                    
-                        <span>
+                <a href="/categories/不知道怎么归类"><b>「 </b>不知道怎么归类<b> 」</b></a>
+            
+            十一月 21, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/9779499d/" title="Redis优化之内存碎片小踩坑" class="posttitle">Redis优化之内存碎片小踩坑</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
                         <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        961
+                        4.4k
                     </span>
-                    
-                    
-                        <span>
+                
+                
+                    <span>
                         <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        1 mins.
+                        4 mins.
                     </span>
-                    
-                    
-                    
-                        <span id="busuanzi_container_page_pv">
-                            <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                            <span id="busuanzi_value_page_pv">0</span>
-                        </span>
-                    
-                </p>
+                
+                
+            </p>
+        
+        
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Redis/">Redis</a></li></ul>
+        
+        <div class="md-content animated fadeIn">
             
+                
+
+
+<p>近来项目里引用了Redis，本来用这高端玩意就是为了加速项目跑的速度。然而，用着用着越来越慢。而之前就做着性能优化的活，也顺手接下了优化Redis的活</p>
+<p>查阅相关资料得知，速度过慢很有可能是因为内存不...</p>
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/requests/">requests</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
-            
+            <span class="read-more"><a href="/posts/9779499d/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
+    
 </div>
 
 <div class="screen-gradient-after">
@@ -113,77 +170,21 @@
         <div class="screen-gradient-content-inside">
             <div class="bold-underline-links screen-gradient-sponsor">
                 <p>
-                    <span class="animated fadeIn delay-1s"></span>
+                  <span class="typed-text"></span>
                 </p>
             </div>
         </div>
     </div>
 </div>
 
-<div class="article">
-    <div class='main'>
-        <div class="content markdown animated fadeIn slower">
-            <p>在给一个本地的Flask项目测试post接口时遇到一个问题，无论用requests的get还是post请求localhost全部都会超时。</p>
-<p>经过仔细分析后，发现是开了系统代理的锅(毕竟写代码少不了Google)，然而直接关闭系统代理仍然超时。</p>
-<p>最后的解决方案如下：</p>
-<pre><code class="python">import os
-import requests
-
-os.environ[&#39;NO_PROXY&#39;] = &#39;127.0.0.1&#39;
-r = requests.get(&#39;http://127.0.0.1:5000&#39;)
-print(r.content)
-</code></pre>
-<p>设置不走代理的url，而不是直接把请求的proxies设置为本地代理！</p>
-<p>参考：</p>
-<p><a href="https://stackoverflow.com/questions/28521535/requests-how-to-disable-bypass-proxy" target="_blank" rel="noopener">stackoverflow: requests-how-to-disable-bypass-proxy</a></p>
-<p><a href="https://stackoverflow.com/questions/43254103/python-requests-return-504-in-localhost" target="_blank" rel="noopener">stackoverflow: python-requests-return-504-in-localhost</a></p>
-<p><a href="https://github.com/requests/requests/issues/879" target="_blank" rel="noopener">github: Issues with HTTP proxy and accessing localhost - does requests ignore no_proxy?</a></p>
-
-            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
-                <source type="audio/mpeg" src="">
-            </audio>
-            
-                <ul id="audio-list" style="display:none">
-                    
-                        
-                            <li title='0' data-url='/statics/Kaer Morhen.mp3'></li>
-                        
-                    
-                </ul>
-            
-            
-            
-        </div>
-        <div class="sidebar">
-            <div class="box animated fadeInRight">
-                <div class="subbox">
-                    <img src="/img/avatar.jpg" height=300 width=300></img>
-                    <p>EwdAger</p>
-                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
-                    <dl>
-                        <dd><a href="https://github.com/EwdAger" target="_blank"><span class=" iconfont icon-github"></span></a></dd>
-                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span class=" iconfont icon-twitter"></span></a></dd>
-                        <dd><a href="" target="_blank"><span class=" iconfont icon-stack-overflow"></span></a></dd>
-                    </dl>
-                </div>
-                <ul>
-                    <li><a href="/">53 <p>文章</p></a></li>
-                    <li><a href="/categories">11 <p>分类</p></a></li>
-                    <li><a href="/tags">38 <p>标签</p></a></li>
-                </ul>
-            </div>
-            
-                
-                
-            
-        </div>
+    <div id="primary">
+        
     </div>
+    
 </div>
+<div id="preview"></div>
 
 
-    </div>
-</div>
     <div id="back-to-top" class="animated fadeIn faster">
         <div class="flow"></div>
         <span class="percentage animated fadeIn faster">0%</span>
