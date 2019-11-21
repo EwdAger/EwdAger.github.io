@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="/css/ball-atom.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 </html>
+
 <body class="loading">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="loader">
         <div class="la-ball-atom la-2x">
@@ -62,7 +63,7 @@
 </div>
 
     <div class="section">
-        <div class= article-header-wrapper>
+        <div class=article-header-wrapper>
     <div class="article-header">
         <div class="article-cover animated fadeIn" style="
             animation-delay: 600ms;
@@ -74,36 +75,38 @@
         <div class="else">
             <p class="animated fadeInDown">
                 
-                    <a href="/categories/课程设计"><b>「 </b>课程设计<b> 」</b></a>
+                <a href="/categories/课程设计"><b>「
+                    </b>课程设计<b> 」</b></a>
                 
                 六月 12, 2017
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/posts/a46183c6/" title="操作系统实验一资料归纳">操作系统实验一资料归纳</a></h3>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/a46183c6/" title="操作系统实验一资料归纳">操作系统实验一资料归纳</a>
+            </h3>
             
-                <p class="post-count animated fadeInDown">
-                    
-                        <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        4k
-                    </span>
-                    
-                    
-                        <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        4 mins.
-                    </span>
-                    
-                    
-                    
-                        <span id="busuanzi_container_page_pv">
-                            <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                            <span id="busuanzi_value_page_pv">0</span>
-                        </span>
-                    
-                </p>
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    4k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    4 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
             
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/操作系统/">操作系统</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/课程设计/">课程设计</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/操作系统/">操作系统</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/课程设计/">课程设计</a></li></ul>
             
         </div>
     </div>
@@ -123,7 +126,7 @@
 
 <div class="article">
     <div class='main'>
-        <div class="content markdown animated fadeIn slower">
+        <div class="content markdown animated fadeIn">
             <h2 id="句柄"><a href="#句柄" class="headerlink" title="句柄"></a><a href="http://blog.csdn.net/wenzhou1219/article/details/17659485" target="_blank" rel="noopener">句柄</a></h2><p>指导书上出现了一个陌生的名词“句柄（handle）”，感觉比较奇妙，因为在之前编写微信公众号小程序看教程也编写了一个handle程序。所以留档一下吧。</p>
 <blockquote>
 <p>句柄（handle），有多种意义，其中第一种是指程序设计，第二种是指Windows编程。现在大部分都是指程序设计/程序开发这类。<br>第一种解释：句柄是一种特殊的<a href="http://baike.baidu.com/item/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88" target="_blank" rel="noopener">智能指针</a> 。当一个应用程序要引用其他系统（如数据库、操作系统）所管理的内存块或对象时，就要使用句柄。<br>第二种解释：整个Windows编程的基础。一个句柄是指使用的一个唯一的整数值，即一个4字节(64位程序中为8字节)长的数值，来<strong>标识</strong><a href="http://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F" target="_blank" rel="noopener"><strong>应用程序</strong></a><strong>中的不同</strong><a href="http://baike.baidu.com/item/%E5%AF%B9%E8%B1%A1/17158" target="_blank" rel="noopener"><strong>对象</strong></a><strong>和同类中的不同的</strong><a href="http://baike.baidu.com/item/%E5%AE%9E%E4%BE%8B" target="_blank" rel="noopener">实例</a>，诸如，一个窗口，按钮，图标，滚动条，输出设备，控件或者文件等。应用程序能够通过句柄访问相应的对象的信息，但是句柄不是<a href="http://baike.baidu.com/item/%E6%8C%87%E9%92%88" target="_blank" rel="noopener">指针</a>，程序不能利用句柄来直接阅读文件中的信息。如果句柄不在<a href="http://baike.baidu.com/item/I%2FO/84718" target="_blank" rel="noopener">I/O</a>文件中，它是毫无用处的。 句柄是Windows用来标志应用程序中建立的或是使用的唯一整数，<a href="http://baike.baidu.com/item/Windows" target="_blank" rel="noopener">Windows</a>大量使用了句柄来<a href="http://baike.baidu.com/item/%E6%A0%87%E8%AF%86" target="_blank" rel="noopener">标识</a>对象。</p>
@@ -162,17 +165,18 @@ __in DWORD dwMilliseconds
 </blockquote>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
                 <source type="audio/mpeg" src="">
             </audio>
             
-                <ul id="audio-list" style="display:none">
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/Kaer Morhen.mp3'></li>
+                
                     
-                        
-                            <li title='0' data-url='/statics/Kaer Morhen.mp3'></li>
-                        
-                    
-                </ul>
+            </ul>
             
             
             
@@ -184,9 +188,12 @@ __in DWORD dwMilliseconds
                     <p>EwdAger</p>
                     <span>Farewell,good hunter.May you find your worth in the waking world.</span>
                     <dl>
-                        <dd><a href="https://github.com/EwdAger" target="_blank"><span class=" iconfont icon-github"></span></a></dd>
-                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span class=" iconfont icon-twitter"></span></a></dd>
-                        <dd><a href="" target="_blank"><span class=" iconfont icon-stack-overflow"></span></a></dd>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
                     </dl>
                 </div>
                 <ul>
@@ -196,20 +203,19 @@ __in DWORD dwMilliseconds
                 </ul>
             </div>
             
-                
-                
-                    <div class="box sticky animated fadeInRight faster">
-                        <div id="toc" class="subbox">
-                            <h4>目录</h4>
-                            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#句柄"><span class="toc-number">1.</span> <span class="toc-text">句柄</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验一中相关函数解释"><span class="toc-number">2.</span> <span class="toc-text">实验一中相关函数解释</span></a></li></ol>
-                        </div>
-                    </div>
-                
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#句柄"><span class="toc-number">1.</span> <span class="toc-text">句柄</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验一中相关函数解释"><span class="toc-number">2.</span> <span class="toc-text">实验一中相关函数解释</span></a></li></ol>
+                </div>
+            </div>
+            
             
         </div>
     </div>
 </div>
-
 
     </div>
 </div>
@@ -232,10 +238,67 @@ __in DWORD dwMilliseconds
         <span class="gradient-text">
             <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
         </span>
-        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.3.5" target="_blank" rel="noopener">v1.3.5</a></small>
-        <small></small>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
     </p>
 </footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="/js/plugin.js"></script>
@@ -365,6 +428,7 @@ __in DWORD dwMilliseconds
         });
     }
 </script>
+
 
 
 

@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="/css/ball-atom.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 </html>
+
 <body class="loading">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="loader">
         <div class="la-ball-atom la-2x">
@@ -60,7 +61,7 @@
 </div>
 
     <div class="section">
-        <div class= article-header-wrapper>
+        <div class=article-header-wrapper>
     <div class="article-header">
         <div class="article-cover animated fadeIn" style="
             animation-delay: 600ms;
@@ -72,36 +73,38 @@
         <div class="else">
             <p class="animated fadeInDown">
                 
-                    <a href="/categories/PHP学习心得&备忘"><b>「 </b>PHP学习心得&备忘<b> 」</b></a>
+                <a href="/categories/PHP学习心得&备忘"><b>「
+                    </b>PHP学习心得&备忘<b> 」</b></a>
                 
                 二月 13, 2018
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/posts/19653b91/" title="从零开始学Laravel">从零开始学Laravel</a></h3>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/19653b91/" title="从零开始学Laravel">从零开始学Laravel</a>
+            </h3>
             
-                <p class="post-count animated fadeInDown">
-                    
-                        <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        3.4k
-                    </span>
-                    
-                    
-                        <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        3 mins.
-                    </span>
-                    
-                    
-                    
-                        <span id="busuanzi_container_page_pv">
-                            <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                            <span id="busuanzi_value_page_pv">0</span>
-                        </span>
-                    
-                </p>
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    3.4k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    3 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
             
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Laravel/">Laravel</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/PHP/">PHP</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Laravel/">Laravel</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/PHP/">PHP</a></li></ul>
             
         </div>
     </div>
@@ -121,7 +124,7 @@
 
 <div class="article">
     <div class='main'>
-        <div class="content markdown animated fadeIn slower">
+        <div class="content markdown animated fadeIn">
             <h1 id="Laravel5-5的安装"><a href="#Laravel5-5的安装" class="headerlink" title="Laravel5.5的安装"></a>Laravel5.5的安装</h1><p>安装好WAMP环境后，在wampmanager.ini文件中将PHP版本更改为php7，查看php版本可以通过phpinfo()函数查看。<br>,下载好后解压至Apache工作目录下。启动wamp服务后，正常情况下访问localhost/laravel/public就能显示Laravel的欢迎界面。</p>
 <p>附上Laravel一键安装包<br><a href="http://laravelacademy.org/resources-download" target="_blank" rel="noopener">下载地址</a></p>
 <h1 id="PhpStrom安装"><a href="#PhpStrom安装" class="headerlink" title="PhpStrom安装"></a>PhpStrom安装</h1><p>编程还是离不开JB全家桶的~这步没有省略主要是因为jb全家桶更新3.4后大量激活方法和激活服务器集体失效。这里使用了<a href="http://blog.lanyus.com/" target="_blank" rel="noopener">ilanyu</a>大佬提供的<a href="https://github.com/ilanyu/ReverseProxy" target="_blank" rel="noopener">本地反向代理激活方法</a>，或者自己手撸一个反代程序，不过比较麻烦的是每次打开IDE都需要进行授权认证，因此本地激活的IDE每次运行都需要启动一次反代程序，有条件最好挂在云服务器上。不过有条件还是要支持正版~</p>
@@ -187,17 +190,18 @@ Route::group([&#39;prefix&#39; =&gt; &#39;member&#39;], function(){
 <p>这个时候想显示hello时就不能直接访问hello，要访问member/hello 才行了</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
                 <source type="audio/mpeg" src="">
             </audio>
             
-                <ul id="audio-list" style="display:none">
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/Kaer Morhen.mp3'></li>
+                
                     
-                        
-                            <li title='0' data-url='/statics/Kaer Morhen.mp3'></li>
-                        
-                    
-                </ul>
+            </ul>
             
             
             
@@ -209,9 +213,12 @@ Route::group([&#39;prefix&#39; =&gt; &#39;member&#39;], function(){
                     <p>EwdAger</p>
                     <span>Farewell,good hunter.May you find your worth in the waking world.</span>
                     <dl>
-                        <dd><a href="https://github.com/EwdAger" target="_blank"><span class=" iconfont icon-github"></span></a></dd>
-                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span class=" iconfont icon-twitter"></span></a></dd>
-                        <dd><a href="" target="_blank"><span class=" iconfont icon-stack-overflow"></span></a></dd>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
                     </dl>
                 </div>
                 <ul>
@@ -221,20 +228,19 @@ Route::group([&#39;prefix&#39; =&gt; &#39;member&#39;], function(){
                 </ul>
             </div>
             
-                
-                
-                    <div class="box sticky animated fadeInRight faster">
-                        <div id="toc" class="subbox">
-                            <h4>目录</h4>
-                            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Laravel5-5的安装"><span class="toc-number">1.</span> <span class="toc-text">Laravel5.5的安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PhpStrom安装"><span class="toc-number">2.</span> <span class="toc-text">PhpStrom安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Laravel教程使用碰到的一些坑"><span class="toc-number">3.</span> <span class="toc-text">Laravel教程使用碰到的一些坑</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Laravel的路由"><span class="toc-number">4.</span> <span class="toc-text">Laravel的路由</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#路由选项"><span class="toc-number">4.1.</span> <span class="toc-text">路由选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路由参数"><span class="toc-number">4.2.</span> <span class="toc-text">路由参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路由命名"><span class="toc-number">4.3.</span> <span class="toc-text">路由命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路由群组"><span class="toc-number">4.4.</span> <span class="toc-text">路由群组</span></a></li></ol></li></ol>
-                        </div>
-                    </div>
-                
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Laravel5-5的安装"><span class="toc-number">1.</span> <span class="toc-text">Laravel5.5的安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PhpStrom安装"><span class="toc-number">2.</span> <span class="toc-text">PhpStrom安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Laravel教程使用碰到的一些坑"><span class="toc-number">3.</span> <span class="toc-text">Laravel教程使用碰到的一些坑</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Laravel的路由"><span class="toc-number">4.</span> <span class="toc-text">Laravel的路由</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#路由选项"><span class="toc-number">4.1.</span> <span class="toc-text">路由选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路由参数"><span class="toc-number">4.2.</span> <span class="toc-text">路由参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路由命名"><span class="toc-number">4.3.</span> <span class="toc-text">路由命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路由群组"><span class="toc-number">4.4.</span> <span class="toc-text">路由群组</span></a></li></ol></li></ol>
+                </div>
+            </div>
+            
             
         </div>
     </div>
 </div>
-
 
     </div>
 </div>
@@ -257,10 +263,67 @@ Route::group([&#39;prefix&#39; =&gt; &#39;member&#39;], function(){
         <span class="gradient-text">
             <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
         </span>
-        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.3.5" target="_blank" rel="noopener">v1.3.5</a></small>
-        <small></small>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
     </p>
 </footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="/js/plugin.js"></script>
@@ -390,6 +453,7 @@ Route::group([&#39;prefix&#39; =&gt; &#39;member&#39;], function(){
         });
     }
 </script>
+
 
 
 
