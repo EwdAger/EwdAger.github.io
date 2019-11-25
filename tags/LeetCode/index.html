@@ -145,6 +145,11 @@
             </span>
             
             
+            <span id="/posts/bba523e0/" class="leancloud_visitors" data-flag-title="">
+                <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                <i class="leancloud-visitors-count">1000000</i>
+            </span>
+            
         </p>
         
         
@@ -212,6 +217,11 @@
                     </span>
                 
                 
+                    <span id="/posts/3eeec910/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <i class="leancloud-visitors-count">1000000</i>
+                    </span>
+                
             </p>
             
                 <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/LeetCode/">LeetCode</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/二叉树/">二叉树</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -274,6 +284,11 @@
                     </span>
                 
                 
+                    <span id="/posts/4be7f132/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <i class="leancloud-visitors-count">1000000</i>
+                    </span>
+                
             </p>
             
                 <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
@@ -331,6 +346,11 @@
                         2 mins.
                     </span>
                 
+                
+                    <span id="/posts/8924f3f8/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <i class="leancloud-visitors-count">1000000</i>
+                    </span>
                 
             </p>
             
@@ -390,6 +410,11 @@
                     </span>
                 
                 
+                    <span id="/posts/ef63884b/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <i class="leancloud-visitors-count">1000000</i>
+                    </span>
+                
             </p>
             
                 <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
@@ -440,6 +465,11 @@
                         3 mins.
                     </span>
                 
+                
+                    <span id="/posts/b7cb2971/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <i class="leancloud-visitors-count">1000000</i>
+                    </span>
                 
             </p>
             
@@ -675,6 +705,38 @@
     }
 </script>
 
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <script>
+
+        var valine = new Valine();
+
+        function initValine(path) {
+            if (!path) path = window.location.pathname;
+            let language = 'zh-CN';
+            if (!language) {
+                language = 'en';
+            } else {
+                language = language.toLowerCase();
+            }
+            valine.init({
+                el: '#vcomments',
+                appId: 'ChQ4z1dCRpWqCOD43kU6cGmM-gzGzoHsz',
+                appKey: 'pFaAS3aumHDM572YbXkzc3fO',
+                notify: 'false',
+                verify: 'false',
+                avatar: 'retro',
+                placeholder: '留下你的评论~',
+                visitor: 'true',
+                path: path,
+                lang: language
+            });
+        }
+
+        $(document).ready(function () {
+            initValine();
+        });
+    </script>
 
 
 

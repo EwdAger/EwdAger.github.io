@@ -145,6 +145,11 @@
             </span>
             
             
+            <span id="/posts/3eeec910/" class="leancloud_visitors" data-flag-title="">
+                <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                <i class="leancloud-visitors-count">1000000</i>
+            </span>
+            
         </p>
         
         
@@ -398,6 +403,38 @@
     }
 </script>
 
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <script>
+
+        var valine = new Valine();
+
+        function initValine(path) {
+            if (!path) path = window.location.pathname;
+            let language = 'zh-CN';
+            if (!language) {
+                language = 'en';
+            } else {
+                language = language.toLowerCase();
+            }
+            valine.init({
+                el: '#vcomments',
+                appId: 'ChQ4z1dCRpWqCOD43kU6cGmM-gzGzoHsz',
+                appKey: 'pFaAS3aumHDM572YbXkzc3fO',
+                notify: 'false',
+                verify: 'false',
+                avatar: 'retro',
+                placeholder: '留下你的评论~',
+                visitor: 'true',
+                path: path,
+                lang: language
+            });
+        }
+
+        $(document).ready(function () {
+            initValine();
+        });
+    </script>
 
 
 

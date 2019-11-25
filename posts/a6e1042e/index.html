@@ -95,11 +95,11 @@
                 </span>
                 
                 
-                
-                <span id="busuanzi_container_page_pv">
+                <span id="/posts/a6e1042e/" class="leancloud_visitors" data-flag-title="Ubuntu下搭建环境+安装wordpress">
                     <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                    <span id="busuanzi_value_page_pv">0</span>
+                    <i class="leancloud-visitors-count">1000000</i>
                 </span>
+                
                 
             </p>
             
@@ -172,6 +172,8 @@ $ mkdir -p /var/www/html/wordpress/wp-content/uploads
             </ul>
             
             
+            
+            <div id="vcomments"></div>
             
         </div>
         <div class="sidebar">
@@ -415,6 +417,38 @@ $ mkdir -p /var/www/html/wordpress/wp-content/uploads
     }
 </script>
 
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <script>
+
+        var valine = new Valine();
+
+        function initValine(path) {
+            if (!path) path = window.location.pathname;
+            let language = 'zh-CN';
+            if (!language) {
+                language = 'en';
+            } else {
+                language = language.toLowerCase();
+            }
+            valine.init({
+                el: '#vcomments',
+                appId: 'ChQ4z1dCRpWqCOD43kU6cGmM-gzGzoHsz',
+                appKey: 'pFaAS3aumHDM572YbXkzc3fO',
+                notify: 'false',
+                verify: 'false',
+                avatar: 'retro',
+                placeholder: '留下你的评论~',
+                visitor: 'true',
+                path: path,
+                lang: language
+            });
+        }
+
+        $(document).ready(function () {
+            initValine();
+        });
+    </script>
 
 
 

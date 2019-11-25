@@ -99,11 +99,11 @@ In [3]: arr1 = np.array(data1)
                 </span>
                 
                 
-                
-                <span id="busuanzi_container_page_pv">
+                <span id="/posts/ca37cdbd/" class="leancloud_visitors" data-flag-title="Numpy 笔记-基础篇">
                     <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                    <span id="busuanzi_value_page_pv">0</span>
+                    <i class="leancloud-visitors-count">1000000</i>
                 </span>
+                
                 
             </p>
             
@@ -665,6 +665,8 @@ array([ 1.53812286,  2.54672169, -0.65714547,  0.46756089,  1.31292609,
             
             
             
+            <div id="vcomments"></div>
+            
         </div>
         <div class="sidebar">
             <div class="box animated fadeInRight">
@@ -914,6 +916,38 @@ array([ 1.53812286,  2.54672169, -0.65714547,  0.46756089,  1.31292609,
     }
 </script>
 
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <script>
+
+        var valine = new Valine();
+
+        function initValine(path) {
+            if (!path) path = window.location.pathname;
+            let language = 'zh-CN';
+            if (!language) {
+                language = 'en';
+            } else {
+                language = language.toLowerCase();
+            }
+            valine.init({
+                el: '#vcomments',
+                appId: 'ChQ4z1dCRpWqCOD43kU6cGmM-gzGzoHsz',
+                appKey: 'pFaAS3aumHDM572YbXkzc3fO',
+                notify: 'false',
+                verify: 'false',
+                avatar: 'retro',
+                placeholder: '留下你的评论~',
+                visitor: 'true',
+                path: path,
+                lang: language
+            });
+        }
+
+        $(document).ready(function () {
+            initValine();
+        });
+    </script>
 
 
 

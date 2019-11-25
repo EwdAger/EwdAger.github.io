@@ -145,6 +145,11 @@
             </span>
             
             
+            <span id="/posts/cb0b0c45/" class="leancloud_visitors" data-flag-title="">
+                <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                <i class="leancloud-visitors-count">1000000</i>
+            </span>
+            
         </p>
         
         
@@ -395,25 +400,56 @@ _mysql.c(42) : fatal error C1083: Cannot open include file: &#39...</code></pre>
 </script>
 
 
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <script>
+
+        var valine = new Valine();
+
+        function initValine(path) {
+            if (!path) path = window.location.pathname;
+            let language = 'zh-CN';
+            if (!language) {
+                language = 'en';
+            } else {
+                language = language.toLowerCase();
+            }
+            valine.init({
+                el: '#vcomments',
+                appId: 'ChQ4z1dCRpWqCOD43kU6cGmM-gzGzoHsz',
+                appKey: 'pFaAS3aumHDM572YbXkzc3fO',
+                notify: 'false',
+                verify: 'false',
+                avatar: 'retro',
+                placeholder: '留下你的评论~',
+                visitor: 'true',
+                path: path,
+                lang: language
+            });
+        }
+
+        $(document).ready(function () {
+            initValine();
+        });
+    </script>
+
 
 
 </html>
-�人。愿你能在清醒的世界中找到自己的价值。"],
-                typeSpeed: 90,
-                loop: true,
-                loopCount: Infinity,
-                backSpeed: 20,
+S3aumHDM572YbXkzc3fO',
+                notify: 'false',
+                verify: 'false',
+                avatar: 'retro',
+                placeholder: '留下你的评论~',
+                visitor: 'true',
+                path: path,
+                lang: language
             });
         }
-    }
 
-    if ($('.article-header') && $('.article-header').length) {
         $(document).ready(function () {
-            initialTyped();
+            initValine();
         });
-    }
-</script>
-
+    </script>
 
 
 

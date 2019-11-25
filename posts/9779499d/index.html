@@ -96,11 +96,11 @@
                 </span>
                 
                 
-                
-                <span id="busuanzi_container_page_pv">
+                <span id="/posts/9779499d/" class="leancloud_visitors" data-flag-title="Redis优化之内存碎片小踩坑">
                     <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                    <span id="busuanzi_value_page_pv">0</span>
+                    <i class="leancloud-visitors-count">1000000</i>
                 </span>
+                
                 
             </p>
             
@@ -202,6 +202,8 @@ drwxrwxr-x  3 hdfs  hdfs   81 Oct 26 16:39 yhc_spark
             </ul>
             
             
+            
+            <div id="vcomments"></div>
             
         </div>
         <div class="sidebar">
@@ -452,6 +454,38 @@ drwxrwxr-x  3 hdfs  hdfs   81 Oct 26 16:39 yhc_spark
     }
 </script>
 
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <script>
+
+        var valine = new Valine();
+
+        function initValine(path) {
+            if (!path) path = window.location.pathname;
+            let language = 'zh-CN';
+            if (!language) {
+                language = 'en';
+            } else {
+                language = language.toLowerCase();
+            }
+            valine.init({
+                el: '#vcomments',
+                appId: 'ChQ4z1dCRpWqCOD43kU6cGmM-gzGzoHsz',
+                appKey: 'pFaAS3aumHDM572YbXkzc3fO',
+                notify: 'false',
+                verify: 'false',
+                avatar: 'retro',
+                placeholder: '留下你的评论~',
+                visitor: 'true',
+                path: path,
+                lang: language
+            });
+        }
+
+        $(document).ready(function () {
+            initValine();
+        });
+    </script>
 
 
 
