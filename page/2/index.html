@@ -126,16 +126,16 @@
             <a href="/categories/机器学习笔记"><b>「
                 </b>机器学习笔记<b> 」</b></a>
             
-            八月 24, 2019
+            八月 27, 2019
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/87847f8/" title="Numpy笔记-进阶篇" class="posttitle">Numpy笔记-进阶篇</a></h3>
+            <a href="/posts/a61b68c3/" title="Pandas笔记-进阶篇" class="posttitle">Pandas笔记-进阶篇</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                7.6k
+                8.1k
             </span>
             
             
@@ -145,7 +145,7 @@
             </span>
             
             
-            <span id="/posts/87847f8/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/a61b68c3/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <i class="leancloud-visitors-count">1000000</i>
             </span>
@@ -153,16 +153,17 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Numpy/">Numpy</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据分析/">数据分析</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Pandas/">Pandas</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据分析/">数据分析</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <p><code>np.where</code>是三元表达式<code>x if condition else y</code>的矢量化版</p>
-<pre><code class="python">In [169]: arr
-Out[169]:
-array([[-2.09280349e-01, -2.08776777e...</code></pre>
+            <p><code>panda</code>对象拥有一组常用的数学和统计方法，他们大部分都属于简约统计，NA值会自动被排除，除非通过<code>skipna=False</code>禁用</p>
+<pre><code class="python">In [78]: df
+Out[78]:
+    one  two
+a  1.40  ...</code></pre>
             
-            <span class="read-more"><a href="/posts/87847f8/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/a61b68c3/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -183,6 +184,136 @@ array([[-2.09280349e-01, -2.08776777e...</code></pre>
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/机器学习笔记">
+                  <b>「 </b>机器学习笔记<b> 」</b>
+                </a>
+            
+            八月 27, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/a61b68c3/" title="Pandas笔记-进阶篇" class="posttitle">Pandas笔记-进阶篇</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        8.1k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        7 mins.
+                    </span>
+                
+                
+                    <span id="/posts/a61b68c3/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <i class="leancloud-visitors-count">1000000</i>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Pandas/">Pandas</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据分析/">数据分析</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p><code>panda</code>对象拥有一组常用的数学和统计方法，他们大部分都属于简约统计，NA值会自动被排除，除非通过<code>skipna=False</code>禁用</p>
+<pre><code class="python">In [78]: df
+Out[78]:
+    one  two
+a  1.40  NaN
+b  7.10 -4.5
+c   NaN  NaN
+d  0.75 -1.3
+
+In [79]: df.sum()
+Out[79]:
+one    9.25
+two   -5.80
+dtype: float64
+
+In [80]: df.sum(axis=1)
+Out[80]:
+a    1.40
+b    2.60
+c    0....</code></pre>
+            
+            <span class="read-more"><a href="/posts/a61b68c3/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/机器学习笔记">
+                  <b>「 </b>机器学习笔记<b> 」</b>
+                </a>
+            
+            八月 26, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/8493c310/" title="Pandas笔记-基础篇" class="posttitle">Pandas笔记-基础篇</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        15k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        14 mins.
+                    </span>
+                
+                
+                    <span id="/posts/8493c310/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <i class="leancloud-visitors-count">1000000</i>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Pandas/">Pandas</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据分析/">数据分析</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p><code>Series</code>是一种类似一维数组的对象，由一组数据和一组与之相关的数据索引组成</p>
+<pre><code class="python">In [9]: obj = Series([4,7,-5,3])
+
+In [10]: obj.index
+Out[10]: RangeIndex(start=0, stop=4, step=1)
+
+In [11]: obj.values
+Out[11]: array([ 4,  7, -5,  3], dtype=int64)
+
+In [12]: obj2 = Series([4,7,-5,3], index=[&#39;d&#...</code></pre>
+            
+            <span class="read-more"><a href="/posts/8493c310/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -658,132 +789,6 @@ git status
 # 查看当前仓库状态，会显示无修改、有修改但未提交缓存、提交...</code></pre>
             
             <span class="read-more"><a href="/posts/5fddf106/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/python学习心得&备忘">
-                  <b>「 </b>PYTHON学习心得&备忘<b> 」</b>
-                </a>
-            
-            九月 18, 2018
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/995b78a8/" title="慎用 Python list 乘法" class="posttitle">慎用 Python list 乘法</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        2.2k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        2 mins.
-                    </span>
-                
-                
-                    <span id="/posts/995b78a8/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <i class="leancloud-visitors-count">1000000</i>
-                    </span>
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p>今天刷 LeetCode 碰到一个水题<a href="https://leetcode-cn.com/problems/transpose-matrix/description/" target="_blank" rel="noopener">转置矩阵</a>, 这不就是先生成个空的倒置矩阵再填结果嘛，没多想就用 list 乘法上手就写。</p>
-<pre><code class="python">class Solution:
-    def transpose(self, A):
-        &quot;&quot;&quot;
-        :type A: List[List[int]]
-        :rtype: List[List[int]]
-        &quot;&quot;&quot;
-        x, y = len(A), len(A[0])
-
-        buff =[[0] * x] * y
-        for i in range...</code></pre>
-            
-            <span class="read-more"><a href="/posts/995b78a8/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/python学习心得&备忘">
-                  <b>「 </b>PYTHON学习心得&备忘<b> 」</b>
-                </a>
-            
-            九月 09, 2018
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/2870634a/" title="Python 单链表实现&基础函数" class="posttitle">Python 单链表实现&基础函数</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        2.9k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        3 mins.
-                    </span>
-                
-                
-                    <span id="/posts/2870634a/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <i class="leancloud-visitors-count">1000000</i>
-                    </span>
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python3/">Python3</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/编码/">编码</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p>前两天面滴滴，被问到怎么判断两个链表是否相交，然后并不懂什么是单链表相交…就很尴尬。 赶紧复习一下单链表的知识。</p>
-<pre><code class="python">class LNode:
-    def __init__(self, elem, next_ = None):
-        self.elem = elem
-        self.next = next_
-
-class LList:
-    def __init__(self):
-        self._head = None
-
-    def is_empty(self):
-        return self._head is None
-
-    # 前端插入
-    def...</code></pre>
-            
-            <span class="read-more"><a href="/posts/2870634a/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
