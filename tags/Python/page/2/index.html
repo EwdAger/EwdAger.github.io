@@ -126,26 +126,26 @@
             <a href="/categories/机器学习笔记"><b>「
                 </b>机器学习笔记<b> 」</b></a>
             
-            八月 24, 2019
+            八月 26, 2019
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/87847f8/" title="Numpy笔记-进阶篇" class="posttitle">Numpy笔记-进阶篇</a></h3>
+            <a href="/posts/8493c310/" title="Pandas笔记-基础篇" class="posttitle">Pandas笔记-基础篇</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                7.6k
+                15k
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                7 mins.
+                14 mins.
             </span>
             
             
-            <span id="/posts/87847f8/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/8493c310/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <i class="leancloud-visitors-count">1000000</i>
             </span>
@@ -153,16 +153,17 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Numpy/">Numpy</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据分析/">数据分析</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Pandas/">Pandas</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据分析/">数据分析</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <p><code>np.where</code>是三元表达式<code>x if condition else y</code>的矢量化版</p>
-<pre><code class="python">In [169]: arr
-Out[169]:
-array([[-2.09280349e-01, -2.08776777e...</code></pre>
+            <p><code>Series</code>是一种类似一维数组的对象，由一组数据和一组与之相关的数据索引组成</p>
+<pre><code class="python">In [9]: obj = Series([4,7,-5,3])
+
+In [10]: obj.index
+Out[10]: ...</code></pre>
             
-            <span class="read-more"><a href="/posts/87847f8/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/8493c310/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -183,6 +184,66 @@ array([[-2.09280349e-01, -2.08776777e...</code></pre>
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/机器学习笔记">
+                  <b>「 </b>机器学习笔记<b> 」</b>
+                </a>
+            
+            八月 26, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/8493c310/" title="Pandas笔记-基础篇" class="posttitle">Pandas笔记-基础篇</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        15k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        14 mins.
+                    </span>
+                
+                
+                    <span id="/posts/8493c310/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <i class="leancloud-visitors-count">1000000</i>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Pandas/">Pandas</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据分析/">数据分析</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p><code>Series</code>是一种类似一维数组的对象，由一组数据和一组与之相关的数据索引组成</p>
+<pre><code class="python">In [9]: obj = Series([4,7,-5,3])
+
+In [10]: obj.index
+Out[10]: RangeIndex(start=0, stop=4, step=1)
+
+In [11]: obj.values
+Out[11]: array([ 4,  7, -5,  3], dtype=int64)
+
+In [12]: obj2 = Series([4,7,-5,3], index=[&#39;d&#...</code></pre>
+            
+            <span class="read-more"><a href="/posts/8493c310/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
