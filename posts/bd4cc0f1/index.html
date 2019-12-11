@@ -85,13 +85,13 @@
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    1.7k
+                    1.6k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    2 mins.
+                    1 mins.
                 </span>
                 
                 
@@ -125,9 +125,9 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <p>今天翻github惊奇的发现，我这个辣鸡博客竟然被<a href="https://github.com/Hiccup1" target="_blank" rel="noopener">@兴栋大佬</a>的博客做了友链。不胜惶恐，但发现友链是之前没填坑的无法访问的裸域名，所以这个坑必须赶紧填啊。之前TX云送的学生cdn+域名解析中@记录和www记录都是设置的CNAME跳转到cdn。。结果访问gvoidy.cn出现404，简直神奇。试过很多次之后还是不行，不知道这是什么鬼。。最后解决方法还是把@记录重定向到<a href="https://www.gvoidy.cn" target="_blank" rel="noopener">https://www.gvoidy.cn</a> 上才解决。有点迷。先留坑以后再研究是什么操作。</p>
+            <p>今天翻github惊奇的发现，我这个辣鸡博客竟然被<a href="https://github.com/Hiccup1" target="_blank" rel="noopener">@兴栋大佬</a>的博客做了友链。不胜惶恐，但发现友链是之前没填坑的无法访问的裸域名，所以这个坑必须赶紧填啊。之前TX云送的学生cdn+域名解析中@记录和www记录都是设置的CNAME跳转到cdn。。结果访问gvoidy.cn出现404，简直神奇。试过很多次之后还是不行，不知道这是什么鬼。。最后解决方法还是把@记录重定向到<a href="https://www.gvoidy.cn">https://www.gvoidy.cn</a> 上才解决。有点迷。先留坑以后再研究是什么操作。</p>
 <p><strong> 2.21 21:00 Update </strong><br><s>今天Github发了个邮件过来说我CNAME文件配置的有问题。。结果我一看。woc当时CNAME文件竟然配置的是<a href="http://www.gvoidy.cn。。怪不得访问gvoidy.cn没用。emmm算是完了一个坑吧。。" target="_blank" rel="noopener">www.gvoidy.cn。。怪不得访问gvoidy.cn没用。emmm算是完了一个坑吧。。</a></s></p>
-<p><strong> 2.21 21:36 Update again </strong><br>再次更新。按照上面那个思路设置以后不管gvoidy.cn还是<a href="https://www.gvoidy.cn" target="_blank" rel="noopener">https://www.gvoidy.cn</a> 全都无法访问了。</p>
+<p><strong> 2.21 21:36 Update again </strong><br>再次更新。按照上面那个思路设置以后不管gvoidy.cn还是<a href="https://www.gvoidy.cn">https://www.gvoidy.cn</a> 全都无法访问了。</p>
 <p>好吧。确实是域名解析的相关知识不太熟悉导致进了这个坑。因为这个域名下弄了邮箱做了MX记录。MX记录与CNAME记录同时共存会出现一些问题。比如邮件收不到，CNAME又失败等。所以最开始的把gvoidy.cn这个@记录做成重定向的思路是对的。Github那边发邮件是因为我CNAME文件中配置的是<a href="http://www.gvoidy.cn而设置中又是gvoidy.cn所以才会出现错误。但是其实我域名解析那边把gvoidy.cn是重定向到https://www.gvoidy.cn" target="_blank" rel="noopener">www.gvoidy.cn而设置中又是gvoidy.cn所以才会出现错误。但是其实我域名解析那边把gvoidy.cn是重定向到https://www.gvoidy.cn</a> 这个域名的，所以一切正常。</p>
 <p><a href="https://segmentfault.com/a/1190000003495742" target="_blank" rel="noopener">知识补充</a>：</p>
 <blockquote>
