@@ -126,3 +126,24 @@ V-measure: 0.917
 ```
 
 ![result](https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/dbscan_result.png)
+
+## DBSCAN 在 SKlearn中的几个重要参数
+
+```python
+DBSCAN(eps=0.5, min_samples=5, metric='euclidean', algorithm='auto', leaf_size=30, p=None, n_jobs=1)
+```
+
+
+`eps`: 两个样本之间的最大距离，即扫描半径
+`min_samples` ： 作为核心点的话邻域(即以其为圆心，eps为半径的圆，含圆上的点)中的最小样本数(包括点本身)。
+其他参数：
+`metric`： 度量方式，默认为欧式距离，还有metric=‘precomputed’（稀疏半径邻域图）
+`algorithm`： 近邻算法求解方式，有四种：‘auto’, ‘ball_tree’, ‘kd_tree’, ‘brute’
+`leaf_size`： 叶的大小，在使用BallTree or cKDTree近邻算法时候会需要这个参数
+`n_jobs`： 使用CPU格式，-1代表全开
+
+**返回值**
+
+`core_sample_indices_`: 核心样本指数。（此参数在代码中有详细的解释）
+`labels_`: 数据集中每个点的集合标签给,噪声点标签为-1。
+`components_` ：核心样本的副本
