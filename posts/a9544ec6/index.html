@@ -5,15 +5,14 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>virtualenv各python版本的虚拟环境创建及常用命令说明 - Gvoidy</title>
+    <title>常见设计模式 - Gvoidy</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
-    <meta name="description" content="win系统首先
-pip install virtualenvwrapper-win
-创建py2环境
-mkvirtualenv -p C:\python27\python.exe(解释器绝对路径) p,"> 
+    <meta name="description" content="策略模式定义算法（方法）族，分别封装起来，让他们之间可以相互替换，此模式让算法的变化独立于使用算法的客户。
+例：
+鸭子类的“叫”、“飞”等方法不放在基类中，分别创建“叫”类，“飞”类。在“叫”类里再,"> 
     <meta name="author" content="EwdAger"> 
     <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -46,7 +45,7 @@ mkvirtualenv -p C:\python27\python.exe(解释器绝对路径) p,">
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://ewdager.github.io">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">virtualenv各python版本的虚拟环境创建及常用命令说明</h3>
+        <h3 class="subtitle">常见设计模式</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -76,19 +75,19 @@ mkvirtualenv -p C:\python27\python.exe(解释器绝对路径) p,">
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/python学习心得&备忘"><b>「
-                    </b>PYTHON学习心得&备忘<b> 」</b></a>
+                <a href="/categories/知识储备"><b>「
+                    </b>知识储备<b> 」</b></a>
                 
-                六月 05, 2017
+                一月 08, 2020
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/posts/824ac3d0/" title="virtualenv各python版本的虚拟环境创建及常用命令说明">virtualenv各python版本的虚拟环境创建及常用命令说明</a>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/a9544ec6/" title="常见设计模式">常见设计模式</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    723
+                    301
                 </span>
                 
                 
@@ -98,7 +97,7 @@ mkvirtualenv -p C:\python27\python.exe(解释器绝对路径) p,">
                 </span>
                 
                 
-                <span id="/posts/824ac3d0/" class="leancloud_visitors" data-flag-title="virtualenv各python版本的虚拟环境创建及常用命令说明">
+                <span id="/posts/a9544ec6/" class="leancloud_visitors" data-flag-title="常见设计模式">
                     <b class="iconfont icon-read"></b> <i>阅读次数</i>
                     <i class="leancloud-visitors-count">1000000</i>
                 </span>
@@ -107,7 +106,7 @@ mkvirtualenv -p C:\python27\python.exe(解释器绝对路径) p,">
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/virtualenv/">virtualenv</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
             
         </div>
     </div>
@@ -128,19 +127,10 @@ mkvirtualenv -p C:\python27\python.exe(解释器绝对路径) p,">
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h2 id="win系统"><a href="#win系统" class="headerlink" title="win系统"></a>win系统</h2><p>首先</p>
-<pre><code>pip install virtualenvwrapper-win
-</code></pre><p>创建py2环境</p>
-<pre><code>mkvirtualenv -p C:\python27\python.exe(解释器绝对路径) py2env(虚拟环境名)
-</code></pre><p>创建py3环境</p>
-<pre><code>mkvirtualenv -p C:\python34\python.exe(解释器绝对路径) py3env(虚拟环境名)
-</code></pre><h2 id="linux系统"><a href="#linux系统" class="headerlink" title="linux系统"></a>linux系统</h2><p>首先也是一样安装virtualenv</p>
-<pre><code>pip install virtualenvwrapper
-</code></pre><p>然后确定系统中Python的安装位置，比如我的位置在<code>/usr/bin/</code>下<br>创建py2环境</p>
-<pre><code>virtualenv -p /usr/bin/python2 py2env
-</code></pre><p>创建py3环境</p>
-<pre><code>virtualenv -p /usr/bin/python3 py3env
-</code></pre>
+            <h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><p>定义算法（方法）族，分别封装起来，让他们之间可以相互替换，此模式让算法的变化独立于使用算法的客户。</p>
+<p>例：</p>
+<p>鸭子类的“叫”、“飞”等方法不放在基类中，分别创建“叫”类，“飞”类。在“叫”类里再分“呱呱叫”、“吱吱叫”、不叫等算法族。然后再在各个继承鸭子基类的子类中分别设置“叫”的方法。这样使用<code>组合</code>的方法而不是<code>继承</code>的方法，可以有效地防止基类中的方法污染子类。</p>
+
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
                 data-autoplay="false">
@@ -187,7 +177,7 @@ mkvirtualenv -p C:\python27\python.exe(解释器绝对路径) p,">
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#win系统"><span class="toc-number">1.</span> <span class="toc-text">win系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linux系统"><span class="toc-number">2.</span> <span class="toc-text">linux系统</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#策略模式"><span class="toc-number">1.</span> <span class="toc-text">策略模式</span></a></li></ol>
                 </div>
             </div>
             

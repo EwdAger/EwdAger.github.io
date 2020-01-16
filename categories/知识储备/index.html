@@ -126,26 +126,26 @@
             <a href="/categories/知识储备"><b>「
                 </b>知识储备<b> 」</b></a>
             
-            十二月 11, 2019
+            一月 08, 2020
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/24f059ac/" title="WSL 下安装 docker 踩坑" class="posttitle">WSL 下安装 docker 踩坑</a></h3>
+            <a href="/posts/a9544ec6/" title="常见设计模式" class="posttitle">常见设计模式</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                5.8k
+                301
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                5 mins.
+                1 mins.
             </span>
             
             
-            <span id="/posts/24f059ac/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/a9544ec6/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <i class="leancloud-visitors-count">1000000</i>
             </span>
@@ -153,14 +153,15 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/docker/">docker</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/rabbitMQ/">rabbitMQ</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/wsl/">wsl</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <p>项目改微服务化了，于是开始研究 <code>rabbitMQ</code> 这个消息队列框架。然后官方推荐使用docker启动，索性在WSL下装 docker 了（太懒了，不想双系统or虚拟机）</p>
-<p><strong>-*-FBI WARNING-...</strong></p>
+            <p>定义算法（方法）族，分别封装起来，让他们之间可以相互替换，此模式让算法的变化独立于使用算法的客户。</p>
+<p>例：</p>
+<p>鸭子类的“叫”、“飞”等方法不放在基类中，分别创建“叫”类，“飞”类。在“叫”类里再分“呱呱叫...</p>
             
-            <span class="read-more"><a href="/posts/24f059ac/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/a9544ec6/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -181,6 +182,61 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/知识储备">
+                  <b>「 </b>知识储备<b> 」</b>
+                </a>
+            
+            十二月 11, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/24f059ac/" title="WSL 下安装 docker 踩坑" class="posttitle">WSL 下安装 docker 踩坑</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        5.8k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        5 mins.
+                    </span>
+                
+                
+                    <span id="/posts/24f059ac/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <i class="leancloud-visitors-count">1000000</i>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/docker/">docker</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/rabbitMQ/">rabbitMQ</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/wsl/">wsl</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>项目改微服务化了，于是开始研究 <code>rabbitMQ</code> 这个消息队列框架。然后官方推荐使用docker启动，索性在WSL下装 docker 了（太懒了，不想双系统or虚拟机）</p>
+<p><strong>-*-FBI WARNING-*-</strong><br>安装前请注意查阅自己的WSL是否为2.0版，不然请直接看<a href="http://www.gvoidy.cn/posts/24f059ac/#%E8%B8%A9%E5%9D%91-amp-%E8%A7%A3%E5%86%B3">踩坑 &amp; 解决</a>问题三</p>
+<p>因为我的WSL下安装的是Ubuntu，参见<a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" target="_blank" rel="noopener">docker官方安装文档</a>。</p>
+<pre><code class="bash"># 添加源
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo...</code></pre>
+            
+            <span class="read-more"><a href="/posts/24f059ac/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
