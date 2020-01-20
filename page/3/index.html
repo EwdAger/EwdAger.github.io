@@ -129,23 +129,23 @@
             九月 25, 2018
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/22aee029/" title="Python 中的魔术方法" class="posttitle">Python 中的魔术方法</a></h3>
+            <a href="/posts/7798fba3/" title="常见设计模式 Python 实现" class="posttitle">常见设计模式 Python 实现</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                1.1k
+                1.7k
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                1 mins.
+                2 mins.
             </span>
             
             
-            <span id="/posts/22aee029/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/7798fba3/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <i class="leancloud-visitors-count">1000000</i>
             </span>
@@ -153,14 +153,20 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <p><code>__new__(self)</code>: 创建并返回一个类的实例，而<code>__init__</code>只是将传入的参数来初始化该实例，一般不需要重载<code>__new__</code>方法除非希望控制类的创建。</p>
-<p><code>__init__(self)</code>: 可以理解...</p>
+            <p>根据不同条件生产不同功能的类</p>
+<pre><code class="python">class op(object):
+    def get_ans(self):
+        pass
+
+class Add(op):
+    def get_ans(self):
+        return self...</code></pre>
             
-            <span class="read-more"><a href="/posts/22aee029/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/7798fba3/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -181,61 +187,6 @@
 
     <div id="primary">
         
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/知识储备">
-                  <b>「 </b>知识储备<b> 」</b>
-                </a>
-            
-            九月 25, 2018
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/22aee029/" title="Python 中的魔术方法" class="posttitle">Python 中的魔术方法</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        1.1k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        1 mins.
-                    </span>
-                
-                
-                    <span id="/posts/22aee029/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <i class="leancloud-visitors-count">1000000</i>
-                    </span>
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p><code>__new__(self)</code>: 创建并返回一个类的实例，而<code>__init__</code>只是将传入的参数来初始化该实例，一般不需要重载<code>__new__</code>方法除非希望控制类的创建。</p>
-<p><code>__init__(self)</code>: 可以理解为构造函数，将传入的参数初始化成实例</p>
-<p><code>__del__(self)</code>: 可以理解为析构函数</p>
-<p>Python缺少对于类的封装,但人们希望Python能够定义私有属性，然后提供公共可访问的<code>getter</code>和 <code>setter</code>。 Python其实可以通过魔术方法来实现封装。</p>
-<p><code>__getattr__(self, name...</code></p>
-            
-            <span class="read-more"><a href="/posts/22aee029/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
-        </div>
-    </div>
-</div>
-
-
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -785,6 +736,66 @@ sudo apt-get install pip              // 安装python包管理
         ...</code></pre>
             
             <span class="read-more"><a href="/posts/3eeec910/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/python学习心得&备忘">
+                  <b>「 </b>PYTHON学习心得&备忘<b> 」</b>
+                </a>
+            
+            五月 02, 2018
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/7ed6f334/" title="Python 蛋疼的编码问题" class="posttitle">Python 蛋疼的编码问题</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        4.5k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        4 mins.
+                    </span>
+                
+                
+                    <span id="/posts/7ed6f334/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <i class="leancloud-visitors-count">1000000</i>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python2/">Python2</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/编码/">编码</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>Python 的编码问题早就困扰我太久了， 但一直没有看到比较通俗易懂的专门介绍 Python 编码问题的文章。 正好今天刷知乎看到了非常不错的文章， 这里稍微抛砖引玉归纳下。</p>
+<p>知识储备：</p>
+<ul>
+<li>ASCII 占1个字节，只支持英文</li>
+<li>GBK GB2312的升级版，支持21000+汉字</li>
+<li>Shift-JIS 日本字符</li>
+<li>ks_c_5601-1987 韩国编码</li>
+<li>TIS-620 泰国编码</li>
+</ul>
+<p>由于每个国家都有自己的字符，所以其对应关系也涵盖了自己国家的字符，但是以上编码都存在局限性，即：仅涵盖本国字符，无其他国家...</p>
+            
+            <span class="read-more"><a href="/posts/7ed6f334/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
