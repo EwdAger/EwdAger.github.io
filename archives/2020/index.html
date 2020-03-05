@@ -55,22 +55,20 @@
                                     <div class="timeline-info"></div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <h2 class="timeline-title">一月 2020</h2>
+                                        <h2 class="timeline-title">三月 2020</h2>
                                     </div>
                                 </li>
                                 
                                 <li class="timeline-item">
                                     <div class="timeline-info">
-                                        <span class="gradient-text">一月 08, 2020</span>
+                                        <span class="gradient-text">三月 05, 2020</span>
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/posts/a9544ec6/">常见设计模式</a>
+                                        <a class="timeline-title" target="_self" href="/posts/51c3bc14/">Authlib 单点登录库初体验及踩坑</a>
                                         <p>
-                                            策略模式定义算法（方法）族，分别封装起来，让他们之间可以相互替换，此模式让算法的变化独立于使用算法的客户。
-例：
-鸭子类的“叫”、“飞”等方法不放在基类中，分别创建“叫”类，“飞”类。在“叫”类里再分“呱呱叫”、“吱吱叫”、不叫等算法族。然后再在各个继承鸭子基类的子类中分别设置“叫”的方法。这样使用组合的方法而不是继承的方法，可以有效地防止基类中的方法污染子类。
-
+                                            起因项目突然要接入TX云，理所应当的要使用tx的单点登录了。于是乎，经过各方推荐，使用了大名鼎鼎的Authlib库。
+初体验经过各方文档，整理了一下，在Flask中使用Authlib相当简单。如果是接入有名的OAuth2站点如Github、Google这种，直接使用官方已经封装好的类即可快速实现，但此处使用的是TX方为工业互联网平台新搭建的OAuth2服务，理所应当不能直接使用。但仍可以使用...
                                         </p>
                                     </div>
                                 </li>

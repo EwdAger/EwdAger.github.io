@@ -1,0 +1,540 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Authlib 单点登录库初体验及踩坑 - Gvoidy</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
+    <meta name="description" content="起因项目突然要接入TX云，理所应当的要使用tx的单点登录了。于是乎，经过各方推荐，使用了大名鼎鼎的Authlib库。
+初体验经过各方文档，整理了一下，在Flask中使用Authlib相当简单。如果是,"> 
+    <meta name="author" content="EwdAger"> 
+    <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+</html>
+
+<body class="loading">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Gvoidy</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">Authlib 单点登录库初体验及踩坑</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg);">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/python学习心得&备忘"><b>「
+                    </b>PYTHON学习心得&备忘<b> 」</b></a>
+                
+                三月 05, 2020
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/51c3bc14/" title="Authlib 单点登录库初体验及踩坑">Authlib 单点登录库初体验及踩坑</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    6k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    5 mins.
+                </span>
+                
+                
+                <span id="/posts/51c3bc14/" class="leancloud_visitors" data-flag-title="Authlib 单点登录库初体验及踩坑">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <i class="leancloud-visitors-count">1000000</i>
+                </span>
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Flask/">Flask</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/OAuth/">OAuth</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/authlib/">authlib</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/单点登录/">单点登录</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>项目突然要接入TX云，理所应当的要使用tx的单点登录了。于是乎，经过各方推荐，使用了大名鼎鼎的<a href="https://authlib.org/" target="_blank" rel="noopener">Authlib</a>库。</p>
+<h2 id="初体验"><a href="#初体验" class="headerlink" title="初体验"></a>初体验</h2><p>经过各方文档，整理了一下，在<code>Flask</code>中使用<code>Authlib</code>相当简单。如果是接入有名的<code>OAuth2</code>站点如<code>Github</code>、<code>Google</code>这种，直接使用官方已经封装好的类即可快速实现，但此处使用的是TX方为工业互联网平台新搭建的<code>OAuth2</code>服务，理所应当不能直接使用。但仍可以使用较为便捷的封装进<code>Flask</code>中的认证方法，具体步骤如下：</p>
+<h3 id="新建存储Token的表"><a href="#新建存储Token的表" class="headerlink" title="新建存储Token的表"></a>新建存储Token的表</h3><p>根据存储的<code>access_token</code>校验后续接口用户登录情况。 其中<code>refresh_token</code>为<code>access_token</code>过期后，下次去<code>OAuth2</code>服务器请求新的Token的字段。如果在注册<code>Authlib</code>对象时写了<code>update</code>方法，即可自动更新token。</p>
+<pre><code class="python">from app.models.base import db, Base
+
+
+class OAuth2Token(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(40))
+    token_type = db.Column(db.String(40))
+    access_token = db.Column(db.String(200))
+    refresh_token = db.Column(db.String(200))
+    expires_in = db.Column(db.Integer())
+    user_id = db.Column(db.Integer(), db.ForeignKey(&quot;user.id&quot;))
+    user = db.relationship(&quot;User&quot;, backref=db.backref(&quot;auth_token&quot;, lazy=&quot;dynamic&quot;))
+
+    def to_token(self):
+        return dict(
+            access_token=self.access_token,
+            token_type=self.token_type,
+            refresh_token=self.refresh_token,
+            expires_in=self.expires_in,
+        )
+
+    @staticmethod
+    def save_token(response):
+        with db.auto_commit():
+            oauth = OAuth2Token()
+            oauth.name = &#39;tencent&#39;
+            oauth.access_token = response[&#39;access_token&#39;]
+            oauth.token_type = response[&#39;token_type&#39;]
+            oauth.expires_in = response[&#39;expires_in&#39;] if &#39;expires_in&#39; in response else None
+            oauth.refresh_token = response[&#39;refresh_token&#39;] if &#39;refresh_token&#39; in response else None
+            oauth.user_id = response[&#39;user_id&#39;] if &#39;user_id&#39; in response else None
+            db.session.add(oauth)
+</code></pre>
+<h3 id="创建oauth对象"><a href="#创建oauth对象" class="headerlink" title="创建oauth对象"></a>创建oauth对象</h3><p><code>authlib</code>会自动从<code>flask</code>的全局<code>config</code>即<code>app/config/setting.py</code>中读取你设置的<code>{YOUR_NAME}_CLIENT_ID</code>和<code>{YOUR_NAME}__CLIENT_SECRET</code>。</p>
+<p><code>authorize_url</code>中填写第一步跳转到单点登录接口的url，<code>access_token_url</code>填写从单点登录服务器拿到code和state后，换取token的地址。</p>
+<pre><code class="python">from authlib.integrations.flask_client import OAuth
+from app.models.oauth import OAuth2Token
+from flask import g
+from app.models.base import db
+
+from app.config.setting import TENCENT_CLIENT_ID, TENCENT_CLIENT_SECRET
+
+
+def fetch_token(name):
+    token = OAuth2Token.query.filter_by(name=name, user_id=g.user.uid).first()
+    return token.to_token()
+
+
+def update_token(name, token, refresh_token=None, access_token=None):
+    if refresh_token:
+        item = OAuth2Token.filter_by(name=name, refresh_token=refresh_token).first()
+    elif access_token:
+        item = OAuth2Token.filter_by(name=name, access_token=access_token).first()
+    else:
+        return
+    if not item:
+        return
+    # update old token
+    item.access_token = token[&#39;access_token&#39;]
+    item.refresh_token = token.get(&#39;refresh_token&#39;)
+    item.expires_in = token[&#39;expires_in&#39;]
+    db.session.commit()
+
+
+oauth = OAuth(fetch_token=fetch_token, update_token=update_token)
+
+tencent = oauth.register(
+    name=&#39;tencent&#39;,
+    access_token_url=f&#39;{CloudIndustryHost_internet}&#39;,
+    access_token_params={
+        &#39;method&#39;: &quot;GET&quot;,
+        &#39;grant_type&#39;: &#39;authorization_code&#39;
+    },
+    authorize_url=f&#39;{CloudIndustryHost_internet}&#39;,
+    authorize_params=None,
+    api_base_url=f&#39;{CloudIndustryHost_internet}&#39;,
+    client_kwargs={&#39;scope&#39;: &#39;all&#39;}
+)
+</code></pre>
+<h3 id="视图函数"><a href="#视图函数" class="headerlink" title="视图函数"></a>视图函数</h3><pre><code class="python">from flask import url_for, redirect, make_response
+
+from app.models.oauth import OAuth2Token
+from app.libs.oauthlib import tencent
+from . import oauth as api
+from .utils import *
+
+
+@api.route(&#39;/login&#39;, methods=[&#39;GET&#39;, &#39;POST&#39;])
+def login():
+    redirect_uri = url_for(&quot;v1.oauth+auth&quot;, _external=True)
+    return tencent.authorize_redirect(redirect_uri)
+
+
+@api.route(&#39;/redirect&#39;, methods=[&#39;GET&#39;, &#39;POST&#39;])
+def auth():
+    token_info = tencent.authorize_access_token()
+
+    OAuth2Token.save_token(token_info)
+    response = make_response(redirect(&#39;/&#39;))
+    response.set_cookies(&#39;session_id&#39;, token_info[&#39;access_token&#39;])
+</code></pre>
+<h3 id="将oauth对象注册进flask-app"><a href="#将oauth对象注册进flask-app" class="headerlink" title="将oauth对象注册进flask app"></a>将oauth对象注册进flask app</h3><pre><code class="python">from app.libs.oauthlib import oauth
+
+
+app = create_app()
+
+oauth.init_app(app)
+</code></pre>
+<p>以上基本就能正常愉快的完成单点登录的全过程啦~</p>
+<h2 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h2><p>好吧，实际上并不是这么一帆风顺的，在取得返回的code的视图函数中<code>authorize_access_token()</code>这一步一直碰到一个<code>JSONDecodeError: Extra data: line 1 column 5 - line 1 column 19 (char 4 - 18)</code>json无法序列化的bug。</p>
+<p>经过进入<code>Authlib</code>的源码中深入调查，发现在<code>fetch_token()</code>这一步中，用<code>OAuth</code>服务器返回的code、states等参数向获取token的接口发请求时直接报404了。</p>
+<p>反复查看文档发现地址并没有填错，最后发现，TX云那边使用的是GET方法拿token，而<code>OAuthlib</code>的<code>fetch_token()</code>方法默认使用的是<code>POST</code>方法！！！</p>
+<p>而要额外设置<code>fetch_token()</code>的方法需要再编写<code>oath</code>对象时，在<code>access_token_params</code>中加入所需要的方法。</p>
+<p><code>authorize_access_token()</code>方法会默认将<code>access_token_params</code>作为<code>**kwarg</code>传入后续的内部函数中，即可设置<code>fetch_token()</code>的参数。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/Kaer Morhen.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            
+            <div id="vcomments"></div>
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">58 <p>文章</p></a></li>
+                    <li><a href="/categories">12 <p>分类</p></a></li>
+                    <li><a href="/tags">50 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#起因"><span class="toc-number">1.</span> <span class="toc-text">起因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#初体验"><span class="toc-number">2.</span> <span class="toc-text">初体验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新建存储Token的表"><span class="toc-number">2.1.</span> <span class="toc-text">新建存储Token的表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建oauth对象"><span class="toc-number">2.2.</span> <span class="toc-text">创建oauth对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视图函数"><span class="toc-number">2.3.</span> <span class="toc-text">视图函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将oauth对象注册进flask-app"><span class="toc-number">2.4.</span> <span class="toc-text">将oauth对象注册进flask app</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#踩坑"><span class="toc-number">3.</span> <span class="toc-text">踩坑</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2020
+        <span class="gradient-text">
+            EwdAger
+        </span>.
+        <a href="http://www.beian.miit.gov.cn/">湘ICP备16015728号</a>
+        <br/>
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-149874671-1');
+    </script>
+
+
+
+
+
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["Farewell,good hunter.May you find your worth in the waking world.", "再见，善良的猎人。愿你能在清醒的世界中找到自己的价值。"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
+
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
+</script>
+
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <script>
+
+        var valine = new Valine();
+
+        function initValine(path) {
+            if (!path) path = window.location.pathname;
+            let language = 'zh-CN';
+            if (!language) {
+                language = 'en';
+            } else {
+                language = language.toLowerCase();
+            }
+            valine.init({
+                el: '#vcomments',
+                appId: 'ChQ4z1dCRpWqCOD43kU6cGmM-gzGzoHsz',
+                appKey: 'pFaAS3aumHDM572YbXkzc3fO',
+                notify: 'false',
+                verify: 'false',
+                avatar: 'retro',
+                placeholder: '留下你的评论~',
+                visitor: 'true',
+                path: path,
+                lang: language
+            });
+        }
+
+        $(document).ready(function () {
+            initValine();
+        });
+    </script>
+
+
+
+</html>
