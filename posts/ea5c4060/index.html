@@ -1,0 +1,745 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Rancher2 &amp; K8S部署踩坑记录 - Gvoidy</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
+    <meta name="description" content="
+本安装教程基于CetnOS 7环境编写
+
+安装docker首先安装依赖并添加国内源$ sudo yum install -y yum-utils device-mapper-persistent-,"> 
+    <meta name="author" content="EwdAger"> 
+    <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+</html>
+
+<body class="loading">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Gvoidy</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">Rancher2 & K8S部署踩坑记录</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg);">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/服务器相关问题&备忘"><b>「
+                    </b>服务器相关问题&备忘<b> 」</b></a>
+                
+                四月 16, 2020
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/ea5c4060/" title="Rancher2 & K8S部署踩坑记录">Rancher2 & K8S部署踩坑记录</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    13k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    11 mins.
+                </span>
+                
+                
+                <span id="/posts/ea5c4060/" class="leancloud_visitors" data-flag-title="Rancher2 & K8S部署踩坑记录">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <i class="leancloud-visitors-count">1000000</i>
+                </span>
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/DevOps/">DevOps</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/docker/">docker</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/k8s/">k8s</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/rancher2/">rancher2</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <blockquote>
+<p>本安装教程基于<strong>CetnOS 7</strong>环境编写</p>
+</blockquote>
+<h1 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h1><h2 id="首先安装依赖并添加国内源"><a href="#首先安装依赖并添加国内源" class="headerlink" title="首先安装依赖并添加国内源"></a>首先安装依赖并添加国内源</h2><pre><code class="bash">$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+$ yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+</code></pre>
+<h2 id="安装docker-1"><a href="#安装docker-1" class="headerlink" title="安装docker"></a>安装docker</h2><pre><code class="bash">$ yum clean all
+
+$ yum makecache fastyum -y
+
+$ yum install docker-ce
+</code></pre>
+<h2 id="启动服务并开机自起"><a href="#启动服务并开机自起" class="headerlink" title="启动服务并开机自起"></a>启动服务并开机自起</h2><pre><code class="bash"># 通过systemctl启动服务
+$ systemctl start docker
+
+# 开机自启动
+$ systemctl enable docker
+
+# 验证docker
+$ docker version
+</code></pre>
+<h2 id="更改docker-存储目录至空间大的磁盘-默认挂载点为-var-lib-docker"><a href="#更改docker-存储目录至空间大的磁盘-默认挂载点为-var-lib-docker" class="headerlink" title="更改docker 存储目录至空间大的磁盘(默认挂载点为/var/lib/docker)"></a>更改docker 存储目录至空间大的磁盘(默认挂载点为<code>/var/lib/docker</code>)</h2><pre><code class="bash"># 停止docker服务
+$ systemctl stop docker
+
+# 迁移目录至空间大的挂载点
+$ mv /var/lib/docker /data/docker
+
+# 添加软链接
+$ ln -s /data/docker /var/lib/docker
+
+# 重启docker
+$ systemctl start docker
+</code></pre>
+<h1 id="安装Rancher2-amp-K8S集群"><a href="#安装Rancher2-amp-K8S集群" class="headerlink" title="安装Rancher2 &amp; K8S集群"></a>安装Rancher2 &amp; K8S集群</h1><h2 id="安装Rancher2"><a href="#安装Rancher2" class="headerlink" title="安装Rancher2"></a>安装Rancher2</h2><blockquote>
+<p>建议rancher server单独部署在一台机器上，不并入集群内</p>
+</blockquote>
+<h3 id="安装好docker后，启动rancher-server"><a href="#安装好docker后，启动rancher-server" class="headerlink" title="安装好docker后，启动rancher server"></a>安装好docker后，启动rancher server</h3><pre><code class="bash"># 挂载目录设为/data/rancher并监听本机80/443端口，注意本机其他服务不要占用这两个端口
+$ sudo docker run -d --restart=unless-stopped -v /data/rancher:/var/lib/rancher/ -p 80:80 -p 443:443 rancher/rancher:stable
+</code></pre>
+<h3 id="访问安装server的主机ip，设置用户名密码，设置server-url，此处需设置为即将添加入集群内的其他节点主机能访问的IP，可直接设置本机的公网IP"><a href="#访问安装server的主机ip，设置用户名密码，设置server-url，此处需设置为即将添加入集群内的其他节点主机能访问的IP，可直接设置本机的公网IP" class="headerlink" title="访问安装server的主机ip，设置用户名密码，设置server url，此处需设置为即将添加入集群内的其他节点主机能访问的IP，可直接设置本机的公网IP"></a>访问安装server的主机ip，设置用户名密码，设置server url，此处需设置为即将添加入集群内的其他节点主机能访问的IP，可直接设置本机的公网IP</h3><h3 id="修改集群自动生成的域名后缀"><a href="#修改集群自动生成的域名后缀" class="headerlink" title="修改集群自动生成的域名后缀"></a>修改集群自动生成的域名后缀</h3><p><img src="https://s1.ax1x.com/2020/04/16/Jkfs4e.png" alt="修改域名"></p>
+<h2 id="部署K8S集群"><a href="#部署K8S集群" class="headerlink" title="部署K8S集群"></a>部署K8S集群</h2><blockquote>
+<p><strong>注意</strong> 请使用<code>v1.15</code>版K8S</p>
+</blockquote>
+<blockquote>
+<p><strong>注意</strong> 在添加主机命令时，需点击显示高级选项，必须将节点机公网地址配入其中，不然后续服务仅能在集群所在内网网段访问</p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2020/04/16/Jk4iFS.png" alt="部署集群"></p>
+<h1 id="部署其他服务"><a href="#部署其他服务" class="headerlink" title="部署其他服务"></a>部署其他服务</h1><h2 id="添加内部应用商店"><a href="#添加内部应用商店" class="headerlink" title="添加内部应用商店"></a>添加内部应用商店</h2><p><img src="https://s1.ax1x.com/2020/04/16/Jk4htS.png" alt="添加应用商店"></p>
+<h2 id="配置kubectl"><a href="#配置kubectl" class="headerlink" title="配置kubectl"></a>配置kubectl</h2><ol>
+<li>在集群节点上下载Kubectl</li>
+</ol>
+<pre><code class="bash">$ curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+$ chmod +x ./kubectl
+$ sudo mv ./kubectl /usr/local/bin/kubectl
+</code></pre>
+<p>如果服务器上下载不了kubectl可去<a href="https://github.com/kubernetes/kubernetes/releases" target="_blank" rel="noopener">github release</a>页面下载最新版kubectl，再上传至服务器</p>
+<ol start="2">
+<li>复制kubeconfig </li>
+</ol>
+<p>进入集群仪表盘，点击 <code>Kubeconfig文件</code> 按钮，赋值里面全部内容<br><img src="https://s1.ax1x.com/2020/04/16/Jk5VhD.png" alt="Kubeconfig"></p>
+<ol start="3">
+<li>在安装好kubectl的机器上配置kubeconfig</li>
+</ol>
+<pre><code class="bash">$ mkdir ~/.kube
+$ vi ~/.kube/config
+# Ctrl + V ~~~
+</code></pre>
+<blockquote>
+<p><strong>kubectl命令</strong><br>   # 查看服务状态<br>   kubectl get pod -n kafka -o wide<br>   # 查看单独pod<br>   kubectl describe pod -n kafka kafka-0</p>
+</blockquote>
+<h2 id="配置NFS存储类"><a href="#配置NFS存储类" class="headerlink" title="配置NFS存储类"></a>配置NFS存储类</h2><blockquote>
+<p>请在已安装<code>Kubectl</code>并配置好<code>kubeconfig</code>的机器上执行</p>
+</blockquote>
+<h3 id="安装并配置nfs服务"><a href="#安装并配置nfs服务" class="headerlink" title="安装并配置nfs服务"></a>安装并配置nfs服务</h3><pre><code class="bash"># 安装NFS
+$ yum install -y nfs-utils
+$ yum -y install rpcbind
+
+# 配置NFS服务端，创建数据目录
+$ mkdir -p /data/nfs/k8s/
+$ chmod 755 /data/nfs/k8s
+
+# NFS配置文件设置目录信息
+$ vim /etc/exports
+$ /data/nfs/k8s/ *(async,insecure,no_root_squash,no_subtree_check,rw)
+
+# 重启nfs服务
+$ /bin/systemctl start nfs.service
+
+# 查看挂载情况
+$ showmount -e
+&gt;&gt;&gt; Export list for k8s-test2-master:
+&gt;&gt;&gt; /data/nfs/k8s *
+</code></pre>
+<h3 id="创建-ServiceAccount"><a href="#创建-ServiceAccount" class="headerlink" title="创建 ServiceAccount"></a>创建 ServiceAccount</h3><p>找个地方创建<code>nfs-rbac.yaml</code></p>
+<pre><code class="nfs-rbac.yaml">kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: nfs-client-provisioner
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: nfs-client-provisioner-runner
+rules:
+  - apiGroups: [&quot;&quot;]
+    resources: [&quot;persistentvolumes&quot;]
+    verbs: [&quot;get&quot;, &quot;list&quot;, &quot;watch&quot;, &quot;create&quot;, &quot;delete&quot;]
+  - apiGroups: [&quot;&quot;]
+    resources: [&quot;persistentvolumeclaims&quot;]
+    verbs: [&quot;get&quot;, &quot;list&quot;, &quot;watch&quot;, &quot;update&quot;]
+  - apiGroups: [&quot;storage.k8s.io&quot;]
+    resources: [&quot;storageclasses&quot;]
+    verbs: [&quot;get&quot;, &quot;list&quot;, &quot;watch&quot;]
+  - apiGroups: [&quot;&quot;]
+    resources: [&quot;events&quot;]
+    verbs: [&quot;create&quot;, &quot;update&quot;, &quot;patch&quot;]
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: run-nfs-client-provisioner
+subjects:
+  - kind: ServiceAccount
+    name: nfs-client-provisioner
+    namespace: kube-system      # 此处安装进Rancher的系统命名空间，可替换
+roleRef:
+  kind: ClusterRole
+  name: nfs-client-provisioner-runner
+  apiGroup: rbac.authorization.k8s.io
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: leader-locking-nfs-client-provisioner
+rules:
+  - apiGroups: [&quot;&quot;]
+    resources: [&quot;endpoints&quot;]
+    verbs: [&quot;get&quot;, &quot;list&quot;, &quot;watch&quot;, &quot;create&quot;, &quot;update&quot;, &quot;patch&quot;]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: leader-locking-nfs-client-provisioner
+subjects:
+  - kind: ServiceAccount
+    name: nfs-client-provisioner
+    namespace: kube-system      # 此处安装进Rancher的系统命名空间，可替换
+roleRef:
+  kind: Role
+  name: leader-locking-nfs-client-provisioner
+  apiGroup: rbac.authorization.k8s.io
+</code></pre>
+<p><strong>执行 <code>kubectl apply -f nfs-rbac.yaml -n kube-system</code></strong></p>
+<h3 id="部署-NFS-Provisioner"><a href="#部署-NFS-Provisioner" class="headerlink" title="部署 NFS Provisioner"></a>部署 NFS Provisioner</h3><p>找个地方创建<code>nfs-provisioner-deploy.yaml</code></p>
+<pre><code class="nfs-provisioner-deploy.yaml">kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: nfs-client-provisioner
+  labels:
+    app: nfs-client-provisioner
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate      #---设置升级策略为删除再创建(默认为滚动更新)
+  selector:
+    matchLabels:
+      app: nfs-client-provisioner
+  template:
+    metadata:
+      labels:
+        app: nfs-client-provisioner
+    spec:
+      serviceAccountName: nfs-client-provisioner
+      containers:
+        - name: nfs-client-provisioner
+          #---由于quay.io仓库国内被墙，所以替换成七牛云的仓库
+          image: quay-mirror.qiniu.com/external_storage/nfs-client-provisioner:latest
+          volumeMounts:
+            - name: nfs-client-root
+              mountPath: /persistentvolumes
+          env:
+            - name: PROVISIONER_NAME
+              value: nfs-client     #--- nfs-provisioner的名称，以后设置的storageclass要和这个保持一致
+            - name: NFS_SERVER
+              value: 10.74.20.12   #---NFS服务器地址，和 valumes 保持一致
+            - name: NFS_PATH
+              value: /data/nfs/k8s      #---NFS服务器目录，和 valumes 保持一致
+      volumes:
+        - name: nfs-client-root
+          nfs:
+            server: 10.74.20.12    #---NFS服务器地址
+            path: /data/nfs/k8s       #---NFS服务器目录
+</code></pre>
+<p><strong>执行<code>kubectl apply -f nfs-provisioner-deploy.yaml -n kube-system</code></strong></p>
+<h3 id="部署-NFS-SotageClass"><a href="#部署-NFS-SotageClass" class="headerlink" title="部署 NFS SotageClass"></a>部署 NFS SotageClass</h3><p>找个地方创建<code>nfs-storage.yaml</code></p>
+<pre><code class="nfs-storage.yaml">apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nfs-storage
+  annotations:
+    storageclass.kubernetes.io/is-default-class: &quot;true&quot; #---设置为默认的storageclass
+provisioner: nfs-client    #---动态卷分配者名称，必须和上面创建的&quot;provisioner&quot;变量中设置的Name一致
+parameters:
+  archiveOnDelete: &quot;true&quot;  #---设置为&quot;false&quot;时删除PVC不会保留数据,&quot;true&quot;则保留数据
+mountOptions:
+  - hard        #指定为硬挂载方式
+  - nfsvers=4   #指定NFS版本，这个需要根据 NFS Server 版本号设置
+</code></pre>
+<p><strong>执行<code>kubectl apply -f nfs-storage.yaml -n kube-system</code></strong></p>
+<h2 id="部署longhorn"><a href="#部署longhorn" class="headerlink" title="部署longhorn"></a>部署longhorn</h2><blockquote>
+<p>教程编写当前，Longhorn为Rancher实验性功能。如已安装NFS可不安装Longhorn。</p>
+</blockquote>
+<ol>
+<li>在每台节点机器上安装open-iscsi</li>
+</ol>
+<pre><code class="bash">$ yum install iscsi-initiator-utils
+</code></pre>
+<ol start="2">
+<li>在Rancher应用商店安装Longhorn即可</li>
+</ol>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="Rancher完全删除脚本"><a href="#Rancher完全删除脚本" class="headerlink" title="Rancher完全删除脚本"></a>Rancher完全删除脚本</h2><p><a href="https://docs.rancher.cn/rancher2x/admin-manual/remove/#_1-%E6%89%8B%E5%8A%A8%E6%B8%85%E7%90%86%E8%8A%82%E7%82%B9" target="_blank" rel="noopener">来源</a></p>
+<pre><code class="cleaner.sh"> # 停止服务
+  systemctl  disable kubelet.service
+  systemctl  disable kube-scheduler.service
+  systemctl  disable kube-proxy.service
+  systemctl  disable kube-controller-manager.service
+  systemctl  disable kube-apiserver.service
+
+  systemctl  stop kubelet.service
+  systemctl  stop kube-scheduler.service
+  systemctl  stop kube-proxy.service
+  systemctl  stop kube-controller-manager.service
+  systemctl  stop kube-apiserver.service
+
+  # 删除所有容器
+  docker rm -f $(docker ps -qa)
+
+  # 删除所有容器卷
+  docker volume rm $(docker volume ls -q)
+
+  # 卸载mount目录
+  for mount in $(mount | grep tmpfs | grep &#39;/var/lib/kubelet&#39; | awk &#39;{ print $3 }&#39;) /var/lib/kubelet /var/lib/rancher;
+  do
+    umount $mount;
+  done
+
+  # 备份目录
+  mv /etc/kubernetes /etc/kubernetes-bak-$(date +&quot;%Y%m%d%H%M&quot;)
+  mv /var/lib/etcd /var/lib/etcd-bak-$(date +&quot;%Y%m%d%H%M&quot;)
+  mv /var/lib/rancher /var/lib/rancher-bak-$(date +&quot;%Y%m%d%H%M&quot;)
+  mv /opt/rke /opt/rke-bak-$(date +&quot;%Y%m%d%H%M&quot;)
+
+  # 删除残留路径
+  rm -rf  /etc/ceph \
+          /etc/cni \
+          /opt/cni \
+          /run/secrets/kubernetes.io \
+          /run/calico \
+          /run/flannel \
+          /var/lib/calico \
+          /var/lib/cni \
+          /var/lib/kubelet \
+          /var/log/containers \
+          /var/log/pods \
+          /var/run/calico
+
+  # 清理网络接口
+  no_del_net_inter=&#39;
+  lo
+  docker0
+  eth
+  ens
+  bond
+  &#39;
+  network_interface=`ls /sys/class/net`
+  for net_inter in $network_interface;
+  do
+    if ! echo &quot;${no_del_net_inter}&quot; | grep -qE ${net_inter:0:3}; then
+      ip link delete $net_inter
+    fi
+  done
+
+  # 清理残留进程
+  port_list=&#39;
+  80
+  443
+  6443
+  2376
+  2379
+  2380
+  8472
+  9099
+  10250
+  10254
+  &#39;
+
+  for port in $port_list;
+  do
+    pid=`netstat -atlnup | grep $port | awk &#39;{print $7}&#39; | awk -F &#39;/&#39; &#39;{print $1}&#39; | grep -v - | sort -rnk2 | uniq`
+    if [[ -n $pid ]];then
+      kill -9 $pid
+    fi
+  done
+
+  kube_pid=`ps -ef | grep -v grep | grep kube | awk &#39;{print $2}&#39;`
+
+  if [[ -n $kube_pid ]];then
+    kill -9 $kube_pid
+  fi
+
+  # 清理Iptables表
+  ## 注意：如果节点Iptables有特殊配置，以下命令请谨慎操作
+  sudo iptables --flush
+  sudo iptables --flush --table nat
+  sudo iptables --flush --table filter
+  sudo iptables --table nat --delete-chain
+  sudo iptables --table filter --delete-chain
+
+  systemctl restart docker
+</code></pre>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/Kaer Morhen.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            
+            <div id="vcomments"></div>
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">60 <p>文章</p></a></li>
+                    <li><a href="/categories">12 <p>分类</p></a></li>
+                    <li><a href="/tags">53 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装docker"><span class="toc-number">1.</span> <span class="toc-text">安装docker</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#首先安装依赖并添加国内源"><span class="toc-number">1.1.</span> <span class="toc-text">首先安装依赖并添加国内源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装docker-1"><span class="toc-number">1.2.</span> <span class="toc-text">安装docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动服务并开机自起"><span class="toc-number">1.3.</span> <span class="toc-text">启动服务并开机自起</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更改docker-存储目录至空间大的磁盘-默认挂载点为-var-lib-docker"><span class="toc-number">1.4.</span> <span class="toc-text">更改docker 存储目录至空间大的磁盘(默认挂载点为/var/lib/docker)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装Rancher2-amp-K8S集群"><span class="toc-number">2.</span> <span class="toc-text">安装Rancher2 &amp; K8S集群</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Rancher2"><span class="toc-number">2.1.</span> <span class="toc-text">安装Rancher2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装好docker后，启动rancher-server"><span class="toc-number">2.1.1.</span> <span class="toc-text">安装好docker后，启动rancher server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#访问安装server的主机ip，设置用户名密码，设置server-url，此处需设置为即将添加入集群内的其他节点主机能访问的IP，可直接设置本机的公网IP"><span class="toc-number">2.1.2.</span> <span class="toc-text">访问安装server的主机ip，设置用户名密码，设置server url，此处需设置为即将添加入集群内的其他节点主机能访问的IP，可直接设置本机的公网IP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改集群自动生成的域名后缀"><span class="toc-number">2.1.3.</span> <span class="toc-text">修改集群自动生成的域名后缀</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部署K8S集群"><span class="toc-number">2.2.</span> <span class="toc-text">部署K8S集群</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#部署其他服务"><span class="toc-number">3.</span> <span class="toc-text">部署其他服务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#添加内部应用商店"><span class="toc-number">3.1.</span> <span class="toc-text">添加内部应用商店</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置kubectl"><span class="toc-number">3.2.</span> <span class="toc-text">配置kubectl</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置NFS存储类"><span class="toc-number">3.3.</span> <span class="toc-text">配置NFS存储类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装并配置nfs服务"><span class="toc-number">3.3.1.</span> <span class="toc-text">安装并配置nfs服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建-ServiceAccount"><span class="toc-number">3.3.2.</span> <span class="toc-text">创建 ServiceAccount</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署-NFS-Provisioner"><span class="toc-number">3.3.3.</span> <span class="toc-text">部署 NFS Provisioner</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署-NFS-SotageClass"><span class="toc-number">3.3.4.</span> <span class="toc-text">部署 NFS SotageClass</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部署longhorn"><span class="toc-number">3.4.</span> <span class="toc-text">部署longhorn</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#其他"><span class="toc-number">4.</span> <span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Rancher完全删除脚本"><span class="toc-number">4.1.</span> <span class="toc-text">Rancher完全删除脚本</span></a></li></ol></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2020
+        <span class="gradient-text">
+            EwdAger
+        </span>.
+        <a href="http://www.beian.miit.gov.cn/">湘ICP备16015728号</a>
+        <br/>
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-149874671-1');
+    </script>
+
+
+
+
+
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["Farewell,good hunter.May you find your worth in the waking world.", "再见，善良的猎人。愿你能在清醒的世界中找到自己的价值。"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
+
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
+</script>
+
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <script>
+
+        var valine = new Valine();
+
+        function initValine(path) {
+            if (!path) path = window.location.pathname;
+            let language = 'zh-CN';
+            if (!language) {
+                language = 'en';
+            } else {
+                language = language.toLowerCase();
+            }
+            valine.init({
+                el: '#vcomments',
+                appId: 'ChQ4z1dCRpWqCOD43kU6cGmM-gzGzoHsz',
+                appKey: 'pFaAS3aumHDM572YbXkzc3fO',
+                notify: 'false',
+                verify: 'false',
+                avatar: 'retro',
+                placeholder: '留下你的评论~',
+                visitor: 'true',
+                path: path,
+                lang: language
+            });
+        }
+
+        $(document).ready(function () {
+            initValine();
+        });
+    </script>
+
+
+
+</html>
