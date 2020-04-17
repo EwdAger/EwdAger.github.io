@@ -10,8 +10,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
-    <meta name="description" content="前言最简单的情况下，如果我们从官方python镜像，构建我们的容器会无敌庞大。
-"> 
+    <meta name="description" content="镜像构建前言最简单的情况下，如果我们使用官方python镜像，构建我们的容器会无敌庞大。因为他帮我们预置了许许多多类库。同时我们直接使用RUN pip install /xxx/requiremen,"> 
     <meta name="author" content="EwdAger"> 
     <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -86,13 +85,13 @@
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    112
+                    2.6k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    1 mins.
+                    2 mins.
                 </span>
                 
                 
@@ -126,7 +125,55 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最简单的情况下，如果我们从官方python镜像，构建我们的容器会无敌庞大。</p>
+            <h1 id="镜像构建"><a href="#镜像构建" class="headerlink" title="镜像构建"></a>镜像构建</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最简单的情况下，如果我们使用官方python镜像，构建我们的容器会无敌庞大。因为他帮我们预置了许许多多类库。同时我们直接使用<code>RUN pip install /xxx/requirements.txt</code>安装环境时，每次构建镜像都会从pip仓库里面拉包，也会非常慢。</p>
+<pre><code class="Dockerfile">FROM python:3.7
+COPY . /app
+WORKDIR /app
+RUN pip install -r requirements.txt
+CMD [&quot;uwsgi&quot;, &quot;--ini&quot;, &quot;/xxx/uwsgi.ini&quot;]
+</code></pre>
+<h2 id="构建requirements缓存（使用空间换时间）"><a href="#构建requirements缓存（使用空间换时间）" class="headerlink" title="构建requirements缓存（使用空间换时间）"></a>构建requirements缓存（使用空间换时间）</h2><pre><code class="Dockerfile">FROM python:3.7
+COPY requirements.txt /
+RUN pip install -r /requirements.txt
+COPY src/ /app
+WORKDIR /app
+CMD [&quot;uwsgi&quot;, &quot;--ini&quot;, &quot;/xxx/uwsgi.ini&quot;]
+</code></pre>
+<p>用这种方式重写我们的 Dockerfile，可以利用 Docker 的层缓存，如果 requirements.txt 文件不变，则跳过安装 pip 包。</p>
+<h2 id="使用alpine镜像（使用时间换空间）"><a href="#使用alpine镜像（使用时间换空间）" class="headerlink" title="使用alpine镜像（使用时间换空间）"></a>使用alpine镜像（使用时间换空间）</h2><pre><code class="Dockerfile">FROM python:3.6-alpine
+
+COPY requirements.txt /
+
+RUN pip install --upgrade pip -i https://pypi.douban.com/simple \
+    &amp;&amp; pip install -r /requirements.txt -i https://pypi.douban.com/simple
+
+RUN mkdir /mailAlarm
+
+WORKDIR /mailAlarm
+
+COPY . /mailAlarm
+
+VOLUME /mailAlarm/config
+
+RUN sed -i &#39;s/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g&#39; /etc/apk/repositories \
+    &amp;&amp; apk add --no-cache tzdata \
+    &amp;&amp; ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    &amp;&amp; echo &#39;Asia/Shanghai&#39; &gt;/etc/timezone
+
+CMD [&quot;python&quot;, &quot;-u&quot;, &quot;/mailAlarm/run.py&quot;]
+</code></pre>
+<p>这种方式构建镜像就能得到很小的镜像，但是需要额外安装部分pip包所依赖的类库。因为alpine版本镜像默认是只安装python环境所需要的基础类库。</p>
+<blockquote>
+<p>特别注意，某些工具类的包编译安装完pip包后可以使用<code>apk del</code>删除<br>※ 常用包： .build-deps gcc musl-dev</p>
+</blockquote>
+<h1 id="其他神奇的方法"><a href="#其他神奇的方法" class="headerlink" title="其他神奇的方法"></a>其他神奇的方法</h1><h2 id="链接log文件到docker日志流"><a href="#链接log文件到docker日志流" class="headerlink" title="链接log文件到docker日志流"></a>链接log文件到docker日志流</h2><pre><code class="Dockerfile">ln -sfT /dev/stdout &quot;/mfa/servers.log&quot;
+</code></pre>
+<h2 id="设置时区"><a href="#设置时区" class="headerlink" title="设置时区"></a>设置时区</h2><blockquote>
+<p>如果使用的是<code>alpine</code>镜像，需要安装<code>tzdata</code>，且不能删除</p>
+</blockquote>
+<pre><code class="Dockerfile">ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    &amp;&amp; echo &#39;Asia/Shanghai&#39; &gt;/etc/timezone
+</code></pre>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -174,7 +221,7 @@
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#镜像构建"><span class="toc-number">1.</span> <span class="toc-text">镜像构建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构建requirements缓存（使用空间换时间）"><span class="toc-number">1.2.</span> <span class="toc-text">构建requirements缓存（使用空间换时间）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用alpine镜像（使用时间换空间）"><span class="toc-number">1.3.</span> <span class="toc-text">使用alpine镜像（使用时间换空间）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#其他神奇的方法"><span class="toc-number">2.</span> <span class="toc-text">其他神奇的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#链接log文件到docker日志流"><span class="toc-number">2.1.</span> <span class="toc-text">链接log文件到docker日志流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置时区"><span class="toc-number">2.2.</span> <span class="toc-text">设置时区</span></a></li></ol></li></ol>
                 </div>
             </div>
             

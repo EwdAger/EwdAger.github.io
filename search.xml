@@ -8,8 +8,8 @@
         <category>服务器相关问题&amp;备忘</category>
       </categories>
       <tags>
-        <tag>docker</tag>
         <tag>Linux</tag>
+        <tag>docker</tag>
         <tag>rancher2</tag>
         <tag>k8s</tag>
         <tag>DevOps</tag>
@@ -18,7 +18,7 @@
   <entry>
     <title><![CDATA[构建Python Dockerfile的奇淫巧技]]></title>
     <url>%2Fposts%2Fed4c24bb%2F</url>
-    <content type="text"><![CDATA[前言最简单的情况下，如果我们从官方python镜像，构建我们的容器会无敌庞大。]]></content>
+    <content type="text"><![CDATA[镜像构建前言最简单的情况下，如果我们使用官方python镜像，构建我们的容器会无敌庞大。因为他帮我们预置了许许多多类库。同时我们直接使用RUN pip install /xxx/requirements.txt安装环境时，每次构建镜像都会从pip仓库里面拉包，也会非常慢。 FROM python:3.7 COPY . /app WORKDIR /app RUN pip install -r requirements.txt CMD [&quot;uwsgi&quot;, &quot;--ini&quot;, &quot;/xxx/uwsgi.ini&quot;] 构建requirements缓存（使用空间换时间）FROM python:3.7 COPY requirements.txt / RUN pip install -r /requirements.txt COPY src/ /app WORKDIR /app CMD [&quot;uwsgi&quot;, &quot;--ini&quot;, &quot;/xxx/uwsgi.ini&quot;] 用这种方式重写我们的 Dockerfile，可以利用 Docker 的层缓存，如果 requirements.txt 文件不变，则跳过安装 pip 包。 使用alpine镜像（使用时间换空间）FROM python:3.6-alpine COPY requirements.txt / RUN pip install --upgrade pip -i https://pypi.douban.com/simple \ &amp;&amp; pip install -r /requirements.txt -i https://pypi.douban.com/simple RUN mkdir /mailAlarm WORKDIR /mailAlarm COPY . /mailAlarm VOLUME /mailAlarm/config RUN sed -i &#39;s/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g&#39; /etc/apk/repositories \ &amp;&amp; apk add --no-cache tzdata \ &amp;&amp; ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \ &amp;&amp; echo &#39;Asia/Shanghai&#39; &gt;/etc/timezone CMD [&quot;python&quot;, &quot;-u&quot;, &quot;/mailAlarm/run.py&quot;] 这种方式构建镜像就能得到很小的镜像，但是需要额外安装部分pip包所依赖的类库。因为alpine版本镜像默认是只安装python环境所需要的基础类库。 特别注意，某些工具类的包编译安装完pip包后可以使用apk del删除※ 常用包： .build-deps gcc musl-dev 其他神奇的方法链接log文件到docker日志流ln -sfT /dev/stdout &quot;/mfa/servers.log&quot; 设置时区 如果使用的是alpine镜像，需要安装tzdata，且不能删除 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \ &amp;&amp; echo &#39;Asia/Shanghai&#39; &gt;/etc/timezone]]></content>
       <categories>
         <category>python学习心得&amp;备忘</category>
       </categories>

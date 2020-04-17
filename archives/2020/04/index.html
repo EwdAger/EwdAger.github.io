@@ -85,8 +85,11 @@ $ yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos
                                     <div class="timeline-content">
                                         <a class="timeline-title" target="_self" href="/posts/ed4c24bb/">构建Python Dockerfile的奇淫巧技</a>
                                         <p>
-                                            前言最简单的情况下，如果我们从官方python镜像，构建我们的容器会无敌庞大。
-
+                                            镜像构建前言最简单的情况下，如果我们使用官方python镜像，构建我们的容器会无敌庞大。因为他帮我们预置了许许多多类库。同时我们直接使用RUN pip install /xxx/requirements.txt安装环境时，每次构建镜像都会从pip仓库里面拉包，也会非常慢。
+FROM python:3.7
+COPY . /app
+WORKDIR /app
+RUN pip install -r ...
                                         </p>
                                     </div>
                                 </li>
