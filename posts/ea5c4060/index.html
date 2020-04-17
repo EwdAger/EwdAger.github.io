@@ -165,7 +165,7 @@ $ systemctl start docker
 <p>建议rancher server单独部署在一台机器上，不并入集群内</p>
 </blockquote>
 <h3 id="安装好docker后，启动rancher-server"><a href="#安装好docker后，启动rancher-server" class="headerlink" title="安装好docker后，启动rancher server"></a>安装好docker后，启动rancher server</h3><pre><code class="bash"># 挂载目录设为/data/rancher并监听本机80/443端口，注意本机其他服务不要占用这两个端口
-$ sudo docker run -d --restart=unless-stopped -v /data/rancher:/var/lib/rancher/ -p 80:80 -p 443:443 rancher/rancher:stable
+$ sudo docker run -d --restart=unless-stopped -v /data/rancher:/var/lib/rancher/ -p 8080:80 -p 8443:443 rancher/rancher:stable
 </code></pre>
 <h3 id="访问安装server的主机ip，设置用户名密码，设置server-url，此处需设置为即将添加入集群内的其他节点主机能访问的IP，可直接设置本机的公网IP"><a href="#访问安装server的主机ip，设置用户名密码，设置server-url，此处需设置为即将添加入集群内的其他节点主机能访问的IP，可直接设置本机的公网IP" class="headerlink" title="访问安装server的主机ip，设置用户名密码，设置server url，此处需设置为即将添加入集群内的其他节点主机能访问的IP，可直接设置本机的公网IP"></a>访问安装server的主机ip，设置用户名密码，设置server url，此处需设置为即将添加入集群内的其他节点主机能访问的IP，可直接设置本机的公网IP</h3><h3 id="修改集群自动生成的域名后缀"><a href="#修改集群自动生成的域名后缀" class="headerlink" title="修改集群自动生成的域名后缀"></a>修改集群自动生成的域名后缀</h3><p><img src="https://s1.ax1x.com/2020/04/16/Jkfs4e.png" alt="修改域名"></p>
 <h2 id="部署K8S集群"><a href="#部署K8S集群" class="headerlink" title="部署K8S集群"></a>部署K8S集群</h2><blockquote>
@@ -210,8 +210,8 @@ $ mkdir -p /data/nfs/k8s/
 $ chmod 755 /data/nfs/k8s
 
 # NFS配置文件设置目录信息
-$ vim /etc/exports
-$ /data/nfs/k8s/ *(async,insecure,no_root_squash,no_subtree_check,rw)
+$ vi /etc/exports
+/data/nfs/k8s/ *(async,insecure,no_root_squash,no_subtree_check,rw)
 
 # 重启nfs服务
 $ /bin/systemctl start nfs.service
