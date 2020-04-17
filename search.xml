@@ -8,8 +8,8 @@
         <category>服务器相关问题&amp;备忘</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>docker</tag>
+        <tag>Linux</tag>
         <tag>rancher2</tag>
         <tag>k8s</tag>
         <tag>DevOps</tag>
