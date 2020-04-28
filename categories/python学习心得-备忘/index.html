@@ -126,26 +126,26 @@
             <a href="/categories/python学习心得&备忘"><b>「
                 </b>PYTHON学习心得&备忘<b> 」</b></a>
             
-            四月 16, 2020
+            四月 28, 2020
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/ed4c24bb/" title="构建Python Dockerfile的奇淫巧技" class="posttitle">构建Python Dockerfile的奇淫巧技</a></h3>
+            <a href="/posts/cca84fb6/" title="uwsgi 多进程导致数据库连接丢失的踩坑记录" class="posttitle">uwsgi 多进程导致数据库连接丢失的踩坑记录</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                2.6k
+                1.4k
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                2 mins.
+                1 mins.
             </span>
             
             
-            <span id="/posts/ed4c24bb/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/cca84fb6/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <i class="leancloud-visitors-count">1000000</i>
             </span>
@@ -153,13 +153,14 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/docker/">docker</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Flask/">Flask</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Flask-SQLAlchemy/">Flask-SQLAlchemy</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/uwsgi/">uwsgi</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/多进程/">多进程</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <p>最简单的情况下，如果我们使用官方python镜像，构建我们的容器会无敌庞大。因为他帮我们预置了许许多多类库。同时我们直接使用<code>RUN pip install /xxx/requirements.txt</code>安...</p>
+            <p>项目使用的 Flask+SQLAlchemy+uwsgi ，突然有一天编写了一个有对数据库高并发的接口。然后其他本来正常的接口就偶尔会出现<code>404</code>错误，且必须重启服务才能解决。</p>
+<p>以为是MySQL连接池和...</p>
             
-            <span class="read-more"><a href="/posts/ed4c24bb/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/cca84fb6/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -180,6 +181,62 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/python学习心得&备忘">
+                  <b>「 </b>PYTHON学习心得&备忘<b> 」</b>
+                </a>
+            
+            四月 16, 2020
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/ed4c24bb/" title="构建Python Dockerfile的奇淫巧技" class="posttitle">构建Python Dockerfile的奇淫巧技</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        2.6k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        2 mins.
+                    </span>
+                
+                
+                    <span id="/posts/ed4c24bb/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <i class="leancloud-visitors-count">1000000</i>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/docker/">docker</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>最简单的情况下，如果我们使用官方python镜像，构建我们的容器会无敌庞大。因为他帮我们预置了许许多多类库。同时我们直接使用<code>RUN pip install /xxx/requirements.txt</code>安装环境时，每次构建镜像都会从pip仓库里面拉包，也会非常慢。</p>
+<pre><code class="Dockerfile">FROM python:3.7
+COPY . /app
+WORKDIR /app
+RUN pip install -r requirements.txt
+CMD [&quot;uwsgi&quot;, &quot;--ini&quot;,...</code></pre>
+            
+            <span class="read-more"><a href="/posts/ed4c24bb/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -658,66 +715,6 @@ sudo apt-get install pip              // 安装python包管理
 <pre><code>pip install -r requrements...</code></pre>
             
             <span class="read-more"><a href="/posts/725a38d2/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/python学习心得&备忘">
-                  <b>「 </b>PYTHON学习心得&备忘<b> 」</b>
-                </a>
-            
-            五月 02, 2018
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/7ed6f334/" title="Python 蛋疼的编码问题" class="posttitle">Python 蛋疼的编码问题</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        4.5k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        4 mins.
-                    </span>
-                
-                
-                    <span id="/posts/7ed6f334/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <i class="leancloud-visitors-count">1000000</i>
-                    </span>
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python2/">Python2</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/编码/">编码</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p>Python 的编码问题早就困扰我太久了， 但一直没有看到比较通俗易懂的专门介绍 Python 编码问题的文章。 正好今天刷知乎看到了非常不错的文章， 这里稍微抛砖引玉归纳下。</p>
-<p>知识储备：</p>
-<ul>
-<li>ASCII 占1个字节，只支持英文</li>
-<li>GBK GB2312的升级版，支持21000+汉字</li>
-<li>Shift-JIS 日本字符</li>
-<li>ks_c_5601-1987 韩国编码</li>
-<li>TIS-620 泰国编码</li>
-</ul>
-<p>由于每个国家都有自己的字符，所以其对应关系也涵盖了自己国家的字符，但是以上编码都存在局限性，即：仅涵盖本国字符，无其他国家...</p>
-            
-            <span class="read-more"><a href="/posts/7ed6f334/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>

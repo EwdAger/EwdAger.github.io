@@ -126,26 +126,26 @@
             <a href="/categories/机器学习笔记"><b>「
                 </b>机器学习笔记<b> 」</b></a>
             
-            八月 26, 2019
+            八月 27, 2019
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/8493c310/" title="Pandas笔记-基础篇" class="posttitle">Pandas笔记-基础篇</a></h3>
+            <a href="/posts/a61b68c3/" title="Pandas笔记-进阶篇" class="posttitle">Pandas笔记-进阶篇</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                15k
+                8.1k
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                14 mins.
+                7 mins.
             </span>
             
             
-            <span id="/posts/8493c310/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/a61b68c3/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <i class="leancloud-visitors-count">1000000</i>
             </span>
@@ -157,13 +157,13 @@
         
         <div class="md-content animated fadeIn">
             
-            <p><code>Series</code>是一种类似一维数组的对象，由一组数据和一组与之相关的数据索引组成</p>
-<pre><code class="python">In [9]: obj = Series([4,7,-5,3])
-
-In [10]: obj.index
-Out[10]: ...</code></pre>
+            <p><code>panda</code>对象拥有一组常用的数学和统计方法，他们大部分都属于简约统计，NA值会自动被排除，除非通过<code>skipna=False</code>禁用</p>
+<pre><code class="python">In [78]: df
+Out[78]:
+    one  two
+a  1.40  ...</code></pre>
             
-            <span class="read-more"><a href="/posts/8493c310/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/a61b68c3/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -184,6 +184,76 @@ Out[10]: ...</code></pre>
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/机器学习笔记">
+                  <b>「 </b>机器学习笔记<b> 」</b>
+                </a>
+            
+            八月 27, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/a61b68c3/" title="Pandas笔记-进阶篇" class="posttitle">Pandas笔记-进阶篇</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        8.1k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        7 mins.
+                    </span>
+                
+                
+                    <span id="/posts/a61b68c3/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <i class="leancloud-visitors-count">1000000</i>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Pandas/">Pandas</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据分析/">数据分析</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p><code>panda</code>对象拥有一组常用的数学和统计方法，他们大部分都属于简约统计，NA值会自动被排除，除非通过<code>skipna=False</code>禁用</p>
+<pre><code class="python">In [78]: df
+Out[78]:
+    one  two
+a  1.40  NaN
+b  7.10 -4.5
+c   NaN  NaN
+d  0.75 -1.3
+
+In [79]: df.sum()
+Out[79]:
+one    9.25
+two   -5.80
+dtype: float64
+
+In [80]: df.sum(axis=1)
+Out[80]:
+a    1.40
+b    2.60
+c    0....</code></pre>
+            
+            <span class="read-more"><a href="/posts/a61b68c3/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -748,67 +818,9 @@ class LList:
 </div>
 
 
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
     </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/python学习心得&备忘">
-                  <b>「 </b>PYTHON学习心得&备忘<b> 」</b>
-                </a>
-            
-            五月 02, 2018
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/7ed6f334/" title="Python 蛋疼的编码问题" class="posttitle">Python 蛋疼的编码问题</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        4.5k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        4 mins.
-                    </span>
-                
-                
-                    <span id="/posts/7ed6f334/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <i class="leancloud-visitors-count">1000000</i>
-                    </span>
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python2/">Python2</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/编码/">编码</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p>Python 的编码问题早就困扰我太久了， 但一直没有看到比较通俗易懂的专门介绍 Python 编码问题的文章。 正好今天刷知乎看到了非常不错的文章， 这里稍微抛砖引玉归纳下。</p>
-<p>知识储备：</p>
-<ul>
-<li>ASCII 占1个字节，只支持英文</li>
-<li>GBK GB2312的升级版，支持21000+汉字</li>
-<li>Shift-JIS 日本字符</li>
-<li>ks_c_5601-1987 韩国编码</li>
-<li>TIS-620 泰国编码</li>
-</ul>
-<p>由于每个国家都有自己的字符，所以其对应关系也涵盖了自己国家的字符，但是以上编码都存在局限性，即：仅涵盖本国字符，无其他国家...</p>
-            
-            <span class="read-more"><a href="/posts/7ed6f334/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
-        </div>
-    </div>
-</div>
-
-
-    </div>
+    
+    <div id="pager"><a href="/tags/Python/page/3/" class="more" data-loading="加载中..." data-load-more="加载更多">加载更多</a></div>
     
 </div>
 <div id="preview"></div>

@@ -126,26 +126,26 @@
             <a href="/categories/python学习心得&备忘"><b>「
                 </b>PYTHON学习心得&备忘<b> 」</b></a>
             
-            三月 05, 2020
+            四月 28, 2020
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/51c3bc14/" title="Authlib 单点登录库初体验及踩坑" class="posttitle">Authlib 单点登录库初体验及踩坑</a></h3>
+            <a href="/posts/cca84fb6/" title="uwsgi 多进程导致数据库连接丢失的踩坑记录" class="posttitle">uwsgi 多进程导致数据库连接丢失的踩坑记录</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                6k
+                1.4k
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                5 mins.
+                1 mins.
             </span>
             
             
-            <span id="/posts/51c3bc14/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/cca84fb6/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <i class="leancloud-visitors-count">1000000</i>
             </span>
@@ -153,14 +153,14 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Flask/">Flask</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/OAuth/">OAuth</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/authlib/">authlib</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/单点登录/">单点登录</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Flask/">Flask</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Flask-SQLAlchemy/">Flask-SQLAlchemy</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/uwsgi/">uwsgi</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/多进程/">多进程</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <p>项目突然要接入TX云，理所应当的要使用tx的单点登录了。于是乎，经过各方推荐，使用了大名鼎鼎的<a href="https://authlib.org/" target="_blank" rel="noopener">Authlib</a>库。</p>
-<p>经过各方文档，整理了一下，在<code>Flask</code>中使用<code>Authlib</code>相当简单。如果是接入有名的<code>OAuth2...</code></p>
+            <p>项目使用的 Flask+SQLAlchemy+uwsgi ，突然有一天编写了一个有对数据库高并发的接口。然后其他本来正常的接口就偶尔会出现<code>404</code>错误，且必须重启服务才能解决。</p>
+<p>以为是MySQL连接池和...</p>
             
-            <span class="read-more"><a href="/posts/51c3bc14/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/cca84fb6/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -181,6 +181,59 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/python学习心得&备忘">
+                  <b>「 </b>PYTHON学习心得&备忘<b> 」</b>
+                </a>
+            
+            三月 05, 2020
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/51c3bc14/" title="Authlib 单点登录库初体验及踩坑" class="posttitle">Authlib 单点登录库初体验及踩坑</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        6k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        5 mins.
+                    </span>
+                
+                
+                    <span id="/posts/51c3bc14/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <i class="leancloud-visitors-count">1000000</i>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Flask/">Flask</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/OAuth/">OAuth</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/authlib/">authlib</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/单点登录/">单点登录</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>项目突然要接入TX云，理所应当的要使用tx的单点登录了。于是乎，经过各方推荐，使用了大名鼎鼎的<a href="https://authlib.org/" target="_blank" rel="noopener">Authlib</a>库。</p>
+<p>经过各方文档，整理了一下，在<code>Flask</code>中使用<code>Authlib</code>相当简单。如果是接入有名的<code>OAuth2</code>站点如<code>Github</code>、<code>Google</code>这种，直接使用官方已经封装好的类即可快速实现，但此处使用的是TX方为工业互联网平台新搭建的<code>OAuth2</code>服务，理所应当不能直接使用。但仍可以使用较为便捷的封装进<code>Flask</code>中的认证方法，具体步骤如下：</p>
+<h3 id="新建存储Token的表"><a href="#新建存储Token的表" class="headerlink" title="新建存储Token的表"></a>新建存储Token的表</h3><p>根据存储的<code>access_token</code>校验...</p>
+            
+            <span class="read-more"><a href="/posts/51c3bc14/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
     </div>
     
 </div>
