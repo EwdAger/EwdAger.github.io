@@ -55,6 +55,32 @@
                                     <div class="timeline-info"></div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
+                                        <h2 class="timeline-title">五月 2020</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">五月 12, 2020</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/ea5c4060/">Rancher2 &amp; K8S部署踩坑记录</a>
+                                        <p>
+                                            
+本安装教程基于CetnOS 7环境编写
+
+安装docker首先安装依赖并添加国内源$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+$ yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
                                         <h2 class="timeline-title">四月 2020</h2>
                                     </div>
                                 </li>
@@ -70,24 +96,6 @@
                                             起因项目使用的 Flask+SQLAlchemy+uwsgi ，突然有一天编写了一个有对数据库高并发的接口。然后其他本来正常的接口就偶尔会出现404错误，且必须重启服务才能解决。
 试验①以为是MySQL连接池和超时时间导致的，反复查看发现并没有什么问题。然后怀疑到是不是python对MySQL的连接驱动导致的。
 项目里使用的pymysql被公认为是比较慢的连接驱动。索性换成了mysqldb。...
-                                        </p>
-                                    </div>
-                                </li>
-                            
-                                
-                                <li class="timeline-item">
-                                    <div class="timeline-info">
-                                        <span class="gradient-text">四月 16, 2020</span>
-                                    </div>
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/posts/ea5c4060/">Rancher2 &amp; K8S部署踩坑记录</a>
-                                        <p>
-                                            
-本安装教程基于CetnOS 7环境编写
-
-安装docker首先安装依赖并添加国内源$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
-$ yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-...
                                         </p>
                                     </div>
                                 </li>
