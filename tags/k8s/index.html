@@ -129,23 +129,23 @@
             五月 12, 2020
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/ea5c4060/" title="Rancher2 & K8S部署踩坑记录" class="posttitle">Rancher2 & K8S部署踩坑记录</a></h3>
+            <a href="/posts/ea8f8356/" title="YAML 基础语法及使用 YAML 文件创建Pod与Deployment" class="posttitle">YAML 基础语法及使用 YAML 文件创建Pod与Deployment</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                14k
+                0
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                12 mins.
+                1 mins.
             </span>
             
             
-            <span id="/posts/ea5c4060/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/ea8f8356/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <span class="leancloud-visitors-count">1000000</span>
             </span>
@@ -153,17 +153,13 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/DevOps/">DevOps</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/docker/">docker</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/k8s/">k8s</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/rancher2/">rancher2</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/docker/">docker</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/k8s/">k8s</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <blockquote>
-<p>本安装教程基于<strong>CetnOS 7</strong>环境编写</p>
-</blockquote>
-<pre><code class="bash">$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
-$ yum-config...</code></pre>
             
-            <span class="read-more"><a href="/posts/ea5c4060/" title="查看全文" class="posttitle">查看全文</a>
+            
+            <span class="read-more"><a href="/posts/ea8f8356/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -184,6 +180,67 @@ $ yum-config...</code></pre>
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/云原生学习笔记">
+                  <b>「 </b>云原生学习笔记<b> 」</b>
+                </a>
+            
+            五月 12, 2020
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/ea5c4060/" title="Rancher2 & K8S部署踩坑记录" class="posttitle">Rancher2 & K8S部署踩坑记录</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        14k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        12 mins.
+                    </span>
+                
+                
+                    <span id="/posts/ea5c4060/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <span class="leancloud-visitors-count">1000000</span>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/DevOps/">DevOps</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/docker/">docker</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/k8s/">k8s</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/rancher2/">rancher2</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <blockquote>
+<p>本安装教程基于<strong>CetnOS 7</strong>环境编写</p>
+</blockquote>
+<pre><code class="bash">$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+$ yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+</code></pre>
+<pre><code class="bash">$ yum clean all
+
+$ yum makecache fastyum -y
+
+$ yum install docker-...</code></pre>
+            
+            <span class="read-more"><a href="/posts/ea5c4060/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
     </div>
     
 </div>

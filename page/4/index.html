@@ -123,29 +123,29 @@
     <div id="post0" class="else">
         <p class="animated fadeInDown">
             
-            <a href="/categories/LeetCode刷题总结"><b>「
-                </b>LEETCODE刷题总结<b> 」</b></a>
+            <a href="/categories/小项目"><b>「
+                </b>小项目<b> 」</b></a>
             
-            七月 05, 2018
+            八月 07, 2018
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/bba523e0/" title="Python 元组解包的几种方法" class="posttitle">Python 元组解包的几种方法</a></h3>
+            <a href="/posts/2ba86c7b/" title="Readfree 自动签到 & crontab自动任务踩坑" class="posttitle">Readfree 自动签到 & crontab自动任务踩坑</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                1.2k
+                4.5k
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                1 mins.
+                4 mins.
             </span>
             
             
-            <span id="/posts/bba523e0/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/2ba86c7b/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <span class="leancloud-visitors-count">1000000</span>
             </span>
@@ -153,19 +153,13 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/小项目/">小项目</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <p>这其实都不算解包了吧。。</p>
-<pre><code class="python">&gt;&gt;&gt; a = (1,2,3)
-&gt;&gt;&gt; a[0]
-1
-</code></pre>
-<pre><code class="python">&gt;&gt;&gt; a = (1,2,3,)
-&gt;&gt;&gt; b,...</code></pre>
+            <p>这部分没什么难度，主要是这个网站的<code>cookies</code>的<code>Max-Age</code>有<code>31449600</code>秒，大概1年的寿命，所以直接将存好的<code>cookies</code>用<code>requests</code>发一个get请求到验证地址就行。稍微修改了<a href="http://www.yangyingming.com/article/381/" target="_blank" rel="noopener">博主杨英...</a></p>
             
-            <span class="read-more"><a href="/posts/bba523e0/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/2ba86c7b/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -186,6 +180,123 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/小项目">
+                  <b>「 </b>小项目<b> 」</b>
+                </a>
+            
+            八月 07, 2018
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/2ba86c7b/" title="Readfree 自动签到 & crontab自动任务踩坑" class="posttitle">Readfree 自动签到 & crontab自动任务踩坑</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        4.5k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        4 mins.
+                    </span>
+                
+                
+                    <span id="/posts/2ba86c7b/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <span class="leancloud-visitors-count">1000000</span>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/小项目/">小项目</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>这部分没什么难度，主要是这个网站的<code>cookies</code>的<code>Max-Age</code>有<code>31449600</code>秒，大概1年的寿命，所以直接将存好的<code>cookies</code>用<code>requests</code>发一个get请求到验证地址就行。稍微修改了<a href="http://www.yangyingming.com/article/381/" target="_blank" rel="noopener">博主杨英明</a>代码如下：</p>
+<pre><code class="python">import requests
+import time
+
+# 登录验证地址
+check_url = &#39;http://readfree.me/accounts/checkin&#39;
+
+# 记录程序运行时的时间
+fp = open(&#39;./auto_signon_readfree...</code></pre>
+            
+            <span class="read-more"><a href="/posts/2ba86c7b/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/python学习心得&备忘">
+                  <b>「 </b>PYTHON学习心得&备忘<b> 」</b>
+                </a>
+            
+            七月 13, 2018
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/7c092ea/" title="requests 代理问题" class="posttitle">requests 代理问题</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        961
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        1 mins.
+                    </span>
+                
+                
+                    <span id="/posts/7c092ea/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <span class="leancloud-visitors-count">1000000</span>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/requests/">requests</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>在给一个本地的Flask项目测试post接口时遇到一个问题，无论用requests的get还是post请求localhost全部都会超时。</p>
+<p>经过仔细分析后，发现是开了系统代理的锅(毕竟写代码少不了Google)，然而直接关闭系统代理仍然超时。</p>
+<p>最后的解决方案如下：</p>
+<pre><code class="python">import os
+import requests
+
+os.environ[&#39;NO_PROXY&#39;] = &#39;127.0.0.1&#39;
+r = requests.get(&#39;http://127.0.0.1...</code></pre>
+            
+            <span class="read-more"><a href="/posts/7c092ea/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -663,110 +774,6 @@ sudo apt-get install pip              // 安装python包管理
 <p>循环时,  程序先使用<strong>iter</strong> (相当于iter(instance))获取具有next方法的对象, 然后通过其返回的对象, 不断调用其next方法, 直到StopIteration错误...</p></blockquote>
             
             <span class="read-more"><a href="/posts/b7cb2971/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/不知道怎么归类">
-                  <b>「 </b>不知道怎么归类<b> 」</b>
-                </a>
-            
-            四月 16, 2018
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/7452c3b2/" title="记一次敏捷开发经历" class="posttitle">记一次敏捷开发经历</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        1.9k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        2 mins.
-                    </span>
-                
-                
-                    <span id="/posts/7452c3b2/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <span class="leancloud-visitors-count">1000000</span>
-                    </span>
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/吐槽/">吐槽</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p>说的我自己都害羞…啥敏捷开发, 第一没有根据甲方需求持续迭代, 第二两个项目应该连正常项目都算不上, 顶多算个小练手. 但是确实是一周之内使用”敏捷”工具构建成的2333, 勉强就这么称呼吧, 反正这博客也就我自己看~</p>
-<p>开始动工的时候时间还算充裕, 本打算采用Laravel进行开发, 但由于Laravel有些”重”, 还有这是第一次使用PHP来写一个相对完整的项目, 所以感觉时间有些紧迫. 权衡之下还是踩进了这个”中文文档完整, 国内社区活跃”的大坑. 使用的ThinkPHP版本是3.2.3, ...</p>
-            
-            <span class="read-more"><a href="/posts/7452c3b2/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/不知道怎么归类">
-                  <b>「 </b>不知道怎么归类<b> 」</b>
-                </a>
-            
-            二月 16, 2018
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/bd4cc0f1/" title="关于域名解析的另一个吐槽" class="posttitle">关于域名解析的另一个吐槽</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        1.7k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        2 mins.
-                    </span>
-                
-                
-                    <span id="/posts/bd4cc0f1/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <span class="leancloud-visitors-count">1000000</span>
-                    </span>
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/吐槽/">吐槽</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p>今天翻github惊奇的发现，我这个辣鸡博客竟然被<a href="https://github.com/Hiccup1" target="_blank" rel="noopener">@兴栋大佬</a>的博客做了友链。不胜惶恐，但发现友链是之前没填坑的无法访问的裸域名，所以这个坑必须赶紧填啊。之前TX云送的学生cdn+域名解析中@记录和www记录都是设置的CNAME跳转到cdn。。结果访问gvoidy.cn出现404，简直神奇。试过很多次之后还是不行，不知道这是什么鬼。。最后解决方法还是把@记录重定向到<a href="https://www.gvoidy.cn" target="_blank" rel="noopener">https://www.gvoidy.cn</a> 上才解决。有点迷。先留坑以后再研究是什么操作。</p>
-<p><strong> 2.21 21:00 Update </strong><br><s>今天...</s></p>
-            
-            <span class="read-more"><a href="/posts/bd4cc0f1/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
