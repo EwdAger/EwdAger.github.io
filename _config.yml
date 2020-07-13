@@ -78,7 +78,7 @@ theme: obsidian
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:EwdAger/EwdAger.github.io.git
+  repo: https://github.com/EwdAger/EwdAger.github.io.git
   branch: master
   
 # abbrlink config

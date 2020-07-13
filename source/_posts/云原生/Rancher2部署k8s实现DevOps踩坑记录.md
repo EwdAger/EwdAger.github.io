@@ -6,9 +6,9 @@ tags:
   - rancher2
   - k8s
   - DevOps
-categories: 服务器相关问题&备忘
+categories: 云原生学习笔记
 abbrlink: ea5c4060
-date: 2020-04-16 21:35:10
+date: 2020-05-12 14:35:10
 ---
 
 > 本安装教程基于**CetnOS 7**环境编写
@@ -124,6 +124,35 @@ $ vi ~/.kube/config
 >	\# 查看单独pod 
 >	kubectl describe pod -n kafka kafka-0
 
+## 安装 helm
+
+```bash
+curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
+chmod 755 get_helm.sh
+./get_helm.sh
+helm init --upgrade -i registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.16.0
+ 
+helm list
+ 
+#如果报错，修复
+kubectl create serviceaccount --namespace kube-system tiller
+kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+kubectl patch deploy  --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'    
+helm init --service-account tiller --upgrade
+ 
+# 添加国内源
+helm repo add stable https://burdenbear.github.io/kube-charts-mirror/
+helm repo update
+```
+
+helm直接部署服务
+
+```bash
+helm install --name kong --set admin.useTLS=false,admin.servicePort=8001,admin.containerPort=8001,proxy.useTLS=false,proxy.servicePort=8000,proxy.containerPort=8000,livenessProbe.httpGet.scheme=HTTP,readinessProbe.httpGet.scheme=HTTP stable/kong
+
+```
+
+
 ## 配置NFS存储类
 
 > 请在已安装`Kubectl`并配置好`kubeconfig`的机器上执行
@@ -145,6 +174,9 @@ $ vi /etc/exports
 
 # 重启nfs服务
 $ /bin/systemctl start nfs.service
+
+# 设置开机启动
+$ /bin/systemctl enable nfs.service
 
 # 查看挂载情况
 $ showmount -e
