@@ -123,29 +123,29 @@
     <div id="post0" class="else">
         <p class="animated fadeInDown">
             
-            <a href="/categories/小项目"><b>「
-                </b>小项目<b> 」</b></a>
+            <a href="/categories/python学习心得&备忘"><b>「
+                </b>PYTHON学习心得&备忘<b> 」</b></a>
             
-            八月 07, 2018
+            九月 09, 2018
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/2ba86c7b/" title="Readfree 自动签到 & crontab自动任务踩坑" class="posttitle">Readfree 自动签到 & crontab自动任务踩坑</a></h3>
+            <a href="/posts/2870634a/" title="Python 单链表实现&基础函数" class="posttitle">Python 单链表实现&基础函数</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                4.5k
+                2.9k
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                4 mins.
+                3 mins.
             </span>
             
             
-            <span id="/posts/2ba86c7b/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/2870634a/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <span class="leancloud-visitors-count">1000000</span>
             </span>
@@ -153,13 +153,15 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/小项目/">小项目</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python3/">Python3</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/编码/">编码</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <p>这部分没什么难度，主要是这个网站的<code>cookies</code>的<code>Max-Age</code>有<code>31449600</code>秒，大概1年的寿命，所以直接将存好的<code>cookies</code>用<code>requests</code>发一个get请求到验证地址就行。稍微修改了<a href="http://www.yangyingming.com/article/381/" target="_blank" rel="noopener">博主杨英...</a></p>
+            <p>前两天面滴滴，被问到怎么判断两个链表是否相交，然后并不懂什么是单链表相交…就很尴尬。 赶紧复习一下单链表的知识。</p>
+<pre><code class="python">class LNode:
+    def __init__(self, elem, next_...</code></pre>
             
-            <span class="read-more"><a href="/posts/2ba86c7b/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/2870634a/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -180,6 +182,71 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/python学习心得&备忘">
+                  <b>「 </b>PYTHON学习心得&备忘<b> 」</b>
+                </a>
+            
+            九月 09, 2018
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/2870634a/" title="Python 单链表实现&基础函数" class="posttitle">Python 单链表实现&基础函数</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        2.9k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        3 mins.
+                    </span>
+                
+                
+                    <span id="/posts/2870634a/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <span class="leancloud-visitors-count">1000000</span>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python3/">Python3</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/编码/">编码</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>前两天面滴滴，被问到怎么判断两个链表是否相交，然后并不懂什么是单链表相交…就很尴尬。 赶紧复习一下单链表的知识。</p>
+<pre><code class="python">class LNode:
+    def __init__(self, elem, next_ = None):
+        self.elem = elem
+        self.next = next_
+
+class LList:
+    def __init__(self):
+        self._head = None
+
+    def is_empty(self):
+        return self._head is None
+
+    # 前端插入
+    def...</code></pre>
+            
+            <span class="read-more"><a href="/posts/2870634a/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -720,60 +787,6 @@ sudo apt-get install pip              // 安装python包管理
 <p><em>另，负...</em></p>
             
             <span class="read-more"><a href="/posts/ef63884b/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/LeetCode刷题总结">
-                  <b>「 </b>LEETCODE刷题总结<b> 」</b>
-                </a>
-            
-            四月 18, 2018
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/b7cb2971/" title="Python中in的三种遍历协议" class="posttitle">Python中in的三种遍历协议</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        2.8k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        3 mins.
-                    </span>
-                
-                
-                    <span id="/posts/b7cb2971/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <span class="leancloud-visitors-count">1000000</span>
-                    </span>
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/LeetCode/">LeetCode</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p>今天刷LeetCode碰到个简单题 <a href="https://leetcode-cn.com/problems/jewels-and-stones/description/" target="_blank" rel="noopener">宝石与石头</a>想降一下时间复杂度，就没有用<code>in</code> list写法，直接又遍历了一遍列表，可没想到一看答案，这样做的用时比用<code>in</code>要慢得多。索性研究了一下<code>in</code>的原理。这里复制一下知乎用户（很抱歉， 这位同学账号似乎被封了，无法著名）的答案。</p>
-<p><code>in</code> 关键字实现了一套python中的遍历协议.</p>
-<blockquote>
-<p>循环时,  程序先使用<strong>iter</strong> (相当于iter(instance))获取具有next方法的对象, 然后通过其返回的对象, 不断调用其next方法, 直到StopIteration错误...</p></blockquote>
-            
-            <span class="read-more"><a href="/posts/b7cb2971/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>

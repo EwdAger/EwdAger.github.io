@@ -237,6 +237,9 @@ $ vi /etc/exports
 # 重启nfs服务
 $ /bin/systemctl start nfs.service
 
+# 设置开机启动
+$ /bin/systemctl enable nfs.service
+
 # 查看挂载情况
 $ showmount -e
 &gt;&gt;&gt; Export list for k8s-test2-master:
@@ -505,7 +508,7 @@ mountOptions:
                     </dl>
                 </div>
                 <ul>
-                    <li><a href="/">62 <p>文章</p></a></li>
+                    <li><a href="/">63 <p>文章</p></a></li>
                     <li><a href="/categories">13 <p>分类</p></a></li>
                     <li><a href="/tags">58 <p>标签</p></a></li>
                 </ul>
