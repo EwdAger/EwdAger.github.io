@@ -126,26 +126,26 @@
             <a href="/categories/LeetCode刷题总结"><b>「
                 </b>LEETCODE刷题总结<b> 」</b></a>
             
-            四月 18, 2018
+            四月 20, 2018
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/b7cb2971/" title="Python中in的三种遍历协议" class="posttitle">Python中in的三种遍历协议</a></h3>
+            <a href="/posts/ef63884b/" title="被忽略的位运算符总结" class="posttitle">被忽略的位运算符总结</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                2.8k
+                4.1k
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                3 mins.
+                4 mins.
             </span>
             
             
-            <span id="/posts/b7cb2971/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/ef63884b/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <span class="leancloud-visitors-count">1000000</span>
             </span>
@@ -153,13 +153,14 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/LeetCode/">LeetCode</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <p>今天刷LeetCode碰到个简单题 <a href="https://leetcode-cn.com/problems/jewels-and-stones/description/" target="_blank" rel="noopener">宝石与石头</a>想降一下时间复杂度，就没有用<code>in</code> list写法，直接又遍历了一遍列表，可没想到一看答案，这样做的用时比用<code>in</code>要慢得多。索性研究了一下<code>in</code>的原理。这里复制一...</p>
+            <p>曾经的我还是太年轻了, 基础不扎实还自以为是, 看到位运算符一节就以为是逻辑运算, 结果跳过没看了, 漏了很多知识. 果然 LeetCode 没白刷呀, 接下来是总结.</p>
+<p>参加运算的两个数据，按二进制位...</p>
             
-            <span class="read-more"><a href="/posts/b7cb2971/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/ef63884b/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -180,6 +181,62 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/LeetCode刷题总结">
+                  <b>「 </b>LEETCODE刷题总结<b> 」</b>
+                </a>
+            
+            四月 20, 2018
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/ef63884b/" title="被忽略的位运算符总结" class="posttitle">被忽略的位运算符总结</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        4.1k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        4 mins.
+                    </span>
+                
+                
+                    <span id="/posts/ef63884b/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <span class="leancloud-visitors-count">1000000</span>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>曾经的我还是太年轻了, 基础不扎实还自以为是, 看到位运算符一节就以为是逻辑运算, 结果跳过没看了, 漏了很多知识. 果然 LeetCode 没白刷呀, 接下来是总结.</p>
+<p>参加运算的两个数据，按二进制位进行“与”运算。</p>
+<p>运算规则：0&amp;0=0; 0&amp;1=0; 1&amp;0=0; 1&amp;1=1;</p>
+<p>即：两位同时为“1”，结果才为“1”，否则为0</p>
+<p>例如：3&amp;5  即 0000 0011&amp; 0000 0101 = 00000001  因此，3&amp;5的值得1。</p>
+<p><em>另，负...</em></p>
+            
+            <span class="read-more"><a href="/posts/ef63884b/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -684,62 +741,6 @@ git config --global user.email &quot;ewdager@hotmail.com&quot;
     (u&#39;FR&#39...</code></pre>
             
             <span class="read-more"><a href="/posts/62657fb0/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/课程设计">
-                  <b>「 </b>课程设计<b> 」</b>
-                </a>
-            
-            六月 22, 2017
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/cfee3b66/" title="操作系统实验六" class="posttitle">操作系统实验六</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        9.6k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        9 mins.
-                    </span>
-                
-                
-                    <span id="/posts/cfee3b66/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <span class="leancloud-visitors-count">1000000</span>
-                    </span>
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/操作系统/">操作系统</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/课程设计/">课程设计</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p><strong>本实验通过编程模拟实现几种常见的磁盘调度算法</strong></p>
-<p>简直可怕，怎么可能写出来磁盘调度算法啊喂！算法实现倒还好说，就是一个排序算法。但是！访问的柱面就是随机生成的所以还要写iterator？！这里简单描述一下各种磁盘调度算法。</p>
-<blockquote>
-<p>例:假定某磁盘共有200个柱面，编号为0-199，如果在为访问143号柱面的请求者服务后，当前正在为访问125号柱面的请求服务，同时有若干请求者在等待服务，它们每次要访问的柱面号为   86，147，91，177，94，150，102，175，130</p>
-</blockquote>
-<p><strong>1、先来先服务算法（FCFS...</strong></p>
-            
-            <span class="read-more"><a href="/posts/cfee3b66/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>

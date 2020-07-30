@@ -126,26 +126,26 @@
             <a href="/categories/python学习心得&备忘"><b>「
                 </b>PYTHON学习心得&备忘<b> 」</b></a>
             
-            九月 09, 2018
+            九月 18, 2018
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/2870634a/" title="Python 单链表实现&基础函数" class="posttitle">Python 单链表实现&基础函数</a></h3>
+            <a href="/posts/995b78a8/" title="慎用 Python list 乘法" class="posttitle">慎用 Python list 乘法</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                2.9k
+                2.2k
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                3 mins.
+                2 mins.
             </span>
             
             
-            <span id="/posts/2870634a/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/995b78a8/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <span class="leancloud-visitors-count">1000000</span>
             </span>
@@ -153,15 +153,15 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python3/">Python3</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/编码/">编码</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <p>前两天面滴滴，被问到怎么判断两个链表是否相交，然后并不懂什么是单链表相交…就很尴尬。 赶紧复习一下单链表的知识。</p>
-<pre><code class="python">class LNode:
-    def __init__(self, elem, next_...</code></pre>
+            <p>今天刷 LeetCode 碰到一个水题<a href="https://leetcode-cn.com/problems/transpose-matrix/description/" target="_blank" rel="noopener">转置矩阵</a>, 这不就是先生成个空的倒置矩阵再填结果嘛，没多想就用 list 乘法上手就写。</p>
+<pre><code class="python">class Solution:
+    def transpose(self, ...</code></pre>
             
-            <span class="read-more"><a href="/posts/2870634a/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/995b78a8/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -182,6 +182,67 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/python学习心得&备忘">
+                  <b>「 </b>PYTHON学习心得&备忘<b> 」</b>
+                </a>
+            
+            九月 18, 2018
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/995b78a8/" title="慎用 Python list 乘法" class="posttitle">慎用 Python list 乘法</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        2.2k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        2 mins.
+                    </span>
+                
+                
+                    <span id="/posts/995b78a8/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <span class="leancloud-visitors-count">1000000</span>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>今天刷 LeetCode 碰到一个水题<a href="https://leetcode-cn.com/problems/transpose-matrix/description/" target="_blank" rel="noopener">转置矩阵</a>, 这不就是先生成个空的倒置矩阵再填结果嘛，没多想就用 list 乘法上手就写。</p>
+<pre><code class="python">class Solution:
+    def transpose(self, A):
+        &quot;&quot;&quot;
+        :type A: List[List[int]]
+        :rtype: List[List[int]]
+        &quot;&quot;&quot;
+        x, y = len(A), len(A[0])
+
+        buff =[[0] * x] * y
+        for i in range...</code></pre>
+            
+            <span class="read-more"><a href="/posts/995b78a8/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -731,62 +792,6 @@ sudo apt-get install pip              // 安装python包管理
 ...
             
             <span class="read-more"><a href="/posts/8924f3f8/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/LeetCode刷题总结">
-                  <b>「 </b>LEETCODE刷题总结<b> 」</b>
-                </a>
-            
-            四月 20, 2018
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/ef63884b/" title="被忽略的位运算符总结" class="posttitle">被忽略的位运算符总结</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        4.1k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        4 mins.
-                    </span>
-                
-                
-                    <span id="/posts/ef63884b/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <span class="leancloud-visitors-count">1000000</span>
-                    </span>
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p>曾经的我还是太年轻了, 基础不扎实还自以为是, 看到位运算符一节就以为是逻辑运算, 结果跳过没看了, 漏了很多知识. 果然 LeetCode 没白刷呀, 接下来是总结.</p>
-<p>参加运算的两个数据，按二进制位进行“与”运算。</p>
-<p>运算规则：0&amp;0=0; 0&amp;1=0; 1&amp;0=0; 1&amp;1=1;</p>
-<p>即：两位同时为“1”，结果才为“1”，否则为0</p>
-<p>例如：3&amp;5  即 0000 0011&amp; 0000 0101 = 00000001  因此，3&amp;5的值得1。</p>
-<p><em>另，负...</em></p>
-            
-            <span class="read-more"><a href="/posts/ef63884b/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>

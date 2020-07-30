@@ -5,14 +5,12 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>git的ssh key创建 - Gvoidy</title>
+    <title>Celery 4 初体验及踩坑 - Gvoidy</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
-    <meta name="description" content="Git是分布式的代码管理工具，远程的代码管理是基于ssh的，所以要使用远程的git则需要ssh的配置。如果未配置ssh key将无法clone远程代码仓库到本地。
-
-第一步.创建user.name和,"> 
+    <meta name="description" content="序Celery是基于分布式消息传递的开源异步任务队列或作业队列。虽然它支持调度，但其重点是实时操作。现在4版本已经步入稳定，而国内互联网的几乎都是3版本的教程。所以这里记录下4版本下的踩坑及外文解决,"> 
     <meta name="author" content="EwdAger"> 
     <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -45,7 +43,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">git的ssh key创建</h3>
+        <h3 class="subtitle">Celery 4 初体验及踩坑</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -75,29 +73,29 @@
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/不知道怎么归类"><b>「
-                    </b>不知道怎么归类<b> 」</b></a>
+                <a href="/categories/python学习心得&备忘"><b>「
+                    </b>PYTHON学习心得&备忘<b> 」</b></a>
                 
-                八月 14, 2017
+                七月 28, 2020
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/posts/7c2130d4/" title="git的ssh key创建">git的ssh key创建</a>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/d227d93a/" title="Celery 4 初体验及踩坑">Celery 4 初体验及踩坑</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    869
+                    5.1k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    1 mins.
+                    5 mins.
                 </span>
                 
                 
-                <span id="/posts/7c2130d4/" class="leancloud_visitors" data-flag-title="git的ssh key创建">
+                <span id="/posts/d227d93a/" class="leancloud_visitors" data-flag-title="Celery 4 初体验及踩坑">
                     <b class="iconfont icon-read"></b> <i>阅读次数</i>
                     <span class="leancloud-visitors-count">1000000</span>
                 </span>
@@ -106,7 +104,7 @@
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Git/">Git</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/celery/">celery</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/消息队列/">消息队列</a></li></ul>
             
         </div>
     </div>
@@ -127,21 +125,117 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <p>Git是分布式的代码管理工具，远程的代码管理是基于ssh的，所以要使用远程的git则需要ssh的配置。如果未配置ssh key将无法clone远程代码仓库到本地。</p>
-<ul>
-<li><p>第一步.创建user.name和email</p>
-<pre><code>git config --global user.name &quot;EwdAger&quot;
-git config --global user.email &quot;ewdager@hotmail.com&quot;
-</code></pre></li>
-<li><p>第二步.生成SSH密钥：</p>
-</li>
+            <h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>Celery是基于分布式消息传递的开源异步任务队列或作业队列。虽然它支持调度，但其重点是实时操作。现在4版本已经步入稳定，而国内互联网的几乎都是3版本的教程。所以这里记录下4版本下的踩坑及外文解决方案的翻译记录。</p>
+<h1 id="win环境运行celery-4-worker"><a href="#win环境运行celery-4-worker" class="headerlink" title="win环境运行celery 4 worker"></a>win环境运行celery 4 worker</h1><blockquote>
+<p>Celery 是一个资金最少的项目，因此我们不支持 Microsoft Windows。请不要提出与该平台相关的任何问题。</p>
+</blockquote>
+<p>官方在4版本移除了win平台支持，但是经过查阅，只要使用将并发模式<code>-P</code>改为<code>gevent</code>或者<code>eventlet</code>即可正常启动，<strong>但并不知道会有什么影响，毕竟官方已经不提供支持了</strong>，该启动方法仅适用于本地调试。</p>
+<p>附上worker启动脚本</p>
+<pre><code class="bash"># celery_worker_start.bat
+
+@echo off
+
+chcp 65001
+
+CLS
+
+echo 正在启动 python 虚拟环境
+
+CALL venv\Scripts\activate.bat
+
+echo 正在启动 celery
+
+celery -A multi_analysis_tasks.celery_app worker -P gevent -l info
+</code></pre>
+<h1 id="flask-celery-启动蓝图循环引用问题"><a href="#flask-celery-启动蓝图循环引用问题" class="headerlink" title="flask + celery 启动蓝图循环引用问题"></a>flask + celery 启动蓝图循环引用问题</h1><h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><pre><code class="python">def register_plugin(application):
+    from app.models.base import db
+    db.init_app(application)
+    with application.app_context():
+        db.create_all()
+
+
+def create_app():
+    application = Flask(__name__)
+    CORS(application, supports_credentials=True)  # 设置允许跨域
+    application.config.from_object(&#39;app.config.setting&#39;)
+    application.config.from_object(&quot;app.config.secure&quot;)
+    register_blueprint(application)
+    register_plugin(application)
+    return application
+
+app = create_app()
+celery_app = make_celery(app)
+
+if __name__ == &quot;__main__&quot;:
+
+    app.run(host=&quot;0.0.0.0&quot;, port=5000, debug=False)
+
+&gt;&gt;&gt; ImportError: cannot import name &#39;create_blueprint_v1&#39;
+</code></pre>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>celery worker 入口文件和 flask 启动的入口文件分开，worker 的入口文件不需要初始化蓝图，即可解决循环引用的问题。</p>
+<h1 id="在-celery-work-中加入-flask-上下文"><a href="#在-celery-work-中加入-flask-上下文" class="headerlink" title="在 celery work 中加入 flask 上下文"></a>在 celery work 中加入 flask 上下文</h1><blockquote>
+<p>注意: celery worker 运行的必须是已经推入<code>flask context</code>的 celery 对象，后续推入的<code>context</code>是无效的。</p>
+</blockquote>
+<pre><code class="python">from celery import Celery
+from app.config.setting import CELERY_TASKS_INCLUDE
+
+
+def make_celery(app):
+    celery = Celery(__name__, include=CELERY_TASKS_INCLUDE)
+    celery.config_from_object(&#39;app.config.celery_conf&#39;)
+
+    class ContextTask(celery.Task):
+        def __call__(self, *args, **kwargs):
+            with app.app_context():
+                return self.run(*args, **kwargs)
+
+    celery.Task = ContextTask
+    return celery
+</code></pre>
+<h1 id="成员函数实现-celery-task-异步调用"><a href="#成员函数实现-celery-task-异步调用" class="headerlink" title="成员函数实现 celery task 异步调用"></a>成员函数实现 celery task 异步调用</h1><p>由于支持方法太多bug且没有人修，celery官方在4版本，移除了celery 3 中的<code>celery.contrib.methods</code>方法</p>
+<blockquote>
+<p>I wrote celery.contrib.task_methods as an experiment, but turns out there were some serious bugs<br>there, for example task retries wouldn’t work at all, and since nobody were stepping up to fix it I removed it.</p>
+</blockquote>
+<p>所以尽量将需要异步调用的方法移动到类以外，如果实在是没有办法移动，可以将<code>celery.contrib.methods</code>放到项目内，然后实现调用。</p>
+<pre><code class="python">from celery import current_app
+
+__all__ = [&#39;task_method&#39;, &#39;task&#39;]
+
+
+class task_method(object):
+
+    def __init__(self, task, *args, **kwargs):
+        self.task = task
+
+    def __get__(self, obj, type=None):
+        if obj is None:
+            return self.task
+        task = self.task.__class__()
+        task.__self__ = obj
+        return task
+
+
+def task(*args, **kwargs):
+    return current_app.task(*args, **dict(kwargs, filter=task_method))
+
+</code></pre>
+<p>使用方法：</p>
+<pre><code class="python">from celery import current_app
+from celery.contrib.methods import task_method
+
+class A:
+@current_app.task(filter=task_method, name=&#39;A.foo&#39;)
+def foo(self, bar):
+    ...
+</code></pre>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="http://docs.jinkan.org/docs/flask/patterns/celery.html" target="_blank" rel="noopener">flask 基于 Celery 的后台任务</a></li>
+<li><a href="https://stackoverflow.com/questions/29670961/flask-blueprints-uses-celery-task-and-got-cycle-import" target="_blank" rel="noopener">Flask, blueprints uses celery task and got cycle import</a></li>
+<li><a href="https://www.celerycn.io/ru-men/celery-jian-jie" target="_blank" rel="noopener">celery 中文手册</a></li>
+<li><a href="https://www.distributedpython.com/2018/08/21/celery-4-windows/" target="_blank" rel="noopener">Hack: 2 Ways to make Celery 4 run on Windows</a></li>
+<li><a href="https://stackoverflow.com/questions/9250317/using-class-methods-as-celery-tasks" target="_blank" rel="noopener">using class methods as celery tasks</a></li>
+<li><a href="https://github.com/celery/celery/issues/3558" target="_blank" rel="noopener">where is celery.contrib.methods.task_method of 4.0</a></li>
 </ul>
-<ol>
-<li>查看是否已经有了ssh密钥：<code>cd ~/.ssh</code>,Windows用户的路径在<code>C:\Users\EwdAger\.ssh</code>下<br>如果是刚安装git则不会有此文件夹，有则备份删除</li>
-<li>生成ssh key<br><code>sudo ssh-keygen -t rsa -C &quot;ewdager@hotmail.com&quot;</code><br>然后按三下回车<br>最后得到了两个文件：id_rsa和id_rsa.pub</li>
-<li>在github上添加ssh密钥，这要添加的是“id_rsa.pub”里面的公钥<br>用编辑器打开id_rsa.pub复制全部内容到github的settings的SSH and GPG keys设置中，title取个好记的名字就行。<br><img src="http://upload-images.jianshu.io/upload_images/5433252-0697e396457b08da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-<li>然后就能使用clone了</li>
-</ol>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -185,6 +279,13 @@ git config --global user.email &quot;ewdager@hotmail.com&quot;
             </div>
             
             
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#序"><span class="toc-number">1.</span> <span class="toc-text">序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#win环境运行celery-4-worker"><span class="toc-number">2.</span> <span class="toc-text">win环境运行celery 4 worker</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#flask-celery-启动蓝图循环引用问题"><span class="toc-number">3.</span> <span class="toc-text">flask + celery 启动蓝图循环引用问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#项目结构"><span class="toc-number">3.1.</span> <span class="toc-text">项目结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-number">3.2.</span> <span class="toc-text">解决方案</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在-celery-work-中加入-flask-上下文"><span class="toc-number">4.</span> <span class="toc-text">在 celery work 中加入 flask 上下文</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#成员函数实现-celery-task-异步调用"><span class="toc-number">5.</span> <span class="toc-text">成员函数实现 celery task 异步调用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol>
+                </div>
+            </div>
             
             
         </div>
