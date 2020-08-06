@@ -5,13 +5,12 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Django 部署(Apache) - Gvoidy</title>
+    <title>Tag: helm - Gvoidy</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
-    <meta name="description" content="安装sudo apt-get install python2.7.12     // 安装对应版本python
-sudo apt-get install apache2          // 安装,"> 
+    
     <meta name="author" content="EwdAger"> 
     <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -37,78 +36,134 @@ sudo apt-get install apache2          // 安装,">
     </div>
     <span id="config-title" style="display:none">Gvoidy</span>
     <div id="loader"></div>
-    <div id="single">
-    <div class="scrollbar gradient-bg-rev"></div>
-<div id="top" style="display: block;">
-    <div class="bar" style="width: 0;"></div>
-    <div class="navigation animated fadeIn fast delay-1s">
-        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
-        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">Django 部署(Apache)</h3>
-        <div class="social">
-            <!--        <div class="like-icon">-->
-            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
-            <!--        </div>-->
-            <div>
-                <div class="share">
-                    
-                        <a href="javascript:;" class="iconfont icon-share1"></a>
-                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
-                    
-                </div>
-            </div>
+    <div class="nav">
+    <ul id="menu-menu" class="menu">
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/whoami/" title="关于">关于</a>
+        </li>
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/categories/" title="目录">目录</a>
+        </li>
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/tags/" title="标签">标签</a>
+        </li>
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/archives/" title="文章">文章</a>
+        </li>
+        
+    </ul>
+    <p class="copyright" id="copyright">
+        &copy; 2020 EwdAger.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+    </p>
+</div>
+
+<div id="container">
+    
+<div class="search-box">
+    <form class="site-search-form">
+        <span class="iconfont icon-search"></span>
+        <input type="text" id="local-search-input" class="st-search-input" />
+        <div class="iconfont icon-cross search-box-close"></div>
+    </form>
+    <div class="search-scrollable">
+        <div id="local-search-result" class="local-search-result-cls" data-initialise="首次搜索，正在载入索引文件，请稍后……"
+            data-start="输入关键词搜索。" data-empty="没有找到内容，请尝试更换检索词。">
+            <span>输入关键词搜索。</span>
         </div>
     </div>
 </div>
-
-    <div class="section">
-        <div class=article-header-wrapper>
-    <div class="article-header">
-        <div class="article-cover animated fadeIn" style="
-            animation-delay: 600ms;
-            animation-duration: 1.2s;
-            background-image: 
-                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-                url(/img/cover.jpg) ">
+<div id="header">
+    <div>
+        <div class="logo animated fadeInDown">
+            <img src="/img/favicon.png" alt="">
+            <a class="image-logo" href="/"></a>
         </div>
-        <div class="else">
-            <p class="animated fadeInDown">
-                
-                <a href="/categories/python学习心得&备忘"><b>「
-                    </b>PYTHON学习心得&备忘<b> 」</b></a>
-                
-                六月 15, 2018
-            </p>
-            <h3 class="post-title animated fadeInDown"><a href="/posts/725a38d2/" title="Django 部署(Apache)">Django 部署(Apache)</a>
-            </h3>
+        <ul id="menu-menu" class="menu text-menu">
             
-            <p class="post-count animated fadeInDown">
-                
-                <span>
-                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    1.7k
-                </span>
-                
-                
-                <span>
-                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    2 mins.
-                </span>
-                
-                
-                <span id="/posts/725a38d2/" class="leancloud_visitors" data-flag-title="Django 部署(Apache)">
-                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                    <span class="leancloud-visitors-count">1000000</span>
-                </span>
-                
-                
-            </p>
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/whoami/" title="关于" class="menu-link">关于</a>
+            </li>
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/categories/" title="目录" class="menu-link">目录</a>
+            </li>
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/tags/" title="标签" class="menu-link">标签</a>
+            </li>
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/archives/" title="文章" class="menu-link">文章</a>
+            </li>
             
             
-            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Django/">Django</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Web框架/">Web框架</a></li></ul>
+            <li class="animated fadeInDown search-bar iconfont icon-search"></li>
             
+        </ul>
+        <div class="iconfont icon-menu switchmenu gradient-text animated fadeInDown"></div>
+    </div>
+</div>
+<div id="screen">
+    <div id="mark">
+        <div class="cover animated fadeIn" style="
+            animation-delay: 900ms;
+            animation-duration: 2.8s;
+            background-image:
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.56), #100e17),
+                url(/img/cover.jpg);">
         </div>
     </div>
+    
+    <div id="post0" class="else">
+        <p class="animated fadeInDown">
+            
+            <a href="/categories/云原生学习笔记"><b>「
+                </b>云原生学习笔记<b> 」</b></a>
+            
+            八月 05, 2020
+        </p>
+        <h3 class="post-title animated fadeInDown">
+            <a href="/posts/c57a716a/" title="Helm 编排教程" class="posttitle">Helm 编排教程</a></h3>
+        
+        <p class="post-count animated fadeInDown">
+            
+            <span>
+                <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                11k
+            </span>
+            
+            
+            <span>
+                <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                10 mins.
+            </span>
+            
+            
+            <span id="/posts/c57a716a/" class="leancloud_visitors" data-flag-title="">
+                <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                <span class="leancloud-visitors-count">1000000</span>
+            </span>
+            
+        </p>
+        
+        
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/DevOps/">DevOps</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/docker/">docker</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/helm/">helm</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/k8s/">k8s</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/rancher2/">rancher2</a></li></ul>
+        
+        <div class="md-content animated fadeIn">
+            
+            <p>我们知道 Kubernetes 是一个分布式的容器集群管理系统，它把集群中的管理资源抽象化成一个个 API 对象，并且推荐使用声明式的方式创建，修改，删除这些对象，每个 API 对象都通过一个 yaml...</p>
+            
+            <span class="read-more"><a href="/posts/c57a716a/" title="查看全文" class="posttitle">查看全文</a>
+                <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+    
 </div>
 
 <div class="screen-gradient-after">
@@ -116,107 +171,21 @@ sudo apt-get install apache2          // 安装,">
         <div class="screen-gradient-content-inside">
             <div class="bold-underline-links screen-gradient-sponsor">
                 <p>
-                    <span class="animated fadeIn delay-1s"></span>
+                    <span class="typed-text"></span>
                 </p>
             </div>
         </div>
     </div>
 </div>
 
-<div class="article">
-    <div class='main'>
-        <div class="content markdown animated fadeIn">
-            <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code class="bash">sudo apt-get install python2.7.12     // 安装对应版本python
-sudo apt-get install apache2          // 安装apache
-sudo apt-get install libapache2-mod-wsgi  // 安装apache的wsgi组件
-sudo apt-get install pip              // 安装python包管理
-</code></pre>
-<p>如果项目内有<code>requrements.txt</code>文件，进行如下操作安装项目依赖</p>
-<pre><code>pip install -r requrements.txt
-</code></pre><h2 id="配置-Apache"><a href="#配置-Apache" class="headerlink" title="配置 Apache"></a>配置 Apache</h2><p>首先将django项目放入<code>/var/www/</code>目录下，然后修改<code>/etc/apache2/site-enabled/000-default.conf/</code>文件</p>
-<pre><code class="bash">&lt;VirtualHost *:80&gt;
-
-...略...
-
-    # 配置python环境的路径，此处已系统环境为例
-
-    WSGIDaemonProcess Score python-path=/var/www/Score:/usr/bin/python/lib/python2.7/site-packages
-    WSGIProcessGroup Score
-    WSGIScriptAlias / /var/www/Score/Score/wsgi.py
-
-    # 配置django静态文件目录
-
-    Alias /static/ /var/www/Score/ScoreQuery/static/
-    &lt;Directory /var/www/Score/ScoreQuery/static/&gt;
-        Require all granted
-    &lt;/Directory&gt;
-&lt;/VirtualHost&gt;
-</code></pre>
-<h2 id="收集-Django-静态文件"><a href="#收集-Django-静态文件" class="headerlink" title="收集 Django 静态文件"></a>收集 Django 静态文件</h2><p>进入<code>manage.py</code>目录输入</p>
-<pre><code class="bash">python manage.py collectstatic
-</code></pre>
-<h2 id="更改项目读写权限"><a href="#更改项目读写权限" class="headerlink" title="更改项目读写权限"></a>更改项目读写权限</h2><pre><code class="bash">chown -R www-data:www-data /var/www/Score
-</code></pre>
-<h2 id="重启-Apache"><a href="#重启-Apache" class="headerlink" title="重启 Apache"></a>重启 Apache</h2><pre><code class="bash">service apache2 restart
-</code></pre>
-
-            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls"
-                data-autoplay="false">
-                <source type="audio/mpeg" src="">
-            </audio>
-            
-            <ul id="audio-list" style="display:none">
-                
-                
-                <li title='0' data-url='/statics/Kaer Morhen.mp3'></li>
-                
-                    
-            </ul>
-            
-            
-            
-            <div id="vcomments"></div>
-            
-        </div>
-        <div class="sidebar">
-            <div class="box animated fadeInRight">
-                <div class="subbox">
-                    <img src="/img/avatar.jpg" height=300 width=300></img>
-                    <p>EwdAger</p>
-                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
-                    <dl>
-                        <dd><a href="https://github.com/EwdAger" target="_blank"><span
-                                    class=" iconfont icon-github"></span></a></dd>
-                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span
-                                    class=" iconfont icon-twitter"></span></a></dd>
-                        <dd><a href="" target="_blank"><span
-                                    class=" iconfont icon-stack-overflow"></span></a></dd>
-                    </dl>
-                </div>
-                <ul>
-                    <li><a href="/">66 <p>文章</p></a></li>
-                    <li><a href="/categories">13 <p>分类</p></a></li>
-                    <li><a href="/tags">63 <p>标签</p></a></li>
-                </ul>
-            </div>
-            
-            
-            
-            <div class="box sticky animated fadeInRight faster">
-                <div id="toc" class="subbox">
-                    <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置-Apache"><span class="toc-number">2.</span> <span class="toc-text">配置 Apache</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#收集-Django-静态文件"><span class="toc-number">3.</span> <span class="toc-text">收集 Django 静态文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更改项目读写权限"><span class="toc-number">4.</span> <span class="toc-text">更改项目读写权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重启-Apache"><span class="toc-number">5.</span> <span class="toc-text">重启 Apache</span></a></li></ol>
-                </div>
-            </div>
-            
-            
-        </div>
+    <div id="primary">
+        
     </div>
+    
 </div>
+<div id="preview"></div>
 
-    </div>
-</div>
+
     <div id="back-to-top" class="animated fadeIn faster">
         <div class="flow"></div>
         <span class="percentage animated fadeIn faster">0%</span>
