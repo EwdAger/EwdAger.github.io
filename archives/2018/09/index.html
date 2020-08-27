@@ -695,13 +695,17 @@ In [...
                                         <a class="timeline-title" target="_self" href="/posts/576d991f/">经典排序算法 Python 实现</a>
                                         <p>
                                             选择排序每一趟遍历把最小的依次放在最前面，时间复杂度O(n²)
-def select_sort(n):
-    for i in range(len(n):
-        min = i
-        for j in range(i, len(n)):
-            if n[min] &gt; n[j]:
-                min = j
-        if...
+from typing import List, Optional
+
+NumsList = Optional[List[int]]
+
+
+class SelectSort:
+
+    @staticmethod
+    def select_sort(nums: NumsList) -&gt; NumsList:
+
+       ...
                                         </p>
                                     </div>
                                 </li>
