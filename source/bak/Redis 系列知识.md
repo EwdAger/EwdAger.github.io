@@ -1,9 +1,9 @@
 ---
-title: 由 Redis 谈起一系列知识
+title: 深度优先学习 Redis
 tags:
   - Redis
 categories: 知识储备
-abbrlink: '73939866'
+abbrlink: 396d8370
 date: 2020-08-17 11:35:00
 ---
 
