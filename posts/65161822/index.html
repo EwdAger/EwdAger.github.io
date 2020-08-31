@@ -5,14 +5,13 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>慎用 Python list 乘法 - Gvoidy</title>
+    <title>Redis 主从复制 哨兵模式实战 - Gvoidy</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
-    <meta name="description" content="误用 list 乘法今天刷 LeetCode 碰到一个水题转置矩阵, 这不就是先生成个空的倒置矩阵再填结果嘛，没多想就用 list 乘法上手就写。
-class Solution:
-    def t,"> 
+    <meta name="description" content="0x00项目中因为并发不是很高一直偷懒用的单节点 Redis ，但是有很多大 key 写入的场景，这样会影响读性能，于是准备做主从复制，顺便做一下哨兵模式。
+Redis 主从复制配置这里很简单，只需,"> 
     <meta name="author" content="EwdAger"> 
     <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -45,7 +44,7 @@ class Solution:
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">慎用 Python list 乘法</h3>
+        <h3 class="subtitle">Redis 主从复制 哨兵模式实战</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -75,29 +74,29 @@ class Solution:
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/python学习心得&备忘"><b>「
-                    </b>PYTHON学习心得&备忘<b> 」</b></a>
+                <a href="/categories/知识储备"><b>「
+                    </b>知识储备<b> 」</b></a>
                 
-                九月 18, 2018
+                八月 31, 2020
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/posts/995b78a8/" title="慎用 Python list 乘法">慎用 Python list 乘法</a>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/65161822/" title="Redis 主从复制 哨兵模式实战">Redis 主从复制 哨兵模式实战</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    2.2k
+                    3.5k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    2 mins.
+                    3 mins.
                 </span>
                 
                 
-                <span id="/posts/995b78a8/" class="leancloud_visitors" data-flag-title="慎用 Python list 乘法">
+                <span id="/posts/65161822/" class="leancloud_visitors" data-flag-title="Redis 主从复制 哨兵模式实战">
                     <b class="iconfont icon-read"></b> <i>阅读次数</i>
                     <span class="leancloud-visitors-count">1000000</span>
                 </span>
@@ -106,7 +105,7 @@ class Solution:
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/redis/">redis</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/高可用/">高可用</a></li></ul>
             
         </div>
     </div>
@@ -127,67 +126,95 @@ class Solution:
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h1 id="误用-list-乘法"><a href="#误用-list-乘法" class="headerlink" title="误用 list 乘法"></a>误用 list 乘法</h1><p>今天刷 LeetCode 碰到一个水题<a href="https://leetcode-cn.com/problems/transpose-matrix/description/" target="_blank" rel="noopener">转置矩阵</a>, 这不就是先生成个空的倒置矩阵再填结果嘛，没多想就用 list 乘法上手就写。</p>
-<pre><code class="python">class Solution:
-    def transpose(self, A):
-        &quot;&quot;&quot;
-        :type A: List[List[int]]
-        :rtype: List[List[int]]
-        &quot;&quot;&quot;
-        x, y = len(A), len(A[0])
-
-        buff =[[0] * x] * y
-        for i in range(x):
-            for j in range(y):
-                buff[j][i] = A[i][j]
-        return buff
+            <h1 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h1><p>项目中因为并发不是很高一直偷懒用的单节点 Redis ，但是有很多大 key 写入的场景，这样会影响读性能，于是准备做主从复制，顺便做一下哨兵模式。</p>
+<h1 id="Redis-主从复制配置"><a href="#Redis-主从复制配置" class="headerlink" title="Redis 主从复制配置"></a>Redis 主从复制配置</h1><p>这里很简单，只需要配置<code>slaveof &lt;masterip&gt; &lt;masterport&gt;</code>参数即可实现。</p>
+<blockquote>
+<p>注： Redis 5.0 版本后建议使用<code>replicaof</code>代替<code>slaveof</code>。 因为奇妙的<code>政治正确</code>原因，迫使作者修改了配置名，虽然<code>slaveof</code>仍能使用，但是只是暂时的兼容方案。</p>
+</blockquote>
+<p>修改后重启 Redis 查看配置显示, 表示成功</p>
+<pre><code class="bash"># Replication
+role: slave
+master_host: 192.168.14.130
+master_port: 6379
+master_link_status: up
+...
 </code></pre>
-<p>看似结果非常正确，但是样例输出了一个很奇怪的结果。</p>
-<pre><code class="python">我的输入:
-    [[1,2,3],[4,5,6]]
+<h1 id="Redis-哨兵模式配置"><a href="#Redis-哨兵模式配置" class="headerlink" title="Redis 哨兵模式配置"></a>Redis 哨兵模式配置</h1><p>必要配置如下</p>
+<pre><code class="bash">port 26379
 
-我的答案:
-    [[3,6],[3,6],[3,6]]
+# 当前哨兵绑定的ip，一般为本机ip
+bind 192.168.2.210
 
-标准答案：
-    [[1,4],[2,5],[3,6]]
+# 设置master节点为 192.168.14.130 6379 上的redis，
+# 别名为redis-master，当两个哨兵同意故障转移就会执行
+# 一般设置N/2+1(N为哨兵总数)
+sentinel monitor redis-master 192.168.14.130 6379 2
+
+# 认为master节点断线所需的毫秒（SDOWN）
+sentinel down-after-milliseconds redis-master 5000
+
+# 如果在 180000 毫秒内 master 节点没有恢复，则认为是真正宕机
+# 当下一次检测宕机 master 节点恢复后，则并入 slave 中
+sentinel failover-timeout redis-master 180000
+
+# 当 master 宕机后，最多可以多少个节点对新 master 进行同步
+# 数字越小完成故障转移的时间越长
+sentinel parallel-syncs redis-master 2
 </code></pre>
-<p>赶紧在第12行前加上<code>print(buff)</code>一看</p>
-<pre><code class="python">我的输入:
-    [[1,2,3],[4,5,6]]
+<p>配置成功后显示如下</p>
+<pre><code class="bash">$ redis-cli -p 26379 -h 192.168.14.130
 
-标准输出：
-    [[0, 0], [0, 0], [0, 0]]
-    [[1, 0], [1, 0], [1, 0]]
-    [[2, 0], [2, 0], [2, 0]]
-    [[3, 0], [3, 0], [3, 0]]
-    [[3, 4], [3, 4], [3, 4]]
-    [[3, 5], [3, 5], [3, 5]]
+192.168.14.128:26379&gt; info Sentinel
+# Sentinel
+sentinel_masters: 1
+sentinel_tilt: 0
+sentinel_running_scripts: 0
+sentinel_scripts_queue_length: 0
+sentinel_simulate_failure_flags: 0
+master0: name=mymaster, status=ok, address=192.168.14.130:6379, slaves=2, sentinels=3
 </code></pre>
-<h1 id="我的猜测与验证"><a href="#我的猜测与验证" class="headerlink" title="我的猜测与验证"></a>我的猜测与验证</h1><p>发现果然列表里的每一个子元素都相等了，猜测可能是 <strong>只复制了值的引用，而不是新建了一个对象</strong>,接下来就是验证。</p>
-<pre><code class="python">&gt;&gt;&gt; a = [[0]*6]*4
-&gt;&gt;&gt; a
-[[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]]
-&gt;&gt;&gt; id(a[0])
-1423765355080
-&gt;&gt;&gt; id(a[1])
-1423765355080
-</code></pre>
-<p>发现不出所料果然是这样。</p>
-<h1 id="正确姿势"><a href="#正确姿势" class="headerlink" title="正确姿势"></a>正确姿势</h1><p>list 的乘法是能很方便的构建一个全为重复元素的<strong>一维</strong>列表方法，但在多维情况下非常容易出错。 所以说慎用 list 乘法！！！想构建 list 老老实实给我用列表生成器去。不要嫌写的太多不 <code>pythonic</code></p>
-<pre><code class="python">class Solution:
-    def transpose(self, A):
-        &quot;&quot;&quot;
-        :type A: List[List[int]]
-        :rtype: List[List[int]]
-        &quot;&quot;&quot;
-        x, y = len(A), len(A[0])
+<h2 id="坑点"><a href="#坑点" class="headerlink" title="坑点"></a>坑点</h2><ol>
+<li><p>哨兵模式启动顺序为: <code>Master -&gt; Slave -&gt; Sentinel</code></p>
+</li>
+<li><p>启动后<code>sentinels</code>永远等于<code>1</code>: </p>
+</li>
+</ol>
+<p>因为当时配置的<code>bind 127.0.0.1 192.168.14.130</code>，如果sentinel配置了bind参数，sentinel将获取第一个ip去检测主节点状态, 由于127.0.0.1是个回环地址，所以当bind第一个ip配置成127.0.0.1时无法连接其他机器的ip，所以配置时第一个ip不能配置为回环地址，建议redis相关的ip绑定都先写私网ip再写回环ip。</p>
+<h1 id="使用-Python-连接哨兵模式-Redis"><a href="#使用-Python-连接哨兵模式-Redis" class="headerlink" title="使用 Python 连接哨兵模式 Redis"></a>使用 Python 连接哨兵模式 Redis</h1><pre><code class="python">from redis.sentinel import Sentinel
 
-        buff =[[0 for i in range(x)] for i in range(y)]
-        for i in range(x):
-            for j in range(y):
-                buff[j][i] = A[i][j]
-        return buff
+
+class RedisSentinel:
+    def __init__(self, sentinel_list, name=&quot;mymaster&quot;, password=&quot;&quot;, db=0):
+        self.sentinel = Sentinel(sentinel_list, socket_timeout=60)
+        self.name = name
+        self.password = password
+        self.db = db
+
+    def get_master_and_slave_conn(self):
+        master = self.sentinel.master_for(
+            service_name=self.name,
+            socket_timeout=60,
+            password=self.password,
+            db=self.db)
+        slave = self.sentinel.slave_for(
+            service_name=self.name,
+            socket_timeout=60,
+            password=self.password,
+            db=self.db
+        )
+        return master, slave
+
+if __name__ == &quot;__main__&quot;:
+    sentinel_list = [
+            (&quot;192.168.14.128&quot;, &quot;26379&quot;),
+            (&quot;192.168.14.129&quot;, &quot;26379&quot;),
+            (&quot;192.168.14.130&quot;, &quot;26379&quot;)
+        ]
+    mySentinel = RedisSentinel(sentinel_list)
+    master_conn, slave_conn = mySentinel.get_master_and_slave_conn()
+
+    master_conn.set(&#39;a&#39;, 123)
+    print(slave_conn.get(&#39;a&#39;))
 </code></pre>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
@@ -232,7 +259,7 @@ class Solution:
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#误用-list-乘法"><span class="toc-number">1.</span> <span class="toc-text">误用 list 乘法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#我的猜测与验证"><span class="toc-number">2.</span> <span class="toc-text">我的猜测与验证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#正确姿势"><span class="toc-number">3.</span> <span class="toc-text">正确姿势</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00"><span class="toc-number">1.</span> <span class="toc-text">0x00</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis-主从复制配置"><span class="toc-number">2.</span> <span class="toc-text">Redis 主从复制配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis-哨兵模式配置"><span class="toc-number">3.</span> <span class="toc-text">Redis 哨兵模式配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#坑点"><span class="toc-number">3.1.</span> <span class="toc-text">坑点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用-Python-连接哨兵模式-Redis"><span class="toc-number">4.</span> <span class="toc-text">使用 Python 连接哨兵模式 Redis</span></a></li></ol>
                 </div>
             </div>
             

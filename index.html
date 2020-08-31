@@ -123,19 +123,19 @@
     <div id="post0" class="else">
         <p class="animated fadeInDown">
             
-            <a href="/categories/LeetCode刷题总结"><b>「
-                </b>LEETCODE刷题总结<b> 」</b></a>
+            <a href="/categories/知识储备"><b>「
+                </b>知识储备<b> 」</b></a>
             
-            八月 28, 2020
+            八月 31, 2020
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/fd2367bd/" title="二叉树的前中后序遍历" class="posttitle">二叉树的前中后序遍历</a></h3>
+            <a href="/posts/65161822/" title="Redis 主从复制 哨兵模式实战" class="posttitle">Redis 主从复制 哨兵模式实战</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                3k
+                3.5k
             </span>
             
             
@@ -145,7 +145,7 @@
             </span>
             
             
-            <span id="/posts/fd2367bd/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/65161822/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <span class="leancloud-visitors-count">1000000</span>
             </span>
@@ -153,19 +153,14 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/LeetCode/">LeetCode</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/二叉树/">二叉树</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/redis/">redis</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/高可用/">高可用</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <pre><code class="python">class TreeNode:
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
-</code></pre>
-<pre><code class="python">class Solution...</code></pre>
+            <p>项目中因为并发不是很高一直偷懒用的单节点 Redis ，但是有很多大 key 写入的场景，这样会影响读性能，于是准备做主从复制，顺便做一下哨兵模式。</p>
+<p>这里很简单，只需要配置<code>slaveof &lt;masterip...</code></p>
             
-            <span class="read-more"><a href="/posts/fd2367bd/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/65161822/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -186,6 +181,69 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/LeetCode刷题总结">
+                  <b>「 </b>LEETCODE刷题总结<b> 」</b>
+                </a>
+            
+            八月 28, 2020
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/fd2367bd/" title="二叉树的前中后序遍历" class="posttitle">二叉树的前中后序遍历</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        3k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        3 mins.
+                    </span>
+                
+                
+                    <span id="/posts/fd2367bd/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <span class="leancloud-visitors-count">1000000</span>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/LeetCode/">LeetCode</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/二叉树/">二叉树</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <pre><code class="python">class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+</code></pre>
+<pre><code class="python">class Solution:
+    def preorderTraversal(self, root: TreeNode) -&gt; List[int]:
+
+        if not root:
+            return []
+
+        return [root.val] + self.preorderTraversal(root.left) + self.preorderTra...</code></pre>
+            
+            <span class="read-more"><a href="/posts/fd2367bd/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -637,62 +695,6 @@ $ yum install docker-...</code></pre>
 <p>后来就怀疑到是不是uwsgi起多进程的时候触发了什么奇怪的bug，结...</p>
             
             <span class="read-more"><a href="/posts/cca84fb6/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/python学习心得&备忘">
-                  <b>「 </b>PYTHON学习心得&备忘<b> 」</b>
-                </a>
-            
-            四月 16, 2020
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/ed4c24bb/" title="构建Python Dockerfile的奇淫巧技" class="posttitle">构建Python Dockerfile的奇淫巧技</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        2.6k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        2 mins.
-                    </span>
-                
-                
-                    <span id="/posts/ed4c24bb/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <span class="leancloud-visitors-count">1000000</span>
-                    </span>
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/docker/">docker</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p>最简单的情况下，如果我们使用官方python镜像，构建我们的容器会无敌庞大。因为他帮我们预置了许许多多类库。同时我们直接使用<code>RUN pip install /xxx/requirements.txt</code>安装环境时，每次构建镜像都会从pip仓库里面拉包，也会非常慢。</p>
-<pre><code class="Dockerfile">FROM python:3.7
-COPY . /app
-WORKDIR /app
-RUN pip install -r requirements.txt
-CMD [&quot;uwsgi&quot;, &quot;--ini&quot;,...</code></pre>
-            
-            <span class="read-more"><a href="/posts/ed4c24bb/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>

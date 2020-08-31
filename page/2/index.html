@@ -126,26 +126,26 @@
             <a href="/categories/python学习心得&备忘"><b>「
                 </b>PYTHON学习心得&备忘<b> 」</b></a>
             
-            三月 05, 2020
+            四月 16, 2020
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/51c3bc14/" title="Authlib 单点登录库初体验及踩坑" class="posttitle">Authlib 单点登录库初体验及踩坑</a></h3>
+            <a href="/posts/ed4c24bb/" title="构建Python Dockerfile的奇淫巧技" class="posttitle">构建Python Dockerfile的奇淫巧技</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                6k
+                2.6k
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                5 mins.
+                2 mins.
             </span>
             
             
-            <span id="/posts/51c3bc14/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/ed4c24bb/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <span class="leancloud-visitors-count">1000000</span>
             </span>
@@ -153,14 +153,13 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Flask/">Flask</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/OAuth/">OAuth</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/authlib/">authlib</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/单点登录/">单点登录</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/docker/">docker</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <p>项目突然要接入TX云，理所应当的要使用tx的单点登录了。于是乎，经过各方推荐，使用了大名鼎鼎的<a href="https://authlib.org/" target="_blank" rel="noopener">Authlib</a>库。</p>
-<p>经过各方文档，整理了一下，在<code>Flask</code>中使用<code>Authlib</code>相当简单。如果是接入有名的<code>OAuth2...</code></p>
+            <p>最简单的情况下，如果我们使用官方python镜像，构建我们的容器会无敌庞大。因为他帮我们预置了许许多多类库。同时我们直接使用<code>RUN pip install /xxx/requirements.txt</code>安...</p>
             
-            <span class="read-more"><a href="/posts/51c3bc14/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/ed4c24bb/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -181,6 +180,62 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/python学习心得&备忘">
+                  <b>「 </b>PYTHON学习心得&备忘<b> 」</b>
+                </a>
+            
+            四月 16, 2020
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/ed4c24bb/" title="构建Python Dockerfile的奇淫巧技" class="posttitle">构建Python Dockerfile的奇淫巧技</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        2.6k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        2 mins.
+                    </span>
+                
+                
+                    <span id="/posts/ed4c24bb/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <span class="leancloud-visitors-count">1000000</span>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/docker/">docker</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>最简单的情况下，如果我们使用官方python镜像，构建我们的容器会无敌庞大。因为他帮我们预置了许许多多类库。同时我们直接使用<code>RUN pip install /xxx/requirements.txt</code>安装环境时，每次构建镜像都会从pip仓库里面拉包，也会非常慢。</p>
+<pre><code class="Dockerfile">FROM python:3.7
+COPY . /app
+WORKDIR /app
+RUN pip install -r requirements.txt
+CMD [&quot;uwsgi&quot;, &quot;--ini&quot;,...</code></pre>
+            
+            <span class="read-more"><a href="/posts/ed4c24bb/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -687,62 +742,6 @@ catch_exception()
   File &quot;.\test.py&quot;, line 9, in catch_excep...</code></pre>
             
             <span class="read-more"><a href="/posts/1a6c337e/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/机器学习笔记">
-                  <b>「 </b>机器学习笔记<b> 」</b>
-                </a>
-            
-            十月 10, 2019
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/6b56ef63/" title="Python读取Excel文件sheet名性能优化" class="posttitle">Python读取Excel文件sheet名性能优化</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        2.6k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        2 mins.
-                    </span>
-                
-                
-                    <span id="/posts/6b56ef63/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <span class="leancloud-visitors-count">1000000</span>
-                    </span>
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/性能优化/">性能优化</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p>直接使用<code>pandas</code>读取整个Excel文件，再从中取列名。这种场景对于小的Excel文件还适用，但数据量上升到10M+时，取个<code>sheet name</code>要<code>26s</code>之久。几乎无法忍受。</p>
-<pre><code class="python">data = pandas.ExcelFile(file_url)
-names = data.sheet_names
-</code></pre>
-<p>查阅资料可知<code>.xlsx</code>文件是一个压缩格式的文件，可以直接通过<code>zipfile</code>读到<code>sheet name</code>等相关信息。所以写如下函数直接取<code>sheet name</code></p>
-<pre><code class="python">def get_sheet_details(file_path...</code></pre>
-            
-            <span class="read-more"><a href="/posts/6b56ef63/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
