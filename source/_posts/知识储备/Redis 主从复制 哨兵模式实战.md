@@ -118,3 +118,9 @@ if __name__ == "__main__":
 	master_conn.set('a', 123)
 	print(slave_conn.get('a'))
 ```
+
+# Tips
+
+1. Master和Slave服务器切换后，Master的redis.conf、Slave的redis.conf和sentinel.conf的配置文件的内容都会发生相应的改变，即，Master主服务器的redis.conf配置文件中会多一行slaveof的配置，sentinel.conf的监控目标会随之调换。
+
+2. Master最好不要做任何持久化工作，如RDB内存快照和AOF日志文件。如果数据比较重要，某个Slave开启AOF备份数据，策略设置为每秒同步一次
