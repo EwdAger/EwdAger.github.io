@@ -86,7 +86,7 @@ Redis 主从复制配置这里很简单，只需,">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    3.5k
+                    3.8k
                 </span>
                 
                 
@@ -216,6 +216,12 @@ if __name__ == &quot;__main__&quot;:
     master_conn.set(&#39;a&#39;, 123)
     print(slave_conn.get(&#39;a&#39;))
 </code></pre>
+<h1 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h1><ol>
+<li><p>Master和Slave服务器切换后，Master的redis.conf、Slave的redis.conf和sentinel.conf的配置文件的内容都会发生相应的改变，即，Master主服务器的redis.conf配置文件中会多一行slaveof的配置，sentinel.conf的监控目标会随之调换。</p>
+</li>
+<li><p>Master最好不要做任何持久化工作，如RDB内存快照和AOF日志文件。如果数据比较重要，某个Slave开启AOF备份数据，策略设置为每秒同步一次</p>
+</li>
+</ol>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -259,7 +265,7 @@ if __name__ == &quot;__main__&quot;:
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00"><span class="toc-number">1.</span> <span class="toc-text">0x00</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis-主从复制配置"><span class="toc-number">2.</span> <span class="toc-text">Redis 主从复制配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis-哨兵模式配置"><span class="toc-number">3.</span> <span class="toc-text">Redis 哨兵模式配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#坑点"><span class="toc-number">3.1.</span> <span class="toc-text">坑点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用-Python-连接哨兵模式-Redis"><span class="toc-number">4.</span> <span class="toc-text">使用 Python 连接哨兵模式 Redis</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00"><span class="toc-number">1.</span> <span class="toc-text">0x00</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis-主从复制配置"><span class="toc-number">2.</span> <span class="toc-text">Redis 主从复制配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis-哨兵模式配置"><span class="toc-number">3.</span> <span class="toc-text">Redis 哨兵模式配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#坑点"><span class="toc-number">3.1.</span> <span class="toc-text">坑点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用-Python-连接哨兵模式-Redis"><span class="toc-number">4.</span> <span class="toc-text">使用 Python 连接哨兵模式 Redis</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Tips"><span class="toc-number">5.</span> <span class="toc-text">Tips</span></a></li></ol>
                 </div>
             </div>
             
