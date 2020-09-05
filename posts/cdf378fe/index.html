@@ -5,13 +5,12 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>linux环境下使用mono运行asf挂卡 - Gvoidy</title>
+    <title>在线、离线激活鉴权实战 - Gvoidy</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
-    <meta name="description" content="杰瑞包大好评啊，但是带来的后果就是挂卡挂不完了。然而手里的服务器全是linux环境的并不支持C#写的ASF，所以用mono f**k之。
-Ubuntu篇接下来介绍如何安装mono，以Ubuntu 1,"> 
+    <meta name="description" content="任务目标实现一个客户端通过给与的指定激活码，激活仅限当前机器使用具体软件的功能。客户端可能处于能连接互联网和无法连接互联网两种情况。同时均要实现在指定时间使权限过期的功能，激活码在使用时才开始计时。,"> 
     <meta name="author" content="EwdAger"> 
     <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -44,7 +43,7 @@ Ubuntu篇接下来介绍如何安装mono，以Ubuntu 1,">
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">linux环境下使用mono运行asf挂卡</h3>
+        <h3 class="subtitle">在线、离线激活鉴权实战</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -74,29 +73,29 @@ Ubuntu篇接下来介绍如何安装mono，以Ubuntu 1,">
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/Steam骚操作"><b>「
-                    </b>STEAM骚操作<b> 」</b></a>
+                <a href="/categories/小项目"><b>「
+                    </b>小项目<b> 」</b></a>
                 
-                六月 13, 2017
+                九月 05, 2020
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/posts/5e6f73c9/" title="linux环境下使用mono运行asf挂卡">linux环境下使用mono运行asf挂卡</a>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/cdf378fe/" title="在线、离线激活鉴权实战">在线、离线激活鉴权实战</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    2.1k
+                    4.4k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    2 mins.
+                    4 mins.
                 </span>
                 
                 
-                <span id="/posts/5e6f73c9/" class="leancloud_visitors" data-flag-title="linux环境下使用mono运行asf挂卡">
+                <span id="/posts/cdf378fe/" class="leancloud_visitors" data-flag-title="在线、离线激活鉴权实战">
                     <b class="iconfont icon-read"></b> <i>阅读次数</i>
                     <span class="leancloud-visitors-count">1000000</span>
                 </span>
@@ -105,7 +104,7 @@ Ubuntu篇接下来介绍如何安装mono，以Ubuntu 1,">
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Steam/">Steam</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/业务设计/">业务设计</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/小项目/">小项目</a></li></ul>
             
         </div>
     </div>
@@ -126,33 +125,153 @@ Ubuntu篇接下来介绍如何安装mono，以Ubuntu 1,">
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <p>杰瑞包大好评啊，但是带来的后果就是挂卡挂不完了。然而手里的服务器全是linux环境的并不支持C#写的ASF，所以用mono f**k之。</p>
-<h2 id="Ubuntu篇"><a href="#Ubuntu篇" class="headerlink" title="Ubuntu篇"></a>Ubuntu篇</h2><p>接下来介绍如何安装mono，以Ubuntu 14.04为例。</p>
-<p><strong>1. 运行下面代码授权注册repo源并更新软件列表：</strong></p>
-<pre><code>$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF  
-$ echo &quot;deb http://download.mono-project.com/repo/debian wheezy main&quot; | sudo tee /etc/apt/sources.list.d/mono-xamarin.list  
-$ sudo apt-get update  
-</code></pre><p><strong>2. 安装mono</strong></p>
-<pre><code>$ sudo apt-get install mono-complete  
-</code></pre><p><strong>3. 测试mono是否安装成功</strong></p>
-<pre><code>mono -V  //如果没有提示错误就可以啦
-</code></pre><p><strong>3. 运行asf</strong><br>首先通过ftp工具将配置好的asf传到服务器上。然后新建一个窗口<code>screen -S ASF</code>，最后进入asf的目录再运行asf就行啦~</p>
-<pre><code>cd /opt/ASF
-mono ASF.exe
-</code></pre><h2 id="CentOS篇"><a href="#CentOS篇" class="headerlink" title="CentOS篇"></a><a href="https://steamcn.com/t169180-1-1" target="_blank" rel="noopener">CentOS篇</a></h2><p>这里转一个教程，当做留档了。<br><strong>1. 添加yum源</strong></p>
-<pre><code>rpm --import &quot;http://keyserver.ubuntu.com/pks/lookup?op=get&amp;search=0x3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF&quot;    
-yum-config-manager --add-repo http://download.mono-project.com/repo/centos/
-</code></pre><p><strong>2. 有可能提示找不到<code>yum-config-manager</code>,这个是因为系统默认没有安装这个命令,这个命令在yum-utils 包里,可以通过命令<code>yum -y install yum-utils</code>安装。</strong></p>
-<p><strong>3. 安装mono</strong></p>
-<pre><code>yum -y install mono-complete
-</code></pre><p><strong>4. 以下参照上面的3步以后</strong></p>
-<p>PS：关于“最小化Screen”，因为开启了screen后就不能进行其他操作了，我们的服务器当然不只是为了挂卡而存在的，所以可以通过按住<code>Ctrl+A+D</code>“最小化”screen窗口。</p>
-<p>PPS：还有就是恢复的话，在终端里输入<code>screen -r ASF</code>就可以了</p>
-<p>PPPS：如果不想挂卡了，就输入以下命令杀掉进程。</p>
-<pre><code>screen -ls    #显示所有的screen窗口名字和进程号
-kill [进程号]
-</code></pre><p>附上成功图：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/5433252-df15fd3b1a6cd0a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ASF"></p>
+            <h1 id="任务目标"><a href="#任务目标" class="headerlink" title="任务目标"></a>任务目标</h1><p>实现一个客户端通过给与的指定激活码，激活仅限当前机器使用具体软件的功能。客户端可能处于<strong>能连接互联网</strong>和<strong>无法连接互联网</strong>两种情况。同时均要实现在指定时间使权限过期的功能，激活码在使用时才开始计时。</p>
+<h1 id="在线激活模式"><a href="#在线激活模式" class="headerlink" title="在线激活模式"></a>在线激活模式</h1><p>这个就非常简单了，使用最简单的哈希加盐就可以实现了，与正常 REST 接口的哈希加盐验证只有，验证服务器端需要预先存好设置的激活码这一步。</p>
+<p>激活码有效期就通过一个取巧的方法，将有效期的秒数转换成16进制，埋藏在序列号的指定段上。<br>在将当前时间和过期时间一起加盐，实现用户无法通过修改或锁定系统时间破解我们的系统。</p>
+<p>当然，激活后，也要每隔一段时间验证一下是否过期，并且同时更新验证的时间戳，防止用户修改或锁定系统时间。</p>
+<blockquote>
+<p>比较有风险的一点就是，用户可能会抓包服务端发到客户端的鉴权结果请求，然后伪造成功信息实现越过真实的鉴权结果，所以我们要设置一些比较特殊的字符串成功信息的字符串。或者可以实现类似银行电子狗，客户端-服务端均会随时间产生的相同动态加密校验码，与成功或失败信息加密后，再返回给客户端，保证中间过程即时被抓包，也无法破解。<strong>以下伪代码不考虑此过程</strong></p>
+</blockquote>
+<pre><code class="python"># 激活部分client伪代码
+
+def online_active():
+    # 前端传递激活码
+    serial_number = form.serial_number.data
+
+    # 获取本机硬件信息
+    device_info = get_device_info()
+
+    # 盐
+    secret = config.secret
+
+    # 记录激活码过期时间
+
+    expire_time = int(serial_number[6:], 16) * (60 * 60 * 24)
+    expire_timestamp = now_timestamp + expire_time
+
+    # 硬件信息加盐生成的指纹
+    signature = md5(device_info, expire_timestamp, now_timestamp, secret)
+
+    # 向激活服务器发起验证请求
+    if verify_license(serial_number, device_info, expire_timestamp, now_timestamp, signature):
+
+        # 写入数据库
+        insert_active()
+        return True
+    else:
+        return False
+
+</code></pre>
+<pre><code class="python"># 激活部分server伪代码
+
+def verify_license(serial_number, device_info, expire_timestamp, now_timestamp, signature):
+
+    # 验证是否存在对应的激活码
+    if serial_number in db:
+        # 与客户端一致，只要验证指纹是否一致就行了
+        if signature == md5(device_info, expire_timestamp, now_timestamp, secret):
+            return True
+
+    return False
+</code></pre>
+<pre><code class="python"># 客户端检测权限是否仍然有效
+def is_active():
+    # 验证激活设备是否改变，同时验证了激活时间是否被篡改
+
+    timestamp_or_false = is_active_equipment()
+
+    if not expire_timestamp_or_false:
+        return False
+
+    # 获取下面每次鉴权写入数据库的时间last_timestamp，防止用户篡改系统时间，躲避过期机制
+    expire_timestamp, last_timestamp = expire_timestamp_or_false
+
+    # 是否因为超过过期时间而过期
+    if now_time &gt; expire_timestamp:
+        return False
+
+    # now_time 为当前系统时间
+    # 防止用户锁定时间
+    if last_timestamp &gt;= now_time:
+        return False
+
+    # 更新数据库中的now_timestamp并重新生成指纹
+    now_timestamp = now_time
+    signature = md5(something)
+
+    # 写入数据库
+    insert_active()
+    return True
+
+
+
+# 客户端检测是否设备是否改变
+
+def is_active_equipment():
+    # 其实就是重复哈希加盐鉴权的过程，只不过是将验证客户端指纹、验证服务器指纹改为了，
+    # 客户端指纹、客户端数据库指纹鉴权了
+
+    db_signature, serial_number, expire_timestamp, now_timestamp = get_db_signature()
+
+    # 获取本机硬件信息
+    device_info = get_device_info()
+
+    # 盐
+    secret = config.secret
+
+    # 硬件信息加盐生成的指纹
+    signature = md5(device_info, expire_timestamp, now_timestamp, secret)
+
+    if signature == db_signature:
+        return expire_timestamp, now_timestamp
+    return False
+</code></pre>
+<h1 id="离线激活模式"><a href="#离线激活模式" class="headerlink" title="离线激活模式"></a>离线激活模式</h1><p>这里逻辑就比较恶心，但是还是类似上面在线激活的思想。只不过从<code>客户端-激活服务器</code>改为了<code>客户端-手机-激活服务器</code>。</p>
+<p><code>客户端-手机</code>这一部分通过扫描二维码，自动跳转网址，给激活服务器发起请求实现。</p>
+<p>具体流程（非常绕！）就是，在客户端输入<code>激活码</code>，客户端生成一个携带设备等校验信息的<code>二维码</code>和一个用于校验的<code>校验码</code>，返回给前端的只有<code>二维码</code>,用户扫描<code>二维码</code>向激活服务器发起校验，如果校验成功，则生成一个和客户端一样的<code>校验码</code>返回到用户手机上，用户将该<code>校验码</code>再次输到客户端里。客户端自己生成的<code>校验码</code>和用户输入的<code>校验码</code>一致，则激活成功。如果校验失败，那向用户手机直接发送失败信息。</p>
+<p>过期部分还是同在线激活方式相同，以下伪代码不做赘述。</p>
+<blockquote>
+<p>与在线激活方式遇到的<code>中间人攻击</code>类似，这种方式最好在<code>客户端-手机</code>、<code>手机-服务器</code>这两个过程中加密信息，但是这篇文章讨论的是两种激活模式的业务逻辑实现，不涉及具体实现。</p>
+</blockquote>
+<pre><code class="python"># 客户端输入激活码，使用请求地址和参数生成二维码
+
+def generate_qr_code():
+    # 前端传递激活码
+    serial_number = form.serial_number.data
+
+    # 获取本机硬件信息
+    device_info = get_device_info()
+
+    # 盐
+    secret = config.secret
+
+    # 记录激活码过期时间
+
+    expire_time = int(serial_number[6:], 16) * (60 * 60 * 24)
+    expire_timestamp = now_timestamp + expire_time
+
+    # 硬件信息加盐生成的指纹
+    signature = md5(device_info, expire_timestamp, now_timestamp, secret)
+
+    # 生成校验码
+    pin_code = someting_Encrypt()
+
+    # 激活服务器的激活接口
+    request_url = &quot;aaa.com/bbbb&quot;
+
+    return request_url, 上面的相关信息
+</code></pre>
+<pre><code class="python"># 用户手机向验证服务器发起请求，返回pin_code
+
+def offline_active():
+    # 鉴权，与在线激活同样
+    verify_license()
+
+    # 生成校验码
+    pin_code = someting_Encrypt()
+
+    return pin_code
+</code></pre>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -196,7 +315,7 @@ kill [进程号]
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu篇"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CentOS篇"><span class="toc-number">2.</span> <span class="toc-text">CentOS篇</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#任务目标"><span class="toc-number">1.</span> <span class="toc-text">任务目标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在线激活模式"><span class="toc-number">2.</span> <span class="toc-text">在线激活模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#离线激活模式"><span class="toc-number">3.</span> <span class="toc-text">离线激活模式</span></a></li></ol>
                 </div>
             </div>
             
