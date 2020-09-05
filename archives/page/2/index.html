@@ -236,13 +236,16 @@ Celery 是一个资金最少的项目，因此我们不支持 Microsoft Windows�
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/posts/ea5c4060/">Rancher2 &amp; K8S部署踩坑记录</a>
+                                        <a class="timeline-title" target="_self" href="/posts/65fb69b/">k8s中服务添加hosts及一键转换脚本</a>
                                         <p>
-                                            
-本安装教程基于CetnOS 7环境编写
-
-安装docker首先安装依赖并添加国内源$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
-$ yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-...
+                                            序项目管理k8s集群用的是rancher，可是rancher没有提供给deployment批量添加hosts的图形化界面，所以还是只能按照k8s官方的方法修改yaml文件。 
+示例使用 HostAliases 向 Pod /etc/hosts 文件添加条目
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostaliases-pod
+spec:
+  r...
                                         </p>
                                     </div>
                                 </li>
@@ -254,16 +257,13 @@ $ yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/posts/65fb69b/">k8s中服务添加hosts及一键转换脚本</a>
+                                        <a class="timeline-title" target="_self" href="/posts/ea5c4060/">Rancher2 &amp; K8S部署踩坑记录</a>
                                         <p>
-                                            序项目管理k8s集群用的是rancher，可是rancher没有提供给deployment批量添加hosts的图形化界面，所以还是只能按照k8s官方的方法修改yaml文件。 
-示例使用 HostAliases 向 Pod /etc/hosts 文件添加条目
-apiVersion: v1
-kind: Pod
-metadata:
-  name: hostaliases-pod
-spec:
-  r...
+                                            
+本安装教程基于CetnOS 7环境编写
+
+安装docker首先安装依赖并添加国内源$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+$ yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-...
                                         </p>
                                     </div>
                                 </li>

@@ -5,7 +5,7 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Tag: Python2 - Gvoidy</title>
+    <title>Tag: python2 - Gvoidy</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
@@ -126,26 +126,26 @@
             <a href="/categories/python学习心得&备忘"><b>「
                 </b>PYTHON学习心得&备忘<b> 」</b></a>
             
-            五月 02, 2018
+            六月 05, 2017
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/7ed6f334/" title="Python 蛋疼的编码问题" class="posttitle">Python 蛋疼的编码问题</a></h3>
+            <a href="/posts/cb0b0c45/" title="python2.7无法pip mysql-python的问题" class="posttitle">python2.7无法pip mysql-python的问题</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                4.5k
+                623
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                4 mins.
+                1 mins.
             </span>
             
             
-            <span id="/posts/7ed6f334/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/cb0b0c45/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <span class="leancloud-visitors-count">1000000</span>
             </span>
@@ -153,16 +153,16 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python2/">Python2</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/编码/">编码</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python2/">python2</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <p>Python 的编码问题早就困扰我太久了， 但一直没有看到比较通俗易懂的专门介绍 Python 编码问题的文章。 正好今天刷知乎看到了非常不错的文章， 这里稍微抛砖引玉归纳下。</p>
-<p>知识储备：</p>
-<ul>
-<li>ASCII...</li></ul>
+            <p>出现问题：</p>
+<pre><code>&gt; pip install MySQL-python
+
+_mysql.c(42) : fatal error C1083: Cannot open include file: &#39...</code></pre>
             
-            <span class="read-more"><a href="/posts/7ed6f334/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/cb0b0c45/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -374,6 +374,28 @@
       language = language.toLowerCase();
     }
     valine.init({
+      el: '#vcomments',
+      appId: 'ChQ4z1dCRpWqCOD43kU6cGmM-gzGzoHsz',
+      appKey: 'pFaAS3aumHDM572YbXkzc3fO',
+      notify: 'false',
+      verify: 'false',
+      avatar: 'retro',
+      placeholder: '留下你的评论~',
+      visitor: 'true',
+      path: path,
+      lang: language,
+    });
+  }
+
+  $(document).ready(function () {
+    initValine();
+  });
+</script>
+
+
+
+</html>
+valine.init({
       el: '#vcomments',
       appId: 'ChQ4z1dCRpWqCOD43kU6cGmM-gzGzoHsz',
       appKey: 'pFaAS3aumHDM572YbXkzc3fO',
