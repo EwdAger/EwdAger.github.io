@@ -91,7 +91,7 @@ class Add(op):
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    1.7k
+                    2.3k
                 </span>
                 
                 
@@ -167,28 +167,56 @@ if __name__ == &quot;__main__&quot;:
     print(cal.get_ans())
 </code></pre>
 <h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><p>单例模式，也叫单子模式，是一种常用的软件设计模式。在应用这个模式时，单例对象的类 “类 (计算机科学)”)必须保证只有一个实例存在。许多时候整个系统只需要拥有一个的全局对象，这样有利于我们协调系统整体的行为。</p>
-<pre><code class="python">class Singleton:
-    class __My_class:
-        def __init__(self, arg):
-            self.arg = arg
+<pre><code class="python"># 非线程安全
+class Singleton:
 
-        def show(self):
-            return (id(self), self.arg)
+    _buff = {}
 
-    _instance = None
-    def __init__(self, arg):
-        if not Singleton._instance:
-            Singleton._instance = Singleton.__My_class(arg)
-        else:
-            Singleton._instance.arg = arg
-    def __getattr__(self, attr):
-        return getattr(self._instance, attr)
+    def __init__(self, name):
+        self.name = self.name if hasattr(self, &#39;name&#39;) else name
+
+    def __new__(cls, *args, **kwargs):
+
+        if cls not in cls._buff:
+            instance = super().__new__(cls)
+            cls._buff[cls] = instance
+        return cls._buff[cls]
+
 
 if __name__ == &quot;__main__&quot;:
     s1 = Singleton(&quot;bar&quot;)
     s2 = Singleton(&quot;zoo&quot;)
-    print(s1.show())
-    print(s2.show())
+    print(s1.name)
+    print(s2.name)
+</code></pre>
+<pre><code class="python"># 线程安全
+from threading import Lock, Thread
+
+
+class Singleton:
+    _buff = {}
+    _lock = Lock()
+
+    def __init__(self, name):
+        self.name = self.name if hasattr(self, &#39;name&#39;) else name
+
+    def __new__(cls, *args, **kwargs):
+        with cls._lock:
+            if cls not in cls._buff:
+                instance = super().__new__(cls)
+                cls._buff[cls] = instance
+        return cls._buff[cls]
+
+
+def test_singleton(name):
+    print(Singleton(name).name)
+
+
+if __name__ == &quot;__main__&quot;:
+    process1 = Thread(target=test_singleton, args=(&quot;bar&quot;,))
+    process2 = Thread(target=test_singleton, args=(&quot;zoo&quot;,))
+    process1.start()
+    process2.start()
 </code></pre>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
