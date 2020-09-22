@@ -123,29 +123,29 @@
     <div id="post0" class="else">
         <p class="animated fadeInDown">
             
-            <a href="/categories/python学习心得&备忘"><b>「
-                </b>PYTHON学习心得&备忘<b> 」</b></a>
+            <a href="/categories/机器学习笔记"><b>「
+                </b>机器学习笔记<b> 」</b></a>
             
-            十月 11, 2019
+            十月 12, 2019
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/1a6c337e/" title="Python异常处理traceback和exc_info" class="posttitle">Python异常处理traceback和exc_info</a></h3>
+            <a href="/posts/ae704b86/" title="聚类算法之DBSCAN聚类" class="posttitle">聚类算法之DBSCAN聚类</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                2.6k
+                4.9k
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                2 mins.
+                4 mins.
             </span>
             
             
-            <span id="/posts/1a6c337e/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/ae704b86/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <span class="leancloud-visitors-count">1000000</span>
             </span>
@@ -153,19 +153,13 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/异常处理/">异常处理</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/机器学习/">机器学习</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/聚类算法/">聚类算法</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <p>开发过程中一般都会使用<code>traceback</code>将捕获到的异常打印出来。</p>
-<pre><code class="python">import traceback
-
-def fake_exception():
-    1 / 0
-
-def catch_exception():...</code></pre>
+            <p>DBSCAN （Density-Based Spatial Clustering of Applications with Noise） 是一种基于密度的聚类算法，基于密度的聚类寻找被低密度区域分离的...</p>
             
-            <span class="read-more"><a href="/posts/1a6c337e/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/ae704b86/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -186,6 +180,59 @@ def catch_exception():...</code></pre>
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/机器学习笔记">
+                  <b>「 </b>机器学习笔记<b> 」</b>
+                </a>
+            
+            十月 12, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/ae704b86/" title="聚类算法之DBSCAN聚类" class="posttitle">聚类算法之DBSCAN聚类</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        4.9k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        4 mins.
+                    </span>
+                
+                
+                    <span id="/posts/ae704b86/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <span class="leancloud-visitors-count">1000000</span>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/机器学习/">机器学习</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/聚类算法/">聚类算法</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>DBSCAN （Density-Based Spatial Clustering of Applications with Noise） 是一种基于密度的聚类算法，基于密度的聚类寻找被低密度区域分离的高密度区域。常用于异常值或者离群点检测。</p>
+<p>当某个点的密度达到算法设定的阈值，则这个点称为<strong>核心对象</strong>。（即r领域内点的数量小于minPts），其中领域的距离阈值为用户设定值。</p>
+<p>若某点p在q的r领域内，且q是核心点，则p-q<strong>直接密度可达</strong>。若有一个点的序列q0、q1、q2…qK，对任意的qi-qi+1是直接...</p>
+            
+            <span class="read-more"><a href="/posts/ae704b86/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -737,65 +784,6 @@ array([[1, 2, 3, 4],
        [5...</code></pre>
             
             <span class="read-more"><a href="/posts/ca37cdbd/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/知识储备">
-                  <b>「 </b>知识储备<b> 」</b>
-                </a>
-            
-            十一月 09, 2018
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/aa2472f4/" title="数据结构题目总结(C 语言描述)" class="posttitle">数据结构题目总结(C 语言描述)</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        24k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        22 mins.
-                    </span>
-                
-                
-                    <span id="/posts/aa2472f4/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <span class="leancloud-visitors-count">1000000</span>
-                    </span>
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <blockquote class="blockquote-center">~正文隐藏~</blockquote>
-
-<pre><code class="C">template&lt;class T&gt; void merge(T* a, int n1, int n2){
-    //将数组 a 中下标分别从 0...n1-1 和 n1...n1+n2-1 的两个有序序列归并为一个有序序列
-
-    T* temp = new T(n1 + n2);
-    int i = 0, j1 = 0, j2 = 0;
-    while (j1&lt;n1 &amp; j2&lt;n2)
-        temp[i++] = (a[j1] &lt;= a[n1+j2] ? a[j1++] ...</code></pre>
-            
-            <span class="read-more"><a href="/posts/aa2472f4/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>

@@ -126,26 +126,26 @@
             <a href="/categories/机器学习笔记"><b>「
                 </b>机器学习笔记<b> 」</b></a>
             
-            十月 09, 2019
+            十月 10, 2019
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/dea808f4/" title="聚类算法之K-Means(K均值)聚类" class="posttitle">聚类算法之K-Means(K均值)聚类</a></h3>
+            <a href="/posts/6b56ef63/" title="Python读取Excel文件sheet名性能优化" class="posttitle">Python读取Excel文件sheet名性能优化</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                4k
+                2.6k
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                4 mins.
+                2 mins.
             </span>
             
             
-            <span id="/posts/dea808f4/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/6b56ef63/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <span class="leancloud-visitors-count">1000000</span>
             </span>
@@ -153,14 +153,14 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/机器学习/">机器学习</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/聚类算法/">聚类算法</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/性能优化/">性能优化</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <p><strong>分类</strong>： 类别是已知的，通过对已知分类的数据进行训练和学习，找到不同类的特征再对未分类的数据进行分类，属于监督学习。</p>
-<p><strong>聚类</strong>： 事先不知道数据会分为几类，通过聚类分析将数据聚合成几个群体。聚类不需要对数据...</p>
+            <p>直接使用<code>pandas</code>读取整个Excel文件，再从中取列名。这种场景对于小的Excel文件还适用，但数据量上升到10M+时，取个<code>sheet name</code>要<code>26s</code>之久。几乎无法忍受。</p>
+<pre><code class="python">data = pandas...</code></pre>
             
-            <span class="read-more"><a href="/posts/dea808f4/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/6b56ef63/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -181,6 +181,62 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/机器学习笔记">
+                  <b>「 </b>机器学习笔记<b> 」</b>
+                </a>
+            
+            十月 10, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/6b56ef63/" title="Python读取Excel文件sheet名性能优化" class="posttitle">Python读取Excel文件sheet名性能优化</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        2.6k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        2 mins.
+                    </span>
+                
+                
+                    <span id="/posts/6b56ef63/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <span class="leancloud-visitors-count">1000000</span>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/性能优化/">性能优化</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>直接使用<code>pandas</code>读取整个Excel文件，再从中取列名。这种场景对于小的Excel文件还适用，但数据量上升到10M+时，取个<code>sheet name</code>要<code>26s</code>之久。几乎无法忍受。</p>
+<pre><code class="python">data = pandas.ExcelFile(file_url)
+names = data.sheet_names
+</code></pre>
+<p>查阅资料可知<code>.xlsx</code>文件是一个压缩格式的文件，可以直接通过<code>zipfile</code>读到<code>sheet name</code>等相关信息。所以写如下函数直接取<code>sheet name</code></p>
+<pre><code class="python">def get_sheet_details(file_path...</code></pre>
+            
+            <span class="read-more"><a href="/posts/6b56ef63/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -739,67 +795,6 @@ class Undef(op):
 class Factory(op)...</code></pre>
             
             <span class="read-more"><a href="/posts/7798fba3/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/python学习心得&备忘">
-                  <b>「 </b>PYTHON学习心得&备忘<b> 」</b>
-                </a>
-            
-            九月 18, 2018
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/995b78a8/" title="慎用 Python list 乘法" class="posttitle">慎用 Python list 乘法</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        2.2k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        2 mins.
-                    </span>
-                
-                
-                    <span id="/posts/995b78a8/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <span class="leancloud-visitors-count">1000000</span>
-                    </span>
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p>今天刷 LeetCode 碰到一个水题<a href="https://leetcode-cn.com/problems/transpose-matrix/description/" target="_blank" rel="noopener">转置矩阵</a>, 这不就是先生成个空的倒置矩阵再填结果嘛，没多想就用 list 乘法上手就写。</p>
-<pre><code class="python">class Solution:
-    def transpose(self, A):
-        &quot;&quot;&quot;
-        :type A: List[List[int]]
-        :rtype: List[List[int]]
-        &quot;&quot;&quot;
-        x, y = len(A), len(A[0])
-
-        buff =[[0] * x] * y
-        for i in range...</code></pre>
-            
-            <span class="read-more"><a href="/posts/995b78a8/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>

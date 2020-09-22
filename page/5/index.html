@@ -123,29 +123,29 @@
     <div id="post0" class="else">
         <p class="animated fadeInDown">
             
-            <a href="/categories/python学习心得&备忘"><b>「
-                </b>PYTHON学习心得&备忘<b> 」</b></a>
+            <a href="/categories/LeetCode刷题总结"><b>「
+                </b>LEETCODE刷题总结<b> 」</b></a>
             
-            六月 15, 2018
+            七月 05, 2018
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/725a38d2/" title="Django 部署(Apache)" class="posttitle">Django 部署(Apache)</a></h3>
+            <a href="/posts/bba523e0/" title="Python 元组解包的几种方法" class="posttitle">Python 元组解包的几种方法</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                1.7k
+                1.2k
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                2 mins.
+                1 mins.
             </span>
             
             
-            <span id="/posts/725a38d2/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/bba523e0/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <span class="leancloud-visitors-count">1000000</span>
             </span>
@@ -153,15 +153,19 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Django/">Django</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Web框架/">Web框架</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <pre><code class="bash">sudo apt-get install python2.7.12     // 安装对应版本python
-sudo apt-get install apache2          // 安装apache
-sudo apt-...</code></pre>
+            <p>这其实都不算解包了吧。。</p>
+<pre><code class="python">&gt;&gt;&gt; a = (1,2,3)
+&gt;&gt;&gt; a[0]
+1
+</code></pre>
+<pre><code class="python">&gt;&gt;&gt; a = (1,2,3,)
+&gt;&gt;&gt; b,...</code></pre>
             
-            <span class="read-more"><a href="/posts/725a38d2/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/bba523e0/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -182,6 +186,68 @@ sudo apt-...</code></pre>
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/LeetCode刷题总结">
+                  <b>「 </b>LEETCODE刷题总结<b> 」</b>
+                </a>
+            
+            七月 05, 2018
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/bba523e0/" title="Python 元组解包的几种方法" class="posttitle">Python 元组解包的几种方法</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        1.2k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        1 mins.
+                    </span>
+                
+                
+                    <span id="/posts/bba523e0/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <span class="leancloud-visitors-count">1000000</span>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>这其实都不算解包了吧。。</p>
+<pre><code class="python">&gt;&gt;&gt; a = (1,2,3)
+&gt;&gt;&gt; a[0]
+1
+</code></pre>
+<pre><code class="python">&gt;&gt;&gt; a = (1,2,3,)
+&gt;&gt;&gt; b, c, d = a
+</code></pre>
+<p>要将一个<code>tuple</code>中的所有值作为参数，如果直接用上面两种方法就不太 pythonic了，可以用以下方法解包</p>
+<pre><code class="python">...
+&gt;&gt;&gt; brith = (2018, 7, 5,)
+&gt;&gt;&gt; datetime.date(brith)     # 当然这里直接传入元组...</code></pre>
+            
+            <span class="read-more"><a href="/posts/bba523e0/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -702,69 +768,6 @@ sudo apt-get install pip              // 安装python包管理
 <p>编程还是离不开JB全家桶的~这步没有省略主要是因为jb全家桶更新3.4后大量激活方法和激活服务器集体失效。这里使用了<a href="http://blog.lanyus.com/" target="_blank" rel="noopener">ilanyu</a>大佬提供的<a href="https://github.com/ilanyu/ReverseProxy" target="_blank" rel="noopener">本地反向代理激活方法</a>，或者自...</p>
             
             <span class="read-more"><a href="/posts/19653b91/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/PHP学习心得&备忘">
-                  <b>「 </b>PHP学习心得&备忘<b> 」</b>
-                </a>
-            
-            二月 13, 2018
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/ea2f965e/" title="PHP学习小知识点归纳" class="posttitle">PHP学习小知识点归纳</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        3.1k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        3 mins.
-                    </span>
-                
-                
-                    <span id="/posts/ea2f965e/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <span class="leancloud-visitors-count">1000000</span>
-                    </span>
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/PHP/">PHP</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p><strong> Heredoc结构形式长字符串 </strong><br>首先使用定界符表示字符串（&lt;&lt;&lt;），接着在“&lt;&lt;&lt;“之后提供一个标识符GOD，然后是字符串，最后以提供的这个标识符结束字符串。</p>
-<pre><code class="php">&lt;?php 
-$string1 = &lt;&lt;&lt;GOD
-我有一只小毛驴，我从来也不骑。
-有一天我心血来潮，骑着去赶集。
-我手里拿着小皮鞭，我心里正得意。
-不知怎么哗啦啦啦啦，我摔了一身泥.
-GOD;
-
-echo $string1;
-?&gt;
-</code></pre>
-<p><strong> 单双引号区别 </strong><br>单引号串和双引号串在PHP...</p>
-            
-            <span class="read-more"><a href="/posts/ea2f965e/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
