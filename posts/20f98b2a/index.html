@@ -88,13 +88,13 @@
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    5.7k
+                    6.5k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    5 mins.
+                    6 mins.
                 </span>
                 
                 
@@ -240,7 +240,7 @@ class LRUCache:
 <h2 id="使用functools中的lru-cache"><a href="#使用functools中的lru-cache" class="headerlink" title="使用functools中的lru_cache"></a>使用<code>functools</code>中的<code>lru_cache</code></h2><pre><code class="python">from flask import jsonify
 from functools import lru_cache
 ​
-@app.route(“/user/&lt;uid&gt;“)
+@app.route(&quot;/user/&lt;uid&gt;&quot;)
 @lru_cache()
 def get_user(uid):
 ​
@@ -249,6 +249,29 @@ def get_user(uid):
     except KeyError as e:
         return jsonify({&quot;Status&quot;: &quot;Error&quot;, &quot;message&quot;: str(e)})
 
+</code></pre>
+<h2 id="使用-OrderedDict-实现"><a href="#使用-OrderedDict-实现" class="headerlink" title="使用 OrderedDict 实现"></a>使用 OrderedDict 实现</h2><pre><code class="python">from collections import OrderedDict
+
+
+class LRU(OrderedDict):
+
+    def __init__(self, max_size=100, *args, **kwarg):
+        self.max_size = max_size
+        super(LRU, self).__init__(*args, **kwarg)
+
+    def __getitem__(self, key):
+        value = super().__getitem__(key)
+        self.move_to_end(key)
+
+        return value
+
+    def __setitem__(self, key, value):
+        if key in self:
+            self.move_to_end(key)
+        super().__setitem__(key, value)
+        if len(self) &gt; self.max_size:
+            oldest = next(iter(self))
+            del self[oldest]
 </code></pre>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
@@ -293,7 +316,7 @@ def get_user(uid):
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#缓存操作"><span class="toc-number">1.</span> <span class="toc-text">缓存操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#读缓存"><span class="toc-number">1.1.</span> <span class="toc-text">读缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写缓存"><span class="toc-number">1.2.</span> <span class="toc-text">写缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-Through"><span class="toc-number">1.2.1.</span> <span class="toc-text">Write Through</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-Back"><span class="toc-number">1.2.2.</span> <span class="toc-text">Write Back</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-Around"><span class="toc-number">1.2.3.</span> <span class="toc-text">Write Around</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#缓存回收策略"><span class="toc-number">2.</span> <span class="toc-text">缓存回收策略</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LRU-最近最少使用"><span class="toc-number">2.1.</span> <span class="toc-text">LRU 最近最少使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LFU-最少使用"><span class="toc-number">2.2.</span> <span class="toc-text">LFU 最少使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MRU-最近使用"><span class="toc-number">2.3.</span> <span class="toc-text">MRU 最近使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FIFO-先进先出"><span class="toc-number">2.4.</span> <span class="toc-text">FIFO 先进先出</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LRU的实现"><span class="toc-number">3.</span> <span class="toc-text">LRU的实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LRU在python中的实现"><span class="toc-number">4.</span> <span class="toc-text">LRU在python中的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#手动造轮子法"><span class="toc-number">4.1.</span> <span class="toc-text">手动造轮子法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用functools中的lru-cache"><span class="toc-number">4.2.</span> <span class="toc-text">使用functools中的lru_cache</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#缓存操作"><span class="toc-number">1.</span> <span class="toc-text">缓存操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#读缓存"><span class="toc-number">1.1.</span> <span class="toc-text">读缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写缓存"><span class="toc-number">1.2.</span> <span class="toc-text">写缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-Through"><span class="toc-number">1.2.1.</span> <span class="toc-text">Write Through</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-Back"><span class="toc-number">1.2.2.</span> <span class="toc-text">Write Back</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-Around"><span class="toc-number">1.2.3.</span> <span class="toc-text">Write Around</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#缓存回收策略"><span class="toc-number">2.</span> <span class="toc-text">缓存回收策略</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LRU-最近最少使用"><span class="toc-number">2.1.</span> <span class="toc-text">LRU 最近最少使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LFU-最少使用"><span class="toc-number">2.2.</span> <span class="toc-text">LFU 最少使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MRU-最近使用"><span class="toc-number">2.3.</span> <span class="toc-text">MRU 最近使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FIFO-先进先出"><span class="toc-number">2.4.</span> <span class="toc-text">FIFO 先进先出</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LRU的实现"><span class="toc-number">3.</span> <span class="toc-text">LRU的实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LRU在python中的实现"><span class="toc-number">4.</span> <span class="toc-text">LRU在python中的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#手动造轮子法"><span class="toc-number">4.1.</span> <span class="toc-text">手动造轮子法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用functools中的lru-cache"><span class="toc-number">4.2.</span> <span class="toc-text">使用functools中的lru_cache</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-OrderedDict-实现"><span class="toc-number">4.3.</span> <span class="toc-text">使用 OrderedDict 实现</span></a></li></ol></li></ol>
                 </div>
             </div>
             
