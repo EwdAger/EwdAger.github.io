@@ -116,7 +116,7 @@
             animation-duration: 2.8s;
             background-image:
                 radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.56), #100e17),
-                url(/img/cover.jpg);">
+                url(https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB1.jpg);">
         </div>
     </div>
     
@@ -126,26 +126,26 @@
             <a href="/categories/机器学习笔记"><b>「
                 </b>机器学习笔记<b> 」</b></a>
             
-            十月 12, 2019
+            十月 28, 2019
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/ae704b86/" title="聚类算法之DBSCAN聚类" class="posttitle">聚类算法之DBSCAN聚类</a></h3>
+            <a href="/posts/aedf7706/" title="聚类算法之层次聚类" class="posttitle">聚类算法之层次聚类</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                4.9k
+                2.9k
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                4 mins.
+                3 mins.
             </span>
             
             
-            <span id="/posts/ae704b86/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/aedf7706/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <span class="leancloud-visitors-count">1000000</span>
             </span>
@@ -157,9 +157,11 @@
         
         <div class="md-content animated fadeIn">
             
-            <p>DBSCAN （Density-Based Spatial Clustering of Applications with Noise） 是一种基于密度的聚类算法，基于密度的聚类寻找被低密度区域分离的...</p>
+            <p></p>
+<p>层次聚类(Hierarchical Clustering)是聚类算法的一种，通过计算不同类别的相似度类创建一个有层次的嵌套的树。</p>
+<p>层次聚类分为<strong>自底向上</strong>和<strong>自顶向下</strong>两种，这里仅采用<code>scikit-learn...</code></p>
             
-            <span class="read-more"><a href="/posts/ae704b86/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/aedf7706/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -180,6 +182,71 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB1.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/机器学习笔记">
+                  <b>「 </b>机器学习笔记<b> 」</b>
+                </a>
+            
+            十月 28, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/aedf7706/" title="聚类算法之层次聚类" class="posttitle">聚类算法之层次聚类</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        2.9k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        3 mins.
+                    </span>
+                
+                
+                    <span id="/posts/aedf7706/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <span class="leancloud-visitors-count">1000000</span>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/机器学习/">机器学习</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/聚类算法/">聚类算法</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p></p>
+<p>层次聚类(Hierarchical Clustering)是聚类算法的一种，通过计算不同类别的相似度类创建一个有层次的嵌套的树。</p>
+<p>层次聚类分为<strong>自底向上</strong>和<strong>自顶向下</strong>两种，这里仅采用<code>scikit-learn</code>中自底向上层次聚类法。</p>
+<ol>
+<li>将数据集中每一个样本都标记为不同类</li>
+<li>计算找出其中距离最近的2个类别，合并为一类</li>
+<li>依次合并直到最后仅剩下一个列表，即建立起一颗完整的层次树</li>
+</ol>
+<p>以下为看图说话~ 感谢 <a href="https://www.laugh12321.cn/" target="_blank" rel="noopener">Laugh’s blog</a>借用下说明图</p>
+<p></p>
+<p>把所有数据全部分为不同组</p>
+<p></p>
+<p>将相邻最近的两组归为同一组</p>
+<p></p>
+<p>重复第二步...</p>
+            
+            <span class="read-more"><a href="/posts/aedf7706/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -718,72 +785,6 @@ array([[-2.09280349e-01, -2.08776777e+00,  1.18959772e+00,
        [ 9.67780972e-01, -1.00148828e+00, -1.83185363e...</code></pre>
             
             <span class="read-more"><a href="/posts/87847f8/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/机器学习笔记">
-                  <b>「 </b>机器学习笔记<b> 」</b>
-                </a>
-            
-            八月 22, 2019
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/ca37cdbd/" title="Numpy 笔记-基础篇" class="posttitle">Numpy 笔记-基础篇</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        12k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        11 mins.
-                    </span>
-                
-                
-                    <span id="/posts/ca37cdbd/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <span class="leancloud-visitors-count">1000000</span>
-                    </span>
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Numpy/">Numpy</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据分析/">数据分析</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p><code>array</code>函数可接受一切序列类型对象</p>
-<pre><code class="python">In [2]: data1 = [6.1, 5, 4, 3, 1]
-
-In [3]: arr1 = np.array(data1)
-
-In [4]: arr1
-Out[4]: array([6.1, 5, 4, 3, 1])
-
-In [5]: data2 = [[1, 2, 3, 4], [5, 6, 7, 8]]
-
-In [6]: arr2 = np.array(data2)
-
-In [7]: arr2
-Out[7]:
-array([[1, 2, 3, 4],
-       [5...</code></pre>
-            
-            <span class="read-more"><a href="/posts/ca37cdbd/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>

@@ -126,26 +126,26 @@
             <a href="/categories/知识储备"><b>「
                 </b>知识储备<b> 」</b></a>
             
-            八月 31, 2020
+            九月 29, 2020
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/65161822/" title="Redis 主从复制 哨兵模式实战" class="posttitle">Redis 主从复制 哨兵模式实战</a></h3>
+            <a href="/posts/c6f5fe28/" title="Python 中的上下文管理" class="posttitle">Python 中的上下文管理</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                3.8k
+                6k
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                3 mins.
+                5 mins.
             </span>
             
             
-            <span id="/posts/65161822/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/c6f5fe28/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <span class="leancloud-visitors-count">1000000</span>
             </span>
@@ -153,14 +153,13 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/redis/">redis</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/高可用/">高可用</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <p>项目中因为并发不是很高一直偷懒用的单节点 Redis ，但是有很多大 key 写入的场景，这样会影响读性能，于是准备做主从复制，顺便做一下哨兵模式。</p>
-<p>这里很简单，只需要配置<code>slaveof &lt;masterip...</code></p>
+            <p>当我们执行语句块前需要一些准备动作，在执行完成之后又需要执行一些收尾动作。比如：文件读写后需要关闭，数据库读写完毕后需要关闭连接，资源加锁解锁等情况。对于这种情况 python 提供了上下文管理的概念...</p>
             
-            <span class="read-more"><a href="/posts/65161822/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/c6f5fe28/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -181,6 +180,62 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/知识储备">
+                  <b>「 </b>知识储备<b> 」</b>
+                </a>
+            
+            八月 31, 2020
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/65161822/" title="Redis 主从复制 哨兵模式实战" class="posttitle">Redis 主从复制 哨兵模式实战</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        3.8k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        3 mins.
+                    </span>
+                
+                
+                    <span id="/posts/65161822/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <span class="leancloud-visitors-count">1000000</span>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/redis/">redis</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/高可用/">高可用</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>项目中因为并发不是很高一直偷懒用的单节点 Redis ，但是有很多大 key 写入的场景，这样会影响读性能，于是准备做主从复制，顺便做一下哨兵模式。</p>
+<p>这里很简单，只需要配置<code>slaveof &lt;masterip&gt; &lt;masterport&gt;</code>参数即可实现。</p>
+<blockquote>
+<p>注： Redis 5.0 版本后建议使用<code>replicaof</code>代替<code>slaveof</code>。 因为奇妙的<code>政治正确</code>原因，迫使作者修改了配置名，虽然<code>slaveof</code>仍能使用，但是只是暂时的兼容方案。</p>
+</blockquote>
+<p>修改后重启 Redis 查看配置显示, 表...</p>
+            
+            <span class="read-more"><a href="/posts/65161822/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:

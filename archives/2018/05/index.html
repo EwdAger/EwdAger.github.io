@@ -46,7 +46,7 @@
                 <div class="content animated fadeIn">
                     <div class="set">
                         <h1 style="text-align: center">文章</h1>
-                        <p style="text-align: center">「 70 」</p>
+                        <p style="text-align: center">「 71 」</p>
                         <ul class="timeline timeline-centered">
                             
                             
@@ -58,6 +58,22 @@
                                         <h2 class="timeline-title">九月 2020</h2>
                                     </div>
                                 </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">九月 29, 2020</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/c6f5fe28/">Python 中的上下文管理</a>
+                                        <p>
+                                            0x00当我们执行语句块前需要一些准备动作，在执行完成之后又需要执行一些收尾动作。比如：文件读写后需要关闭，数据库读写完毕后需要关闭连接，资源加锁解锁等情况。对于这种情况 python 提供了上下文管理的概念，可以通过上下文管理器处理代码块执行前的准备动作，以及执行后的收尾动作。
+使用 with 语句先来看看不使用上下文管理器的情况
+f = open(&quot;log.txt&quot;,...
+                                        </p>
+                                    </div>
+                                </li>
+                            
                                 
                                 <li class="timeline-item">
                                     <div class="timeline-info">
@@ -253,16 +269,13 @@ Celery 是一个资金最少的项目，因此我们不支持 Microsoft Windows�
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/posts/65fb69b/">k8s中服务添加hosts及一键转换脚本</a>
+                                        <a class="timeline-title" target="_self" href="/posts/ea5c4060/">Rancher2 &amp; K8S部署踩坑记录</a>
                                         <p>
-                                            序项目管理k8s集群用的是rancher，可是rancher没有提供给deployment批量添加hosts的图形化界面，所以还是只能按照k8s官方的方法修改yaml文件。 
-示例使用 HostAliases 向 Pod /etc/hosts 文件添加条目
-apiVersion: v1
-kind: Pod
-metadata:
-  name: hostaliases-pod
-spec:
-  r...
+                                            
+本安装教程基于CetnOS 7环境编写
+
+安装docker首先安装依赖并添加国内源$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+$ yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-...
                                         </p>
                                     </div>
                                 </li>
@@ -274,13 +287,16 @@ spec:
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/posts/ea5c4060/">Rancher2 &amp; K8S部署踩坑记录</a>
+                                        <a class="timeline-title" target="_self" href="/posts/65fb69b/">k8s中服务添加hosts及一键转换脚本</a>
                                         <p>
-                                            
-本安装教程基于CetnOS 7环境编写
-
-安装docker首先安装依赖并添加国内源$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
-$ yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-...
+                                            序项目管理k8s集群用的是rancher，可是rancher没有提供给deployment批量添加hosts的图形化界面，所以还是只能按照k8s官方的方法修改yaml文件。 
+示例使用 HostAliases 向 Pod /etc/hosts 文件添加条目
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostaliases-pod
+spec:
+  r...
                                         </p>
                                     </div>
                                 </li>
