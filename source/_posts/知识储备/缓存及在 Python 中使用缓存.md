@@ -164,7 +164,7 @@ class LRUCache:
 from flask import jsonify
 from functools import lru_cache
 ​
-@app.route(“/user/<uid>“)
+@app.route("/user/<uid>")
 @lru_cache()
 def get_user(uid):
 ​
@@ -173,4 +173,31 @@ def get_user(uid):
     except KeyError as e:
         return jsonify({"Status": "Error", "message": str(e)})
 
+```
+
+## 使用 OrderedDict 实现
+
+```python
+from collections import OrderedDict
+
+
+class LRU(OrderedDict):
+
+    def __init__(self, max_size=100, *args, **kwarg):
+        self.max_size = max_size
+        super(LRU, self).__init__(*args, **kwarg)
+
+    def __getitem__(self, key):
+        value = super().__getitem__(key)
+        self.move_to_end(key)
+
+        return value
+
+    def __setitem__(self, key, value):
+        if key in self:
+            self.move_to_end(key)
+        super().__setitem__(key, value)
+        if len(self) > self.max_size:
+            oldest = next(iter(self))
+            del self[oldest]
 ```

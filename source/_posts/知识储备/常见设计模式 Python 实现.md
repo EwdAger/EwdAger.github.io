@@ -53,26 +53,56 @@ if __name__ == "__main__":
 单例模式，也叫单子模式，是一种常用的软件设计模式。在应用这个模式时，单例对象的类 "类 (计算机科学)")必须保证只有一个实例存在。许多时候整个系统只需要拥有一个的全局对象，这样有利于我们协调系统整体的行为。
 
 ```python
+# 非线程安全
 class Singleton:
-	class __My_class:
-		def __init__(self, arg):
-			self.arg = arg
 
-		def show(self):
-			return (id(self), self.arg)
+    _buff = {}
 
-	_instance = None
-	def __init__(self, arg):
-		if not Singleton._instance:
-			Singleton._instance = Singleton.__My_class(arg)
-		else:
-			Singleton._instance.arg = arg
-	def __getattr__(self, attr):
-		return getattr(self._instance, attr)
+    def __init__(self, name):
+        self.name = self.name if hasattr(self, 'name') else name
+
+    def __new__(cls, *args, **kwargs):
+
+        if cls not in cls._buff:
+            instance = super().__new__(cls)
+            cls._buff[cls] = instance
+        return cls._buff[cls]
+
 
 if __name__ == "__main__":
 	s1 = Singleton("bar")
 	s2 = Singleton("zoo")
-	print(s1.show())
-	print(s2.show())
+	print(s1.name)
+	print(s2.name)
+```
+
+```python
+# 线程安全
+from threading import Lock, Thread
+
+
+class Singleton:
+    _buff = {}
+    _lock = Lock()
+
+    def __init__(self, name):
+        self.name = self.name if hasattr(self, 'name') else name
+
+    def __new__(cls, *args, **kwargs):
+        with cls._lock:
+            if cls not in cls._buff:
+                instance = super().__new__(cls)
+                cls._buff[cls] = instance
+        return cls._buff[cls]
+
+
+def test_singleton(name):
+    print(Singleton(name).name)
+
+
+if __name__ == "__main__":
+    process1 = Thread(target=test_singleton, args=("bar",))
+    process2 = Thread(target=test_singleton, args=("zoo",))
+    process1.start()
+    process2.start()
 ```
