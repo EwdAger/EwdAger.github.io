@@ -1,0 +1,1842 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Archive: 2020/10</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
+    
+    <meta name="author" content="EwdAger"> 
+    <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+</html>
+
+<body class="loading">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Gvoidy</span>
+    <div id="loader"></div>
+    <div id="single" class="page">
+    <div id="top">
+        <a class="iconfont icon-left image-icon" href="javascript:history.back()"></a>
+    </div>
+    <div class="dark-obsidian section">
+        <div class="article animated fadeIn">
+            <div class="main">
+                <div class="content animated fadeIn">
+                    <div class="set">
+                        <h1 style="text-align: center">文章</h1>
+                        <p style="text-align: center">「 72 」</p>
+                        <ul class="timeline timeline-centered">
+                            
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">十月 2020</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">十月 11, 2020</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/304b0279/">解决群晖使用百度云docker镜像提示登陆过期的问题</a>
+                                        <p>
+                                            0x00群晖中使用的百度套件是基于VNC + Linux版百度云打包的docker镜像实现的，但是作者因为稳定性原因通过修改检测更新的hosts方法将百度云版本锁定在3.0.1.2版本。可是这在部分机器上不生效，那么我们反之道而行，自己更新容器里的百度云版本。
+解决方案
+去百度云官网下载.deb版百度云: 下载地址
+
+将下好的镜像放到群晖已挂载的baidudownload文件夹里
+
+进入容器...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">九月 2020</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">九月 29, 2020</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/c6f5fe28/">Python 中的上下文管理</a>
+                                        <p>
+                                            0x00当我们执行语句块前需要一些准备动作，在执行完成之后又需要执行一些收尾动作。比如：文件读写后需要关闭，数据库读写完毕后需要关闭连接，资源加锁解锁等情况。对于这种情况 python 提供了上下文管理的概念，可以通过上下文管理器处理代码块执行前的准备动作，以及执行后的收尾动作。
+使用 with 语句先来看看不使用上下文管理器的情况
+f = open(&quot;log.txt&quot;,...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">九月 22, 2020</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/1b5a6244/">Spark vs Dask Python生态下的计算引擎</a>
+                                        <p>
+                                            
+本文基于Gurpreet Singh大佬在 Spark+AI SUMMIT 2020 的公开课编写
+
+0x00对于 Python 环境下开发的数据科学团队，Dask 为分布式分析指出了非常明确的道路，但是事实上大家都选择了 Spark 来达成相同的目的。Dask 是一个纯 Python 框架，它允许在本地或集群上运行相同的 Pandas 或 Numpy 代码。而 Spark 即时使用了 A...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">九月 05, 2020</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/cdf378fe/">在线、离线激活鉴权实战</a>
+                                        <p>
+                                            任务目标实现一个客户端通过给与的指定激活码，激活仅限当前机器使用具体软件的功能。客户端可能处于能连接互联网和无法连接互联网两种情况。同时均要实现在指定时间使权限过期的功能，激活码在使用时才开始计时。
+在线激活模式这个就非常简单了，使用最简单的哈希加盐就可以实现了，与正常 REST 接口的哈希加盐验证只有，验证服务器端需要预先存好设置的激活码这一步。
+激活码有效期就通过一个取巧的方法，将有效期...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">八月 2020</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">八月 31, 2020</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/65161822/">Redis 主从复制 哨兵模式实战</a>
+                                        <p>
+                                            0x00项目中因为并发不是很高一直偷懒用的单节点 Redis ，但是有很多大 key 写入的场景，这样会影响读性能，于是准备做主从复制，顺便做一下哨兵模式。
+Redis 主从复制配置这里很简单，只需要配置slaveof &lt;masterip&gt; &lt;masterport&gt;参数即可实现。
+
+注： Redis 5.0 版本后建议使用replicaof代替slaveof。 因为奇...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">八月 28, 2020</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/fd2367bd/">二叉树的前中后序遍历</a>
+                                        <p>
+                                            二叉树结构class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
+递归法二叉树的前序遍历class Solution:
+    def preorderTraversal(self, root: TreeNode) -...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">八月 06, 2020</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/77c36b93/">Rancher 高可用部署</a>
+                                        <p>
+                                            0x00
+其实官网已经有了无坑且完备的高可用部署方案 官方部署方案链接，但是太过翔实，这里只是记录一下自己的部署方案 
+
+说明本教程是基于k3s安装Rancher Server，从Rancher V2.4开始支持在K3s集群安装，K3s比RKE更新，易于使用且更轻量，全部组件都打包在了一个二进制文件里。
+前置条件mysql已安装，配置账户及访问权限创建可读写rancher database的...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">八月 05, 2020</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/c57a716a/">Helm 编排教程</a>
+                                        <p>
+                                            Helm简介我们知道 Kubernetes 是一个分布式的容器集群管理系统，它把集群中的管理资源抽象化成一个个 API 对象，并且推荐使用声明式的方式创建，修改，删除这些对象，每个 API 对象都通过一个 yaml 格式或者 json 格式的文本来声明。这带来的一个问题就是这些 API 对象声明文本的管理成本，每当我需要创建一个应用，都需要去编写一堆这样的声明文件。
+Helm 就是用来管理这...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">七月 2020</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">七月 28, 2020</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/d227d93a/">Celery 4 初体验及踩坑</a>
+                                        <p>
+                                            序Celery是基于分布式消息传递的开源异步任务队列或作业队列。虽然它支持调度，但其重点是实时操作。现在4版本已经步入稳定，而国内互联网的几乎都是3版本的教程。所以这里记录下4版本下的踩坑及外文解决方案的翻译记录。
+win环境运行celery 4 worker
+Celery 是一个资金最少的项目，因此我们不支持 Microsoft Windows。请不要提出与该平台相关的任何问题。
+
+官方在...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">七月 17, 2020</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/20f98b2a/">缓存及在 Python 中使用缓存</a>
+                                        <p>
+                                            
+本文大致上是基于 caching-in-python 这篇文章的翻译
+
+缓存操作缓存操作主要有两种类型。缓存如浏览器缓存，服务器缓存，代理缓存，硬件缓存工作原理的读写缓存。当处理缓存时，我们总是有大量的内存需要花费大量的时间来读写数据库、硬盘。 缓存则能帮我们加快这些任务。
+读缓存每次客户端向存储请求数据时，请求都会先去访问与存储相关联的缓存。
+
+如果请求的数据在缓存上可用，那么他就是一个...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">六月 2020</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">六月 28, 2020</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/5cb696ed/">ssdb、minio性能测试</a>
+                                        <p>
+                                            起项目上需要找一个硬盘型的NoSQL，用于将Redis中的冷数据落入硬盘。初步选型了几款key-value类型的NoSQL，分别有levelDB、 rocksDB、 TiDB、 SSDB、swapDB。均为基于levelDB开发的几款NoSQL。其中因为levelDB、rocksDB无网络接口，不方便做分布式和高可用。，TiDB过重，还有swapDB社区不够活跃且相关client API不完...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">五月 2020</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">五月 12, 2020</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/65fb69b/">k8s中服务添加hosts及一键转换脚本</a>
+                                        <p>
+                                            序项目管理k8s集群用的是rancher，可是rancher没有提供给deployment批量添加hosts的图形化界面，所以还是只能按照k8s官方的方法修改yaml文件。 
+示例使用 HostAliases 向 Pod /etc/hosts 文件添加条目
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostaliases-pod
+spec:
+  r...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">五月 12, 2020</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/ea5c4060/">Rancher2 &amp; K8S部署踩坑记录</a>
+                                        <p>
+                                            
+本安装教程基于CetnOS 7环境编写
+
+安装docker首先安装依赖并添加国内源$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+$ yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">四月 2020</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">四月 28, 2020</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/cca84fb6/">uwsgi 多进程导致数据库连接丢失的踩坑记录</a>
+                                        <p>
+                                            起因项目使用的 Flask+SQLAlchemy+uwsgi ，突然有一天编写了一个有对数据库高并发的接口。然后其他本来正常的接口就偶尔会出现404错误，且必须重启服务才能解决。
+试验①以为是MySQL连接池和超时时间导致的，反复查看发现并没有什么问题。然后怀疑到是不是python对MySQL的连接驱动导致的。
+项目里使用的pymysql被公认为是比较慢的连接驱动。索性换成了mysqldb。...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">四月 16, 2020</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/ed4c24bb/">构建Python Dockerfile的奇淫巧技</a>
+                                        <p>
+                                            镜像构建前言最简单的情况下，如果我们使用官方python镜像，构建我们的容器会无敌庞大。因为他帮我们预置了许许多多类库。同时我们直接使用RUN pip install /xxx/requirements.txt安装环境时，每次构建镜像都会从pip仓库里面拉包，也会非常慢。
+FROM python:3.7
+COPY . /app
+WORKDIR /app
+RUN pip install -r ...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">三月 2020</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">三月 05, 2020</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/51c3bc14/">Authlib 单点登录库初体验及踩坑</a>
+                                        <p>
+                                            起因项目突然要接入TX云，理所应当的要使用tx的单点登录了。于是乎，经过各方推荐，使用了大名鼎鼎的Authlib库。
+初体验经过各方文档，整理了一下，在Flask中使用Authlib相当简单。如果是接入有名的OAuth2站点如Github、Google这种，直接使用官方已经封装好的类即可快速实现，但此处使用的是TX方为工业互联网平台新搭建的OAuth2服务，理所应当不能直接使用。但仍可以使用...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">十二月 2019</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">十二月 11, 2019</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/24f059ac/">WSL 下安装 docker 踩坑</a>
+                                        <p>
+                                            起因项目改微服务化了，于是开始研究 rabbitMQ 这个消息队列框架。然后官方推荐使用docker启动，索性在WSL下装 docker 了（太懒了，不想双系统or虚拟机）
+安装-*-FBI WARNING-*-安装前请注意查阅自己的WSL是否为2.0版，不然请直接看踩坑 &amp; 解决问题三
+因为我的WSL下安装的是Ubuntu，参见docker官方安装文档。
+# 添加源
+$ curl ...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">十二月 11, 2019</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/7394ddd0/">变种 LSTM —— GRU 原理</a>
+                                        <p>
+                                            GRU 原理门控循环单元（GRU）与 长短期记忆（LSTM）原理非常相似，同为使用门控机制控制输入、记忆等信息而在当前时间步做出预测。但比起 LSTM，GRU的门控逻辑有些许不同。
+GRU 门控逻辑因为与 LSTM 非常相似，这里就不赘述相同点，仅谈谈他们之间的不同点，想要详细了解，请移步LSTM原理及Keras中实现了解
+与 LSTM 的三中门（输入门、遗忘门和输出门）和细胞状态不同，GR...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">十二月 07, 2019</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/e4e448be/">LSTM原理及Keras中实现</a>
+                                        <p>
+                                            LSTM 原理LSTM(Long Short-Term Memory) 即长短期记忆，适合于处理和预测时间序列中间隔和延迟非常长的重要事件。其中的内部机制就是通过四个门调节信息流，了解序列中哪些数据需要保留或丢弃。
+
+通俗的原理假设你在网上查看淘宝评论，以确定你是否想购买生活物品。你将首先阅读评论，然后确定是否有人认为它是好的或是否是坏的。
+
+当你阅读评论时，你的大脑下意识地只会记住重要的关...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">十二月 03, 2019</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/bb74e1be/">西瓜书笔记-模型评估与选择</a>
+                                        <p>
+                                            评估方法将数据拆分为训练数据和验证数据，可以减小过拟合的可能性。但这样就必须拆分出和训练集数据分布几乎一致的验证数据。
+留出法通过分层采样对数据集D划分出样本集S和测试集T，$D=S \cup T,S \cap T＝\varnothing$。例如，对D进行分层采样而获得70%样本的训练集S和含30%样本的训练集T，若D包含500个正例、500个反例，则分层抽样得到的S应该包含350个正例和3...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">十一月 2019</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">十一月 21, 2019</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/9779499d/">Redis优化之内存碎片小踩坑</a>
+                                        <p>
+                                            起因近来项目里引用了Redis，本来用这高端玩意就是为了加速项目跑的速度。然而，用着用着越来越慢。而之前就做着性能优化的活，也顺手接下了优化Redis的活
+内存碎片率mem_fragmentation_ratio查阅相关资料得知，速度过慢很有可能是因为内存不足使用了swap导致。而mem_fragmentation_ratio是一个很明显的是否使用了swap的指标。
+mem_fragment...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">十月 2019</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">十月 28, 2019</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/aedf7706/">聚类算法之层次聚类</a>
+                                        <p>
+                                            
+层次聚类(Hierarchical Clustering)是聚类算法的一种，通过计算不同类别的相似度类创建一个有层次的嵌套的树。
+层次聚类怎么算层次聚类分为自底向上和自顶向下两种，这里仅采用scikit-learn中自底向上层次聚类法。
+
+将数据集中每一个样本都标记为不同类
+计算找出其中距离最近的2个类别，合并为一类
+依次合并直到最后仅剩下一个列表，即建立起一颗完整的层次树
+
+以下为看图说...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">十月 12, 2019</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/ae704b86/">聚类算法之DBSCAN聚类</a>
+                                        <p>
+                                            DBSCAN （Density-Based Spatial Clustering of Applications with Noise） 是一种基于密度的聚类算法，基于密度的聚类寻找被低密度区域分离的高密度区域。常用于异常值或者离群点检测。
+DBSCAN 怎么算当某个点的密度达到算法设定的阈值，则这个点称为核心对象。（即r领域内点的数量小于minPts），其中领域的距离阈值为用户设定值。
+若...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">十月 11, 2019</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/1a6c337e/">Python异常处理traceback和exc_info</a>
+                                        <p>
+                                            开发过程中一般都会使用traceback将捕获到的异常打印出来。
+import traceback
+
+def fake_exception():
+    1 / 0
+
+def catch_exception():
+    try:
+        fake_exception()
+    except:
+        traceback.print_exc()
+
+catch_excepti...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">十月 10, 2019</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/6b56ef63/">Python读取Excel文件sheet名性能优化</a>
+                                        <p>
+                                            原始版本直接使用pandas读取整个Excel文件，再从中取列名。这种场景对于小的Excel文件还适用，但数据量上升到10M+时，取个sheet name要26s之久。几乎无法忍受。
+data = pandas.ExcelFile(file_url)
+names = data.sheet_names
+
+优化查阅资料可知.xlsx文件是一个压缩格式的文件，可以直接通过zipfile读到shee...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">十月 09, 2019</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/dea808f4/">聚类算法之K-Means(K均值)聚类</a>
+                                        <p>
+                                            聚类与分类的区别分类： 类别是已知的，通过对已知分类的数据进行训练和学习，找到不同类的特征再对未分类的数据进行分类，属于监督学习。
+聚类： 事先不知道数据会分为几类，通过聚类分析将数据聚合成几个群体。聚类不需要对数据进行训练和学习。属于无监督学习。
+数据输入有标签则为监督学习，否则为无监督学习
+k-means 聚类怎么算
+首先输入 k 的值，即希望通过聚类得到 k 个分组；
+从数据集中随机选...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">九月 2019</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">九月 05, 2019</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/ec7adaa1/">机器学习速查笔记-Numpy篇</a>
+                                        <p>
+                                            numpynp.unique(A)对于一维数组或者列表，unique函数去除其中重复的元素，并按元素由大到小返回一个新的无元素重复的元组或者列表
+A = [1,1,2,3,4,4,5,5,6]
+a = np.unique(A)
+print(a)   # [1 2 3 4 5 6]
+
+np.random.rand（x…）生成随机的指定维度的列表
+a=np.random.rand(4)
+for ...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">九月 02, 2019</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/a2a2ab6a/">用Cython加密打包python项目</a>
+                                        <p>
+                                            使用将下述代码保存为setup.py至需打包项目根目录，安装cython后执行python setup.py即可打包。
+import sys, os, shutil, time
+from distutils.core import setup
+from Cython.Build import cythonize
+
+start_time = time.time()
+curr_dir = os....
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">八月 2019</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">八月 27, 2019</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/a61b68c3/">Pandas笔记-进阶篇</a>
+                                        <p>
+                                            汇总和计算描述统计panda对象拥有一组常用的数学和统计方法，他们大部分都属于简约统计，NA值会自动被排除，除非通过skipna=False禁用
+In [78]: df
+Out[78]:
+    one  two
+a  1.40  NaN
+b  7.10 -4.5
+c   NaN  NaN
+d  0.75 -1.3
+
+In [79]: df.sum()
+Out[79]:
+one    9.2...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">八月 26, 2019</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/8493c310/">Pandas笔记-基础篇</a>
+                                        <p>
+                                            SeriesSeries是一种类似一维数组的对象，由一组数据和一组与之相关的数据索引组成
+In [9]: obj = Series([4,7,-5,3])
+
+In [10]: obj.index
+Out[10]: RangeIndex(start=0, stop=4, step=1)
+
+In [11]: obj.values
+Out[11]: array([ 4,  7, -5,  3], ...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">八月 24, 2019</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/87847f8/">Numpy笔记-进阶篇</a>
+                                        <p>
+                                            利用数组进行数据分析np.where是三元表达式x if condition else y的矢量化版
+In [169]: arr
+Out[169]:
+array([[-2.09280349e-01, -2.08776777e+00,  1.18959772e+00,
+        -1.30555812e-01],
+       [-1.05658371e+00,  2.66633933e...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">八月 22, 2019</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/ca37cdbd/">Numpy 笔记-基础篇</a>
+                                        <p>
+                                            创建 ndarray常用方法array函数可接受一切序列类型对象
+In [2]: data1 = [6.1, 5, 4, 3, 1]
+
+In [3]: arr1 = np.array(data1)
+
+In [4]: arr1
+Out[4]: array([6.1, 5, 4, 3, 1])
+
+In [5]: data2 = [[1, 2, 3, 4], [5, 6, 7, 8]]
+
+In [...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">十一月 2018</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">十一月 09, 2018</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/aa2472f4/">数据结构题目总结(C 语言描述)</a>
+                                        <p>
+                                            ~正文隐藏~
+
+2007 年*完成排序的归并算法template&lt;class T&gt; void merge(T* a, int n1, int n2){
+    //将数组 a 中下标分别从 0...n1-1 和 n1...n1+n2-1 的两个有序序列归并为一个有序序列
+
+    T* temp = new T(n1 + n2);
+    int i = 0, j1 = 0, j...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">十月 2018</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">十月 13, 2018</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/4a1a5b83/">OSI 模型分层作用及实例</a>
+                                        <p>
+                                            应用层为应用程序提供服务并规定相关细节，包括文件传输（FTP）、电子邮件（SMTP）、远程登录（ssh、Telnet）等协议。
+比如发送电子邮件，从用户输入完内容并点击“发送”的那一刻，就进入应用层协议处理了。协议会在数据首部添加收件人
+
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">九月 2018</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">九月 26, 2018</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/576d991f/">经典排序算法 Python 实现</a>
+                                        <p>
+                                            选择排序每一趟遍历把最小的依次放在最前面，时间复杂度O(n²)
+from typing import List, Optional
+
+NumsList = Optional[List[int]]
+
+
+class SelectSort:
+
+    @staticmethod
+    def select_sort(nums: NumsList) -&gt; NumsList:
+
+       ...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">九月 25, 2018</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/22aee029/">Python 中的魔术方法</a>
+                                        <p>
+                                            构造与初始化__new__(self): 创建并返回一个类的实例，而__init__只是将传入的参数来初始化该实例，一般不需要重载__new__方法除非希望控制类的创建。
+__init__(self): 可以理解为构造函数，将传入的参数初始化成实例
+__del__(self): 可以理解为析构函数
+属性访问控制Python缺少对于类的封装,但人们希望Python能够定义私有属性，然后提供公共...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">九月 25, 2018</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/7798fba3/">常见设计模式 Python 实现</a>
+                                        <p>
+                                            简单工厂模式根据不同条件生产不同功能的类
+class op(object):
+    def get_ans(self):
+        pass
+
+class Add(op):
+    def get_ans(self):
+        return self.a + self.b
+
+class Mul(op):
+    def get_ans(self):
+        retur...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">九月 25, 2018</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/5fddf106/">Git 常用命令</a>
+                                        <p>
+                                            Git 简介Git - 分布式版本控制系统，每台电脑上都可以离线存一个仓库，但总是设立一台服务器作为远程库SVN - 集中式版本控制系统，无本地仓库，push pull 必须通过中央服务器
+基本操作git init     # 初始化，创建仓库
+git add .    # 添加所有文件（添加单一文件写文件名）到缓存区
+git commit -m &quot;message&quot; # ...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">九月 18, 2018</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/995b78a8/">慎用 Python list 乘法</a>
+                                        <p>
+                                            误用 list 乘法今天刷 LeetCode 碰到一个水题转置矩阵, 这不就是先生成个空的倒置矩阵再填结果嘛，没多想就用 list 乘法上手就写。
+class Solution:
+    def transpose(self, A):
+        &quot;&quot;&quot;
+        :type A: List[List[int]]
+        :rtype: Lis...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">九月 09, 2018</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/2870634a/">Python 单链表实现&amp;基础函数</a>
+                                        <p>
+                                            前两天面滴滴，被问到怎么判断两个链表是否相交，然后并不懂什么是单链表相交…就很尴尬。 赶紧复习一下单链表的知识。
+单链表实现class LNode:
+    def __init__(self, elem, next_ = None):
+        self.elem = elem
+        self.next = next_
+
+class LList:
+    def __ini...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">八月 2018</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">八月 07, 2018</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/2ba86c7b/">Readfree 自动签到 &amp; crontab自动任务踩坑</a>
+                                        <p>
+                                            自动签到 Python 脚本这部分没什么难度，主要是这个网站的cookies的Max-Age有31449600秒，大概1年的寿命，所以直接将存好的cookies用requests发一个get请求到验证地址就行。稍微修改了博主杨英明代码如下：
+import requests
+import time
+
+# 登录验证地址
+check_url = &#39;http://readfree.me/ac...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">七月 2018</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">七月 13, 2018</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/7c092ea/">requests 代理问题</a>
+                                        <p>
+                                            在给一个本地的Flask项目测试post接口时遇到一个问题，无论用requests的get还是post请求localhost全部都会超时。
+经过仔细分析后，发现是开了系统代理的锅(毕竟写代码少不了Google)，然而直接关闭系统代理仍然超时。
+最后的解决方案如下：
+import os
+import requests
+
+os.environ[&#39;NO_PROXY&#39;] = &#39...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">七月 05, 2018</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/bba523e0/">Python 元组解包的几种方法</a>
+                                        <p>
+                                            访问下标解包这其实都不算解包了吧。。
+&gt;&gt;&gt; a = (1,2,3)
+&gt;&gt;&gt; a[0]
+1
+
+赋值解包&gt;&gt;&gt; a = (1,2,3,)
+&gt;&gt;&gt; b, c, d = a
+
+星号(*)解包要将一个tuple中的所有值作为参数，如果直接用上面两种方法就不太 pythonic了，可以用以下方法解包
+...
+&gt;&gt;&gt...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">六月 2018</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">六月 15, 2018</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/725a38d2/">Django 部署(Apache)</a>
+                                        <p>
+                                            安装sudo apt-get install python2.7.12     // 安装对应版本python
+sudo apt-get install apache2          // 安装apache
+sudo apt-get install libapache2-mod-wsgi  // 安装apache的wsgi组件
+sudo apt-get install pip      ...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">五月 2018</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">五月 14, 2018</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/3eeec910/">几个简单二叉树的 Python 实现</a>
+                                        <p>
+                                            二叉树的基本实现 class TreeNode:
+     def __init__(self, x):
+         self.val = x
+         self.left = None
+         self.right = None
+
+617.合并二叉树
+class Solution:
+    def mergeTrees(self, t1, t2):
+        ...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">五月 02, 2018</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/7ed6f334/">Python 蛋疼的编码问题</a>
+                                        <p>
+                                            Python 的编码问题早就困扰我太久了， 但一直没有看到比较通俗易懂的专门介绍 Python 编码问题的文章。 正好今天刷知乎看到了非常不错的文章， 这里稍微抛砖引玉归纳下。
+Unicode 和 UTF-8知识储备：
+
+ASCII 占1个字节，只支持英文
+GBK GB2312的升级版，支持21000+汉字
+Shift-JIS 日本字符
+ks_c_5601-1987 韩国编码
+TIS-620...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">四月 2018</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">四月 27, 2018</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/4be7f132/">Python 查漏补缺之字符串</a>
+                                        <p>
+                                            count 方法str.count(sub, start= 0,end=len(string))
+
+参数
+
+sub – 搜索的子字符串
+start – 字符串开始搜索的位置。默认为第一个字符,第一个字符索引值为0。
+end – 字符串中结束搜索的位置。字符中第一个字符的索引为 0。默认为字符串的最后一个位置。
+
+返回值
+该方法返回子字符串在字符串中出现的次数。
+LeetCode 相关题目 4...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">四月 26, 2018</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/8924f3f8/">python中进制互换</a>
+                                        <p>
+                                            十进制转二进制bin() 返回一个整数 int 或者长整数 long int 的二进制表示。
+&gt;&gt;&gt;bin(10)
+&#39;0b1010&#39;
+&gt;&gt;&gt; bin(20)
+&#39;0b10100&#39;
+
+二进制转十进制&gt;&gt;&gt;int(&#39;0b1010&#39;, 2)
+&#39;10&#39;
+&gt;&gt;&gt;int(...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">四月 20, 2018</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/ef63884b/">被忽略的位运算符总结</a>
+                                        <p>
+                                            曾经的我还是太年轻了, 基础不扎实还自以为是, 看到位运算符一节就以为是逻辑运算, 结果跳过没看了, 漏了很多知识. 果然 LeetCode 没白刷呀, 接下来是总结.
+按位与运算符（&amp;）参加运算的两个数据，按二进制位进行“与”运算。
+运算规则：0&amp;0=0; 0&amp;1=0; 1&amp;0=0; 1&amp;1=1;
+即：两位同时为“1”，结果才为“1”，否则为0
+例如...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">四月 18, 2018</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/b7cb2971/">Python中in的三种遍历协议</a>
+                                        <p>
+                                            今天刷LeetCode碰到个简单题 宝石与石头想降一下时间复杂度，就没有用in list写法，直接又遍历了一遍列表，可没想到一看答案，这样做的用时比用in要慢得多。索性研究了一下in的原理。这里复制一下知乎用户（很抱歉， 这位同学账号似乎被封了，无法著名）的答案。
+in 关键字实现了一套python中的遍历协议.
+协议A: iter + next
+循环时,  程序先使用iter (相当于it...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">二月 2018</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">二月 16, 2018</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/bd4cc0f1/">关于域名解析的另一个吐槽</a>
+                                        <p>
+                                            今天翻github惊奇的发现，我这个辣鸡博客竟然被@兴栋大佬的博客做了友链。不胜惶恐，但发现友链是之前没填坑的无法访问的裸域名，所以这个坑必须赶紧填啊。之前TX云送的学生cdn+域名解析中@记录和www记录都是设置的CNAME跳转到cdn。。结果访问gvoidy.cn出现404，简直神奇。试过很多次之后还是不行，不知道这是什么鬼。。最后解决方法还是把@记录重定向到https://www.gv...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">二月 13, 2018</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/19653b91/">从零开始学Laravel</a>
+                                        <p>
+                                            Laravel5.5的安装安装好WAMP环境后，在wampmanager.ini文件中将PHP版本更改为php7，查看php版本可以通过phpinfo()函数查看。,下载好后解压至Apache工作目录下。启动wamp服务后，正常情况下访问localhost/laravel/public就能显示Laravel的欢迎界面。
+附上Laravel一键安装包下载地址
+PhpStrom安装编程还是离不开...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">二月 13, 2018</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/ea2f965e/">PHP学习小知识点归纳</a>
+                                        <p>
+                                             Heredoc结构形式长字符串 首先使用定界符表示字符串（&lt;&lt;&lt;），接着在“&lt;&lt;&lt;“之后提供一个标识符GOD，然后是字符串，最后以提供的这个标识符结束字符串。
+&lt;?php 
+$string1 = &lt;&lt;&lt;GOD
+我有一只小毛驴，我从来也不骑。
+有一天我心血来潮，骑着去赶集。
+我手里拿着小皮鞭，我心里正得意。
+不知怎么哗啦啦啦啦，我摔...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">一月 2018</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">一月 16, 2018</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/ed36993e/">小吐槽</a>
+                                        <p>
+                                            哇，偷懒没弄https果然被流量劫持了，唉，只能开工加个https顺便优化一下因迁移产生的大量中文文章链接吧。
+永久链接此处使用hexo-abbrlink插件实现。附上官方使用文档
+
+安装npm install hexo-abbrlink --save使用打开config.yml，修改permalink中类似这样permalink: posts/:abbrlink/其中:abbrlink代表...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">十二月 2017</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">十二月 29, 2017</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/14572bdc/">python实现单工、半双工、全双工聊天室</a>
+                                        <p>
+                                            聊天室单工实现：单工版非常简单，只能客户端单方面向服务端发消息，服务端回复固定模板消息。
+Server:
+# -*- coding: utf-8 -*-
+
+import socket
+import threading
+import time
+
+def tcplink(sock, addr):
+    print &#39;Accept new connection from %s:%s......
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">十二月 28, 2017</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/d4a1185/">hello world</a>
+                                        <p>
+                                            把博客从简书搬到Hexo啦~辣鸡简书的打包方式，把文章的名当做文件名存了，转hexo后导致文章的url出现中文！简直不能忍，但是嫌麻烦懒得改了，就以后所有文章文件名都存中文吧
+print Hello World !
+
+
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">八月 2017</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">八月 14, 2017</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/7c2130d4/">git的ssh key创建</a>
+                                        <p>
+                                            Git是分布式的代码管理工具，远程的代码管理是基于ssh的，所以要使用远程的git则需要ssh的配置。如果未配置ssh key将无法clone远程代码仓库到本地。
+
+第一步.创建user.name和email
+git config --global user.name &quot;EwdAger&quot;
+git config --global user.email &quot;ewdag...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">八月 07, 2017</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/62657fb0/">Django模型的Field Types总结</a>
+                                        <p>
+                                             Field Types 常用参数： null 如果设置为 True , Django 存放一个 NULL 到数据库字段。默认为 False。 blank 如果设置为 True , 此 field 允许为 blank （空白），默认为 False。 choices 一个2元元组的元组或者列表，如果执行 choices ， Django 的 admin 就会使用 选择框而不是标准的 text ...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">六月 2017</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">六月 22, 2017</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/cfee3b66/">操作系统实验六</a>
+                                        <p>
+                                            实验内容本实验通过编程模拟实现几种常见的磁盘调度算法
+简直可怕，怎么可能写出来磁盘调度算法啊喂！算法实现倒还好说，就是一个排序算法。但是！访问的柱面就是随机生成的所以还要写iterator？！这里简单描述一下各种磁盘调度算法。
+
+例:假定某磁盘共有200个柱面，编号为0-199，如果在为访问143号柱面的请求者服务后，当前正在为访问125号柱面的请求服务，同时有若干请求者在等待服务，它们每次...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">六月 22, 2017</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/c9f7f365/">操作系统实验五</a>
+                                        <p>
+                                            步骤一- 什么是分页过程当 Windows 求助于硬盘以获得虚拟内存时，这个过程被称为分页 (paging) 。具体是通过MMU（Memory Management Unit 内存管理单元）将硬盘上的虚拟地址映射为物理内存地址。优点是使大内存占用程序不至于异常退出。缺点是虚拟内存要远慢于物理内存（访问虚拟内存大约要4-10毫秒，访问物理内存只要60 us）- 什么是内存共享共享内存是被多个进...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">六月 19, 2017</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/d496c7e0/">(转)解决强智教务系统非IE下无法创建对象错误</a>
+                                        <p>
+                                             最近要弄教务网的模拟登陆，但苦于教务网只兼容IE8以下的浏览器，不能用chrome强大的F12抓包就很烦，然后发现Fly俊大佬弄了一个相当强的插件啊。但是怕Fly俊大佬的博客失效，所以私自留了个档。侵删啊大佬~ 
+ 以下内容均为转载 
+学校教务系统由于长期缺乏必要的维护，目前依旧只兼容IE8及以下浏览器。使用非IE浏览器访问登陆界面是没有问题，但是登录进去后就会报错，并且所有功能都无法使用...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">六月 16, 2017</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/9a468f74/">操作系统实验四代码</a>
+                                        <p>
+                                            直接上代码
+#include &lt;iostream&gt;
+
+const int MAXM = 1;
+const int MAXN = 100;
+
+using namespace std;
+
+int Resource[MAXM], Available[MAXM];
+int Claim[MAXN][MAXM], Allocation[MAXN][MAXM];
+int n;
+
+int Nee...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">六月 15, 2017</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/b2a42beb/">操作系统实验三程序分析</a>
+                                        <p>
+                                            直接上代码~
+#include &lt;windows.h&gt;
+#include &lt;iostream&gt;
+
+const unsigned short SIZE_OF_BUFFER = 2; //缓冲区长度
+unsigned short ProductID = 0; //产品号
+unsigned short ConsumeID = 0; //将被消耗的产品号
+unsigned s...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">六月 13, 2017</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/5e6f73c9/">linux环境下使用mono运行asf挂卡</a>
+                                        <p>
+                                            杰瑞包大好评啊，但是带来的后果就是挂卡挂不完了。然而手里的服务器全是linux环境的并不支持C#写的ASF，所以用mono f**k之。
+Ubuntu篇接下来介绍如何安装mono，以Ubuntu 14.04为例。
+1. 运行下面代码授权注册repo源并更新软件列表：
+$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">六月 13, 2017</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/6ee94925/">操作系统实验二归纳</a>
+                                        <p>
+                                            本实验是要求在linux环境下测试fork()和exec()，并建立一个简单的shell（带cd、env、echo、help、jobs、quit命令）
+
+fork()
+
+这一节没啥难度，主要是测试当前linux环境下gcc是否能编译成功
+清单 2-1 创建进程
+#include &lt;stdio.h&gt;   //此处指导书上没有
+int main (){
+    int x;
+    ...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">六月 12, 2017</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/a46183c6/">操作系统实验一资料归纳</a>
+                                        <p>
+                                            句柄指导书上出现了一个陌生的名词“句柄（handle）”，感觉比较奇妙，因为在之前编写微信公众号小程序看教程也编写了一个handle程序。所以留档一下吧。
+
+句柄（handle），有多种意义，其中第一种是指程序设计，第二种是指Windows编程。现在大部分都是指程序设计/程序开发这类。第一种解释：句柄是一种特殊的智能指针 。当一个应用程序要引用其他系统（如数据库、操作系统）所管理的内存块或对...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">六月 05, 2017</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/fdcebd2e/">(转)计算机网络基础</a>
+                                        <p>
+                                            原文地址-程序员的自我修养（2）计算机网络几乎所有的计算机程序，都会牵涉到网络通信。因此，了解计算机基础网络知识，对每一个程序员来说都是异常重要的。　　本文在介绍一些基础网络知识的同时，给出了一些高质量的系列文章链接，以方便大家随时参考学习。相信通过本文的学习，你能对计算机网络有全面的认识！
+
+在阅读本文之前，建议阅读以下两遍文章，以便对”计算机网络是如何工作”的有个大概的了解。互联网协议入...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">六月 05, 2017</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/ab3d95d5/">在pycharm中如何将django中多个app放到同个文件夹apps处理</a>
+                                        <p>
+                                            新建apps文件夹后mark为source目录，然后在Setting中import方式为
+from message import views
+但这样run manage.py task时会报模块不存在的错误
+ImportError: No module named message
+此时要在Setting中设置app的路径
+sys.path.insert(0,os.path.joinBASE_...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">六月 05, 2017</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/cb0b0c45/">python2.7无法pip mysql-python的问题</a>
+                                        <p>
+                                            出现问题：
+&gt; pip install MySQL-python
+
+_mysql.c(42) : fatal error C1083: Cannot open include file: &#39;config-win.h&#39;: No such file or directory error: command &#39;&quot;C:\Users\fnngj\AppData\L...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">六月 05, 2017</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/824ac3d0/">virtualenv各python版本的虚拟环境创建及常用命令说明</a>
+                                        <p>
+                                            win系统首先
+pip install virtualenvwrapper-win
+创建py2环境
+mkvirtualenv -p C:\python27\python.exe(解释器绝对路径) py2env(虚拟环境名)
+创建py3环境
+mkvirtualenv -p C:\python34\python.exe(解释器绝对路径) py3env(虚拟环境名)
+linux系统首先也是一样安装...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">五月 2017</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">五月 04, 2017</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/7512e895/">Ubuntu VPS一键搭建SS</a>
+                                        <p>
+                                            此脚本具有以下特色：一键安装Shadowsocks集成速锐自定义设置端口设备数量一键添加多端口用户并设置带宽上限一键单端口、多端口切换支持定时重启Shadowsocks一键安装 BBR支持 一键封禁 垃圾邮件(SMAP)/BT/PT
+复制命令下载并安装SS脚本﻿wget -N --no-check-certificate https://softs.fun/Bash/ssrmu.sh &am...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">四月 2017</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">四月 15, 2017</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/a6e1042e/">Ubuntu下搭建环境+安装wordpress</a>
+                                        <p>
+                                            LAMP 是Linux, Apache, MySQL, PHP, perl的缩写. 指在linux上安装Apache2，MySQL, PHP等软件包所建立的网站运行平台，是目前中小网站主要的运行环境。
+1.1 安装Apache2
+sudo apt-get install apache21.2 安装MySQL5
+sudo apt-get install mysql-server mysql-c...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2020
+        <span class="gradient-text">
+            EwdAger
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script> <script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script> <script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script> <script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>   <link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Farewell,good hunter.May you find your worth in the waking world.', '再见，善良的猎人。愿你能在清醒的世界中找到自己的价值。'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+ <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  var valine = new Valine();
+
+  function initValine(path) {
+    if (!path) path = window.location.pathname;
+    let language = 'zh-CN';
+    if (!language) {
+      language = 'en';
+    } else {
+      language = language.toLowerCase();
+    }
+    valine.init({
+      el: '#vcomments',
+      appId: 'ChQ4z1dCRpWqCOD43kU6cGmM-gzGzoHsz',
+      appKey: 'pFaAS3aumHDM572YbXkzc3fO',
+      notify: 'false',
+      verify: 'false',
+      avatar: 'retro',
+      placeholder: '留下你的评论~',
+      visitor: 'true',
+      path: path,
+      lang: language,
+    });
+  }
+
+  $(document).ready(function () {
+    initValine();
+  });
+</script>
+
+
+
+</html>
