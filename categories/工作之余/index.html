@@ -129,13 +129,13 @@
             十月 11, 2020
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/304b0279/" title="解决群晖使用百度云docker镜像提示登陆过期的问题" class="posttitle">解决群晖使用百度云docker镜像提示登陆过期的问题</a></h3>
+            <a href="/posts/38ad339f/" title="群晖中使用破解版 emby" class="posttitle">群晖中使用破解版 emby</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                732
+                1.6k
             </span>
             
             
@@ -145,7 +145,7 @@
             </span>
             
             
-            <span id="/posts/304b0279/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/38ad339f/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <span class="leancloud-visitors-count">1000000</span>
             </span>
@@ -157,9 +157,11 @@
         
         <div class="md-content animated fadeIn">
             
-            <p>群晖中使用的百度套件是基于<code>VNC + Linux版百度云</code>打包的docker镜像实现的，但是作者因为稳定性原因通过修改检测更新的hosts方法将百度云版本锁定在3.0.1.2版本。可是这在部分机器上不生...</p>
+            <p>本文基本来源 <a href="https://neko.re/" target="_blank" rel="noopener">Yukino’s 理想乡</a> 的 <a href="https://neko.re/archives/128.html" target="_blank" rel="noopener">emby 破解版完全食用方法</a></p>
+<p>但是文中没有提供 docker 版的安装方法和相关配置！！所以这里完善一下！</p>
+<p>套件版方案使用起来很舒服，但是需要 fan 墙刮...</p>
             
-            <span class="read-more"><a href="/posts/304b0279/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/38ad339f/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -180,6 +182,65 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/工作之余">
+                  <b>「 </b>工作之余<b> 」</b>
+                </a>
+            
+            十月 11, 2020
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/304b0279/" title="解决群晖使用百度云docker镜像提示登陆过期的问题" class="posttitle">解决群晖使用百度云docker镜像提示登陆过期的问题</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        732
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        1 mins.
+                    </span>
+                
+                
+                    <span id="/posts/304b0279/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <span class="leancloud-visitors-count">1000000</span>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/群晖/">群晖</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>群晖中使用的百度套件是基于<code>VNC + Linux版百度云</code>打包的docker镜像实现的，但是作者因为稳定性原因通过修改检测更新的hosts方法将百度云版本锁定在3.0.1.2版本。可是这在部分机器上不生效，那么我们反之道而行，自己更新容器里的百度云版本。</p>
+<ol>
+<li><p>去百度云官网下载<code>.deb</code>版百度云: <a href="https://pan.baidu.com/download" target="_blank" rel="noopener">下载地址</a></p>
+</li>
+<li><p>将下好的镜像放到群晖已挂载的<code>baidudownload</code>文件夹里</p>
+</li>
+<li><p>进入容器中的<code>baidudownload</code>目录</p>
+</li>
+<li><p>执行 <code>sudo dpkg -i baidunetdisk_3.4.1_amd64.deb...</code></p></li></ol>
+            
+            <span class="read-more"><a href="/posts/304b0279/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
     </div>
     
 </div>

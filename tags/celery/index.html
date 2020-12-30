@@ -123,29 +123,29 @@
     <div id="post0" class="else">
         <p class="animated fadeInDown">
             
-            <a href="/categories/python学习心得&备忘"><b>「
-                </b>PYTHON学习心得&备忘<b> 」</b></a>
+            <a href="/categories/不知道怎么归类"><b>「
+                </b>不知道怎么归类<b> 」</b></a>
             
-            七月 28, 2020
+            十二月 30, 2020
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/d227d93a/" title="Celery 4 初体验及踩坑" class="posttitle">Celery 4 初体验及踩坑</a></h3>
+            <a href="/posts/ba43525b/" title="记录一次celery消费失败的问题排除" class="posttitle">记录一次celery消费失败的问题排除</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                5.1k
+                1.2k
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                5 mins.
+                1 mins.
             </span>
             
             
-            <span id="/posts/d227d93a/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/ba43525b/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <span class="leancloud-visitors-count">1000000</span>
             </span>
@@ -153,13 +153,17 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/celery/">celery</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/消息队列/">消息队列</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/celery/">celery</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/k8s/">k8s</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/rabbitmq/">rabbitmq</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <p>Celery是基于分布式消息传递的开源异步任务队列或作业队列。虽然它支持调度，但其重点是实时操作。现在4版本已经步入稳定，而国内互联网的几乎都是3版本的教程。所以这里记录下4版本下的踩坑及外文解决方案...</p>
+            <p>昨天发完UAT后，今天惯例点进UAT看看服务的情况，突然发现<code>flower</code>监测的<code>celery</code>竟然有半数以上的失败！</p>
+<p></p>
+<p>马上查看这个<code>queue</code>的日志，确实是有一堆失败的。</p>
+<p></p>
+<p>当前这个<code>queue</code>的业务是从<code>redis...</code></p>
             
-            <span class="read-more"><a href="/posts/d227d93a/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/ba43525b/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -180,6 +184,61 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/python学习心得&备忘">
+                  <b>「 </b>PYTHON学习心得&备忘<b> 」</b>
+                </a>
+            
+            七月 28, 2020
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/d227d93a/" title="Celery 4 初体验及踩坑" class="posttitle">Celery 4 初体验及踩坑</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        5.1k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        5 mins.
+                    </span>
+                
+                
+                    <span id="/posts/d227d93a/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <span class="leancloud-visitors-count">1000000</span>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/celery/">celery</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/消息队列/">消息队列</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>Celery是基于分布式消息传递的开源异步任务队列或作业队列。虽然它支持调度，但其重点是实时操作。现在4版本已经步入稳定，而国内互联网的几乎都是3版本的教程。所以这里记录下4版本下的踩坑及外文解决方案的翻译记录。</p>
+<blockquote>
+<p>Celery 是一个资金最少的项目，因此我们不支持 Microsoft Windows。请不要提出与该平台相关的任何问题。</p>
+</blockquote>
+<p>官方在4版本移除了win平台支持，但是经过查阅，只要使用将并发模式<code>-P</code>改为<code>gevent</code>或者<code>eventlet</code>即可正常启动，<strong>但并不知道会有什么影响，毕竟官方已经不...</strong></p>
+            
+            <span class="read-more"><a href="/posts/d227d93a/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
     </div>
     
 </div>
