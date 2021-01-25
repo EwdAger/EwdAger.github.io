@@ -92,15 +92,15 @@
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/posts/304b0279/">解决群晖使用百度云docker镜像提示登陆过期的问题</a>
+                                        <a class="timeline-title" target="_self" href="/posts/38ad339f/">群晖中使用破解版 emby</a>
                                         <p>
-                                            0x00群晖中使用的百度套件是基于VNC + Linux版百度云打包的docker镜像实现的，但是作者因为稳定性原因通过修改检测更新的hosts方法将百度云版本锁定在3.0.1.2版本。可是这在部分机器上不生效，那么我们反之道而行，自己更新容器里的百度云版本。
-解决方案
-去百度云官网下载.deb版百度云: 下载地址
+                                            0x00本文基本来源 Yukino’s 理想乡 的 emby 破解版完全食用方法
+但是文中没有提供 docker 版的安装方法和相关配置！！所以这里完善一下！
+套件版方案使用起来很舒服，但是需要 fan 墙刮削。docker 版可以以一种巧妙的方式刮削，但是配置起来麻烦。
+套件版 emby 破解
+因为使用 emby 套件源，在国内难以访问，所以我们从官网上下载 emby 并安装
 
-将下好的镜像放到群晖已挂载的baidudownload文件夹里
-
-进入容器...
+安装好后关...
                                         </p>
                                     </div>
                                 </li>
@@ -112,15 +112,15 @@
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/posts/38ad339f/">群晖中使用破解版 emby</a>
+                                        <a class="timeline-title" target="_self" href="/posts/304b0279/">解决群晖使用百度云docker镜像提示登陆过期的问题</a>
                                         <p>
-                                            0x00本文基本来源 Yukino’s 理想乡 的 emby 破解版完全食用方法
-但是文中没有提供 docker 版的安装方法和相关配置！！所以这里完善一下！
-套件版方案使用起来很舒服，但是需要 fan 墙刮削。docker 版可以以一种巧妙的方式刮削，但是配置起来麻烦。
-套件版 emby 破解
-因为使用 emby 套件源，在国内难以访问，所以我们从官网上下载 emby 并安装
+                                            0x00群晖中使用的百度套件是基于VNC + Linux版百度云打包的docker镜像实现的，但是作者因为稳定性原因通过修改检测更新的hosts方法将百度云版本锁定在3.0.1.2版本。可是这在部分机器上不生效，那么我们反之道而行，自己更新容器里的百度云版本。
+解决方案
+去百度云官网下载.deb版百度云: 下载地址
 
-安装好后关...
+将下好的镜像放到群晖已挂载的baidudownload文件夹里
+
+进入容器...
                                         </p>
                                     </div>
                                 </li>
@@ -214,16 +214,22 @@ Redis 主从复制配置这里很简单，只需要配置slaveof &lt;masterip&gt
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/posts/fd2367bd/">二叉树的前中后序遍历</a>
+                                        <a class="timeline-title" target="_self" href="/posts/5cb682e4/">算法题基本框架 - Python实现</a>
                                         <p>
-                                            二叉树结构class TreeNode:
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
+                                            二叉树DFS
+二叉搜索树的中序遍历即为这棵树叶子节点值从小到大的排列
 
-递归法二叉树的前序遍历class Solution:
-    def preorderTraversal(self, root: TreeNode) -...
+def dfs(root: TreeNode):
+    if not root:
+        return
+
+    # 先序遍历
+    dfs(root.left)
+    # 中序遍历
+    dfs(root.right)
+    # 后续遍历
+
+BFSfrom collections import deq...
                                         </p>
                                     </div>
                                 </li>
@@ -344,16 +350,13 @@ Celery 是一个资金最少的项目，因此我们不支持 Microsoft Windows�
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/posts/65fb69b/">k8s中服务添加hosts及一键转换脚本</a>
+                                        <a class="timeline-title" target="_self" href="/posts/ea5c4060/">Rancher2 &amp; K8S部署踩坑记录</a>
                                         <p>
-                                            序项目管理k8s集群用的是rancher，可是rancher没有提供给deployment批量添加hosts的图形化界面，所以还是只能按照k8s官方的方法修改yaml文件。 
-示例使用 HostAliases 向 Pod /etc/hosts 文件添加条目
-apiVersion: v1
-kind: Pod
-metadata:
-  name: hostaliases-pod
-spec:
-  r...
+                                            
+本安装教程基于CetnOS 7环境编写
+
+安装docker首先安装依赖并添加国内源$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+$ yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-...
                                         </p>
                                     </div>
                                 </li>
@@ -365,13 +368,16 @@ spec:
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/posts/ea5c4060/">Rancher2 &amp; K8S部署踩坑记录</a>
+                                        <a class="timeline-title" target="_self" href="/posts/65fb69b/">k8s中服务添加hosts及一键转换脚本</a>
                                         <p>
-                                            
-本安装教程基于CetnOS 7环境编写
-
-安装docker首先安装依赖并添加国内源$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
-$ yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-...
+                                            序项目管理k8s集群用的是rancher，可是rancher没有提供给deployment批量添加hosts的图形化界面，所以还是只能按照k8s官方的方法修改yaml文件。 
+示例使用 HostAliases 向 Pod /etc/hosts 文件添加条目
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostaliases-pod
+spec:
+  r...
                                         </p>
                                     </div>
                                 </li>
@@ -1689,7 +1695,7 @@ sudo apt-get install mysql-server mysql-c...
 </body>
 <footer>
     <p class="copyright" id="copyright">
-        &copy; 2020
+        &copy; 2021
         <span class="gradient-text">
             EwdAger
         </span>.

@@ -57,7 +57,7 @@
         
     </ul>
     <p class="copyright" id="copyright">
-        &copy; 2020 EwdAger.
+        &copy; 2021 EwdAger.
         Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
         Theme <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
     </p>
@@ -367,66 +367,6 @@
             
             五月 12, 2020
         </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/65fb69b/" title="k8s中服务添加hosts及一键转换脚本" class="posttitle">k8s中服务添加hosts及一键转换脚本</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        1.7k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        2 mins.
-                    </span>
-                
-                
-                    <span id="/posts/65fb69b/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <span class="leancloud-visitors-count">1000000</span>
-                    </span>
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/docker/">docker</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/k8s/">k8s</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p>项目管理k8s集群用的是rancher，可是rancher没有提供给deployment批量添加hosts的图形化界面，所以还是只能按照k8s官方的方法修改yaml文件。 </p>
-<p><a href="https://kubernetes.io/zh/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/" target="_blank" rel="noopener">使用 HostAliases 向 Pod /etc/hosts 文件添加条目</a></p>
-<pre><code class="yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: hostaliases-pod
-spec:
-  restartPolicy: Never
-  hostAliases:
-  - ip: &quot;127.0.0.1&quot;...</code></pre>
-            
-            <span class="read-more"><a href="/posts/65fb69b/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/云原生学习笔记">
-                  <b>「 </b>云原生学习笔记<b> 」</b>
-                </a>
-            
-            五月 12, 2020
-        </p>
         <h3 class="post-title animated fadeInDown"><a href="/posts/ea5c4060/" title="Rancher2 & K8S部署踩坑记录" class="posttitle">Rancher2 & K8S部署踩坑记录</a></h3>
         
             <p class="post-count animated fadeInDown">
@@ -468,6 +408,66 @@ $ yum makecache fastyum -y
 $ yum install docker-...</code></pre>
             
             <span class="read-more"><a href="/posts/ea5c4060/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/云原生学习笔记">
+                  <b>「 </b>云原生学习笔记<b> 」</b>
+                </a>
+            
+            五月 12, 2020
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/65fb69b/" title="k8s中服务添加hosts及一键转换脚本" class="posttitle">k8s中服务添加hosts及一键转换脚本</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        1.7k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        2 mins.
+                    </span>
+                
+                
+                    <span id="/posts/65fb69b/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <span class="leancloud-visitors-count">1000000</span>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/docker/">docker</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/k8s/">k8s</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>项目管理k8s集群用的是rancher，可是rancher没有提供给deployment批量添加hosts的图形化界面，所以还是只能按照k8s官方的方法修改yaml文件。 </p>
+<p><a href="https://kubernetes.io/zh/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/" target="_blank" rel="noopener">使用 HostAliases 向 Pod /etc/hosts 文件添加条目</a></p>
+<pre><code class="yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: hostaliases-pod
+spec:
+  restartPolicy: Never
+  hostAliases:
+  - ip: &quot;127.0.0.1&quot;...</code></pre>
+            
+            <span class="read-more"><a href="/posts/65fb69b/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -762,7 +762,7 @@ $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo...</code></pre>
 </body>
 <footer>
     <p class="copyright" id="copyright">
-        &copy; 2020
+        &copy; 2021
         <span class="gradient-text">
             EwdAger
         </span>.
