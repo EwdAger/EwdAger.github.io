@@ -271,12 +271,11 @@ class UnionFind:
             self.size[n] = 1
             self.count += 1
 
-        if n == self.fa[n]:
-            return n
+        while x != self.fa[x]:
+            x = self.fa[x]
+            self.fa[x] = self.fa[self.fa[x]]
 
-        self.fa[n] = self.find(self.fa[n])
-
-        return self.fa[n]
+        return x
 
     def union(self, p, q):
         root_p = self.find(p)
@@ -421,3 +420,9 @@ if __name__ == "__main__":
     ans = obj.minCostConnectPoints([[0, 0], [2, 2], [3, 10], [5, 2], [7, 0]])
     print(ans)
 ```
+
+# 动态规划
+
+几种dp数组的定义方法
+
+- dp[i] 表示 以 nums[i] 这个坐标中的数结尾的最长递增子序列长度 [300.最长递增子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/)
