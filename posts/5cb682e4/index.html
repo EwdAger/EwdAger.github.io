@@ -349,12 +349,11 @@ class Solution:
             self.size[n] = 1
             self.count += 1
 
-        if n == self.fa[n]:
-            return n
+        while x != self.fa[x]:
+            x = self.fa[x]
+            self.fa[x] = self.fa[self.fa[x]]
 
-        self.fa[n] = self.find(self.fa[n])
-
-        return self.fa[n]
+        return x
 
     def union(self, p, q):
         root_p = self.find(p)
@@ -491,6 +490,10 @@ if __name__ == &quot;__main__&quot;:
     ans = obj.minCostConnectPoints([[0, 0], [2, 2], [3, 10], [5, 2], [7, 0]])
     print(ans)
 </code></pre>
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>几种dp数组的定义方法</p>
+<ul>
+<li>dp[i] 表示 以 nums[i] 这个坐标中的数结尾的最长递增子序列长度 <a href="https://leetcode-cn.com/problems/longest-increasing-subsequence/" target="_blank" rel="noopener">300.最长递增子序列</a></li>
+</ul>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -534,7 +537,7 @@ if __name__ == &quot;__main__&quot;:
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#二叉树"><span class="toc-number">1.</span> <span class="toc-text">二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DFS"><span class="toc-number">1.1.</span> <span class="toc-text">DFS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BFS"><span class="toc-number">1.2.</span> <span class="toc-text">BFS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#回溯算法"><span class="toc-number">2.</span> <span class="toc-text">回溯算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二分查找"><span class="toc-number">3.</span> <span class="toc-text">二分查找</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#精确搜索"><span class="toc-number">3.1.</span> <span class="toc-text">精确搜索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查找左边界"><span class="toc-number">3.2.</span> <span class="toc-text">查找左边界</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查找右边界"><span class="toc-number">3.3.</span> <span class="toc-text">查找右边界</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#滑动窗口"><span class="toc-number">4.</span> <span class="toc-text">滑动窗口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#有固定长度的目标"><span class="toc-number">4.1.</span> <span class="toc-text">有固定长度的目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#无固定长度的目标"><span class="toc-number">4.2.</span> <span class="toc-text">无固定长度的目标</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#并查集"><span class="toc-number">5.</span> <span class="toc-text">并查集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#哈希维护-邻接表"><span class="toc-number">5.1.</span> <span class="toc-text">哈希维护(邻接表)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组维护-使用下标维护的邻接矩阵，只有一维"><span class="toc-number">5.2.</span> <span class="toc-text">数组维护(使用下标维护的邻接矩阵，只有一维)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变体-Kruskal-算法-贪心-并查集"><span class="toc-number">5.3.</span> <span class="toc-text">变体 Kruskal 算法(贪心+并查集)</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#二叉树"><span class="toc-number">1.</span> <span class="toc-text">二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DFS"><span class="toc-number">1.1.</span> <span class="toc-text">DFS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BFS"><span class="toc-number">1.2.</span> <span class="toc-text">BFS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#回溯算法"><span class="toc-number">2.</span> <span class="toc-text">回溯算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二分查找"><span class="toc-number">3.</span> <span class="toc-text">二分查找</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#精确搜索"><span class="toc-number">3.1.</span> <span class="toc-text">精确搜索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查找左边界"><span class="toc-number">3.2.</span> <span class="toc-text">查找左边界</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查找右边界"><span class="toc-number">3.3.</span> <span class="toc-text">查找右边界</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#滑动窗口"><span class="toc-number">4.</span> <span class="toc-text">滑动窗口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#有固定长度的目标"><span class="toc-number">4.1.</span> <span class="toc-text">有固定长度的目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#无固定长度的目标"><span class="toc-number">4.2.</span> <span class="toc-text">无固定长度的目标</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#并查集"><span class="toc-number">5.</span> <span class="toc-text">并查集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#哈希维护-邻接表"><span class="toc-number">5.1.</span> <span class="toc-text">哈希维护(邻接表)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组维护-使用下标维护的邻接矩阵，只有一维"><span class="toc-number">5.2.</span> <span class="toc-text">数组维护(使用下标维护的邻接矩阵，只有一维)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变体-Kruskal-算法-贪心-并查集"><span class="toc-number">5.3.</span> <span class="toc-text">变体 Kruskal 算法(贪心+并查集)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动态规划"><span class="toc-number">6.</span> <span class="toc-text">动态规划</span></a></li></ol>
                 </div>
             </div>
             
