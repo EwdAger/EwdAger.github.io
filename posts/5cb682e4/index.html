@@ -145,7 +145,7 @@ def dfs(root: TreeNode):
     dfs(root.right)
     # 后续遍历
 </code></pre>
-<h2 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h2><pre><code class="python">from collections import deque
+<h2 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h2><pre><code class="python"> from collections import deque
 
 def bfs(root: TreeNode, target: TreeNode):
     queue = deque()
@@ -174,6 +174,11 @@ def bfs(root: TreeNode, target: TreeNode):
                     vistied.append(x)
         step += 1
 </code></pre>
+<h3 id="二叉堆"><a href="#二叉堆" class="headerlink" title="二叉堆"></a>二叉堆</h3><p>数组表示(从0开始)的二叉堆有如下性质：</p>
+<ul>
+<li>每个结点的左孩子为下标i的2倍加一：<code>left child(i) = i * 2 + 1</code>；每个结点的右孩子为下标i的2倍加2：<code>right child(i) = i * 2 + 2</code></li>
+<li>每个结点的父亲结点为下标的二分之一：<code>parent(i) = (i - 1) // 2</code></li>
+</ul>
 <h1 id="回溯算法"><a href="#回溯算法" class="headerlink" title="回溯算法"></a>回溯算法</h1><p>例题: <a href="https://leetcode-cn.com/problems/permutations/" target="_blank" rel="noopener">46.全排列</a></p>
 <p>本质上为N叉树的遍历 + 决策</p>
 <pre><code class="python">class Solution:
@@ -526,7 +531,7 @@ if __name__ == &quot;__main__&quot;:
                     </dl>
                 </div>
                 <ul>
-                    <li><a href="/">74 <p>文章</p></a></li>
+                    <li><a href="/">75 <p>文章</p></a></li>
                     <li><a href="/categories">14 <p>分类</p></a></li>
                     <li><a href="/tags">71 <p>标签</p></a></li>
                 </ul>
@@ -537,7 +542,7 @@ if __name__ == &quot;__main__&quot;:
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#二叉树"><span class="toc-number">1.</span> <span class="toc-text">二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DFS"><span class="toc-number">1.1.</span> <span class="toc-text">DFS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BFS"><span class="toc-number">1.2.</span> <span class="toc-text">BFS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#回溯算法"><span class="toc-number">2.</span> <span class="toc-text">回溯算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二分查找"><span class="toc-number">3.</span> <span class="toc-text">二分查找</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#精确搜索"><span class="toc-number">3.1.</span> <span class="toc-text">精确搜索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查找左边界"><span class="toc-number">3.2.</span> <span class="toc-text">查找左边界</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查找右边界"><span class="toc-number">3.3.</span> <span class="toc-text">查找右边界</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#滑动窗口"><span class="toc-number">4.</span> <span class="toc-text">滑动窗口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#有固定长度的目标"><span class="toc-number">4.1.</span> <span class="toc-text">有固定长度的目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#无固定长度的目标"><span class="toc-number">4.2.</span> <span class="toc-text">无固定长度的目标</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#并查集"><span class="toc-number">5.</span> <span class="toc-text">并查集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#哈希维护-邻接表"><span class="toc-number">5.1.</span> <span class="toc-text">哈希维护(邻接表)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组维护-使用下标维护的邻接矩阵，只有一维"><span class="toc-number">5.2.</span> <span class="toc-text">数组维护(使用下标维护的邻接矩阵，只有一维)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变体-Kruskal-算法-贪心-并查集"><span class="toc-number">5.3.</span> <span class="toc-text">变体 Kruskal 算法(贪心+并查集)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动态规划"><span class="toc-number">6.</span> <span class="toc-text">动态规划</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#二叉树"><span class="toc-number">1.</span> <span class="toc-text">二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DFS"><span class="toc-number">1.1.</span> <span class="toc-text">DFS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BFS"><span class="toc-number">1.2.</span> <span class="toc-text">BFS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#二叉堆"><span class="toc-number">1.2.1.</span> <span class="toc-text">二叉堆</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#回溯算法"><span class="toc-number">2.</span> <span class="toc-text">回溯算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二分查找"><span class="toc-number">3.</span> <span class="toc-text">二分查找</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#精确搜索"><span class="toc-number">3.1.</span> <span class="toc-text">精确搜索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查找左边界"><span class="toc-number">3.2.</span> <span class="toc-text">查找左边界</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查找右边界"><span class="toc-number">3.3.</span> <span class="toc-text">查找右边界</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#滑动窗口"><span class="toc-number">4.</span> <span class="toc-text">滑动窗口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#有固定长度的目标"><span class="toc-number">4.1.</span> <span class="toc-text">有固定长度的目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#无固定长度的目标"><span class="toc-number">4.2.</span> <span class="toc-text">无固定长度的目标</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#并查集"><span class="toc-number">5.</span> <span class="toc-text">并查集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#哈希维护-邻接表"><span class="toc-number">5.1.</span> <span class="toc-text">哈希维护(邻接表)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组维护-使用下标维护的邻接矩阵，只有一维"><span class="toc-number">5.2.</span> <span class="toc-text">数组维护(使用下标维护的邻接矩阵，只有一维)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变体-Kruskal-算法-贪心-并查集"><span class="toc-number">5.3.</span> <span class="toc-text">变体 Kruskal 算法(贪心+并查集)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动态规划"><span class="toc-number">6.</span> <span class="toc-text">动态规划</span></a></li></ol>
                 </div>
             </div>
             

@@ -126,16 +126,16 @@
             <a href="/categories/不知道怎么归类"><b>「
                 </b>不知道怎么归类<b> 」</b></a>
             
-            十二月 30, 2020
+            二月 03, 2021
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/ba43525b/" title="记录一次celery消费失败的问题排除" class="posttitle">记录一次celery消费失败的问题排除</a></h3>
+            <a href="/posts/55916608/" title="F**K ZZZQ - 记录那些因政治正确而改名的技术" class="posttitle">F**K ZZZQ - 记录那些因政治正确而改名的技术</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                1.2k
+                1.1k
             </span>
             
             
@@ -145,7 +145,7 @@
             </span>
             
             
-            <span id="/posts/ba43525b/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/55916608/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <span class="leancloud-visitors-count">1000000</span>
             </span>
@@ -153,17 +153,15 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/celery/">celery</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/k8s/">k8s</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/rabbitmq/">rabbitmq</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Git/">Git</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <p>昨天发完UAT后，今天惯例点进UAT看看服务的情况，突然发现<code>flower</code>监测的<code>celery</code>竟然有半数以上的失败！</p>
-<p></p>
-<p>马上查看这个<code>queue</code>的日志，确实是有一堆失败的。</p>
-<p></p>
-<p>当前这个<code>queue</code>的业务是从<code>redis...</code></p>
+            <p>请允许我首先给出一个和善而不失礼貌的微笑 :) 以纪念因为这些莫名其妙的事而浪费的时间。</p>
+<blockquote>
+<p>在今年早些时候乔治-弗洛伊德（George Floyd）的惨死和BLM抗议活动之后，科技公司希望通过放弃master...</p></blockquote>
             
-            <span class="read-more"><a href="/posts/ba43525b/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/55916608/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -184,6 +182,64 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/不知道怎么归类">
+                  <b>「 </b>不知道怎么归类<b> 」</b>
+                </a>
+            
+            十二月 30, 2020
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/ba43525b/" title="记录一次celery消费失败的问题排除" class="posttitle">记录一次celery消费失败的问题排除</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        1.2k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        1 mins.
+                    </span>
+                
+                
+                    <span id="/posts/ba43525b/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <span class="leancloud-visitors-count">1000000</span>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/celery/">celery</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/k8s/">k8s</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/rabbitmq/">rabbitmq</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>昨天发完UAT后，今天惯例点进UAT看看服务的情况，突然发现<code>flower</code>监测的<code>celery</code>竟然有半数以上的失败！</p>
+<p></p>
+<p>马上查看这个<code>queue</code>的日志，确实是有一堆失败的。</p>
+<p></p>
+<p>当前这个<code>queue</code>的业务是从<code>redis</code>里把数据取出来写入<code>minio</code>里落盘，但是涉及的数据均为几十k的数据，讲道理不应该会失败。</p>
+<p>查询得到这几个失败的任务<code>redis</code> key的插入时间为<code>2020-12-28 15:17:48</code>，而消费的时间却是<code>2020-12-29 17:17:21</code></p>
+<p></p>
+<p>这里就出现了一个问题，业务逻辑上当一个key塞入<code>redis...</code></p>
+            
+            <span class="read-more"><a href="/posts/ba43525b/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -580,14 +636,14 @@ finally:
     dfs(root.right)
     # 后续遍历
 </code></pre>
-<pre><code class="python">from collections import deque
+<pre><code class="python"> from collections import deque
 
 def bfs(root: TreeNode, target: TreeNode):
     queue = deque()
     # 记录访问的节点避免走回头路
     vistied = []
 
-    # 起点...</code></pre>
+    # 起...</code></pre>
             
             <span class="read-more"><a href="/posts/5cb682e4/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
@@ -646,58 +702,6 @@ def bfs(root: TreeNode, target: TreeNode):
 <pre><code class="bash">create user rancher identified by &#39;rancher#1Yer...</code></pre>
             
             <span class="read-more"><a href="/posts/77c36b93/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/云原生学习笔记">
-                  <b>「 </b>云原生学习笔记<b> 」</b>
-                </a>
-            
-            八月 05, 2020
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/c57a716a/" title="Helm 编排教程" class="posttitle">Helm 编排教程</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        11k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        10 mins.
-                    </span>
-                
-                
-                    <span id="/posts/c57a716a/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <span class="leancloud-visitors-count">1000000</span>
-                    </span>
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/DevOps/">DevOps</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/docker/">docker</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/helm/">helm</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/k8s/">k8s</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/rancher2/">rancher2</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p>我们知道 Kubernetes 是一个分布式的容器集群管理系统，它把集群中的管理资源抽象化成一个个 API 对象，并且推荐使用声明式的方式创建，修改，删除这些对象，每个 API 对象都通过一个 yaml 格式或者 json 格式的文本来声明。这带来的一个问题就是这些 API 对象声明文本的管理成本，每当我需要创建一个应用，都需要去编写一堆这样的声明文件。</p>
-<p>Helm 就是用来管理这些 API 对象的工具。它类似于 CentOS 的 YUM 包管理，Ubuntu 的 APT 包管理，你可以把它理解成...</p>
-            
-            <span class="read-more"><a href="/posts/c57a716a/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>

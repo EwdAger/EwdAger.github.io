@@ -5,13 +5,14 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>WSL 下安装 docker 踩坑 - Gvoidy</title>
+    <title>F**K ZZZQ - 记录那些因政治正确而改名的技术 - Gvoidy</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
-    <meta name="description" content="起因项目改微服务化了，于是开始研究 rabbitMQ 这个消息队列框架。然后官方推荐使用docker启动，索性在WSL下装 docker 了（太懒了，不想双系统or虚拟机）
-安装-*-FBI WAR,"> 
+    <meta name="description" content="0x00请允许我首先给出一个和善而不失礼貌的微笑 :) 以纪念因为这些莫名其妙的事而浪费的时间。
+
+在今年早些时候乔治-弗洛伊德（George Floyd）的惨死和BLM抗议活动之后，科技公司希望通,"> 
     <meta name="author" content="EwdAger"> 
     <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -44,7 +45,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">WSL 下安装 docker 踩坑</h3>
+        <h3 class="subtitle">F**K ZZZQ - 记录那些因政治正确而改名的技术</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -74,29 +75,29 @@
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/知识储备"><b>「
-                    </b>知识储备<b> 」</b></a>
+                <a href="/categories/不知道怎么归类"><b>「
+                    </b>不知道怎么归类<b> 」</b></a>
                 
-                十二月 11, 2019
+                二月 03, 2021
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/posts/24f059ac/" title="WSL 下安装 docker 踩坑">WSL 下安装 docker 踩坑</a>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/55916608/" title="F**K ZZZQ - 记录那些因政治正确而改名的技术">F**K ZZZQ - 记录那些因政治正确而改名的技术</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    5.8k
+                    1.1k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    5 mins.
+                    1 mins.
                 </span>
                 
                 
-                <span id="/posts/24f059ac/" class="leancloud_visitors" data-flag-title="WSL 下安装 docker 踩坑">
+                <span id="/posts/55916608/" class="leancloud_visitors" data-flag-title="F**K ZZZQ - 记录那些因政治正确而改名的技术">
                     <b class="iconfont icon-read"></b> <i>阅读次数</i>
                     <span class="leancloud-visitors-count">1000000</span>
                 </span>
@@ -105,7 +106,7 @@
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/docker/">docker</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/rabbitMQ/">rabbitMQ</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/wsl/">wsl</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Git/">Git</a></li></ul>
             
         </div>
     </div>
@@ -126,110 +127,32 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>项目改微服务化了，于是开始研究 <code>rabbitMQ</code> 这个消息队列框架。然后官方推荐使用docker启动，索性在WSL下装 docker 了（太懒了，不想双系统or虚拟机）</p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p><strong>-*-FBI WARNING-*-</strong><br>安装前请注意查阅自己的WSL是否为2.0版，不然请直接看<a href="http://www.gvoidy.cn/posts/24f059ac/#%E8%B8%A9%E5%9D%91-amp-%E8%A7%A3%E5%86%B3" target="_blank" rel="noopener">踩坑 &amp; 解决</a>问题三</p>
-<p>因为我的WSL下安装的是Ubuntu，参见<a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" target="_blank" rel="noopener">docker官方安装文档</a>。</p>
-<pre><code class="bash"># 添加源
-$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-
-# 测试指纹是否存在
-$ sudo apt-key fingerprint 0EBFCD88
-
-pub   rsa4096 2017-02-22 [SCEA]
-      9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
-uid           [ unknown] Docker Release (CE deb) &lt;docker@docker.com&gt;
-sub   rsa4096 2017-02-22 [S]
-
-# 设置使用稳定版仓库
-$ sudo add-apt-repository \
-   &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) \
-  stable&quot;
-
-# 更新源
-$ sudo apt-get update
-
-# 安装
-$ sudo apt-get install docker-ce docker-ce-cli containerd.io
-</code></pre>
-<p>安装好后先别着急跑<code>sudo docker run hello-world</code>, WSL下有很多很多坑。</p>
-<h1 id="踩坑-amp-解决"><a href="#踩坑-amp-解决" class="headerlink" title="踩坑 &amp; 解决"></a>踩坑 &amp; 解决</h1><ol>
-<li><p>一定要以 <strong>管理员权限</strong> 打开 WSL </p>
-</li>
-<li><p><code>Cannot connect to the Docker daemon at unix:///var/run/docker.sock</code> 错误<br> 需要给<code>docker.sock</code> 权限</p>
-<pre><code class="bash"> sudo chmod -R 777 /var/run/docker.sock
-</code></pre>
-<p> 就能成功启动 docker 了</p>
-<pre><code class="bash"> $ sudo service docker restart
- $ sudo service docker status  
- * Docker is running
-</code></pre>
-</li>
-<li><p>问题三</p>
-<pre><code class="bash"> $ sudo docker run hello-world
-
- docker: Error response from daemon: OCI runtime create failed: container_linux.go:346: starting container process caused &quot;process_linux.go:319: getting the final child&#39;s pid from pipe caused \&quot;EOF\&quot;&quot;: unknown.
- ERRO[0012] error waiting for container: context canceled
-</code></pre>
-<p> 经过多方查阅，发现我的Win10版本是<code>18362</code>，而安装WSL的最低版本为<code>18917</code>。 WSL 1.0版没有集成完整版Linux内核，所以给出的解决方法是安装<code>18.X</code>版的docker</p>
-<p> 这里我们先删除docker</p>
-<pre><code class="bash"> # 删除刚刚安装的docker
- $ sudo apt-get remove docker docker-engine docker.io containerd runc
-
- # 然后查看一下当前可用的所有版本docker
- $ apt-cache madison docker-ce
-
- docker-ce | 5:19.03.5~3-0~ubuntu-bionic | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
-docker-ce | 5:19.03.4~3-0~ubuntu-bionic | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
-docker-ce | 5:19.03.3~3-0~ubuntu-bionic | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
-docker-ce | 5:19.03.2~3-0~ubuntu-bionic | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
-docker-ce | 5:19.03.1~3-0~ubuntu-bionic | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
-docker-ce | 5:19.03.0~3-0~ubuntu-bionic | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
-docker-ce | 5:18.09.9~3-0~ubuntu-bionic | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
-docker-ce | 5:18.09.8~3-0~ubuntu-bionic | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
-docker-ce | 5:18.09.7~3-0~ubuntu-bionic | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
-docker-ce | 5:18.09.6~3-0~ubuntu-bionic | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
-docker-ce | 5:18.09.5~3-0~ubuntu-bionic | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
-docker-ce | 5:18.09.4~3-0~ubuntu-bionic | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
-docker-ce | 5:18.09.3~3-0~ubuntu-bionic | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
-docker-ce | 5:18.09.2~3-0~ubuntu-bionic | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
-docker-ce | 5:18.09.1~3-0~ubuntu-bionic | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
-docker-ce | 5:18.09.0~3-0~ubuntu-bionic | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
-docker-ce | 18.06.3~ce~3-0~ubuntu | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
-docker-ce | 18.06.2~ce~3-0~ubuntu | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
-docker-ce | 18.06.1~ce~3-0~ubuntu | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
-docker-ce | 18.06.0~ce~3-0~ubuntu | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
-docker-ce | 18.03.1~ce~3-0~ubuntu | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
-
-  #最后选择一个旧版本安装, 我选的最后一个
- $ sudo apt-get install docker-ce=18.03.1~ce~3-0~ubuntu
-</code></pre>
-<p> 然后就能启动了~</p>
-<pre><code class="bash"> $ sudo docker run hello-world
-
- Hello from Docker!
- This message shows that your installation appears to be working correctly.
-
- To generate this message, Docker took the following steps:
-  1. The Docker client contacted the Docker daemon.
-  2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.
-     (amd64)
-  3. The Docker daemon created a new container from that image which runs the
-     executable that produces the output you are currently reading.
-  4. The Docker daemon streamed that output to the Docker client, which sent it
-     to your terminal.
-
- To try something more ambitious, you can run an Ubuntu container with:
-  $ docker run -it ubuntu bash
-
- Share images, automate workflows, and more with a free Docker ID:
-  https://hub.docker.com/
-
- For more examples and ideas, visit:
-  https://docs.docker.com/get-started/
-</code></pre>
-</li>
-</ol>
+            <h1 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h1><p>请允许我首先给出一个和善而不失礼貌的微笑 :) 以纪念因为这些莫名其妙的事而浪费的时间。</p>
+<blockquote>
+<p>在今年早些时候乔治-弗洛伊德（George Floyd）的惨死和BLM抗议活动之后，科技公司希望通过放弃master、slave、blacklist和whitelist等非包容性术语来表达对黑人社区的支持。</p>
+</blockquote>
+<h1 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h1><p>主分支从 master 改为 main</p>
+<blockquote>
+<p>适用范围: 目前新建的项目已修改，老项目不做变更</p>
+</blockquote>
+<h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><p><strong>目前的变化</strong></p>
+<ul>
+<li>将 master-slave 架构的描述改为 master-replica</li>
+<li>为 SLAVEOF 提供别名 REPLICAOF，所以仍然可以使用 SLAVEOF，但多了一个选项</li>
+<li>保持继续使用 slave 来对 INFO 和 ROLE 进行回应，现在目前看来，这仍然是一个重大的破坏性变更</li>
+</ul>
+<p><strong>计划中的变化</strong></p>
+<ul>
+<li>编写一个 INFO 的替代品</li>
+<li>在内部替换很多东西，因为技术原因，如果作了改动，许多 PR 也会无法应用，所以必须在某些地方进行大变动</li>
+</ul>
+<blockquote>
+<p>目前的变化适用于 redis 5.0, 5.0以前不做变更，5.0以后可能还会有变更(6.0目前没有大变更)</p>
+</blockquote>
+<h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><p>master process 变更为 parent process</p>
+<blockquote>
+<p>适用范围: python 3.8及其以上</p>
+</blockquote>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -273,7 +196,7 @@ docker-ce | 18.03.1~ce~3-0~ubuntu | https://download.docker.com/linux/ubuntu bio
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#起因"><span class="toc-number">1.</span> <span class="toc-text">起因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#踩坑-amp-解决"><span class="toc-number">3.</span> <span class="toc-text">踩坑 &amp; 解决</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00"><span class="toc-number">1.</span> <span class="toc-text">0x00</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Github"><span class="toc-number">2.</span> <span class="toc-text">Github</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis"><span class="toc-number">3.</span> <span class="toc-text">Redis</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python"><span class="toc-number">4.</span> <span class="toc-text">Python</span></a></li></ol>
                 </div>
             </div>
             

@@ -129,13 +129,13 @@
             六月 05, 2017
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/cb0b0c45/" title="python2.7无法pip mysql-python的问题" class="posttitle">python2.7无法pip mysql-python的问题</a></h3>
+            <a href="/posts/ab3d95d5/" title="在pycharm中如何将django中多个app放到同个文件夹apps处理" class="posttitle">在pycharm中如何将django中多个app放到同个文件夹apps处理</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                623
+                400
             </span>
             
             
@@ -145,7 +145,7 @@
             </span>
             
             
-            <span id="/posts/cb0b0c45/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/ab3d95d5/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <span class="leancloud-visitors-count">1000000</span>
             </span>
@@ -153,16 +153,15 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python2/">python2</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Django/">Django</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Web框架/">Web框架</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <p>出现问题：</p>
-<pre><code>&gt; pip install MySQL-python
-
-_mysql.c(42) : fatal error C1083: Cannot open include file: &#39...</code></pre>
+            <p>新建apps文件夹后mark为source目录，然后在Setting中import方式为</p>
+<pre><code>from message import views
+</code></pre><p>但这样run manage.py task时会报模块不存在...</p>
             
-            <span class="read-more"><a href="/posts/cb0b0c45/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/ab3d95d5/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -183,6 +182,63 @@ _mysql.c(42) : fatal error C1083: Cannot open include file: &#39...</code></pre>
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/python学习心得&备忘">
+                  <b>「 </b>PYTHON学习心得&备忘<b> 」</b>
+                </a>
+            
+            六月 05, 2017
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/ab3d95d5/" title="在pycharm中如何将django中多个app放到同个文件夹apps处理" class="posttitle">在pycharm中如何将django中多个app放到同个文件夹apps处理</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        400
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        1 mins.
+                    </span>
+                
+                
+                    <span id="/posts/ab3d95d5/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <span class="leancloud-visitors-count">1000000</span>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Django/">Django</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Web框架/">Web框架</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>新建apps文件夹后mark为source目录，然后在Setting中import方式为</p>
+<pre><code>from message import views
+</code></pre><p>但这样run manage.py task时会报模块不存在的错误</p>
+<pre><code>ImportError: No module named message
+</code></pre><p>此时要在Setting中设置app的路径</p>
+<pre><code>sys.path.insert(0,os.path.joinBASE_DIR,&#39;apps&#39;))
+</code></pre><p>注意：此时的<br><code>from message import views</code><br>必...</p>
+            
+            <span class="read-more"><a href="/posts/ab3d95d5/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
