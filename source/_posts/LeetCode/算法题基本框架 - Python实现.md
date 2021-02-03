@@ -31,7 +31,7 @@ def dfs(root: TreeNode):
 ## BFS
 
 ```python
-from collections import deque
+ from collections import deque
 
 def bfs(root: TreeNode, target: TreeNode):
     queue = deque()
@@ -60,6 +60,13 @@ def bfs(root: TreeNode, target: TreeNode):
                     vistied.append(x)
         step += 1
 ```
+
+### 二叉堆
+
+数组表示(从0开始)的二叉堆有如下性质：
+
+- 每个结点的左孩子为下标i的2倍加一：`left child(i) = i * 2 + 1`；每个结点的右孩子为下标i的2倍加2：`right child(i) = i * 2 + 2`
+- 每个结点的父亲结点为下标的二分之一：`parent(i) = (i - 1) // 2`
 
 # 回溯算法
 
