@@ -123,29 +123,29 @@
     <div id="post0" class="else">
         <p class="animated fadeInDown">
             
-            <a href="/categories/不知道怎么归类"><b>「
-                </b>不知道怎么归类<b> 」</b></a>
+            <a href="/categories/服务器相关问题&备忘"><b>「
+                </b>服务器相关问题&备忘<b> 」</b></a>
             
-            十二月 30, 2020
+            三月 22, 2021
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/posts/ba43525b/" title="记录一次celery消费失败的问题排除" class="posttitle">记录一次celery消费失败的问题排除</a></h3>
+            <a href="/posts/9237cc38/" title="RedHat 更换 CentOS 源出现的坑" class="posttitle">RedHat 更换 CentOS 源出现的坑</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                1.2k
+                3.3k
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                1 mins.
+                3 mins.
             </span>
             
             
-            <span id="/posts/ba43525b/" class="leancloud_visitors" data-flag-title="">
+            <span id="/posts/9237cc38/" class="leancloud_visitors" data-flag-title="">
                 <b class="iconfont icon-read"></b> <i>阅读次数</i>
                 <span class="leancloud-visitors-count">1000000</span>
             </span>
@@ -153,17 +153,13 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/celery/">celery</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/k8s/">k8s</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/rabbitmq/">rabbitmq</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <p>昨天发完UAT后，今天惯例点进UAT看看服务的情况，突然发现<code>flower</code>监测的<code>celery</code>竟然有半数以上的失败！</p>
-<p></p>
-<p>马上查看这个<code>queue</code>的日志，确实是有一堆失败的。</p>
-<p></p>
-<p>当前这个<code>queue</code>的业务是从<code>redis...</code></p>
+            <p>今天在客户服务器上部署的时候需要用到某第三方源，但网上提供的只有 CentOS 源，没有用户 RedHat 系统的相关源。在网上查了很多方法，都说卸载 yum 再重装就可以解决，但是并没有解决。 发现...</p>
             
-            <span class="read-more"><a href="/posts/ba43525b/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/posts/9237cc38/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -184,6 +180,64 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/不知道怎么归类">
+                  <b>「 </b>不知道怎么归类<b> 」</b>
+                </a>
+            
+            十二月 30, 2020
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/ba43525b/" title="记录一次celery消费失败的问题排除" class="posttitle">记录一次celery消费失败的问题排除</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        1.2k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        1 mins.
+                    </span>
+                
+                
+                    <span id="/posts/ba43525b/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <span class="leancloud-visitors-count">1000000</span>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/celery/">celery</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/k8s/">k8s</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/rabbitmq/">rabbitmq</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>昨天发完UAT后，今天惯例点进UAT看看服务的情况，突然发现<code>flower</code>监测的<code>celery</code>竟然有半数以上的失败！</p>
+<p></p>
+<p>马上查看这个<code>queue</code>的日志，确实是有一堆失败的。</p>
+<p></p>
+<p>当前这个<code>queue</code>的业务是从<code>redis</code>里把数据取出来写入<code>minio</code>里落盘，但是涉及的数据均为几十k的数据，讲道理不应该会失败。</p>
+<p>查询得到这几个失败的任务<code>redis</code> key的插入时间为<code>2020-12-28 15:17:48</code>，而消费的时间却是<code>2020-12-29 17:17:21</code></p>
+<p></p>
+<p>这里就出现了一个问题，业务逻辑上当一个key塞入<code>redis...</code></p>
+            
+            <span class="read-more"><a href="/posts/ba43525b/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -307,66 +361,6 @@
             
             五月 12, 2020
         </p>
-        <h3 class="post-title animated fadeInDown"><a href="/posts/65fb69b/" title="k8s中服务添加hosts及一键转换脚本" class="posttitle">k8s中服务添加hosts及一键转换脚本</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        1.7k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        2 mins.
-                    </span>
-                
-                
-                    <span id="/posts/65fb69b/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <span class="leancloud-visitors-count">1000000</span>
-                    </span>
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/docker/">docker</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/k8s/">k8s</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p>项目管理k8s集群用的是rancher，可是rancher没有提供给deployment批量添加hosts的图形化界面，所以还是只能按照k8s官方的方法修改yaml文件。 </p>
-<p><a href="https://kubernetes.io/zh/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/" target="_blank" rel="noopener">使用 HostAliases 向 Pod /etc/hosts 文件添加条目</a></p>
-<pre><code class="yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: hostaliases-pod
-spec:
-  restartPolicy: Never
-  hostAliases:
-  - ip: &quot;127.0.0.1&quot;...</code></pre>
-            
-            <span class="read-more"><a href="/posts/65fb69b/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/云原生学习笔记">
-                  <b>「 </b>云原生学习笔记<b> 」</b>
-                </a>
-            
-            五月 12, 2020
-        </p>
         <h3 class="post-title animated fadeInDown"><a href="/posts/ea5c4060/" title="Rancher2 & K8S部署踩坑记录" class="posttitle">Rancher2 & K8S部署踩坑记录</a></h3>
         
             <p class="post-count animated fadeInDown">
@@ -408,6 +402,66 @@ $ yum makecache fastyum -y
 $ yum install docker-...</code></pre>
             
             <span class="read-more"><a href="/posts/ea5c4060/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/云原生学习笔记">
+                  <b>「 </b>云原生学习笔记<b> 」</b>
+                </a>
+            
+            五月 12, 2020
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/posts/65fb69b/" title="k8s中服务添加hosts及一键转换脚本" class="posttitle">k8s中服务添加hosts及一键转换脚本</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        1.7k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        2 mins.
+                    </span>
+                
+                
+                    <span id="/posts/65fb69b/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <span class="leancloud-visitors-count">1000000</span>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/docker/">docker</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/k8s/">k8s</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>项目管理k8s集群用的是rancher，可是rancher没有提供给deployment批量添加hosts的图形化界面，所以还是只能按照k8s官方的方法修改yaml文件。 </p>
+<p><a href="https://kubernetes.io/zh/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/" target="_blank" rel="noopener">使用 HostAliases 向 Pod /etc/hosts 文件添加条目</a></p>
+<pre><code class="yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: hostaliases-pod
+spec:
+  restartPolicy: Never
+  hostAliases:
+  - ip: &quot;127.0.0.1&quot;...</code></pre>
+            
+            <span class="read-more"><a href="/posts/65fb69b/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -646,7 +700,24 @@ $ echo &quot;deb http...</code></pre>
         <div class="flow"></div>
         <span class="percentage animated fadeIn faster">0%</span>
         <span class="iconfont icon-top02 animated fadeIn faster"></span>
-    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 <footer>
     <p class="copyright" id="copyright">

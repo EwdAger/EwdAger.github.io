@@ -46,9 +46,32 @@
                 <div class="content animated fadeIn">
                     <div class="set">
                         <h1 style="text-align: center">文章</h1>
-                        <p style="text-align: center">「 75 」</p>
+                        <p style="text-align: center">「 76 」</p>
                         <ul class="timeline timeline-centered">
                             
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">三月 2021</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">三月 22, 2021</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/posts/9237cc38/">RedHat 更换 CentOS 源出现的坑</a>
+                                        <p>
+                                            知其然今天在客户服务器上部署的时候需要用到某第三方源，但网上提供的只有 CentOS 源，没有用户 RedHat 系统的相关源。在网上查了很多方法，都说卸载 yum 再重装就可以解决，但是并没有解决。 发现主要还是.repo文件中的$releasever变量在 RedHat 下无法找到，将.repo文件中的$releasever全部改为发行版本7 (具体情况具体改）即可。
+修改后能用的中科大...
+                                        </p>
+                                    </div>
+                                </li>
                             
                                 
                                 <li class="timeline-item period">
@@ -378,16 +401,13 @@ Celery 是一个资金最少的项目，因此我们不支持 Microsoft Windows�
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/posts/65fb69b/">k8s中服务添加hosts及一键转换脚本</a>
+                                        <a class="timeline-title" target="_self" href="/posts/ea5c4060/">Rancher2 &amp; K8S部署踩坑记录</a>
                                         <p>
-                                            序项目管理k8s集群用的是rancher，可是rancher没有提供给deployment批量添加hosts的图形化界面，所以还是只能按照k8s官方的方法修改yaml文件。 
-示例使用 HostAliases 向 Pod /etc/hosts 文件添加条目
-apiVersion: v1
-kind: Pod
-metadata:
-  name: hostaliases-pod
-spec:
-  r...
+                                            
+本安装教程基于CetnOS 7环境编写
+
+安装docker首先安装依赖并添加国内源$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+$ yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-...
                                         </p>
                                     </div>
                                 </li>
@@ -399,13 +419,16 @@ spec:
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/posts/ea5c4060/">Rancher2 &amp; K8S部署踩坑记录</a>
+                                        <a class="timeline-title" target="_self" href="/posts/65fb69b/">k8s中服务添加hosts及一键转换脚本</a>
                                         <p>
-                                            
-本安装教程基于CetnOS 7环境编写
-
-安装docker首先安装依赖并添加国内源$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
-$ yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-...
+                                            序项目管理k8s集群用的是rancher，可是rancher没有提供给deployment批量添加hosts的图形化界面，所以还是只能按照k8s官方的方法修改yaml文件。 
+示例使用 HostAliases 向 Pod /etc/hosts 文件添加条目
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostaliases-pod
+spec:
+  r...
                                         </p>
                                     </div>
                                 </li>
@@ -1719,7 +1742,24 @@ sudo apt-get install mysql-server mysql-c...
         <div class="flow"></div>
         <span class="percentage animated fadeIn faster">0%</span>
         <span class="iconfont icon-top02 animated fadeIn faster"></span>
-    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 <footer>
     <p class="copyright" id="copyright">
