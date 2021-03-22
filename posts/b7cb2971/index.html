@@ -5,12 +5,12 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Gvoidy - take your time</title>
+    <title>Python中in的三种遍历协议 - Gvoidy</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
-    
+    <meta name="description" content="今天刷LeetCode碰到个简单题 宝石与石头想降一下时间复杂度，就没有用in list写法，直接又遍历了一遍列表，可没想到一看答案，这样做的用时比用in要慢得多。索性研究了一下in的原理。这里复制,"> 
     <meta name="author" content="EwdAger"> 
     <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -36,29 +36,240 @@
     </div>
     <span id="config-title" style="display:none">Gvoidy</span>
     <div id="loader"></div>
-    <div id="single" class="page">
-    <div id="top">
-        <a class="iconfont icon-left image-icon" href="javascript:history.back()"></a>
-    </div>
-    <div class="clone-element"></div>
-    <div class="section dark-obsidian">
-        <div class="article animated fadeIn">
-            <div class="main animated fadeIn">
-                <div class="content animated fadeIn">
-                
-                    <div class="set">
-  <div class="category-mask"></div>
-  <h1>目录</h1>
-  <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/python学习心得-备忘/">python学习心得&备忘</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习笔记/">机器学习笔记</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/不知道怎么归类/">不知道怎么归类</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/知识储备/">知识储备</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode刷题总结/">LeetCode刷题总结</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/课程设计/">课程设计</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/云原生学习笔记/">云原生学习笔记</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器相关问题-备忘/">服务器相关问题&备忘</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机网络相关/">计算机网络相关</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP学习心得-备忘/">PHP学习心得&备忘</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/小项目/">小项目</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工作之余/">工作之余</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习笔记/">深度学习笔记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Steam骚操作/">Steam骚操作</a><span class="category-list-count">1</span></li></ul>
-</div>
-
-                
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">Python中in的三种遍历协议</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/LeetCode刷题总结"><b>「
+                    </b>LEETCODE刷题总结<b> 」</b></a>
+                
+                四月 18, 2018
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/b7cb2971/" title="Python中in的三种遍历协议">Python中in的三种遍历协议</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    2.8k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    3 mins.
+                </span>
+                
+                
+                <span id="/posts/b7cb2971/" class="leancloud_visitors" data-flag-title="Python中in的三种遍历协议">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span class="leancloud-visitors-count">1000000</span>
+                </span>
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/LeetCode/">LeetCode</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <p>今天刷LeetCode碰到个简单题 <a href="https://leetcode-cn.com/problems/jewels-and-stones/description/" target="_blank" rel="noopener">宝石与石头</a>想降一下时间复杂度，就没有用<code>in</code> list写法，直接又遍历了一遍列表，可没想到一看答案，这样做的用时比用<code>in</code>要慢得多。索性研究了一下<code>in</code>的原理。这里复制一下知乎用户（很抱歉， 这位同学账号似乎被封了，无法著名）的答案。</p>
+<p><code>in</code> 关键字实现了一套python中的遍历协议.</p>
+<h2 id="协议A-iter-next"><a href="#协议A-iter-next" class="headerlink" title="协议A: iter + next"></a>协议A: <strong>iter</strong> + next</h2><blockquote>
+<p>循环时,  程序先使用<strong>iter</strong> (相当于iter(instance))获取具有next方法的对象, 然后通过其返回的对象, 不断调用其next方法, 直到StopIteration错误抛出.</p>
+</blockquote>
+<pre><code class="python">class A:
+    def __iter__(self):
+        self.limit = 4
+        self.times = 0
+        self.init = 1
+        return self
+
+    def next(self):
+        if self.times &gt;= self.limit:
+            raise StopIteration()
+        else:
+            x = self.init
+            self.times += 1
+            self.init += 1
+            return x
+
+print &#39;A&gt;&gt;&gt;&gt;&gt;&gt;&#39;
+for x in A():
+    print x
+</code></pre>
+<p>打印结果：</p>
+<pre><code class="python">A&gt;&gt;&gt;&gt;&gt;&gt;
+1
+2
+3
+4
+</code></pre>
+<h2 id="协议B-getitem-len"><a href="#协议B-getitem-len" class="headerlink" title="协议B: getitem + len"></a>协议B: <strong>getitem</strong> + <strong>len</strong></h2><blockquote>
+<p>循环时, 程序先调用<strong>len</strong> (相当于len(instance))方法获取长度, 然后循环使用 <strong>getitem</strong>(index) (相当于instance[index])获取元素, index in range(len(instance))</p>
+</blockquote>
+<pre><code class="python">class B:
+
+    def __init__(self):
+        self._list = [5, 6, 7, 8]
+
+    def __getitem__(self, slice):
+        return self._list[slice]
+
+    def __len__(self):
+        return len(self._list)
+
+print &#39;B&gt;&gt;&gt;&gt;&gt;&gt;&#39;
+for x in B():
+    print x
+</code></pre>
+<p>打印结果：</p>
+<pre><code class="python">
+B&gt;&gt;&gt;&gt;&gt;&gt;
+5
+6
+7
+8
+</code></pre>
+<h2 id="协议C-yield关键字"><a href="#协议C-yield关键字" class="headerlink" title="协议C: yield关键字"></a>协议C: yield关键字</h2><pre><code class="python">def C():
+    for x in range(9, 13):
+        yield x
+
+print &#39;C&gt;&gt;&gt;&gt;&gt;&gt;&#39;
+for x in C():
+    print x
+</code></pre>
+<p>打印结果：</p>
+<pre><code class="python">C&gt;&gt;&gt;&gt;&gt;&gt;
+9
+10
+11
+12
+</code></pre>
+<p>从上边可以看出, ABC三种方式都可以实现in的循环, 对于A和B, 如果一个类把这两个方案都实现了怎么办?</p>
+<pre><code class="python">class D(A, B):
+    pass
+print &#39;D&gt;&gt;&gt;&gt;&gt;&gt;&#39;
+for x in D():
+    print x
+</code></pre>
+<p>打印结果：</p>
+<pre><code class="python">D&gt;&gt;&gt;&gt;&gt;&gt;
+1
+2
+3
+4
+</code></pre>
+<p>可见, in优先使用的是A计划.</p>
+<blockquote>
+<p>作者：知乎用户<br>链接：<a href="https://www.zhihu.com/question/24868112/answer/83471042" target="_blank" rel="noopener">https://www.zhihu.com/question/24868112/answer/83471042</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+</blockquote>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+            </ul>
+            
+            
+            
+            <div id="vcomments"></div>
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">76 <p>文章</p></a></li>
+                    <li><a href="/categories">14 <p>分类</p></a></li>
+                    <li><a href="/tags">71 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#协议A-iter-next"><span class="toc-number">1.</span> <span class="toc-text">协议A: iter + next</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#协议B-getitem-len"><span class="toc-number">2.</span> <span class="toc-text">协议B: getitem + len</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#协议C-yield关键字"><span class="toc-number">3.</span> <span class="toc-text">协议C: yield关键字</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
     <div id="back-to-top" class="animated fadeIn faster">
         <div class="flow"></div>
         <span class="percentage animated fadeIn faster">0%</span>

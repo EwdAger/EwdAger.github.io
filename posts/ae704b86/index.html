@@ -1,0 +1,509 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>聚类算法之DBSCAN聚类 - Gvoidy</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
+    <meta name="description" content="DBSCAN （Density-Based Spatial Clustering of Applications with Noise） 是一种基于密度的聚类算法，基于密度的聚类寻找被低密度区域分离,"> 
+    <meta name="author" content="EwdAger"> 
+    <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+</html>
+
+<body class="loading">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Gvoidy</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">聚类算法之DBSCAN聚类</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/机器学习笔记"><b>「
+                    </b>机器学习笔记<b> 」</b></a>
+                
+                十月 12, 2019
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/ae704b86/" title="聚类算法之DBSCAN聚类">聚类算法之DBSCAN聚类</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    4.9k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    4 mins.
+                </span>
+                
+                
+                <span id="/posts/ae704b86/" class="leancloud_visitors" data-flag-title="聚类算法之DBSCAN聚类">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span class="leancloud-visitors-count">1000000</span>
+                </span>
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/机器学习/">机器学习</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/聚类算法/">聚类算法</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <p>DBSCAN （Density-Based Spatial Clustering of Applications with Noise） 是一种基于密度的聚类算法，基于密度的聚类寻找被低密度区域分离的高密度区域。常用于异常值或者离群点检测。</p>
+<h2 id="DBSCAN-怎么算"><a href="#DBSCAN-怎么算" class="headerlink" title="DBSCAN 怎么算"></a>DBSCAN 怎么算</h2><p>当某个点的密度达到算法设定的阈值，则这个点称为<strong>核心对象</strong>。（即r领域内点的数量小于minPts），其中领域的距离阈值为用户设定值。</p>
+<p>若某点p在q的r领域内，且q是核心点，则p-q<strong>直接密度可达</strong>。若有一个点的序列q0、q1、q2…qK，对任意的qi-qi+1是直接密度可达的，则称q0到qK<strong>密度可达</strong>。称为密度的传播。</p>
+<p>当一个非核心点不能发展下线，则称该点为<strong>边界点</strong>。若某一点，从任一核心地点出发都是密度不可达的，则称该点为<strong>噪声点</strong></p>
+<p>DBSCAN 聚类算法实现如下图：<br><img src="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/DBSCAN1.webp" alt="DBSCAN算法"></p>
+<p>当出现奇葩数据时，K-Means 无法正常聚类，而 DBSCAN 完全无问题</p>
+<p><img src="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/DBSCAN2.webp" alt="DBSCAN"></p>
+<p><strong>优点：</strong></p>
+<ol>
+<li><p>与K-Means相比，不需要手动确定簇的个数K，但需要确定邻域r和密度阈值minPts</p>
+</li>
+<li><p>能发现任意形状的簇</p>
+</li>
+<li><p>能有效处理噪声点（邻域r和密度阈值minPts参数的设置可以影响噪声点）</p>
+</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li><p>当数据量大时，处理速度慢，消耗大</p>
+</li>
+<li><p>当空间聚类的密度不均匀、聚类间距差相差很大时参数密度阈值minPts和邻域r参数选取困难</p>
+</li>
+<li><p>对于高维数据，容易产生“维数灾难”（聚类算法基于欧式距离的通病）</p>
+</li>
+</ol>
+<h2 id="DBSCAN-聚类-Python-实现"><a href="#DBSCAN-聚类-Python-实现" class="headerlink" title="DBSCAN 聚类 Python 实现"></a>DBSCAN 聚类 Python 实现</h2><pre><code class="python"># coding=utf-8
+&quot;&quot;&quot;
+Created on 2019/10/12 11:42
+
+@author: EwdAger
+&quot;&quot;&quot;
+
+import numpy as np
+from sklearn.cluster import DBSCAN
+from sklearn import metrics
+from sklearn.datasets.samples_generator import make_blobs
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+
+
+centers = [[1, 1], [-1, -1], [1, -1]]  # 生成聚类中心点
+X, labels_true = make_blobs(n_samples=750, centers=centers, cluster_std=0.4,random_state=0)
+# 生成样本数据集
+
+X = StandardScaler().fit_transform(X)
+# StandardScaler 标准化处理。且是针对每一个特征维度来做的，而不是针对样本。
+
+# 调用密度聚类  DBSCAN
+db = DBSCAN(eps=0.3, min_samples=10).fit(X)
+# print(db.labels_)  # db.labels_为所有样本的聚类索引，没有聚类索引为-1
+# print(db.core_sample_indices_) # 所有核心样本的索引
+
+core_samples_mask = np.zeros_like(db.labels_, dtype=bool)  # 设置一个样本个数长度的全false向量
+core_samples_mask[db.core_sample_indices_] = True #将核心样本部分设置为true
+labels = db.labels_
+
+n_clusters_ = len(set(labels)) - (1 if -1 in labels else 0)
+# 获取聚类个数。（聚类结果中-1表示没有聚类为离散点）
+
+# 模型评估
+print(&#39;估计的聚类个数为: %d&#39; % n_clusters_)
+print(&quot;同质性: %0.3f&quot; % metrics.homogeneity_score(labels_true, labels))  # 每个群集只包含单个类的成员。
+print(&quot;完整性: %0.3f&quot; % metrics.completeness_score(labels_true, labels))  # 给定类的所有成员都分配给同一个群集。
+print(&quot;V-measure: %0.3f&quot; % metrics.v_measure_score(labels_true, labels))  # 同质性和完整性的调和平均
+print(&quot;调整兰德指数: %0.3f&quot; % metrics.adjusted_rand_score(labels_true, labels))
+print(&quot;调整互信息: %0.3f&quot; % metrics.adjusted_mutual_info_score(labels_true, labels))
+print(&quot;轮廓系数: %0.3f&quot; % metrics.silhouette_score(X, labels))
+
+# Plot result
+
+unique_labels = set(labels)
+colors = [plt.cm.Spectral(each) for each in np.linspace(0, 1, len(unique_labels))]
+
+plt.figure(figsize=(10,6))
+for k, col in zip(unique_labels, colors):
+    if k == -1:  # 聚类结果为-1的样本为离散点
+        # 使用黑色绘制离散点
+        col = [0, 0, 0, 1]
+
+    class_member_mask = (labels == k)  # 将所有属于该聚类的样本位置置为true
+
+    xy = X[class_member_mask &amp; core_samples_mask]  # 将所有属于该类的核心样本取出，使用大图标绘制
+    plt.plot(xy[:, 0], xy[:, 1], &#39;o&#39;, markerfacecolor=tuple(col), markeredgecolor=&#39;k&#39;, markersize=14)
+
+    xy = X[class_member_mask &amp; ~core_samples_mask]  # 将所有属于该类的非核心样本取出，使用小图标绘制
+    plt.plot(xy[:, 0], xy[:, 1], &#39;o&#39;, markerfacecolor=tuple(col), markeredgecolor=&#39;k&#39;, markersize=6)
+
+plt.title(&#39;Estimated number of clusters: %d&#39; % n_clusters_)
+plt.show()
+</code></pre>
+<p>输出</p>
+<pre><code class="python">估计的聚类个数为: 3
+同质性: 0.953
+完整性: 0.883
+V-measure: 0.917
+调整兰德指数: 0.952
+调整互信息: 0.883
+轮廓系数: 0.626
+</code></pre>
+<p><img src="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/dbscan_result.png" alt="result"></p>
+<h2 id="DBSCAN-在-SKlearn中的几个重要参数"><a href="#DBSCAN-在-SKlearn中的几个重要参数" class="headerlink" title="DBSCAN 在 SKlearn中的几个重要参数"></a>DBSCAN 在 SKlearn中的几个重要参数</h2><pre><code class="python">DBSCAN(eps=0.5, min_samples=5, metric=&#39;euclidean&#39;, algorithm=&#39;auto&#39;, leaf_size=30, p=None, n_jobs=1)
+</code></pre>
+<p><code>eps</code>: 两个样本之间的最大距离，即扫描半径<br><code>min_samples</code> ： 作为核心点的话邻域(即以其为圆心，eps为半径的圆，含圆上的点)中的最小样本数(包括点本身)。<br>其他参数：<br><code>metric</code>： 度量方式，默认为欧式距离，还有metric=‘precomputed’（稀疏半径邻域图）<br><code>algorithm</code>： 近邻算法求解方式，有四种：‘auto’, ‘ball_tree’, ‘kd_tree’, ‘brute’<br><code>leaf_size</code>： 叶的大小，在使用BallTree or cKDTree近邻算法时候会需要这个参数<br><code>n_jobs</code>： 使用CPU格式，-1代表全开</p>
+<p><strong>返回值</strong></p>
+<p><code>core_sample_indices_</code>: 核心样本指数。（此参数在代码中有详细的解释）<br><code>labels_</code>: 数据集中每个点的集合标签给,噪声点标签为-1。<br><code>components_</code> ：核心样本的副本</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+            </ul>
+            
+            
+            
+            <div id="vcomments"></div>
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">76 <p>文章</p></a></li>
+                    <li><a href="/categories">14 <p>分类</p></a></li>
+                    <li><a href="/tags">71 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DBSCAN-怎么算"><span class="toc-number">1.</span> <span class="toc-text">DBSCAN 怎么算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DBSCAN-聚类-Python-实现"><span class="toc-number">2.</span> <span class="toc-text">DBSCAN 聚类 Python 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DBSCAN-在-SKlearn中的几个重要参数"><span class="toc-number">3.</span> <span class="toc-text">DBSCAN 在 SKlearn中的几个重要参数</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2021
+        <span class="gradient-text">
+            EwdAger
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script> <script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script> <script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script> <script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>   <link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Farewell,good hunter.May you find your worth in the waking world.', '再见，善良的猎人。愿你能在清醒的世界中找到自己的价值。'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+ <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  var valine = new Valine();
+
+  function initValine(path) {
+    if (!path) path = window.location.pathname;
+    let language = 'zh-CN';
+    if (!language) {
+      language = 'en';
+    } else {
+      language = language.toLowerCase();
+    }
+    valine.init({
+      el: '#vcomments',
+      appId: 'ChQ4z1dCRpWqCOD43kU6cGmM-gzGzoHsz',
+      appKey: 'pFaAS3aumHDM572YbXkzc3fO',
+      notify: 'false',
+      verify: 'false',
+      avatar: 'retro',
+      placeholder: '留下你的评论~',
+      visitor: 'true',
+      path: path,
+      lang: language,
+    });
+  }
+
+  $(document).ready(function () {
+    initValine();
+  });
+</script>
+
+
+
+</html>

@@ -1,0 +1,493 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>聚类算法之K-Means(K均值)聚类 - Gvoidy</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
+    <meta name="description" content="聚类与分类的区别分类： 类别是已知的，通过对已知分类的数据进行训练和学习，找到不同类的特征再对未分类的数据进行分类，属于监督学习。
+聚类： 事先不知道数据会分为几类，通过聚类分析将数据聚合成几个群体,"> 
+    <meta name="author" content="EwdAger"> 
+    <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+</html>
+
+<body class="loading">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Gvoidy</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">聚类算法之K-Means(K均值)聚类</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/机器学习笔记"><b>「
+                    </b>机器学习笔记<b> 」</b></a>
+                
+                十月 09, 2019
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/dea808f4/" title="聚类算法之K-Means(K均值)聚类">聚类算法之K-Means(K均值)聚类</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    4k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    4 mins.
+                </span>
+                
+                
+                <span id="/posts/dea808f4/" class="leancloud_visitors" data-flag-title="聚类算法之K-Means(K均值)聚类">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span class="leancloud-visitors-count">1000000</span>
+                </span>
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/机器学习/">机器学习</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/聚类算法/">聚类算法</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="聚类与分类的区别"><a href="#聚类与分类的区别" class="headerlink" title="聚类与分类的区别"></a>聚类与分类的区别</h2><p><strong>分类</strong>： 类别是已知的，通过对已知分类的数据进行训练和学习，找到不同类的特征再对未分类的数据进行分类，属于监督学习。</p>
+<p><strong>聚类</strong>： 事先不知道数据会分为几类，通过聚类分析将数据聚合成几个群体。聚类不需要对数据进行训练和学习。属于无监督学习。</p>
+<p><em>数据输入有标签则为监督学习，否则为无监督学习</em></p>
+<h2 id="k-means-聚类怎么算"><a href="#k-means-聚类怎么算" class="headerlink" title="k-means 聚类怎么算"></a>k-means 聚类怎么算</h2><ol>
+<li>首先输入 k 的值，即希望通过聚类得到 k 个分组；</li>
+<li>从数据集中随机选取 k 个数据点作为初始质心</li>
+<li>对数据中每一个点计算与每一个质心的距离，离哪个质心近，就分为哪一类</li>
+<li>基于当前分好的类，重新计算类中的所有向量的平均值，确定新的质心</li>
+<li>重复3、4步</li>
+<li>直到新的质心与老的质心的距离小于某一个设定的阈值，可以认为达到预期，算法终止。</li>
+</ol>
+<p>具体步骤如下图：<br><img src="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/k-means" alt="k-means"></p>
+<h2 id="k-means-聚类-Python-实现"><a href="#k-means-聚类-Python-实现" class="headerlink" title="k-means 聚类 Python 实现"></a>k-means 聚类 Python 实现</h2><pre><code class="python">import numpy as np
+from sklearn.cluster import KMeans
+data = np.random.rand(100, 3) #生成一个随机数据，样本大小为100, 特征数为3
+
+#假如我要构造一个聚类数为3的聚类器
+estimator = KMeans(n_clusters=3)#构造聚类器
+estimator.fit(data)#聚类
+label_pred = estimator.labels_ #获取聚类标签
+centroids = estimator.cluster_centers_ #获取聚类中心
+inertia = estimator.inertia_ # 获取聚类准则的总和
+</code></pre>
+<h2 id="主函数-KMeans-参数解释"><a href="#主函数-KMeans-参数解释" class="headerlink" title="主函数 KMeans 参数解释"></a>主函数 KMeans 参数解释</h2><pre><code class="python">sklearn.cluster.KMeans(n_clusters=8,
+    init=&#39;k-means++&#39;, 
+    n_init=10, 
+    max_iter=300, 
+    tol=0.0001, 
+    precompute_distances=&#39;auto&#39;, 
+    verbose=0, 
+    random_state=None, 
+    copy_x=True, 
+    n_jobs=1, 
+    algorithm=&#39;auto&#39;
+    )
+</code></pre>
+<ul>
+<li><code>n_clusters</code>:簇的个数，即你想聚成几类</li>
+<li><code>init</code>: 初始簇中心的获取方法</li>
+<li><code>n_init</code>: 获取初始簇中心的更迭次数，为了弥补初始质心的影响，算法默认会初始10次质心，实现算法，然后返回最好的结果。</li>
+<li><code>max_iter</code>: 最大迭代次数（因为kmeans算法的实现需要迭代）</li>
+<li><code>tol</code>: 容忍度，即kmeans运行准则收敛的条件</li>
+<li><code>precompute_distances</code>：是否需要提前计算距离，这个参数会在空间和时间之间做权衡，如果是True 会把整个距离矩阵都放到内存中，auto 会默认在数据样本大于featurs*samples 的数量大于12e6 的时候False,False 时核心实现的方法是利用Cpython 来实现的</li>
+<li><code>verbose</code>: 冗长模式（不太懂是啥意思，反正一般不去改默认值）</li>
+<li><code>random_state</code>: 随机生成簇中心的状态条件。</li>
+<li><code>copy_x</code>: 对是否修改数据的一个标记，如果True，即复制了就不会修改数据。bool 在scikit-learn 很多接口中都会有这个参数的，就是是否对输入数据继续copy 操作，以便不修改用户的输入数据。这个要理解Python 的内存机制才会比较清楚。</li>
+<li><code>n_jobs</code>: 并行设置</li>
+<li><code>algorithm</code>: kmeans的实现算法，有：<code>auto</code>, <code>full</code>, <code>elkan</code>, 其中 <code>full</code>表示用EM方式实现</li>
+</ul>
+<h2 id="具体-Python-实现"><a href="#具体-Python-实现" class="headerlink" title="具体 Python 实现"></a>具体 Python 实现</h2><pre><code class="python"># coding=utf-8
+&quot;&quot;&quot;
+Created on 2019/10/9 16:31
+
+@author: EwdAger
+&quot;&quot;&quot;
+import numpy as np
+import pandas as pd
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+
+data = pd.read_csv(r&quot;F:\MachineLearning\Kmeans\data\testSet.txt&quot;, sep=&#39;\t&#39;,
+                   header=0, dtype=str, na_filter=False).astype(np.float)
+
+k = 4
+clt = KMeans(n_clusters=k)
+clt.fit(data)
+cents = clt.cluster_centers_  # 获取聚类中心
+labels = clt.labels_  # 获取聚类标签
+colors = [&#39;b&#39;, &#39;g&#39;, &#39;r&#39;, &#39;k&#39;, &#39;c&#39;, &#39;m&#39;, &#39;y&#39;, &#39;#e24fff&#39;, &#39;#524C90&#39;, &#39;#845868&#39;]
+
+# 画图
+for i in range(k):
+    # 获取i组数据的index
+    index = np.nonzero(labels == i)[0]
+    x0 = data.iloc[data.index.isin(index), 0].tolist()
+    x1 = data.iloc[data.index.isin(index), 1].tolist()
+    y_i = i
+    # 给第i组数据涂上颜色，进行分组
+    for j in range(len(x0)):
+        plt.text(x0[j], x1[j], str(y_i), color=colors[i], fontdict={&#39;weight&#39;: &#39;bold&#39;, &#39;size&#39;: 6})
+    # 绘制该组质心
+    plt.scatter(cents[i, 0], cents[i, 1], marker=&#39;x&#39;, color=colors[i], linewidths=7)
+
+plt.axis([-7, 7, -7, 7])
+plt.show()
+
+</code></pre>
+<p>结果如下：<br><img src="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/k_clusters4.png" alt="k_clusters4"></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+            </ul>
+            
+            
+            
+            <div id="vcomments"></div>
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">76 <p>文章</p></a></li>
+                    <li><a href="/categories">14 <p>分类</p></a></li>
+                    <li><a href="/tags">71 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#聚类与分类的区别"><span class="toc-number">1.</span> <span class="toc-text">聚类与分类的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#k-means-聚类怎么算"><span class="toc-number">2.</span> <span class="toc-text">k-means 聚类怎么算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#k-means-聚类-Python-实现"><span class="toc-number">3.</span> <span class="toc-text">k-means 聚类 Python 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主函数-KMeans-参数解释"><span class="toc-number">4.</span> <span class="toc-text">主函数 KMeans 参数解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体-Python-实现"><span class="toc-number">5.</span> <span class="toc-text">具体 Python 实现</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2021
+        <span class="gradient-text">
+            EwdAger
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script> <script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script> <script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script> <script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>   <link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Farewell,good hunter.May you find your worth in the waking world.', '再见，善良的猎人。愿你能在清醒的世界中找到自己的价值。'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+ <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  var valine = new Valine();
+
+  function initValine(path) {
+    if (!path) path = window.location.pathname;
+    let language = 'zh-CN';
+    if (!language) {
+      language = 'en';
+    } else {
+      language = language.toLowerCase();
+    }
+    valine.init({
+      el: '#vcomments',
+      appId: 'ChQ4z1dCRpWqCOD43kU6cGmM-gzGzoHsz',
+      appKey: 'pFaAS3aumHDM572YbXkzc3fO',
+      notify: 'false',
+      verify: 'false',
+      avatar: 'retro',
+      placeholder: '留下你的评论~',
+      visitor: 'true',
+      path: path,
+      lang: language,
+    });
+  }
+
+  $(document).ready(function () {
+    initValine();
+  });
+</script>
+
+
+
+</html>

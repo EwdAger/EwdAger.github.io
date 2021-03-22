@@ -5,12 +5,14 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Gvoidy - take your time</title>
+    <title>git的ssh key创建 - Gvoidy</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
-    
+    <meta name="description" content="Git是分布式的代码管理工具，远程的代码管理是基于ssh的，所以要使用远程的git则需要ssh的配置。如果未配置ssh key将无法clone远程代码仓库到本地。
+
+第一步.创建user.name和,"> 
     <meta name="author" content="EwdAger"> 
     <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -36,29 +38,157 @@
     </div>
     <span id="config-title" style="display:none">Gvoidy</span>
     <div id="loader"></div>
-    <div id="single" class="page">
-    <div id="top">
-        <a class="iconfont icon-left image-icon" href="javascript:history.back()"></a>
-    </div>
-    <div class="clone-element"></div>
-    <div class="section dark-obsidian">
-        <div class="article animated fadeIn">
-            <div class="main animated fadeIn">
-                <div class="content animated fadeIn">
-                
-                    <div class="set">
-  <div class="category-mask"></div>
-  <h1>目录</h1>
-  <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/python学习心得-备忘/">python学习心得&备忘</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习笔记/">机器学习笔记</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/不知道怎么归类/">不知道怎么归类</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/知识储备/">知识储备</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode刷题总结/">LeetCode刷题总结</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/课程设计/">课程设计</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/云原生学习笔记/">云原生学习笔记</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器相关问题-备忘/">服务器相关问题&备忘</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机网络相关/">计算机网络相关</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP学习心得-备忘/">PHP学习心得&备忘</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/小项目/">小项目</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工作之余/">工作之余</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习笔记/">深度学习笔记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Steam骚操作/">Steam骚操作</a><span class="category-list-count">1</span></li></ul>
-</div>
-
-                
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">git的ssh key创建</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/不知道怎么归类"><b>「
+                    </b>不知道怎么归类<b> 」</b></a>
+                
+                八月 14, 2017
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/7c2130d4/" title="git的ssh key创建">git的ssh key创建</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    869
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    1 mins.
+                </span>
+                
+                
+                <span id="/posts/7c2130d4/" class="leancloud_visitors" data-flag-title="git的ssh key创建">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span class="leancloud-visitors-count">1000000</span>
+                </span>
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Git/">Git</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <p>Git是分布式的代码管理工具，远程的代码管理是基于ssh的，所以要使用远程的git则需要ssh的配置。如果未配置ssh key将无法clone远程代码仓库到本地。</p>
+<ul>
+<li><p>第一步.创建user.name和email</p>
+<pre><code>git config --global user.name &quot;EwdAger&quot;
+git config --global user.email &quot;ewdager@hotmail.com&quot;
+</code></pre></li>
+<li><p>第二步.生成SSH密钥：</p>
+</li>
+</ul>
+<ol>
+<li>查看是否已经有了ssh密钥：<code>cd ~/.ssh</code>,Windows用户的路径在<code>C:\Users\EwdAger\.ssh</code>下<br>如果是刚安装git则不会有此文件夹，有则备份删除</li>
+<li>生成ssh key<br><code>sudo ssh-keygen -t rsa -C &quot;ewdager@hotmail.com&quot;</code><br>然后按三下回车<br>最后得到了两个文件：id_rsa和id_rsa.pub</li>
+<li>在github上添加ssh密钥，这要添加的是“id_rsa.pub”里面的公钥<br>用编辑器打开id_rsa.pub复制全部内容到github的settings的SSH and GPG keys设置中，title取个好记的名字就行。<br><img src="http://upload-images.jianshu.io/upload_images/5433252-0697e396457b08da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
+<li>然后就能使用clone了</li>
+</ol>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+            </ul>
+            
+            
+            
+            <div id="vcomments"></div>
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">76 <p>文章</p></a></li>
+                    <li><a href="/categories">14 <p>分类</p></a></li>
+                    <li><a href="/tags">71 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
     <div id="back-to-top" class="animated fadeIn faster">
         <div class="flow"></div>
         <span class="percentage animated fadeIn faster">0%</span>

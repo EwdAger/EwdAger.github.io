@@ -5,12 +5,12 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Gvoidy - take your time</title>
+    <title>RedHat 更换 CentOS 源出现的坑 - Gvoidy</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
-    
+    <meta name="description" content="知其然今天在客户服务器上部署的时候需要用到某第三方源，但网上提供的只有 CentOS 源，没有用户 RedHat 系统的相关源。在网上查了很多方法，都说卸载 yum 再重装就可以解决，但是并没有解决,"> 
     <meta name="author" content="EwdAger"> 
     <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -36,29 +36,219 @@
     </div>
     <span id="config-title" style="display:none">Gvoidy</span>
     <div id="loader"></div>
-    <div id="single" class="page">
-    <div id="top">
-        <a class="iconfont icon-left image-icon" href="javascript:history.back()"></a>
-    </div>
-    <div class="clone-element"></div>
-    <div class="section dark-obsidian">
-        <div class="article animated fadeIn">
-            <div class="main animated fadeIn">
-                <div class="content animated fadeIn">
-                
-                    <div class="set">
-  <div class="category-mask"></div>
-  <h1>目录</h1>
-  <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/python学习心得-备忘/">python学习心得&备忘</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习笔记/">机器学习笔记</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/不知道怎么归类/">不知道怎么归类</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/知识储备/">知识储备</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode刷题总结/">LeetCode刷题总结</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/课程设计/">课程设计</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/云原生学习笔记/">云原生学习笔记</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器相关问题-备忘/">服务器相关问题&备忘</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机网络相关/">计算机网络相关</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP学习心得-备忘/">PHP学习心得&备忘</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/小项目/">小项目</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工作之余/">工作之余</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习笔记/">深度学习笔记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Steam骚操作/">Steam骚操作</a><span class="category-list-count">1</span></li></ul>
-</div>
-
-                
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">RedHat 更换 CentOS 源出现的坑</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/服务器相关问题&备忘"><b>「
+                    </b>服务器相关问题&备忘<b> 」</b></a>
+                
+                三月 22, 2021
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/9237cc38/" title="RedHat 更换 CentOS 源出现的坑">RedHat 更换 CentOS 源出现的坑</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    3.3k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    3 mins.
+                </span>
+                
+                
+                <span id="/posts/9237cc38/" class="leancloud_visitors" data-flag-title="RedHat 更换 CentOS 源出现的坑">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span class="leancloud-visitors-count">1000000</span>
+                </span>
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Linux/">Linux</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h1 id="知其然"><a href="#知其然" class="headerlink" title="知其然"></a>知其然</h1><p>今天在客户服务器上部署的时候需要用到某第三方源，但网上提供的只有 CentOS 源，没有用户 RedHat 系统的相关源。在网上查了很多方法，都说卸载 yum 再重装就可以解决，但是并没有解决。 发现主要还是<code>.repo</code>文件中的<code>$releasever</code>变量在 RedHat 下无法找到，将<code>.repo</code>文件中的<code>$releasever</code>全部改为发行版本<code>7</code> (具体情况具体改）即可。</p>
+<p>修改后能用的中科大源如下(仅做示例使用)：</p>
+<pre><code class="CentOS-Base.repo"># CentOS-Base.repo
+#
+# The mirror system uses the connecting IP address of the client and the
+# update status of each mirror to pick mirrors that are updated to and
+# geographically close to the client.  You should use this for CentOS updates
+# unless you are manually picking other mirrors.
+#
+# If the mirrorlist= does not work for you, as a fall back you can try the
+# remarked out baseurl= line instead.
+#
+#
+
+[base]
+name=CentOS-7 - Base
+#mirrorlist=http://mirrorlist.centos.org/?release=7&amp;arch=$basearch&amp;repo=os&amp;infra=$infra
+baseurl=https://mirrors.ustc.edu.cn/centos/7/os/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+#released updates
+[updates]
+name=CentOS-7 - Updates
+#mirrorlist=http://mirrorlist.centos.org/?release=7&amp;arch=$basearch&amp;repo=updates&amp;infra=$infra
+baseurl=https://mirrors.ustc.edu.cn/centos/7/updates/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+#additional packages that may be useful
+[extras]
+name=CentOS-7 - Extras
+#mirrorlist=http://mirrorlist.centos.org/?release=7&amp;arch=$basearch&amp;repo=extras&amp;infra=$infra
+baseurl=https://mirrors.ustc.edu.cn/centos/7/extras/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+#additional packages that extend functionality of existing packages
+[centosplus]
+name=CentOS-7 - Plus
+#mirrorlist=http://mirrorlist.centos.org/?release=7&amp;arch=$basearch&amp;repo=centosplus&amp;infra=$infra
+baseurl=https://mirrors.ustc.edu.cn/centos/7/centosplus/$basearch/
+gpgcheck=1
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+</code></pre>
+<h1 id="知其所以然"><a href="#知其所以然" class="headerlink" title="知其所以然"></a>知其所以然</h1><p>又查询了一下<code>$releasever</code>这个变量是在哪里定义的，据说在 CentOS 下，的<code>/etc/yum.conf</code>文件中定义了一个变量<code>distroverpkg=centos-release</code>，然后<code>centos-release</code>是指的将<code>$releasever</code>设置为<code>centos-release</code>这个RPM包的版本号。通过<code>rpm -qi centos-release</code>，即可查询到真正的版本号。</p>
+<pre><code class="bash"># [root@xxxxxxxx ~]# rpm -qi centos-release
+
+Name        : centos-release
+Version     : 7
+Release     : 7.1908.0.el7.centos
+Architecture: x86_64
+Install Date: 2020年04月16日 星期四 16时56分35秒
+Group       : System Environment/Base
+Size        : 42295
+License     : GPLv2
+Signature   : RSA/SHA256, 2019年09月05日 星期四 21时19分24秒, Key ID 24c6a8a7f4a80eb5
+Source RPM  : centos-release-7-7.1908.0.el7.centos.src.rpm
+Build Date  : 2019年09月05日 星期四 21时05分40秒
+Build Host  : x86-01.bsys.centos.org
+Relocations : (not relocatable)
+Packager    : CentOS BuildSystem &lt;http://bugs.centos.org&gt;
+Vendor      : CentOS
+Summary     : CentOS Linux release file
+Description :
+CentOS Linux release files
+
+</code></pre>
+<p>而在客户的 RedHat 中直接就没有安装<code>centos-release</code>包，自然就找不到变量<code>$releasever</code>进而就报错了。所以最简单的办法还是直接修改<code>.repo</code>文件，把所有用了<code>$releasever</code>变量的地方改成对应的版本号，即可正常使用。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+            </ul>
+            
+            
+            
+            <div id="vcomments"></div>
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">76 <p>文章</p></a></li>
+                    <li><a href="/categories">14 <p>分类</p></a></li>
+                    <li><a href="/tags">71 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#知其然"><span class="toc-number">1.</span> <span class="toc-text">知其然</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#知其所以然"><span class="toc-number">2.</span> <span class="toc-text">知其所以然</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
     <div id="back-to-top" class="animated fadeIn faster">
         <div class="flow"></div>
         <span class="percentage animated fadeIn faster">0%</span>

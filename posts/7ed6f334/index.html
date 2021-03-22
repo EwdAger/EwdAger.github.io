@@ -1,0 +1,494 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Python 蛋疼的编码问题 - Gvoidy</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
+    <meta name="description" content="Python 的编码问题早就困扰我太久了， 但一直没有看到比较通俗易懂的专门介绍 Python 编码问题的文章。 正好今天刷知乎看到了非常不错的文章， 这里稍微抛砖引玉归纳下。
+Unicode 和 ,"> 
+    <meta name="author" content="EwdAger"> 
+    <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+</html>
+
+<body class="loading">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Gvoidy</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">Python 蛋疼的编码问题</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/python学习心得&备忘"><b>「
+                    </b>PYTHON学习心得&备忘<b> 」</b></a>
+                
+                五月 02, 2018
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/7ed6f334/" title="Python 蛋疼的编码问题">Python 蛋疼的编码问题</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    4.5k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    4 mins.
+                </span>
+                
+                
+                <span id="/posts/7ed6f334/" class="leancloud_visitors" data-flag-title="Python 蛋疼的编码问题">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span class="leancloud-visitors-count">1000000</span>
+                </span>
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python2/">Python2</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/编码/">编码</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <p>Python 的编码问题早就困扰我太久了， 但一直没有看到比较通俗易懂的专门介绍 Python 编码问题的文章。 正好今天刷知乎看到了非常不错的文章， 这里稍微抛砖引玉归纳下。</p>
+<h2 id="Unicode-和-UTF-8"><a href="#Unicode-和-UTF-8" class="headerlink" title="Unicode 和 UTF-8"></a>Unicode 和 UTF-8</h2><p>知识储备：</p>
+<ul>
+<li>ASCII 占1个字节，只支持英文</li>
+<li>GBK GB2312的升级版，支持21000+汉字</li>
+<li>Shift-JIS 日本字符</li>
+<li>ks_c_5601-1987 韩国编码</li>
+<li>TIS-620 泰国编码</li>
+</ul>
+<p>由于每个国家都有自己的字符，所以其对应关系也涵盖了自己国家的字符，但是以上编码都存在局限性，即：仅涵盖本国字符，无其他国家字符的对应关系。 应运而生出现了万国码(Unicode)，他涵盖了全球所有的文字和二进制的对应关系。</p>
+<p>Unicode解决了字符和二进制的对应关系，但是使用unicode表示一个字符，太浪费空间。例如：利用unicode表示“Python”需要12个字节才能表示，比原来ASCII表示增加了1倍。</p>
+<p>由于计算机的内存比较大，并且字符串在内容中表示时也不会特别大，所以内容可以使用unicode来处理，但是存储和网络传输时一般数据都会非常多，那么增加1倍将是无法容忍的！！！</p>
+<p>为了解决存储和网络传输的问题，出现了Unicode Transformation Format，学术名UTF，<strong>即：对unicode中的进行转换，以便于在存储和网络传输时可以节省空间!</strong></p>
+<ul>
+<li>UTF-8： 使用1、2、3、4个字节表示所有字符；优先使用1个字符、无法满足则使增加一个字节，最多4个字节。英文占1个字节、欧洲语系占2个、东亚占3个，其它及特殊字符占4个</li>
+<li>UTF-16： 使用2、4个字节表示所有字符；优先使用2个字节，否则使用4个字节表示。</li>
+<li>UTF-32： 使用4个字节表示所有字符；</li>
+</ul>
+<p>总结： <strong>UTF 是为unicode编码设计的一种在存储和传输时节省空间的编码方案。</strong></p>
+<h2 id="编码的转换"><a href="#编码的转换" class="headerlink" title="编码的转换"></a>编码的转换</h2><p>对于历史遗留的以 GBK 编码编写的程序，我们可以不将其重新编码成 UTF-8 让其在没有安装 GBK 编码的终端上不乱码。 因为 Unicode 包含它与所有国家编码的映射关系， 所有只需要把数据从硬盘读到内存里， 转成 Unicode 来显示就可以了。<br>由于所有的系统、编程语言都默认支持unicode，那你的gbk软件放到美国电脑 上，加载到内存里，变成了unicode,中文就可以正常展示啦。</p>
+<h2 id="Python3-的执行过程"><a href="#Python3-的执行过程" class="headerlink" title="Python3 的执行过程"></a>Python3 的执行过程</h2><p>在看实际代码的例子前，我们来聊聊，python3 执行代码的过程</p>
+<ol>
+<li>解释器找到代码文件，把代码字符串按文件头定义的编码加载到内存，转成unicode</li>
+<li>把代码字符串按照语法规则进行解释，</li>
+<li>所有的变量字符都会以unicode编码声明</li>
+</ol>
+<h2 id="编码转换过程"><a href="#编码转换过程" class="headerlink" title="编码转换过程"></a>编码转换过程</h2><p>在 py2 和 py3 下分别运行下面这段程序</p>
+<pre><code class="python"># coding: utf-8
+s = &#39;你好&#39;
+print(s)
+</code></pre>
+<p>Python3:</p>
+<pre><code class="python">&#39;你好&#39;
+</code></pre>
+<p>Python2:</p>
+<pre><code class="python">&#39;浣犲ソ&#39;
+</code></pre>
+<p>好了，这里就是最恶心的 Python2 的编码问题了。</p>
+<p>这里使用的是 Windows cmd 默认的 GBK 编码运行的程序。 为什么py3正常，py2就显示二进制字节了呢。</p>
+<p>因为到了内存里 python3 解释器把 utf-8 转成了 Unicode，而 python2 的默认编码是 ASCII ，py2 解释器仅以文件头声明的编码去解释这段代码， 加载到内存后，并不会主动转成 Unicode ，也就是说你的文件编码是以 utf-8 的信使加载到内存的， 所以是乱码。</p>
+<p>在 Windows 上，字符串只有<strong>以GBK格式显示</strong>或者编码是<strong>Unicode</strong>才能正常显示。</p>
+<p>这种情况，只能自己手动<code>decode</code>成 Unicode 了。</p>
+<blockquote>
+<p>UTF-8 –&gt; decode 解码 –&gt; Unicode<br>Unicode –&gt; encode 编码 –&gt; GBK / UTF-8 ..</p>
+</blockquote>
+<pre><code class="python"># coding: utf-8
+s = &#39;你好&#39;
+
+s2 = s.decode(&#39;utf-8&#39;)
+print(s2)                   # 你好
+print(typr(s2))             # &lt;type &#39;unicode&#39;&gt;
+
+s3 = s2.encode(&quot;GBK&quot;)
+print(s3)                   # 你好
+print(type(s3))             # &lt;type &#39;str&#39;&gt;
+</code></pre>
+<p><img src="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/1.png" alt="转换规则"></p>
+<h3 id="如何验证编码转对了呢？"><a href="#如何验证编码转对了呢？" class="headerlink" title="如何验证编码转对了呢？"></a>如何验证编码转对了呢？</h3><ol>
+<li>查看数据类型， python2里有专门的 Unicode 类型</li>
+<li>查看 Unicode 编码映射表</li>
+</ol>
+<p>unicode字符是有专门的unicode类型来判断的，而 utf-8, gbk 编码的字符都是<code>str</code>。</p>
+<h2 id="python-bytes-类型"><a href="#python-bytes-类型" class="headerlink" title="python bytes 类型"></a>python bytes 类型</h2><p>Python2：</p>
+<pre><code class="python">&gt;&gt;&gt; s = &quot;你好&quot;
+&gt;&gt;&gt; print s
+你好
+&gt;&gt;&gt; s
+&#39;\xc4\xe3\xba\xc3&#39;
+&gt;&gt;&gt; s.decode(&#39;GBK&#39;)    # CMD 编码格式为 GBK
+u&#39;\u4f60\u597d&#39;        # 在 Unicode 编码表中对应的位置
+</code></pre>
+<p>首先， python2 是以 bytes 形式存储非英文字符串，所以<code>bytes</code>类型就是<code>str</code></p>
+<pre><code class="python">&gt;&gt;&gt; s = &#39;你好&#39;
+&gt;&gt;&gt; type(s)
+&lt;type &#39;str&#39;&gt;
+</code></pre>
+<h3 id="Python3-的变革"><a href="#Python3-的变革" class="headerlink" title="Python3 的变革"></a>Python3 的变革</h3><p>Python3 中终于把字符串的编码从 ASCII 改为了 Unicode ，并且把<code>str</code>和<code>bytes</code>做了明确的区分，<code>str</code>就是 Unicode 格式的字符， <code>bytes</code>就是单纯的二进制。</p>
+<p>但是把 Unicode 编码成 GBK 后，字符串变成了<code>bytes</code>格式。 可能这是为了告诉你想在py3里看字符，必须得是unicode编码，其它编码一律按bytes格式展示。</p>
+<pre><code class="python">&gt;&gt;&gt; s = &#39;你好&#39;
+&gt;&gt;&gt; s
+&#39;你好&#39;
+&gt;&gt;&gt; s2 = s.encode(&#39;GBK&#39;)
+&gt;&gt;&gt; s2
+b&#39;\xc4\xe3\xba\xc3&#39;
+&gt;&gt;&gt; type(s2)
+&lt;class &#39;bytes&#39;&gt;
+</code></pre>
+<p>原文出自<a href="https://www.zhihu.com/question/31833164/answer/381137073" target="_blank" rel="noopener">文章链接</a>作者知乎用户：Alex-金角大王</p>
+<p>这位大神写的太好了，这篇归纳都差不多算是照着原文重打一遍了。。。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+            </ul>
+            
+            
+            
+            <div id="vcomments"></div>
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">76 <p>文章</p></a></li>
+                    <li><a href="/categories">14 <p>分类</p></a></li>
+                    <li><a href="/tags">71 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Unicode-和-UTF-8"><span class="toc-number">1.</span> <span class="toc-text">Unicode 和 UTF-8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编码的转换"><span class="toc-number">2.</span> <span class="toc-text">编码的转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python3-的执行过程"><span class="toc-number">3.</span> <span class="toc-text">Python3 的执行过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编码转换过程"><span class="toc-number">4.</span> <span class="toc-text">编码转换过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#如何验证编码转对了呢？"><span class="toc-number">4.1.</span> <span class="toc-text">如何验证编码转对了呢？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python-bytes-类型"><span class="toc-number">5.</span> <span class="toc-text">python bytes 类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Python3-的变革"><span class="toc-number">5.1.</span> <span class="toc-text">Python3 的变革</span></a></li></ol></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2021
+        <span class="gradient-text">
+            EwdAger
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script> <script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script> <script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script> <script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>   <link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Farewell,good hunter.May you find your worth in the waking world.', '再见，善良的猎人。愿你能在清醒的世界中找到自己的价值。'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+ <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  var valine = new Valine();
+
+  function initValine(path) {
+    if (!path) path = window.location.pathname;
+    let language = 'zh-CN';
+    if (!language) {
+      language = 'en';
+    } else {
+      language = language.toLowerCase();
+    }
+    valine.init({
+      el: '#vcomments',
+      appId: 'ChQ4z1dCRpWqCOD43kU6cGmM-gzGzoHsz',
+      appKey: 'pFaAS3aumHDM572YbXkzc3fO',
+      notify: 'false',
+      verify: 'false',
+      avatar: 'retro',
+      placeholder: '留下你的评论~',
+      visitor: 'true',
+      path: path,
+      lang: language,
+    });
+  }
+
+  $(document).ready(function () {
+    initValine();
+  });
+</script>
+
+
+
+</html>

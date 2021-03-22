@@ -1,0 +1,454 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>聚类算法之层次聚类 - Gvoidy</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
+    <meta name="description" content="
+层次聚类(Hierarchical Clustering)是聚类算法的一种，通过计算不同类别的相似度类创建一个有层次的嵌套的树。
+层次聚类怎么算层次聚类分为自底向上和自顶向下两种，这里仅采用sci,"> 
+    <meta name="author" content="EwdAger"> 
+    <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+</html>
+
+<body class="loading">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Gvoidy</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">聚类算法之层次聚类</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB1.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/机器学习笔记"><b>「
+                    </b>机器学习笔记<b> 」</b></a>
+                
+                十月 28, 2019
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/aedf7706/" title="聚类算法之层次聚类">聚类算法之层次聚类</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    2.9k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    3 mins.
+                </span>
+                
+                
+                <span id="/posts/aedf7706/" class="leancloud_visitors" data-flag-title="聚类算法之层次聚类">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span class="leancloud-visitors-count">1000000</span>
+                </span>
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/机器学习/">机器学习</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/聚类算法/">聚类算法</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <p><img src="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB1.jpg" alt="层次聚类"></p>
+<p>层次聚类(Hierarchical Clustering)是聚类算法的一种，通过计算不同类别的相似度类创建一个有层次的嵌套的树。</p>
+<h2 id="层次聚类怎么算"><a href="#层次聚类怎么算" class="headerlink" title="层次聚类怎么算"></a>层次聚类怎么算</h2><p>层次聚类分为<strong>自底向上</strong>和<strong>自顶向下</strong>两种，这里仅采用<code>scikit-learn</code>中自底向上层次聚类法。</p>
+<ol>
+<li>将数据集中每一个样本都标记为不同类</li>
+<li>计算找出其中距离最近的2个类别，合并为一类</li>
+<li>依次合并直到最后仅剩下一个列表，即建立起一颗完整的层次树</li>
+</ol>
+<p>以下为看图说话~ 感谢 <a href="https://www.laugh12321.cn/" target="_blank" rel="noopener">Laugh’s blog</a>借用下说明图</p>
+<p><img src="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB/2.png" alt="第一步"></p>
+<p>把所有数据全部分为不同组</p>
+<p><img src="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB/3.png" alt="第二步"></p>
+<p>将相邻最近的两组归为同一组</p>
+<p><img src="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB/4.png" alt="重复上述操作"></p>
+<p>重复第二步，直到合并成为一个组，聚类结束</p>
+<p><img src="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB/6.png" alt="层次树"></p>
+<p>聚类过程的散点图变化一下，就是我们要的层次图</p>
+<h2 id="层次聚类-Python-实现"><a href="#层次聚类-Python-实现" class="headerlink" title="层次聚类 Python 实现"></a>层次聚类 Python 实现</h2><pre><code class="python">import numpy as np
+from sklearn.cluster import AgglomerativeClustering
+data = np.random.rand(100, 3) #生成一个随机数据，样本大小为100, 特征数为3
+
+#假如我要构造一个聚类数为3的聚类器
+estimator = AgglomerativeClustering(n_clusters=3)#构造聚类器
+estimator.fit(data)
+
+print(estimator.labels_)#获取聚类标签
+</code></pre>
+<h2 id="主函数-AgglomerativeClustering-参数解释"><a href="#主函数-AgglomerativeClustering-参数解释" class="headerlink" title="主函数 AgglomerativeClustering 参数解释"></a>主函数 AgglomerativeClustering 参数解释</h2><pre><code class="python">AgglomerativeClustering(affinity=&#39;euclidean&#39;, compute_full_tree=&#39;auto&#39;,
+                        connectivity=None, linkage=&#39;ward&#39;, 
+                        memory=None, n_clusters=2,
+                        pooling_func=&#39;deprecated&#39;)
+</code></pre>
+<ul>
+<li><code>affinity</code>: 亲和力度量，有 euclidean（欧式距离）, l1（L1 范数）, l2（L2 范数）</li>
+<li><code>compute_full_tree</code>: 通常当训练了n_clusters后，训练过程就会停止，但是如果compute_full_tree=True，则会继续训练从而生成一颗完整的树</li>
+<li><code>connectivity</code>: 一个数组或者可调用对象或者None，用于指定连接矩阵</li>
+<li><code>linkage</code>: 连接方法：<code>ward</code>（单连接）, <code>complete</code>（全连接）, <code>average</code>（平均连接）可选</li>
+<li><code>memory</code>: 用于缓存输出的结果，默认为不缓存</li>
+<li><code>n_clusters</code>: 表示最终要查找类别的数量，例如上面的 2 类</li>
+<li><code>pooling_func</code>: 一个可调用对象，它的输入是一组特征的值，输出是一个数</li>
+</ul>
+<p>返回值</p>
+<ul>
+<li><code>labels</code>： 每个样本的簇标记</li>
+<li><code>n_leaves_</code>： 分层树的叶节点数量</li>
+<li><code>n_components</code>： 连接图中连通分量的估计值</li>
+<li><code>children</code>： 一个数组，给出了每个非节点数量</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+            </ul>
+            
+            
+            
+            <div id="vcomments"></div>
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">76 <p>文章</p></a></li>
+                    <li><a href="/categories">14 <p>分类</p></a></li>
+                    <li><a href="/tags">71 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#层次聚类怎么算"><span class="toc-number">1.</span> <span class="toc-text">层次聚类怎么算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#层次聚类-Python-实现"><span class="toc-number">2.</span> <span class="toc-text">层次聚类 Python 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主函数-AgglomerativeClustering-参数解释"><span class="toc-number">3.</span> <span class="toc-text">主函数 AgglomerativeClustering 参数解释</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2021
+        <span class="gradient-text">
+            EwdAger
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script> <script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script> <script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script> <script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>   <link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Farewell,good hunter.May you find your worth in the waking world.', '再见，善良的猎人。愿你能在清醒的世界中找到自己的价值。'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+ <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  var valine = new Valine();
+
+  function initValine(path) {
+    if (!path) path = window.location.pathname;
+    let language = 'zh-CN';
+    if (!language) {
+      language = 'en';
+    } else {
+      language = language.toLowerCase();
+    }
+    valine.init({
+      el: '#vcomments',
+      appId: 'ChQ4z1dCRpWqCOD43kU6cGmM-gzGzoHsz',
+      appKey: 'pFaAS3aumHDM572YbXkzc3fO',
+      notify: 'false',
+      verify: 'false',
+      avatar: 'retro',
+      placeholder: '留下你的评论~',
+      visitor: 'true',
+      path: path,
+      lang: language,
+    });
+  }
+
+  $(document).ready(function () {
+    initValine();
+  });
+</script>
+
+
+
+</html>

@@ -5,12 +5,13 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Gvoidy - take your time</title>
+    <title>uwsgi 多进程导致数据库连接丢失的踩坑记录 - Gvoidy</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
-    
+    <meta name="description" content="起因项目使用的 Flask+SQLAlchemy+uwsgi ，突然有一天编写了一个有对数据库高并发的接口。然后其他本来正常的接口就偶尔会出现404错误，且必须重启服务才能解决。
+试验①以为是MyS,"> 
     <meta name="author" content="EwdAger"> 
     <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -36,29 +37,160 @@
     </div>
     <span id="config-title" style="display:none">Gvoidy</span>
     <div id="loader"></div>
-    <div id="single" class="page">
-    <div id="top">
-        <a class="iconfont icon-left image-icon" href="javascript:history.back()"></a>
-    </div>
-    <div class="clone-element"></div>
-    <div class="section dark-obsidian">
-        <div class="article animated fadeIn">
-            <div class="main animated fadeIn">
-                <div class="content animated fadeIn">
-                
-                    <div class="set">
-  <div class="category-mask"></div>
-  <h1>目录</h1>
-  <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/python学习心得-备忘/">python学习心得&备忘</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习笔记/">机器学习笔记</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/不知道怎么归类/">不知道怎么归类</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/知识储备/">知识储备</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode刷题总结/">LeetCode刷题总结</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/课程设计/">课程设计</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/云原生学习笔记/">云原生学习笔记</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器相关问题-备忘/">服务器相关问题&备忘</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机网络相关/">计算机网络相关</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP学习心得-备忘/">PHP学习心得&备忘</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/小项目/">小项目</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工作之余/">工作之余</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习笔记/">深度学习笔记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Steam骚操作/">Steam骚操作</a><span class="category-list-count">1</span></li></ul>
-</div>
-
-                
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">uwsgi 多进程导致数据库连接丢失的踩坑记录</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/python学习心得&备忘"><b>「
+                    </b>PYTHON学习心得&备忘<b> 」</b></a>
+                
+                四月 28, 2020
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/cca84fb6/" title="uwsgi 多进程导致数据库连接丢失的踩坑记录">uwsgi 多进程导致数据库连接丢失的踩坑记录</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    1.4k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    1 mins.
+                </span>
+                
+                
+                <span id="/posts/cca84fb6/" class="leancloud_visitors" data-flag-title="uwsgi 多进程导致数据库连接丢失的踩坑记录">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span class="leancloud-visitors-count">1000000</span>
+                </span>
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Flask/">Flask</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Flask-SQLAlchemy/">Flask-SQLAlchemy</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/uwsgi/">uwsgi</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/多进程/">多进程</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>项目使用的 Flask+SQLAlchemy+uwsgi ，突然有一天编写了一个有对数据库高并发的接口。然后其他本来正常的接口就偶尔会出现<code>404</code>错误，且必须重启服务才能解决。</p>
+<h2 id="试验①"><a href="#试验①" class="headerlink" title="试验①"></a>试验①</h2><p>以为是MySQL连接池和超时时间导致的，反复查看发现并没有什么问题。然后怀疑到是不是python对MySQL的连接驱动导致的。</p>
+<p>项目里使用的pymysql被公认为是比较慢的连接驱动。索性换成了mysqldb。<br><img src="https://s1.ax1x.com/2020/04/28/J4yvVJ.png" alt="MySQL连接驱动性能对比"></p>
+<p>结果只是使触发这种bug的频率稍微降低了一点</p>
+<h2 id="试验②"><a href="#试验②" class="headerlink" title="试验②"></a>试验②</h2><p>后来就怀疑到是不是uwsgi起多进程的时候触发了什么奇怪的bug，结果一搜就在Stack Overflow上发现了宝藏。</p>
+<blockquote>
+<p>When working with multiple processes with a master process, uwsgi initializes the application in the master process and then copies the application over to each worker process. The problem is if you open a database connection when initializing your application, you then have multiple processes sharing the same connection, which causes the error above.</p>
+</blockquote>
+<p>简单翻译一下，就是uwsgi启动多进程时，会启动一个主进程初始化所有的app（其中包括数据库连接），然后将所有app复制到其他进程中。<strong>这！就！导！致！了！</strong>所有进程<strong>全部共用一个MySQL的连接</strong></p>
+<p>如果在<code>uwsgi.ini</code>中添加参数<code>lazy-apps=true</code>，即可让各个进程都创建自己的app。即所有进程都有属于自己的MySQL连接了。</p>
+<p><a href="https://stackoverflow.com/questions/34252892/using-flask-sqlalchemy-in-multiple-uwsgi-processes" target="_blank" rel="noopener">详细地址： using-flask-sqlalchemy-in-multiple-uwsgi-processes</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+            </ul>
+            
+            
+            
+            <div id="vcomments"></div>
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">76 <p>文章</p></a></li>
+                    <li><a href="/categories">14 <p>分类</p></a></li>
+                    <li><a href="/tags">71 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#起因"><span class="toc-number">1.</span> <span class="toc-text">起因</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#试验①"><span class="toc-number">1.1.</span> <span class="toc-text">试验①</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#试验②"><span class="toc-number">1.2.</span> <span class="toc-text">试验②</span></a></li></ol></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
     <div id="back-to-top" class="animated fadeIn faster">
         <div class="flow"></div>
         <span class="percentage animated fadeIn faster">0%</span>

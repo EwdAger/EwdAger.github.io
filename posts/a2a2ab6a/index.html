@@ -1,0 +1,511 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>用Cython加密打包python项目 - Gvoidy</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
+    <meta name="description" content="使用将下述代码保存为setup.py至需打包项目根目录，安装cython后执行python setup.py即可打包。
+import sys, os, shutil, time
+from distu,"> 
+    <meta name="author" content="EwdAger"> 
+    <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+</html>
+
+<body class="loading">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Gvoidy</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">用Cython加密打包python项目</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/python学习心得&备忘"><b>「
+                    </b>PYTHON学习心得&备忘<b> 」</b></a>
+                
+                九月 02, 2019
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/a2a2ab6a/" title="用Cython加密打包python项目">用Cython加密打包python项目</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    4.3k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    4 mins.
+                </span>
+                
+                
+                <span id="/posts/a2a2ab6a/" class="leancloud_visitors" data-flag-title="用Cython加密打包python项目">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span class="leancloud-visitors-count">1000000</span>
+                </span>
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/cython/">cython</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/打包/">打包</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>将下述代码保存为<code>setup.py</code>至需打包项目根目录，安装<code>cython</code>后执行<code>python setup.py</code>即可打包。</p>
+<pre><code class="python">import sys, os, shutil, time
+from distutils.core import setup
+from Cython.Build import cythonize
+
+start_time = time.time()
+curr_dir = os.path.abspath(&#39;.&#39;)
+parent_path = sys.argv[1] if len(sys.argv) &gt; 1 else &quot;&quot;
+setup_file = __file__.replace(&#39;/&#39;, &#39;\\&#39;)
+build_dir = &quot;build&quot;
+build_tmp_dir = build_dir + &quot;/temp&quot;
+
+s = &quot;# cython: language_level=3&quot;
+
+
+def get_py(base_path=os.path.abspath(&#39;.&#39;), parent_path=&#39;&#39;, name = &#39;&#39;, excepts=(), copyOther=False, delC = False):
+    &quot;&quot;&quot;
+    获取py文件的路径
+    :param base_path: 根路径
+    :param parent_path: 父路径
+    :param excepts: 排除文件
+    :return: py文件的迭代器
+    &quot;&quot;&quot;
+    full_path = os.path.join(base_path, parent_path, name)
+    for filename in os.listdir(full_path):
+        full_filename = os.path.join(full_path, filename)
+        if os.path.isdir(full_filename) and filename != build_dir and not filename.startswith(&#39;.&#39;):
+            for f in get_py(base_path, os.path.join(parent_path, name), filename, excepts, copyOther, delC):
+                yield f
+        elif os.path.isfile(full_filename):
+            ext = os.path.splitext(filename)[1]
+            if ext == &quot;.c&quot;:
+                if delC and os.stat(full_filename).st_mtime &gt; start_time:
+                    os.remove(full_filename)
+            elif full_filename not in excepts and os.path.splitext(filename)[1] not in (&#39;.pyc&#39;, &#39;.pyx&#39;):
+                if os.path.splitext(filename)[1] in (&#39;.py&#39;, &#39;.pyx&#39;) and not filename.startswith(&#39;__&#39;):
+                    path = os.path.join(parent_path, name, filename)
+                    yield path
+        else:
+            pass
+
+
+def pack_pyd():
+    # 获取py列表
+    module_list = list(get_py(base_path=curr_dir, parent_path=parent_path, excepts=(setup_file,)))
+    try:
+        setup(
+            ext_modules=cythonize(module_list, compiler_directives={&#39;language_level&#39;: &quot;3&quot;}),
+            script_args=[&quot;build_ext&quot;, &quot;-b&quot;, build_dir, &quot;-t&quot;, build_tmp_dir],
+        )
+    except Exception as ex:
+        print(&quot;error! &quot;, str(ex))
+    else:
+        module_list = list(get_py(base_path=curr_dir, parent_path=parent_path, excepts=(setup_file,), copyOther=True))
+
+    module_list = list(get_py(base_path=curr_dir, parent_path=parent_path, excepts=(setup_file,), delC=True))
+    if os.path.exists(build_tmp_dir):
+        shutil.rmtree(build_tmp_dir)
+
+    print(&quot;complate! time:&quot;, time.time() - start_time, &#39;s&#39;)
+
+
+def delete_c(path=&#39;.&#39;, excepts=(setup_file,)):
+    &#39;&#39;&#39;
+    删除编译过程中生成的.c文件
+    :param path:
+    :param excepts:
+    :return:
+    &#39;&#39;&#39;
+    dirs = os.listdir(path)
+    for dir in dirs:
+        new_dir = os.path.join(path, dir)
+        if os.path.isfile(new_dir):
+            ext = os.path.splitext(new_dir)[1]
+            if ext == &#39;.c&#39;:
+                os.remove(new_dir)
+        elif os.path.isdir(new_dir):
+            delete_c(new_dir)
+
+
+if __name__ == &#39;__main__&#39;:
+    try:
+        pack_pyd()
+    except Exception as e:
+        print(str(e))
+    finally:
+        delete_c()
+
+</code></pre>
+<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><ol>
+<li><p>出现<code>Unable to find vcvarsall.bat</code>错误</p>
+<p> 需安装对应版本<code>VC++</code> <a href="http://go.microsoft.com/fwlink/?LinkId=691126" target="_blank" rel="noopener">下载地址</a></p>
+</li>
+<li><p>其他文件都能打包，某一文件迷之无法打包<br> 检查文件名是否包含非法字符（比如<code>-</code>）</p>
+</li>
+<li><p>Linux下打包失败或卡住不动<br> 检查是否安装依赖<code>yum install python-devel gcc</code>,如果确定安装依赖，可以稍微等一等，Linux内存不足编译稍大型文件会要很长时间</p>
+</li>
+<li><p>打包后出现无法调用某模块<br> 检查对应文件是否循环<code>import</code>(如A文件首行调用B，B首行调用A，默认解释器执行不会出错，编译后会出错)</p>
+</li>
+<li><p>打包后路径出现问题<br> 在每个需要打包的文件夹中加入空的<code>__init__.py</code>文件用于判断路径，如果有非空的<code>__init__.py</code>文件，记得打包后复制进对应文件夹</p>
+</li>
+</ol>
+<h1 id="尚未解决的问题"><a href="#尚未解决的问题" class="headerlink" title="尚未解决的问题"></a>尚未解决的问题</h1><ol>
+<li><code>__init__.py</code>判断路径打包和<code>import</code>相对路径绝对路径复用，某些情况下打包后会出现无法定位某些模块的奇怪问题</li>
+</ol>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+            </ul>
+            
+            
+            
+            <div id="vcomments"></div>
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">76 <p>文章</p></a></li>
+                    <li><a href="/categories">14 <p>分类</p></a></li>
+                    <li><a href="/tags">71 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用"><span class="toc-number">1.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常见问题"><span class="toc-number">2.</span> <span class="toc-text">常见问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#尚未解决的问题"><span class="toc-number">3.</span> <span class="toc-text">尚未解决的问题</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2021
+        <span class="gradient-text">
+            EwdAger
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script> <script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script> <script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script> <script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>   <link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Farewell,good hunter.May you find your worth in the waking world.', '再见，善良的猎人。愿你能在清醒的世界中找到自己的价值。'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+ <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  var valine = new Valine();
+
+  function initValine(path) {
+    if (!path) path = window.location.pathname;
+    let language = 'zh-CN';
+    if (!language) {
+      language = 'en';
+    } else {
+      language = language.toLowerCase();
+    }
+    valine.init({
+      el: '#vcomments',
+      appId: 'ChQ4z1dCRpWqCOD43kU6cGmM-gzGzoHsz',
+      appKey: 'pFaAS3aumHDM572YbXkzc3fO',
+      notify: 'false',
+      verify: 'false',
+      avatar: 'retro',
+      placeholder: '留下你的评论~',
+      visitor: 'true',
+      path: path,
+      lang: language,
+    });
+  }
+
+  $(document).ready(function () {
+    initValine();
+  });
+</script>
+
+
+
+</html>

@@ -5,12 +5,14 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Gvoidy - take your time</title>
+    <title>Python 单链表实现&amp;基础函数 - Gvoidy</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
-    
+    <meta name="description" content="前两天面滴滴，被问到怎么判断两个链表是否相交，然后并不懂什么是单链表相交…就很尴尬。 赶紧复习一下单链表的知识。
+单链表实现class LNode:
+    def __init__(self, e,"> 
     <meta name="author" content="EwdAger"> 
     <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -36,29 +38,245 @@
     </div>
     <span id="config-title" style="display:none">Gvoidy</span>
     <div id="loader"></div>
-    <div id="single" class="page">
-    <div id="top">
-        <a class="iconfont icon-left image-icon" href="javascript:history.back()"></a>
-    </div>
-    <div class="clone-element"></div>
-    <div class="section dark-obsidian">
-        <div class="article animated fadeIn">
-            <div class="main animated fadeIn">
-                <div class="content animated fadeIn">
-                
-                    <div class="set">
-  <div class="category-mask"></div>
-  <h1>目录</h1>
-  <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/python学习心得-备忘/">python学习心得&备忘</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习笔记/">机器学习笔记</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/不知道怎么归类/">不知道怎么归类</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/知识储备/">知识储备</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode刷题总结/">LeetCode刷题总结</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/课程设计/">课程设计</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/云原生学习笔记/">云原生学习笔记</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器相关问题-备忘/">服务器相关问题&备忘</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机网络相关/">计算机网络相关</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP学习心得-备忘/">PHP学习心得&备忘</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/小项目/">小项目</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工作之余/">工作之余</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习笔记/">深度学习笔记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Steam骚操作/">Steam骚操作</a><span class="category-list-count">1</span></li></ul>
-</div>
-
-                
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">Python 单链表实现&基础函数</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/python学习心得&备忘"><b>「
+                    </b>PYTHON学习心得&备忘<b> 」</b></a>
+                
+                九月 09, 2018
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/2870634a/" title="Python 单链表实现&基础函数">Python 单链表实现&基础函数</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    2.9k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    3 mins.
+                </span>
+                
+                
+                <span id="/posts/2870634a/" class="leancloud_visitors" data-flag-title="Python 单链表实现&基础函数">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span class="leancloud-visitors-count">1000000</span>
+                </span>
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python3/">Python3</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/编码/">编码</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <p>前两天面滴滴，被问到怎么判断两个链表是否相交，然后并不懂什么是单链表相交…就很尴尬。 赶紧复习一下单链表的知识。</p>
+<h1 id="单链表实现"><a href="#单链表实现" class="headerlink" title="单链表实现"></a>单链表实现</h1><pre><code class="python">class LNode:
+    def __init__(self, elem, next_ = None):
+        self.elem = elem
+        self.next = next_
+
+class LList:
+    def __init__(self):
+        self._head = None
+
+    def is_empty(self):
+        return self._head is None
+
+    # 前端插入
+    def prepend(self, elem):
+        self._head = LNode(elem, self._head)
+
+    # 删除头结点并返回
+    def pop_first(self):
+        if self.is_empty():
+            raise LinkedListUnderFlow(&quot;in pop&quot;)
+        e = self._head.elem
+        self._head = self._head.next
+        return e
+
+    def append(self, elem):
+        if self.is_empty():
+            self._head = LNode(elem)
+            return
+        p = self._head
+        while p.next:
+            p = p.next
+        p.next = LNode(elem)
+
+    def pop(self):
+        if self.is_empty():
+            raise LinkedListUnderFlow(&quot;in pop&quot;)
+        p = self._head
+        if p.next is None:
+            e = p.elem
+            self._head = None
+            return e
+
+        # 用p.next.next做条件是因为把最后一个结点删除，需要找到倒数第二个结点
+        while p.next.next is not None:
+            p = p.next
+        e = p.next.elem
+        p.next = None
+        return e
+
+    def find(self, pred):
+        p = self._head
+        while p.next is not None:
+            if pred(p.elem):
+                # 构建生成器，找到了一个元素可以继续找下一个
+                yield p.elem
+            p = p.next
+
+
+    def printall(self):
+        p = self._head
+        while p is not None:
+            print(p.elem, end=&quot;&quot;)
+            if p.next is not None:
+                print(&quot;, &quot;, end=&quot;&quot;)
+            p = p.next
+
+        # 换行，因为默认end参数为 &quot;\n&quot;
+        # 等价 print(&quot;\n&quot;, end=&quot;&quot;)
+        print(&quot;&quot;)
+
+if __name__ == &#39;__main__&#39;:
+    my_list = LList()
+    for i in range(10, 0, -1):
+        my_list.prepend(i)
+    my_list.printall()    # 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+    for i in range(11, 21):
+        my_list.append(i)
+    my_list.printall()
+    print(my_list.pop())  # 20
+    print(my_list.pop_first()) # 1
+    my_list.printall()   # 2~19
+
+    def find_odd(n):
+        if n % 2 != 0:
+            return n
+    for i in my_list.find(find_odd):
+        print(i)         # 1, 3, 5, 7, 9 ,...
+</code></pre>
+<h1 id="补充一下print的参数"><a href="#补充一下print的参数" class="headerlink" title="补充一下print的参数"></a>补充一下print的参数</h1><ul>
+<li>print(value, …, sep=’ ‘, end=’\n’, file=sys.stdout, flush=False)</li>
+<li>sep: 多个参数之间的分隔字符串</li>
+<li>end: print结束后的字符串</li>
+<li>file: 输出到<strong>已打开的文件</strong>，注意，当文件关闭后才会保存</li>
+<li>flush: 所有数据打印到控制台，立即“刷新”到实际控制台并保留待处理的打印缓冲区<br>可用于上面的文件操作，当文件未关闭时及时输出到控制台，参考<a href="https://stackoverflow.com/questions/15608229/what-does-prints-flush-do" target="_blank" rel="noopener">Stack Overflow</a></li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+            </ul>
+            
+            
+            
+            <div id="vcomments"></div>
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">76 <p>文章</p></a></li>
+                    <li><a href="/categories">14 <p>分类</p></a></li>
+                    <li><a href="/tags">71 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#单链表实现"><span class="toc-number">1.</span> <span class="toc-text">单链表实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#补充一下print的参数"><span class="toc-number">2.</span> <span class="toc-text">补充一下print的参数</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
     <div id="back-to-top" class="animated fadeIn faster">
         <div class="flow"></div>
         <span class="percentage animated fadeIn faster">0%</span>

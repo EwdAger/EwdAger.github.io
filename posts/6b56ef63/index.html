@@ -5,12 +5,13 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Gvoidy - take your time</title>
+    <title>Python读取Excel文件sheet名性能优化 - Gvoidy</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
-    
+    <meta name="description" content="原始版本直接使用pandas读取整个Excel文件，再从中取列名。这种场景对于小的Excel文件还适用，但数据量上升到10M+时，取个sheet name要26s之久。几乎无法忍受。
+data = ,"> 
     <meta name="author" content="EwdAger"> 
     <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -36,29 +37,199 @@
     </div>
     <span id="config-title" style="display:none">Gvoidy</span>
     <div id="loader"></div>
-    <div id="single" class="page">
-    <div id="top">
-        <a class="iconfont icon-left image-icon" href="javascript:history.back()"></a>
-    </div>
-    <div class="clone-element"></div>
-    <div class="section dark-obsidian">
-        <div class="article animated fadeIn">
-            <div class="main animated fadeIn">
-                <div class="content animated fadeIn">
-                
-                    <div class="set">
-  <div class="category-mask"></div>
-  <h1>目录</h1>
-  <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/python学习心得-备忘/">python学习心得&备忘</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习笔记/">机器学习笔记</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/不知道怎么归类/">不知道怎么归类</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/知识储备/">知识储备</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode刷题总结/">LeetCode刷题总结</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/课程设计/">课程设计</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/云原生学习笔记/">云原生学习笔记</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器相关问题-备忘/">服务器相关问题&备忘</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机网络相关/">计算机网络相关</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP学习心得-备忘/">PHP学习心得&备忘</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/小项目/">小项目</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工作之余/">工作之余</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习笔记/">深度学习笔记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Steam骚操作/">Steam骚操作</a><span class="category-list-count">1</span></li></ul>
-</div>
-
-                
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">Python读取Excel文件sheet名性能优化</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/机器学习笔记"><b>「
+                    </b>机器学习笔记<b> 」</b></a>
+                
+                十月 10, 2019
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/6b56ef63/" title="Python读取Excel文件sheet名性能优化">Python读取Excel文件sheet名性能优化</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    2.6k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    2 mins.
+                </span>
+                
+                
+                <span id="/posts/6b56ef63/" class="leancloud_visitors" data-flag-title="Python读取Excel文件sheet名性能优化">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span class="leancloud-visitors-count">1000000</span>
+                </span>
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/性能优化/">性能优化</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="原始版本"><a href="#原始版本" class="headerlink" title="原始版本"></a>原始版本</h2><p>直接使用<code>pandas</code>读取整个Excel文件，再从中取列名。这种场景对于小的Excel文件还适用，但数据量上升到10M+时，取个<code>sheet name</code>要<code>26s</code>之久。几乎无法忍受。</p>
+<pre><code class="python">data = pandas.ExcelFile(file_url)
+names = data.sheet_names
+</code></pre>
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>查阅资料可知<code>.xlsx</code>文件是一个压缩格式的文件，可以直接通过<code>zipfile</code>读到<code>sheet name</code>等相关信息。所以写如下函数直接取<code>sheet name</code></p>
+<pre><code class="python">def get_sheet_details(file_path):
+    sheets = []
+    file_name = os.path.splitext(os.path.split(file_path)[-1])[0]
+    # 用文件名创建一个临时目录
+    directory_to_extract_to = file_name
+    os.mkdir(directory_to_extract_to)
+
+    # 提取xlsx文件，因为它只是一个zip文件
+    zip_ref = zipfile.ZipFile(file_path, &#39;r&#39;)
+    zip_ref.extractall(directory_to_extract_to)
+    zip_ref.close()
+
+    # 建立一个临时的workbook文件
+    path_to_workbook = os.path.join(directory_to_extract_to, &#39;xl&#39;, &#39;workbook.xml&#39;)
+    with open(path_to_workbook, &#39;r&#39;) as f:
+        xml = f.read()
+        dictionary = xmltodict.parse(xml)
+        # 多个sheet
+        if isinstance(dictionary[&#39;workbook&#39;][&#39;sheets&#39;][&#39;sheet&#39;], list):
+            for sheet in dictionary[&#39;workbook&#39;][&#39;sheets&#39;][&#39;sheet&#39;]:
+                # 有些版本的sheet是@name有些是@sheetId
+                if sheet[&quot;@name&quot;]:
+                    meta_sheet = sheet[&quot;@name&quot;]
+                else:
+                    meta_sheet = sheet[&quot;@sheetId&quot;]
+                sheets.append(meta_sheet)
+        # 单个sheet
+        else:
+            sheet_dict = dictionary[&#39;workbook&#39;][&#39;sheets&#39;][&#39;sheet&#39;]
+            if sheet_dict[&quot;@name&quot;]:
+                sheets.append(sheet_dict[&quot;@name&quot;])
+            else:
+                sheets.append(sheet_dict[&quot;@sheetId&quot;])
+
+    shutil.rmtree(directory_to_extract_to)
+    f.close()
+    return sheets
+</code></pre>
+<p>使用该种方法，读14M的文件仅需<code>0.04s</code>。（数据都没加载，当然和文件大小无关啦）</p>
+<h2 id="一个问题"><a href="#一个问题" class="headerlink" title="一个问题"></a>一个问题</h2><p>该函数只能针对<code>.xlsx</code>文件进行解析，而低版本的<code>.xls</code>文件就直接报错了，因为<code>.xls</code>是一个二进制文件而不是压缩文件。所以要以另一种方式去解析<code>sheet name</code>。经过查阅相关资料，发现<code>xlrd.open_workbook</code>的<code>on_demand=True</code>针对低版本的Excel文件可以只取列名而不加载数据。</p>
+<pre><code class="python">if file_url[-3:] == &#39;xls&#39;:
+    names = xlrd.open_workbook(file_url, on_demand=True).sheet_names()
+else:
+    names = get_sheet_details(file_url)
+</code></pre>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+            </ul>
+            
+            
+            
+            <div id="vcomments"></div>
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">76 <p>文章</p></a></li>
+                    <li><a href="/categories">14 <p>分类</p></a></li>
+                    <li><a href="/tags">71 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#原始版本"><span class="toc-number">1.</span> <span class="toc-text">原始版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优化"><span class="toc-number">2.</span> <span class="toc-text">优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一个问题"><span class="toc-number">3.</span> <span class="toc-text">一个问题</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
     <div id="back-to-top" class="animated fadeIn faster">
         <div class="flow"></div>
         <span class="percentage animated fadeIn faster">0%</span>

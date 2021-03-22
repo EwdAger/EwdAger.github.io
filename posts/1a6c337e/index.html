@@ -5,12 +5,18 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Gvoidy - take your time</title>
+    <title>Python异常处理traceback和exc_info - Gvoidy</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
-    
+    <meta name="description" content="开发过程中一般都会使用traceback将捕获到的异常打印出来。
+import traceback
+
+def fake_exception():
+    1 / 0
+
+def catch_excep,"> 
     <meta name="author" content="EwdAger"> 
     <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -36,29 +42,200 @@
     </div>
     <span id="config-title" style="display:none">Gvoidy</span>
     <div id="loader"></div>
-    <div id="single" class="page">
-    <div id="top">
-        <a class="iconfont icon-left image-icon" href="javascript:history.back()"></a>
-    </div>
-    <div class="clone-element"></div>
-    <div class="section dark-obsidian">
-        <div class="article animated fadeIn">
-            <div class="main animated fadeIn">
-                <div class="content animated fadeIn">
-                
-                    <div class="set">
-  <div class="category-mask"></div>
-  <h1>目录</h1>
-  <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/python学习心得-备忘/">python学习心得&备忘</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习笔记/">机器学习笔记</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/不知道怎么归类/">不知道怎么归类</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/知识储备/">知识储备</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode刷题总结/">LeetCode刷题总结</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/课程设计/">课程设计</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/云原生学习笔记/">云原生学习笔记</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器相关问题-备忘/">服务器相关问题&备忘</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机网络相关/">计算机网络相关</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP学习心得-备忘/">PHP学习心得&备忘</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/小项目/">小项目</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工作之余/">工作之余</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习笔记/">深度学习笔记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Steam骚操作/">Steam骚操作</a><span class="category-list-count">1</span></li></ul>
-</div>
-
-                
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">Python异常处理traceback和exc_info</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/python学习心得&备忘"><b>「
+                    </b>PYTHON学习心得&备忘<b> 」</b></a>
+                
+                十月 11, 2019
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/1a6c337e/" title="Python异常处理traceback和exc_info">Python异常处理traceback和exc_info</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    2.6k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    2 mins.
+                </span>
+                
+                
+                <span id="/posts/1a6c337e/" class="leancloud_visitors" data-flag-title="Python异常处理traceback和exc_info">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span class="leancloud-visitors-count">1000000</span>
+                </span>
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/异常处理/">异常处理</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <p>开发过程中一般都会使用<code>traceback</code>将捕获到的异常打印出来。</p>
+<pre><code class="python">import traceback
+
+def fake_exception():
+    1 / 0
+
+def catch_exception():
+    try:
+        fake_exception()
+    except:
+        traceback.print_exc()
+
+catch_exception()
+</code></pre>
+<p>结果</p>
+<pre><code class="python">Traceback (most recent call last):
+  File &quot;.\test.py&quot;, line 9, in catch_exception
+    fake_exception()
+  File &quot;.\test.py&quot;, line 5, in fake_exception
+    1 / 0
+ZeroDivisionError: integer division or modulo by zero
+</code></pre>
+<p>事实上，<code>traceback</code>里的所有信息都是从<code>exc_info</code>里面获取的。</p>
+<pre><code>traceback.print_exc([limit[, file]])
+In fact, it uses sys.exc_info() to retrieve the same information in a thread-safe way instead of using the deprecated variables.
+</code></pre><p>那么我们再来看一下<code>exc_info()</code>这个方法。<br><a href="https://docs.python.org/2/library/sys.html?highlight=sys#module-sys" target="_blank" rel="noopener">https://docs.python.org/2/library/sys.html?highlight=sys#module-sys</a><br>该方法返回三个值：<code>type</code>, <code>value</code>, <code>traceback</code>.</p>
+<ul>
+<li><strong>type</strong> (异常类别)<br>  get the exception type of the exception being handled (a class object)</li>
+<li><strong>value</strong> (异常说明，可带参数)<br>  get the exception parameter (a class instance)</li>
+<li><strong>traceback</strong> (traceback对象，包含更丰富的信息)<br>  get a traceback object which encapsulates the call stack at the point where the exception originally occurred (a traceback object)</li>
+</ul>
+<p>其中<code>traceback</code>中还包含了更为丰富的信息，比如文件名，行号等等。如果觉得系统默认的<code>traceback</code>打印格式不好看的话，可以利用<code>exc_info</code>的返回值自定义格式。</p>
+<pre><code class="python">import sys
+
+def fake_exception():
+    1 / 0
+
+def catch_exception():
+    try:
+        fake_exception()
+    except:
+        e_type, e_value, e_traceback = sys.exc_info()
+        print &quot;type ==&gt; %s&quot; % (e_type.__name__)
+        print &quot;value ==&gt; %s&quot; %(e_value)
+        print &quot;traceback ==&gt; file name: %s&quot; %(e_traceback.tb_frame.f_code.co_filename)
+        print &quot;traceback ==&gt; line no: %s&quot; %(e_traceback.tb_lineno)
+        print &quot;traceback ==&gt; function name: %s&quot; %(e_traceback.tb_frame.f_code.co_name)
+
+catch_exception()
+</code></pre>
+<p>结果显示</p>
+<pre><code class="python">type ==&gt; typename: ZeroDivisionError
+value ==&gt; message: integer division or modulo by zero
+traceback ==&gt; fielname: .\test.py
+traceback ==&gt; lineno: 8
+traceback ==&gt; name: catch_exception
+</code></pre>
+<p><a href="https://www.jianshu.com/p/b342b19657fc" target="_blank" rel="noopener">原文地址</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+            </ul>
+            
+            
+            
+            <div id="vcomments"></div>
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">76 <p>文章</p></a></li>
+                    <li><a href="/categories">14 <p>分类</p></a></li>
+                    <li><a href="/tags">71 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
     <div id="back-to-top" class="animated fadeIn faster">
         <div class="flow"></div>
         <span class="percentage animated fadeIn faster">0%</span>

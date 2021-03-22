@@ -1,0 +1,515 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Celery 4 初体验及踩坑 - Gvoidy</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
+    <meta name="description" content="序Celery是基于分布式消息传递的开源异步任务队列或作业队列。虽然它支持调度，但其重点是实时操作。现在4版本已经步入稳定，而国内互联网的几乎都是3版本的教程。所以这里记录下4版本下的踩坑及外文解决,"> 
+    <meta name="author" content="EwdAger"> 
+    <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+</html>
+
+<body class="loading">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Gvoidy</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">Celery 4 初体验及踩坑</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/python学习心得&备忘"><b>「
+                    </b>PYTHON学习心得&备忘<b> 」</b></a>
+                
+                七月 28, 2020
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/d227d93a/" title="Celery 4 初体验及踩坑">Celery 4 初体验及踩坑</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    5.1k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    5 mins.
+                </span>
+                
+                
+                <span id="/posts/d227d93a/" class="leancloud_visitors" data-flag-title="Celery 4 初体验及踩坑">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span class="leancloud-visitors-count">1000000</span>
+                </span>
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/celery/">celery</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/消息队列/">消息队列</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>Celery是基于分布式消息传递的开源异步任务队列或作业队列。虽然它支持调度，但其重点是实时操作。现在4版本已经步入稳定，而国内互联网的几乎都是3版本的教程。所以这里记录下4版本下的踩坑及外文解决方案的翻译记录。</p>
+<h1 id="win环境运行celery-4-worker"><a href="#win环境运行celery-4-worker" class="headerlink" title="win环境运行celery 4 worker"></a>win环境运行celery 4 worker</h1><blockquote>
+<p>Celery 是一个资金最少的项目，因此我们不支持 Microsoft Windows。请不要提出与该平台相关的任何问题。</p>
+</blockquote>
+<p>官方在4版本移除了win平台支持，但是经过查阅，只要使用将并发模式<code>-P</code>改为<code>gevent</code>或者<code>eventlet</code>即可正常启动，<strong>但并不知道会有什么影响，毕竟官方已经不提供支持了</strong>，该启动方法仅适用于本地调试。</p>
+<p>附上worker启动脚本</p>
+<pre><code class="bash"># celery_worker_start.bat
+
+@echo off
+
+chcp 65001
+
+CLS
+
+echo 正在启动 python 虚拟环境
+
+CALL venv\Scripts\activate.bat
+
+echo 正在启动 celery
+
+celery -A multi_analysis_tasks.celery_app worker -P gevent -l info
+</code></pre>
+<h1 id="flask-celery-启动蓝图循环引用问题"><a href="#flask-celery-启动蓝图循环引用问题" class="headerlink" title="flask + celery 启动蓝图循环引用问题"></a>flask + celery 启动蓝图循环引用问题</h1><h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><pre><code class="python">def register_plugin(application):
+    from app.models.base import db
+    db.init_app(application)
+    with application.app_context():
+        db.create_all()
+
+
+def create_app():
+    application = Flask(__name__)
+    CORS(application, supports_credentials=True)  # 设置允许跨域
+    application.config.from_object(&#39;app.config.setting&#39;)
+    application.config.from_object(&quot;app.config.secure&quot;)
+    register_blueprint(application)
+    register_plugin(application)
+    return application
+
+app = create_app()
+celery_app = make_celery(app)
+
+if __name__ == &quot;__main__&quot;:
+
+    app.run(host=&quot;0.0.0.0&quot;, port=5000, debug=False)
+
+&gt;&gt;&gt; ImportError: cannot import name &#39;create_blueprint_v1&#39;
+</code></pre>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>celery worker 入口文件和 flask 启动的入口文件分开，worker 的入口文件不需要初始化蓝图，即可解决循环引用的问题。</p>
+<h1 id="在-celery-work-中加入-flask-上下文"><a href="#在-celery-work-中加入-flask-上下文" class="headerlink" title="在 celery work 中加入 flask 上下文"></a>在 celery work 中加入 flask 上下文</h1><blockquote>
+<p>注意: celery worker 运行的必须是已经推入<code>flask context</code>的 celery 对象，后续推入的<code>context</code>是无效的。</p>
+</blockquote>
+<pre><code class="python">from celery import Celery
+from app.config.setting import CELERY_TASKS_INCLUDE
+
+
+def make_celery(app):
+    celery = Celery(__name__, include=CELERY_TASKS_INCLUDE)
+    celery.config_from_object(&#39;app.config.celery_conf&#39;)
+
+    class ContextTask(celery.Task):
+        def __call__(self, *args, **kwargs):
+            with app.app_context():
+                return self.run(*args, **kwargs)
+
+    celery.Task = ContextTask
+    return celery
+</code></pre>
+<h1 id="成员函数实现-celery-task-异步调用"><a href="#成员函数实现-celery-task-异步调用" class="headerlink" title="成员函数实现 celery task 异步调用"></a>成员函数实现 celery task 异步调用</h1><p>由于支持方法太多bug且没有人修，celery官方在4版本，移除了celery 3 中的<code>celery.contrib.methods</code>方法</p>
+<blockquote>
+<p>I wrote celery.contrib.task_methods as an experiment, but turns out there were some serious bugs<br>there, for example task retries wouldn’t work at all, and since nobody were stepping up to fix it I removed it.</p>
+</blockquote>
+<p>所以尽量将需要异步调用的方法移动到类以外，如果实在是没有办法移动，可以将<code>celery.contrib.methods</code>放到项目内，然后实现调用。</p>
+<pre><code class="python">from celery import current_app
+
+__all__ = [&#39;task_method&#39;, &#39;task&#39;]
+
+
+class task_method(object):
+
+    def __init__(self, task, *args, **kwargs):
+        self.task = task
+
+    def __get__(self, obj, type=None):
+        if obj is None:
+            return self.task
+        task = self.task.__class__()
+        task.__self__ = obj
+        return task
+
+
+def task(*args, **kwargs):
+    return current_app.task(*args, **dict(kwargs, filter=task_method))
+
+</code></pre>
+<p>使用方法：</p>
+<pre><code class="python">from celery import current_app
+from celery.contrib.methods import task_method
+
+class A:
+@current_app.task(filter=task_method, name=&#39;A.foo&#39;)
+def foo(self, bar):
+    ...
+</code></pre>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="http://docs.jinkan.org/docs/flask/patterns/celery.html" target="_blank" rel="noopener">flask 基于 Celery 的后台任务</a></li>
+<li><a href="https://stackoverflow.com/questions/29670961/flask-blueprints-uses-celery-task-and-got-cycle-import" target="_blank" rel="noopener">Flask, blueprints uses celery task and got cycle import</a></li>
+<li><a href="https://www.celerycn.io/ru-men/celery-jian-jie" target="_blank" rel="noopener">celery 中文手册</a></li>
+<li><a href="https://www.distributedpython.com/2018/08/21/celery-4-windows/" target="_blank" rel="noopener">Hack: 2 Ways to make Celery 4 run on Windows</a></li>
+<li><a href="https://stackoverflow.com/questions/9250317/using-class-methods-as-celery-tasks" target="_blank" rel="noopener">using class methods as celery tasks</a></li>
+<li><a href="https://github.com/celery/celery/issues/3558" target="_blank" rel="noopener">where is celery.contrib.methods.task_method of 4.0</a></li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+            </ul>
+            
+            
+            
+            <div id="vcomments"></div>
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">76 <p>文章</p></a></li>
+                    <li><a href="/categories">14 <p>分类</p></a></li>
+                    <li><a href="/tags">71 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#序"><span class="toc-number">1.</span> <span class="toc-text">序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#win环境运行celery-4-worker"><span class="toc-number">2.</span> <span class="toc-text">win环境运行celery 4 worker</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#flask-celery-启动蓝图循环引用问题"><span class="toc-number">3.</span> <span class="toc-text">flask + celery 启动蓝图循环引用问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#项目结构"><span class="toc-number">3.1.</span> <span class="toc-text">项目结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-number">3.2.</span> <span class="toc-text">解决方案</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在-celery-work-中加入-flask-上下文"><span class="toc-number">4.</span> <span class="toc-text">在 celery work 中加入 flask 上下文</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#成员函数实现-celery-task-异步调用"><span class="toc-number">5.</span> <span class="toc-text">成员函数实现 celery task 异步调用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2021
+        <span class="gradient-text">
+            EwdAger
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script> <script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script> <script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script> <script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>   <link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Farewell,good hunter.May you find your worth in the waking world.', '再见，善良的猎人。愿你能在清醒的世界中找到自己的价值。'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+ <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  var valine = new Valine();
+
+  function initValine(path) {
+    if (!path) path = window.location.pathname;
+    let language = 'zh-CN';
+    if (!language) {
+      language = 'en';
+    } else {
+      language = language.toLowerCase();
+    }
+    valine.init({
+      el: '#vcomments',
+      appId: 'ChQ4z1dCRpWqCOD43kU6cGmM-gzGzoHsz',
+      appKey: 'pFaAS3aumHDM572YbXkzc3fO',
+      notify: 'false',
+      verify: 'false',
+      avatar: 'retro',
+      placeholder: '留下你的评论~',
+      visitor: 'true',
+      path: path,
+      lang: language,
+    });
+  }
+
+  $(document).ready(function () {
+    initValine();
+  });
+</script>
+
+
+
+</html>

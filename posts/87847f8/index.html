@@ -1,0 +1,762 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Numpy笔记-进阶篇 - Gvoidy</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
+    <meta name="description" content="利用数组进行数据分析np.where是三元表达式x if condition else y的矢量化版
+In [169]: arr
+Out[169]:
+array([[-2.09280349e-01,,"> 
+    <meta name="author" content="EwdAger"> 
+    <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+</html>
+
+<body class="loading">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Gvoidy</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">Numpy笔记-进阶篇</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/机器学习笔记"><b>「
+                    </b>机器学习笔记<b> 」</b></a>
+                
+                八月 24, 2019
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/87847f8/" title="Numpy笔记-进阶篇">Numpy笔记-进阶篇</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    7.6k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    7 mins.
+                </span>
+                
+                
+                <span id="/posts/87847f8/" class="leancloud_visitors" data-flag-title="Numpy笔记-进阶篇">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span class="leancloud-visitors-count">1000000</span>
+                </span>
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Numpy/">Numpy</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据分析/">数据分析</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h1 id="利用数组进行数据分析"><a href="#利用数组进行数据分析" class="headerlink" title="利用数组进行数据分析"></a>利用数组进行数据分析</h1><p><code>np.where</code>是三元表达式<code>x if condition else y</code>的矢量化版</p>
+<pre><code class="python">In [169]: arr
+Out[169]:
+array([[-2.09280349e-01, -2.08776777e+00,  1.18959772e+00,
+        -1.30555812e-01],
+       [-1.05658371e+00,  2.66633933e+00,  4.47784003e-01,
+         5.22445402e-01],
+       [ 9.67780972e-01, -1.00148828e+00, -1.83185363e-03,
+         4.53542100e-01],
+       [ 1.33135003e+00,  1.33233678e-01, -4.89156202e-01,
+         1.16725743e+00]])
+
+# 大于零替换成2，小于零替换成-2
+In [170]: np.where(arr&gt;0, 2, -2)
+Out[170]:
+array([[-2, -2,  2, -2],
+       [-2,  2,  2,  2],
+       [ 2, -2, -2,  2],
+       [ 2,  2, -2,  2]])
+
+# 大于零替换成2，小于零则不变
+In [171]: np.where(arr&gt;0, 2, arr)
+Out[171]:
+array([[-2.09280349e-01, -2.08776777e+00,  2.00000000e+00,
+        -1.30555812e-01],
+       [-1.05658371e+00,  2.00000000e+00,  2.00000000e+00,
+         2.00000000e+00],
+       [ 2.00000000e+00, -1.00148828e+00, -1.83185363e-03,
+         2.00000000e+00],
+       [ 2.00000000e+00,  2.00000000e+00, -4.89156202e-01,
+         2.00000000e+00]])
+
+</code></pre>
+<h2 id="数学和统计方法"><a href="#数学和统计方法" class="headerlink" title="数学和统计方法"></a>数学和统计方法</h2><p>以下方法可以在对某个轴向的数据进行统计，（axis=1,纵向；axis=0，横向）</p>
+<pre><code class="python">In [24]: arr
+Out[24]:
+array([[ 0,  1,  2,  3],
+       [ 4,  5,  6,  7],
+       [ 8,  9, 10, 11],
+       [12, 13, 14, 15],
+       [16, 17, 18, 19]])
+
+In [25]: arr.sum()
+Out[25]: 190
+
+In [26]: arr.sum(axis=1)
+Out[26]: array([ 6, 22, 38, 54, 70])
+
+In [27]: arr.sum(axis=0)
+Out[27]: array([40, 45, 50, 55])
+
+
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sum</td>
+<td>对数组中所有或者某个轴向的数据进行求和，零长度的数组sum为0</td>
+</tr>
+<tr>
+<td>mean</td>
+<td>算数平均值，零长度的数组mean为NaN</td>
+</tr>
+<tr>
+<td>std、var</td>
+<td>标准差、方差</td>
+</tr>
+<tr>
+<td>min、max</td>
+<td>最小值、最大值</td>
+</tr>
+<tr>
+<td>argmin、argmax</td>
+<td>最小、最大值索引</td>
+</tr>
+<tr>
+<td>cumsum</td>
+<td>所有元素的累计和</td>
+</tr>
+<tr>
+<td>cumprod</td>
+<td>所有元素累计积</td>
+</tr>
+</tbody>
+</table>
+<h2 id="用于布尔型数组的方法"><a href="#用于布尔型数组的方法" class="headerlink" title="用于布尔型数组的方法"></a>用于布尔型数组的方法</h2><p>用于上面的方法中，布尔值会被强制转换成1和0。因此可以使用sum对布尔型数组的True值进行计数。</p>
+<pre><code class="python">In [38]: arr &gt; 5
+Out[38]:
+array([[False, False, False, False],
+       [False, False,  True,  True],
+       [ True,  True,  True,  True],
+       [ True,  True,  True,  True],
+       [ True,  True,  True,  True]])
+
+In [40]: (arr&gt;5).sum()
+Out[40]: 14
+</code></pre>
+<p>更有<code>any</code>和<code>all</code>方法可以判断布尔型数组中是否存在/全是<code>True</code></p>
+<pre><code class="python">In [41]: bools = np.array([False, False, True, True, False])
+
+In [42]: bools.any()
+Out[42]: True
+
+In [43]: bools.all()
+Out[43]: False
+</code></pre>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><p>Numpy数组也可以使用<code>sort</code>方法就地排序，而<code>np.sort()</code>方法生成的是数组的副本，两者都可以在多维数组任意一个轴向上排序。</p>
+<pre><code class="python">
+In [79]: arr
+Out[79]:
+array([[20, 19, 18, 17],
+       [16, 15, 14, 13],
+       [12, 11, 10,  9],
+       [ 8,  7,  6,  5],
+       [ 4,  3,  2,  1]])
+
+In [80]: arr.sort(axis=1)
+
+In [81]: arr
+Out[81]:
+array([[17, 18, 19, 20],
+       [13, 14, 15, 16],
+       [ 9, 10, 11, 12],
+       [ 5,  6,  7,  8],
+       [ 1,  2,  3,  4]])
+
+In [82]: arr.sort(axis=0)
+
+In [83]: arr
+Out[83]:
+array([[ 1,  2,  3,  4],
+       [ 5,  6,  7,  8],
+       [ 9, 10, 11, 12],
+       [13, 14, 15, 16],
+       [17, 18, 19, 20]])
+
+</code></pre>
+<h2 id="唯一化以及其他的集合逻辑"><a href="#唯一化以及其他的集合逻辑" class="headerlink" title="唯一化以及其他的集合逻辑"></a>唯一化以及其他的集合逻辑</h2><p><code>np.unique()</code>方法可计算数组中的唯一值；<code>np.in1d()</code>可测试数组值得成员资格，返回布尔数组。</p>
+<pre><code class="python"># 唯一值
+In [89]: names = np.array([&#39;Bob&#39;, &#39;Bob&#39;, &#39;Bob&#39;, &#39;Will&#39;, &#39;Will&#39;, &#39;Joe&#39;])
+
+In [90]: np.unique(names)
+Out[90]: array([&#39;Bob&#39;, &#39;Joe&#39;, &#39;Will&#39;], dtype=&#39;&lt;U4&#39;)
+
+# 成员资格
+In [91]: values = np.array([1,2,3,3,3,4,5])
+
+In [92]: np.in1d(values, [1,2,4])
+Out[92]: array([ True,  True, False, False, False,  True, False])
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>unique(x)</td>
+<td>计算x中的唯一值，并返回有序结果</td>
+</tr>
+<tr>
+<td>intersect1d(x, y)</td>
+<td>计算x, y中的公共元素，并返回有序结果</td>
+</tr>
+<tr>
+<td>union1d(x, y)</td>
+<td>计算x, y的并集，返回有序结果</td>
+</tr>
+<tr>
+<td>in1d(x, y)</td>
+<td>得到一个”x元素是否包含于y”的布尔型数组</td>
+</tr>
+<tr>
+<td>setdiff1d(x, y)</td>
+<td>集合的差，即元素在x中且不在y中</td>
+</tr>
+<tr>
+<td>setxor1d(x, y)</td>
+<td>集合的对称差，即存在于一个数组中但不同时存在于两个数组中的元素（异或）</td>
+</tr>
+</tbody>
+</table>
+<h1 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a>线性代数</h1><p>emmm。。反正看不懂，就先记个函数叭</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>diag</td>
+<td>以一维数组的形式返回方阵的对角线（或非对角线）元素，或将一维数组转换为方阵（非对角线元素为0）</td>
+</tr>
+<tr>
+<td>dot</td>
+<td>矩阵乘法</td>
+</tr>
+<tr>
+<td>trace</td>
+<td>计算对角线元素的和</td>
+</tr>
+<tr>
+<td>det</td>
+<td>计算矩阵行列式</td>
+</tr>
+<tr>
+<td>eig</td>
+<td>计算方阵的本征值和本征向量</td>
+</tr>
+<tr>
+<td>inv</td>
+<td>计算方阵的逆</td>
+</tr>
+<tr>
+<td>pinv</td>
+<td>计算矩阵的Moore-Penrose伪逆</td>
+</tr>
+<tr>
+<td>qr</td>
+<td>计算QR分解</td>
+</tr>
+<tr>
+<td>svd</td>
+<td>计算奇异值分解</td>
+</tr>
+<tr>
+<td>solve</td>
+<td>解线性方程组Ax=b，其中A为一个方阵</td>
+</tr>
+<tr>
+<td>lstsq</td>
+<td>计算Ax=b的最小二乘解</td>
+</tr>
+</tbody>
+</table>
+<h1 id="随机数生成"><a href="#随机数生成" class="headerlink" title="随机数生成"></a>随机数生成</h1><p><code>numpy.random</code>效率比Python标准库的随机快的多</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>seed</td>
+<td>确定随机生成器的种子</td>
+</tr>
+<tr>
+<td>permutation</td>
+<td>返回一个序列的随机排列或返回一个随机排列范围</td>
+</tr>
+<tr>
+<td>shuffle</td>
+<td>对一个序列就地随机排列</td>
+</tr>
+<tr>
+<td>rand</td>
+<td>产生均匀分布的样本值</td>
+</tr>
+<tr>
+<td>randint</td>
+<td>从给定的上下限范围内随机选取整数</td>
+</tr>
+<tr>
+<td>randn</td>
+<td>产生正态分布（平均值0，标准差1）的样本值</td>
+</tr>
+<tr>
+<td>binomial</td>
+<td>产生二项分布的样本值</td>
+</tr>
+<tr>
+<td>normal</td>
+<td>产生正态（高斯）分布的样本值</td>
+</tr>
+<tr>
+<td>beta</td>
+<td>产生Beta分布的样本值</td>
+</tr>
+<tr>
+<td>chisquare</td>
+<td>产生卡方分布的样本值</td>
+</tr>
+<tr>
+<td>gamma</td>
+<td>产生Gamma分布的样本值</td>
+</tr>
+<tr>
+<td>uniform</td>
+<td>产生[0, 1)中均匀分布的样本值</td>
+</tr>
+</tbody>
+</table>
+<h1 id="范例：随机漫步"><a href="#范例：随机漫步" class="headerlink" title="范例：随机漫步"></a>范例：随机漫步</h1><p><strong>随机漫步理论(Random Walk Theory)</strong>认为，证券价格的波动是随机的，像一个在广场上行走的人一样，价格的下一步将走向哪里，是没有规律的。证券市场中，价格的走向受到多方面因素的影响。一件不起眼的小事也可能对市场产生巨大的影响。从长时间的价格走势图上也可以看出，价格的上下起伏的机会差不多是均等的。</p>
+<h2 id="Python标准库实现"><a href="#Python标准库实现" class="headerlink" title="Python标准库实现"></a>Python标准库实现</h2><pre><code class="python">import random
+
+position = 0
+walk = [position]
+steps = 1000
+for i in range(steps):
+  step = 1 if random.randint(0, 1) else -1
+  position += step
+  walk.append(position)
+
+# 输出最大值
+print(max(walk))
+
+# 输出最小值
+print(min(walk))
+
+# 输出第一个到10时的索引
+start, end = 0, 10
+for k, v in enumerate(walk):
+  if start == end:
+    print(k)
+    break
+  start += v
+  if k == len(walk):
+    print(&quot;最终都没有到10&quot;)
+
+</code></pre>
+<h2 id="使用Numpy"><a href="#使用Numpy" class="headerlink" title="使用Numpy"></a>使用Numpy</h2><pre><code class="python">
+In [98]: nsteps = 1000
+
+# 随机生成nsteps个[0,2)之间的随机值
+In [99]: draws = np.random.randint(0, 2, size=nsteps)
+
+In [100]: steps = np.where(draws&gt;0, 1, -1)
+
+# 元素累计和的数组
+In [101]: walk = steps.cumsum()
+
+In [104]: walk.min()
+Out[104]: -10
+
+In [105]: walk.max()
+Out[105]: 28
+
+# 得到数组中第一个最大值的索引(第一个True)
+In [106]: (walk &gt;= 10).argmax()
+Out[106]: 171
+
+</code></pre>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>很明显的可以看出，使用Numpy代码更加优雅易读，且通过IPython的<code>%timeit</code>测试两个版本的速度，使用标准库的平均时间为<code>4.57 ms</code>，而使用Numpy的平均时间为<code>2.68 ms</code>。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+            </ul>
+            
+            
+            
+            <div id="vcomments"></div>
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">76 <p>文章</p></a></li>
+                    <li><a href="/categories">14 <p>分类</p></a></li>
+                    <li><a href="/tags">71 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#利用数组进行数据分析"><span class="toc-number">1.</span> <span class="toc-text">利用数组进行数据分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数学和统计方法"><span class="toc-number">1.1.</span> <span class="toc-text">数学和统计方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用于布尔型数组的方法"><span class="toc-number">1.2.</span> <span class="toc-text">用于布尔型数组的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#排序"><span class="toc-number">1.3.</span> <span class="toc-text">排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#唯一化以及其他的集合逻辑"><span class="toc-number">1.4.</span> <span class="toc-text">唯一化以及其他的集合逻辑</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线性代数"><span class="toc-number">2.</span> <span class="toc-text">线性代数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#随机数生成"><span class="toc-number">3.</span> <span class="toc-text">随机数生成</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#范例：随机漫步"><span class="toc-number">4.</span> <span class="toc-text">范例：随机漫步</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python标准库实现"><span class="toc-number">4.1.</span> <span class="toc-text">Python标准库实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Numpy"><span class="toc-number">4.2.</span> <span class="toc-text">使用Numpy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.3.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2021
+        <span class="gradient-text">
+            EwdAger
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script> <script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script> <script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script> <script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>   <link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Farewell,good hunter.May you find your worth in the waking world.', '再见，善良的猎人。愿你能在清醒的世界中找到自己的价值。'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+ <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  var valine = new Valine();
+
+  function initValine(path) {
+    if (!path) path = window.location.pathname;
+    let language = 'zh-CN';
+    if (!language) {
+      language = 'en';
+    } else {
+      language = language.toLowerCase();
+    }
+    valine.init({
+      el: '#vcomments',
+      appId: 'ChQ4z1dCRpWqCOD43kU6cGmM-gzGzoHsz',
+      appKey: 'pFaAS3aumHDM572YbXkzc3fO',
+      notify: 'false',
+      verify: 'false',
+      avatar: 'retro',
+      placeholder: '留下你的评论~',
+      visitor: 'true',
+      path: path,
+      lang: language,
+    });
+  }
+
+  $(document).ready(function () {
+    initValine();
+  });
+</script>
+
+
+
+</html>

@@ -1,0 +1,956 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>python实现单工、半双工、全双工聊天室 - Gvoidy</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
+    <meta name="description" content="聊天室单工实现：单工版非常简单，只能客户端单方面向服务端发消息，服务端回复固定模板消息。
+Server:
+# -*- coding: utf-8 -*-
+
+import socket
+import ,"> 
+    <meta name="author" content="EwdAger"> 
+    <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+</html>
+
+<body class="loading">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Gvoidy</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">python实现单工、半双工、全双工聊天室</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/计算机网络相关"><b>「
+                    </b>计算机网络相关<b> 」</b></a>
+                
+                十二月 29, 2017
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/14572bdc/" title="python实现单工、半双工、全双工聊天室">python实现单工、半双工、全双工聊天室</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    16k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    15 mins.
+                </span>
+                
+                
+                <span id="/posts/14572bdc/" class="leancloud_visitors" data-flag-title="python实现单工、半双工、全双工聊天室">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span class="leancloud-visitors-count">1000000</span>
+                </span>
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Socket编程/">Socket编程</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/聊天室/">聊天室</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="聊天室单工实现："><a href="#聊天室单工实现：" class="headerlink" title="聊天室单工实现："></a>聊天室单工实现：</h2><p>单工版非常简单，只能客户端单方面向服务端发消息，服务端回复固定模板消息。</p>
+<p><strong>Server:</strong></p>
+<pre><code class="python"># -*- coding: utf-8 -*-
+
+import socket
+import threading
+import time
+
+def tcplink(sock, addr):
+    print &#39;Accept new connection from %s:%s...&#39; % addr
+    sock.send(&#39;Welcome!&#39;)
+    while True:
+        data = sock.recv(1024)
+        time.sleep(1)
+        if data == &#39;exit&#39; or not data:
+            break
+        sock.send(&#39;Hello, %s!&#39; % data)
+    sock.close()
+    print &#39;Connection from %s:%s closed.&#39; % addr
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.bind((&#39;127.0.0.1&#39;, 9999))
+s.listen(5)
+print &#39;Waiting for connection...&#39;
+while True:
+    # 接受一个新连接:
+    sock, addr = s.accept()
+    # 创建新线程来处理TCP连接:
+    t = threading.Thread(target=tcplink, args=(sock, addr))
+    t.start()
+</code></pre>
+<p><strong>Client:</strong></p>
+<pre><code class="python"># -*- coding: utf-8 -*-
+
+import socket
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# 建立连接:
+s.connect((&#39;127.0.0.1&#39;, 9999))
+# 接收欢迎消息:
+print s.recv(1024)
+for data in [&#39;Michael&#39;, &#39;Tracy&#39;, &#39;Sarah&#39;]:
+    # 发送数据:
+    s.send(data)
+    print s.recv(1024)
+s.send(&#39;exit&#39;)
+s.close()
+</code></pre>
+<p>此为最基础的基于TCP协议的聊天程序，实现了Socket编程的主要流程。</p>
+<blockquote>
+<p>服务器进程首先要绑定一个端口并监听来自其他客户端的连接。如果某个客户端连接过来了，服务器就与该客户端建立Socket连接，随后的通信就靠这个Socket连接了。<br>所以，服务器会打开固定端口（比如80）监听，每来一个客户端连接，就创建该Socket连接。由于服务器会有大量来自客户端的连接，所以，服务器要能够区分一个Socket连接是和哪个客户端绑定的。一个Socket依赖4项：服务器地址、服务器端口、客户端地址、客户端端口来唯一确定一个Socket。<br>但是服务器还需要同时响应多个客户端的请求，所以，每个连接都需要一个新的进程或者新的线程来处理，否则，服务器一次就只能服务一个客户端了。</p>
+</blockquote>
+<h2 id="聊天室半双工实现："><a href="#聊天室半双工实现：" class="headerlink" title="聊天室半双工实现："></a>聊天室半双工实现：</h2><p>半双工实现是连接建立以后，服务器等待客户端发送消息，客户端发送消息后等待接收服务器，这样一来一回循环往复下去。直到出现quit，关闭连接。</p>
+<p><strong>Server:</strong></p>
+<pre><code class="python"># -*- coding: utf-8 -*-
+
+import socket
+from time import ctime
+
+HOST = &#39;localhost&#39;
+PORT = 3300
+BUSIZ = 1024
+ADDR = (HOST, PORT)
+
+def closeTCnt():
+    TCntSock.close()
+    print &quot;Session closing..&quot;
+
+TSerSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+TSerSock.bind(ADDR)
+TSerSock.listen(1)
+try:
+    while True:
+        print &#39;Waitting for connection...&#39;
+        (TCntSock, cntAddr) = TSerSock.accept()
+        print &#39;...connection from:&#39;, cntAddr
+
+        try:
+
+            while True:
+                rData = TCntSock.recv(BUSIZ)
+                if not rData:
+                    continue
+                elif rData == &#39;quit&#39;:
+                    break
+                else:
+                    print &#39;From [%s] %s \n  %s&#39; % (cntAddr[0], ctime(), rData)
+
+                while True:
+                    sData = raw_input(&#39;&gt;  &#39;)
+                    if not sData:
+                        continue
+                    else:
+                        TCntSock.send(&#39;From [%s] %s \n  %s&#39; %
+                                      (cntAddr[0], ctime(), sData))
+                        break
+
+        except socket.error, detail:
+            print detail
+        closeTCnt()
+
+finally:
+    TSerSock.close()
+</code></pre>
+<p><strong>Client:</strong></p>
+<pre><code class="python"># -*- coding: utf-8 -*-
+
+import socket
+
+HOST = &#39;localhost&#39;
+PORT = 3300
+BUFSIZ = 1024
+ADDR = (HOST, PORT)
+tryCon = 0
+
+def TCnt():
+    tcpCliSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    while True:
+        try:
+            tcpCliSock.connect(ADDR)
+        except:
+            print u&quot;正在尝试连接远程主机 &quot;
+            global tryCon
+            tryCon += 1
+            if tryCon == 3:
+                print u&quot;无法连接上远程主机，请稍后再试&quot;
+                exit()
+        else:
+            break
+    print u&#39;登陆成功（通讯结束请输入&quot;quit&quot;退出）\n&#39;
+
+    try:
+        while True:
+            data = raw_input(&#39;&gt;  &#39;)
+            if not data:
+                continue
+            elif data == &#39;quit&#39;:
+                tcpCliSock.send(data)
+                break
+            else:
+                tcpCliSock.send(data)
+
+            while True:
+                data = tcpCliSock.recv(BUFSIZ)
+
+                if not data:
+                    continue
+                else:
+                    print data
+                    break
+    except socket.error, e:
+        print &quot;Session closing&quot;
+        print e
+    tcpCliSock.close()
+
+
+if __name__ == &quot;__main__&quot;:
+    TCnt()
+
+</code></pre>
+<p>这里就出现了一个有趣的问题，为什么这段代码只能一来一回的发送消息呢？讲道理应该发完消息不应该可以接着发消息吗？凭什么发了一条消息必须等待另一端发消息回来才能继续发？这就引出了全双工实现的原理。</p>
+<h2 id="聊天室全双工-P2P-实现："><a href="#聊天室全双工-P2P-实现：" class="headerlink" title="聊天室全双工(P2P)实现："></a>聊天室全双工(P2P)实现：</h2><p>因为TCP连接是一个流，所以Socket模块的recv()是<strong>直到Scoket连接终断不会停止等待接受从另一端发送</strong>的消息的。全双工实现比半双工工多了个线程处理，所以服务器与客户端必须开两个线程，一个收消息一个发消息，并且发消息的线程需要阻塞收消息的线程。</p>
+<p><strong>Server:</strong></p>
+<pre><code class="python"># -*- coding: utf-8 -*-
+
+from socket import *
+from time import ctime
+import threading
+import re
+
+HOST = &#39;&#39;
+PORT = 9999
+BUFSIZ = 1024
+ADDR = (HOST, PORT)
+
+tcpSerSock = socket(AF_INET, SOCK_STREAM)
+tcpSerSock.bind(ADDR)
+tcpSerSock.listen(5)
+
+clients = {}  # username -&gt; socket
+chatwith = {}  # user1.socket -&gt; user2.socket
+
+
+# clients字典中记录了连接的客户端的用户名和套接字的对应关系
+# chatwith字典中记录了通信双方的套接字的对应
+
+# messageTransform()处理客户端确定用户名之后发送的文本
+# 文本只有四种类型：
+#   None
+#   Quit
+#   To:someone
+#   其他文本
+def messageTransform(sock, user):
+    while True:
+        data = sock.recv(BUFSIZ)
+        if not data:
+            if chatwith.has_key(sock):
+                chatwith[sock].send(data)
+                del chatwith[chatwith[sock]]
+                del chatwith[sock]
+            del clients[user]
+            sock.close()
+            break
+        if data == &#39;Quit&#39;:
+            sock.send(data)
+            if chatwith.has_key(sock):
+                data = &#39;%s.&#39; % data
+                chatwith[sock].send(data)
+                del chatwith[chatwith[sock]]
+                del chatwith[sock]
+            del clients[user]
+            sock.close()
+            break
+        elif re.match(&#39;^To:.+&#39;, data) is not None:
+            data = data[3:]
+            if clients.has_key(data):
+                if data == user:
+                    sock.send(&#39;Please don\&#39;t try to talk with yourself.&#39;)
+                else:
+                    chatwith[sock] = clients[data]
+                    chatwith[clients[data]] = sock
+            else:
+                sock.send(&#39;the user %s is not exist&#39; % data)
+        else:
+            if chatwith.has_key(sock):
+                chatwith[sock].send(&#39;[%s] %s: (%s)&#39; % (ctime(), user, data))
+            else:
+                sock.send(&#39;Nobody is chating with you. Maybe the one talked with you is talking with someone else&#39;)
+
+
+# 每个客户端连接之后，都会启动一个新线程
+# 连接成功后需要输入用户名
+# 输入的用户名可能会：
+#   已存在
+#   (客户端直接输入ctrl+c退出)
+#   合法用户名
+def connectThread(sock, test):  # client&#39;s socket
+
+    user = None
+    while True:  # receive the username
+        username = sock.recv(BUFSIZ)
+        if not username:  # the client logout without input a name
+            print(&#39;The client logout without input a name&#39;)
+            break
+        if clients.has_key(username):  # username existed
+            sock.send(&#39;Reuse&#39;)
+        else:  # correct username
+            sock.send(&#39;OK&#39;)
+            clients[username] = sock  # username -&gt; socket
+            user = username
+            break
+    if not user:
+        sock.close()
+        return
+    print(&#39;The username is: %s&#39; % user)
+    # get the correct username
+
+    messageTransform(sock, user)
+
+
+if __name__ == &#39;__main__&#39;:
+    while True:
+        print(&#39;...WAITING FOR CONNECTION&#39;)
+        tcpCliSock, addr = tcpSerSock.accept()
+        print(&#39;CONNECTED FROM: &#39;, addr)
+        chat = threading.Thread(target=connectThread, args=(tcpCliSock, None))
+        chat.start()
+</code></pre>
+<p><strong>Client:</strong></p>
+<pre><code class="python"># -*- coding: utf-8 -*-
+
+from socket import *
+import threading
+
+HOST = &#39;127.0.0.1&#39;
+PORT = 9999
+BUFSIZ = 1024
+ADDR = (HOST, PORT)
+
+tcpCliSock = socket(AF_INET, SOCK_STREAM)
+tcpCliSock.connect(ADDR)
+&#39;&#39;&#39;
+因为每个客户端接收消息和发送消息是相互独立的，
+所以这里将两者分开，开启两个线程处理
+&#39;&#39;&#39;
+
+def Send(sock, test):
+    while True:
+        try:
+            data = raw_input()
+            sock.send(data)
+            if data == &#39;Quit&#39;:
+                break
+        except KeyboardInterrupt:
+            sock.send(&#39;Quit&#39;)
+            break
+
+
+def Recv(sock, test):
+    while True:
+        data = sock.recv(BUFSIZ)
+        if data == &#39;Quit.&#39;:
+            print(&#39;He/She logout&#39;)
+            continue
+        if data == &#39;Quit&#39;:
+            break
+        print(&#39;         %s&#39; % data)
+
+if __name__ == &#39;__main__&#39;:
+    print(&#39;Successful connection&#39;)
+    while True:
+        username = raw_input(&#39;Your name(press only Enter to quit): &#39;)
+        tcpCliSock.send(username)
+        if not username:
+            break
+        # username is not None
+        response = tcpCliSock.recv(BUFSIZ)
+        if response == &#39;Reuse&#39;:
+            print(&#39;The name is reuse, please set a new one&#39;)
+            continue
+        else:
+            print(&#39;Welcome! %s&#39; % username)
+            break
+
+    if not username:
+        tcpCliSock.close()
+
+    recvMessage = threading.Thread(target=Recv, args=(tcpCliSock, None))
+    sendMessage = threading.Thread(target=Send, args=(tcpCliSock, None))
+    sendMessage.start()
+    recvMessage.start()
+    sendMessage.join()
+    recvMessage.join()
+
+</code></pre>
+<p>这里的实现逻辑是，每当一个客户端连接进服务端，客户端需要向服务端申请一个ID，服务端将这个ID与客户端连接的Socket对象存入字典，然后监听客户端向服务端发出的消息中有没有”To:”如果有就取出至三个字符后的字符，与字典中的key去比对，如果有存在的ID(不能是当前客户端自己的ID)，就将这两个Socket对象存入一个chatwith的字典中。实现A客户端发消息给服务端，服务端从chatwith字典中查询当前客户端对应的连接，再将A客户端的消息发送给连接的B客户端。</p>
+<p>不过这里出现了一个问题，如果客户端A在和B聊天的过程中，进来了一个客户端C。客户端C也想加入AB的聊天，但是我们的服务端将C的Socket对象覆盖掉了B的，于是B发送什么消息A都接受不到了，而A发的消息只有C能收到了。</p>
+<p>这里通过广播(P2M)的形式解决。</p>
+<h2 id="聊天室全双工-P2M-实现："><a href="#聊天室全双工-P2M-实现：" class="headerlink" title="聊天室全双工(P2M)实现："></a>聊天室全双工(P2M)实现：</h2><p>这里稍微修改了P2P实现的服务端逻辑，不在将Socket连接一一对应，而是将所有的Socket连接存入一个列表，每当一个客户端发送消息，服务端就将这段消息广播给所有的客户端。</p>
+<p><strong>Server:</strong></p>
+<pre><code class="python"># -*- coding: utf-8 -*-
+
+import socket, select
+
+host = socket.gethostname()
+port = 8080
+addr = (host, port)
+
+inputs = []
+fd_name = {}
+
+def who_in_room(w):
+    name_list = []
+    for k in w:
+        name_list.append(w[k])
+
+    return name_list
+
+def conn():
+    print &#39;...WAITING FOR CONNECTION&#39;
+    ss = socket.socket()
+    ss.bind(addr)
+    ss.listen(5)
+
+    return ss
+
+def new_coming(ss):
+    client, add = ss.accept()
+    print &#39;welcome %s %s&#39; % (client, add)
+    wel = &#39;&#39;&#39;&#39;&#39;Your name(press only Enter to quit): &#39;&#39;&#39;
+    try:
+        client.send(wel)
+        name = client.recv(1024)
+        inputs.append(client)
+        fd_name[client] = name
+
+        nameList = &quot;Some people in talking room, these are %s&quot; % (who_in_room(fd_name))
+        client.send(nameList)
+
+    except Exception, e:
+        print e
+
+def server_run():
+    ss = conn()
+    inputs.append(ss)
+
+    while True:
+        r, w, e = select.select(inputs, [], [])
+        for temp in r:
+            if temp is ss:
+                new_coming(ss)
+            else:
+                disconnect = False
+                try:
+                    data = temp.recv(1024)
+                    data = fd_name[temp] + &#39; say : &#39; + data
+                except socket.error:
+                    data = fd_name[temp] + &#39; leave the room&#39;
+                    disconnect = True
+
+                if disconnect:
+                    inputs.remove(temp)
+                    print data
+                    for other in inputs:
+                        if other != ss and other != temp:
+                            try:
+                                other.send(data)
+                            except Exception, e:
+                                print e
+                    del fd_name[temp]
+
+                else:
+                    print data
+
+                    for other in inputs:
+                        if other != ss and other != temp:
+                            try:
+                                other.send(data)
+                            except Exception, e:
+                                print e
+
+if __name__ == &#39;__main__&#39;:
+    server_run()  
+</code></pre>
+<p><strong>Client:</strong></p>
+<pre><code class="python"># -*- coding: utf-8 -*-
+
+import socket, select, threading
+
+host = socket.gethostname()
+
+addr = (host, 8080)
+
+def conn():
+    s = socket.socket()
+    s.connect(addr)
+    return s
+
+def lis(s):
+    my = [s]
+    while True:
+        r, w, e = select.select(my, [], [])
+        if s in r:
+            try:
+                print s.recv(1024)
+            except socket.error:
+                print &#39;socket is error&#39;
+                exit()
+
+def talk(s):
+    while True:
+        try:
+            info = raw_input()
+        except Exception, e:
+            print &#39;can\&#39;t input&#39;
+            exit()
+        try:
+            s.send(info)
+        except Exception, e:
+            print e
+            exit()
+
+def main():
+    ss = conn()
+    t = threading.Thread(target=lis, args=(ss,))
+    t.start()
+    t1 = threading.Thread(target=talk, args=(ss,))
+    t1.start()
+
+if __name__ == &#39;__main__&#39;:
+    main()  
+</code></pre>
+<h2 id="聊天室全双工-P2M-WebSocket实现："><a href="#聊天室全双工-P2M-WebSocket实现：" class="headerlink" title="聊天室全双工(P2M)WebSocket实现："></a>聊天室全双工(P2M)WebSocket实现：</h2><p>这里又有一个奇思妙想出现了，因为在学习Socket编程的时候接触到了一个叫WebSocket的好玩的东西，于是实现了一个以浏览器为客户端的聊天室程序。使用Nodejs编写聊天室不仅代码简洁优雅功能强大，并且逼格都高很多。</p>
+<blockquote>
+<p>此处以node.js + nodejs-websocket实现，首先需要安装Node.js和这个第三方模块</p>
+</blockquote>
+<p><strong>Server:</strong></p>
+<pre><code class="js">var ws = require(&quot;nodejs-websocket&quot;)
+
+var clientCount = 0
+
+// Scream server example: &quot;hi&quot; -&gt; &quot;HI!!!&quot;
+var server = ws.createServer(function (conn) {
+    console.log(&quot;New connection&quot;)
+    clientCount++
+    conn.nickname = &#39;user&#39; + clientCount
+    broadcast(conn.nickname + &#39; comes in&#39;)
+    conn.on(&quot;text&quot;, function (str) {
+        console.log(&quot;Received &quot;+str)
+        broadcast(conn.nickname + &quot;: &quot; + str)
+    })
+    conn.on(&quot;close&quot;, function (code, reason) {
+        console.log(&quot;Connection closed&quot;)
+        broadcast(conn.nickname + &#39; left&#39;)
+    })
+    conn.on(&quot;error&quot;, function(err) {
+        console.log(&quot;handle err&quot;)
+        console.log(err)
+    })
+}).listen(8001)
+
+console.log(&quot;connect is close&quot;);
+
+function broadcast(str){
+    server.connections.forEach(function(connection){
+        connection.sendText(str)
+    })
+}
+</code></pre>
+<p><strong>Client:</strong></p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;WebSocket&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Chat Room&lt;/h1&gt;
+    &lt;input id=&quot;sendTxt&quot; type=&quot;text&quot; /&gt;
+    &lt;button id=&quot;sendBtn&quot;&gt;发送&lt;/button&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var websocket = new WebSocket(&quot;ws://localhost:8001/&quot;);
+        function showMessage(str) {
+            var div = document.createElement(&#39;div&#39;);
+            div.innerHTML = str;
+            document.body.appendChild(div);
+        }
+        websocket.onopen = function() {
+            console.log(&quot;websocket open&quot;);
+            document.getElementById(&quot;sendBtn&quot;).onclick = function(){
+                var txt = document.getElementById(&quot;sendTxt&quot;).value;
+                if(txt) {
+                    websocket.send(txt);
+                }
+            }
+        }
+        websocket.onclose = function() {
+            console.log(&quot;websocket close&quot;);
+        }
+        websocket.onmessage = function(e) {
+            console.log(e.data);
+            showMessage(e.data);
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+            </ul>
+            
+            
+            
+            <div id="vcomments"></div>
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">76 <p>文章</p></a></li>
+                    <li><a href="/categories">14 <p>分类</p></a></li>
+                    <li><a href="/tags">71 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#聊天室单工实现："><span class="toc-number">1.</span> <span class="toc-text">聊天室单工实现：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#聊天室半双工实现："><span class="toc-number">2.</span> <span class="toc-text">聊天室半双工实现：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#聊天室全双工-P2P-实现："><span class="toc-number">3.</span> <span class="toc-text">聊天室全双工(P2P)实现：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#聊天室全双工-P2M-实现："><span class="toc-number">4.</span> <span class="toc-text">聊天室全双工(P2M)实现：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#聊天室全双工-P2M-WebSocket实现："><span class="toc-number">5.</span> <span class="toc-text">聊天室全双工(P2M)WebSocket实现：</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2021
+        <span class="gradient-text">
+            EwdAger
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script> <script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script> <script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script> <script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>   <link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Farewell,good hunter.May you find your worth in the waking world.', '再见，善良的猎人。愿你能在清醒的世界中找到自己的价值。'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+ <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  var valine = new Valine();
+
+  function initValine(path) {
+    if (!path) path = window.location.pathname;
+    let language = 'zh-CN';
+    if (!language) {
+      language = 'en';
+    } else {
+      language = language.toLowerCase();
+    }
+    valine.init({
+      el: '#vcomments',
+      appId: 'ChQ4z1dCRpWqCOD43kU6cGmM-gzGzoHsz',
+      appKey: 'pFaAS3aumHDM572YbXkzc3fO',
+      notify: 'false',
+      verify: 'false',
+      avatar: 'retro',
+      placeholder: '留下你的评论~',
+      visitor: 'true',
+      path: path,
+      lang: language,
+    });
+  }
+
+  $(document).ready(function () {
+    initValine();
+  });
+</script>
+
+
+
+</html>

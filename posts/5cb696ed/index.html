@@ -1,0 +1,822 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ssdb、minio性能测试 - Gvoidy</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
+    <meta name="description" content="起项目上需要找一个硬盘型的NoSQL，用于将Redis中的冷数据落入硬盘。初步选型了几款key-value类型的NoSQL，分别有levelDB、 rocksDB、 TiDB、 SSDB、swapD,"> 
+    <meta name="author" content="EwdAger"> 
+    <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+</html>
+
+<body class="loading">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Gvoidy</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">ssdb、minio性能测试</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/不知道怎么归类"><b>「
+                    </b>不知道怎么归类<b> 」</b></a>
+                
+                六月 28, 2020
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/5cb696ed/" title="ssdb、minio性能测试">ssdb、minio性能测试</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    9.6k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    9 mins.
+                </span>
+                
+                
+                <span id="/posts/5cb696ed/" class="leancloud_visitors" data-flag-title="ssdb、minio性能测试">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span class="leancloud-visitors-count">1000000</span>
+                </span>
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/nosql/">nosql</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/对象存储/">对象存储</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h1 id="起"><a href="#起" class="headerlink" title="起"></a>起</h1><p>项目上需要找一个硬盘型的NoSQL，用于将Redis中的冷数据落入硬盘。初步选型了几款<code>key-value</code>类型的NoSQL，分别有<code>levelDB、 rocksDB、 TiDB、 SSDB、swapDB</code>。均为基于<code>levelDB</code>开发的几款NoSQL。其中因为<code>levelDB、rocksDB</code>无网络接口，不方便做分布式和高可用。，<code>TiDB</code>过重，还有<code>swapDB</code>社区不够活跃且相关client API不完备。暂时选型<code>SSDB</code>。</p>
+<p>项目需要存储的其实是一个略长的二进制字符串，初步认为，使用对象存储方案其实也可以替代NoSQL，所以压测对象添加当前非常火的云原生对象存储<code>MinIO</code></p>
+<h1 id="压测配置"><a href="#压测配置" class="headerlink" title="压测配置"></a>压测配置</h1><p>硬件名|配置<br>系统| Ubuntu(基于win10 wsl版的docker启动)<br>内存| 16GB(实际可用6.08G)<br>CPU| Intel i5-8400</p>
+<h1 id="读写测试"><a href="#读写测试" class="headerlink" title="读写测试"></a>读写测试</h1><p>测试项目： 1. 写50M数据100次 2. 随机读取任意key 100次（对LRU机制不友好）</p>
+<h2 id="SSDB"><a href="#SSDB" class="headerlink" title="SSDB"></a>SSDB</h2><p><strong>写</strong></p>
+<pre><code class="bash">数据导入成功！
+数据序列化成功！
+a 数据大小:50.99295234680176 MB
+第1次写入总用时: 797 ms
+第2次写入总用时: 848 ms
+第3次写入总用时: 3621 ms
+第4次写入总用时: 813 ms
+第5次写入总用时: 1862 ms
+第6次写入总用时: 838 ms
+第7次写入总用时: 2235 ms
+第8次写入总用时: 836 ms
+第9次写入总用时: 900 ms
+第10次写入总用时: 1027 ms
+第11次写入总用时: 1101 ms
+第12次写入总用时: 880 ms
+第13次写入总用时: 1956 ms
+第14次写入总用时: 866 ms
+第15次写入总用时: 2422 ms
+第16次写入总用时: 852 ms
+第17次写入总用时: 4511 ms
+第18次写入总用时: 875 ms
+第19次写入总用时: 2736 ms
+第20次写入总用时: 814 ms
+第21次写入总用时: 7172 ms
+第22次写入总用时: 891 ms
+第23次写入总用时: 7820 ms
+第24次写入总用时: 836 ms
+第25次写入总用时: 22103 ms
+第26次写入总用时: 877 ms
+第27次写入总用时: 2712 ms
+第28次写入总用时: 841 ms
+第29次写入总用时: 1928 ms
+第30次写入总用时: 916 ms
+第31次写入总用时: 839 ms
+第32次写入总用时: 826 ms
+第33次写入总用时: 7759 ms
+第34次写入总用时: 843 ms
+第35次写入总用时: 10670 ms
+第36次写入总用时: 843 ms
+第37次写入总用时: 9361 ms
+第38次写入总用时: 821 ms
+第39次写入总用时: 810 ms
+第40次写入总用时: 794 ms
+第41次写入总用时: 13281 ms
+第42次写入总用时: 833 ms
+第43次写入总用时: 811 ms
+第44次写入总用时: 798 ms
+第45次写入总用时: 18843 ms
+第46次写入总用时: 911 ms
+第47次写入总用时: 9428 ms
+第48次写入总用时: 898 ms
+第49次写入总用时: 17582 ms
+第50次写入总用时: 903 ms
+第51次写入总用时: 831 ms
+第52次写入总用时: 800 ms
+第53次写入总用时: 14602 ms
+第54次写入总用时: 827 ms
+第55次写入总用时: 5898 ms
+第56次写入总用时: 856 ms
+第57次写入总用时: 5693 ms
+第58次写入总用时: 1050 ms
+第59次写入总用时: 882 ms
+第60次写入总用时: 1020 ms
+第61次写入总用时: 15060 ms
+第62次写入总用时: 902 ms
+第63次写入总用时: 1062 ms
+第64次写入总用时: 915 ms
+第65次写入总用时: 7572 ms
+第66次写入总用时: 823 ms
+第67次写入总用时: 9649 ms
+第68次写入总用时: 832 ms
+第69次写入总用时: 10403 ms
+第70次写入总用时: 907 ms
+第71次写入总用时: 978 ms
+第72次写入总用时: 789 ms
+第73次写入总用时: 2111 ms
+第74次写入总用时: 947 ms
+第75次写入总用时: 4675 ms
+第76次写入总用时: 944 ms
+第77次写入总用时: 8592 ms
+第78次写入总用时: 832 ms
+第79次写入总用时: 2940 ms
+第80次写入总用时: 842 ms
+第81次写入总用时: 19835 ms
+第82次写入总用时: 862 ms
+第83次写入总用时: 7646 ms
+第84次写入总用时: 873 ms
+第85次写入总用时: 1002 ms
+第86次写入总用时: 842 ms
+第87次写入总用时: 9057 ms
+第88次写入总用时: 801 ms
+第89次写入总用时: 5117 ms
+第90次写入总用时: 918 ms
+第91次写入总用时: 798 ms
+第92次写入总用时: 853 ms
+第93次写入总用时: 7728 ms
+第94次写入总用时: 810 ms
+第95次写入总用时: 3969 ms
+第96次写入总用时: 814 ms
+第97次写入总用时: 2050 ms
+第98次写入总用时: 819 ms
+第99次写入总用时: 9566 ms
+第100次写入总用时: 833 ms
+</code></pre>
+<p><strong>随机读</strong></p>
+<pre><code class="bash">第1次读取 15总用时: 2251 ms
+第2次读取 73总用时: 2045 ms
+第3次读取 98总用时: 1548 ms
+第4次读取 20总用时: 2683 ms
+第5次读取 46总用时: 1156 ms
+第6次读取 69总用时: 1160 ms
+第7次读取 46总用时: 1520 ms
+第8次读取 51总用时: 1381 ms
+第9次读取 48总用时: 1000 ms
+第10次读取 69总用时: 1400 ms
+第11次读取 82总用时: 1236 ms
+第12次读取 22总用时: 1140 ms
+第13次读取 36总用时: 864 ms
+第14次读取 66总用时: 843 ms
+第15次读取 47总用时: 922 ms
+第16次读取 17总用时: 885 ms
+第17次读取 14总用时: 864 ms
+第18次读取 64总用时: 888 ms
+第19次读取 74总用时: 815 ms
+第20次读取 33总用时: 866 ms
+第21次读取 36总用时: 822 ms
+第22次读取 78总用时: 975 ms
+第23次读取 40总用时: 1186 ms
+第24次读取 54总用时: 857 ms
+第25次读取 92总用时: 963 ms
+第26次读取 43总用时: 955 ms
+第27次读取 38总用时: 853 ms
+第28次读取 47总用时: 926 ms
+第29次读取 62总用时: 877 ms
+第30次读取 70总用时: 890 ms
+第31次读取 88总用时: 895 ms
+第32次读取 15总用时: 937 ms
+第33次读取 3总用时: 993 ms
+第34次读取 99总用时: 892 ms
+第35次读取 76总用时: 818 ms
+第36次读取 30总用时: 1020 ms
+第37次读取 89总用时: 863 ms
+第38次读取 99总用时: 819 ms
+第39次读取 62总用时: 818 ms
+第40次读取 1总用时: 871 ms
+第41次读取 66总用时: 809 ms
+第42次读取 68总用时: 847 ms
+第43次读取 72总用时: 910 ms
+第44次读取 50总用时: 1128 ms
+第45次读取 47总用时: 898 ms
+第46次读取 26总用时: 909 ms
+第47次读取 35总用时: 872 ms
+第48次读取 30总用时: 826 ms
+第49次读取 79总用时: 904 ms
+第50次读取 66总用时: 863 ms
+第51次读取 2总用时: 885 ms
+第52次读取 65总用时: 900 ms
+第53次读取 67总用时: 1023 ms
+第54次读取 16总用时: 934 ms
+第55次读取 63总用时: 892 ms
+第56次读取 9总用时: 894 ms
+第57次读取 71总用时: 896 ms
+第58次读取 20总用时: 947 ms
+第59次读取 89总用时: 865 ms
+第60次读取 57总用时: 872 ms
+第61次读取 62总用时: 856 ms
+第62次读取 14总用时: 881 ms
+第63次读取 19总用时: 950 ms
+第64次读取 14总用时: 876 ms
+第65次读取 86总用时: 968 ms
+第66次读取 12总用时: 911 ms
+第67次读取 93总用时: 877 ms
+第68次读取 59总用时: 886 ms
+第69次读取 79总用时: 878 ms
+第70次读取 49总用时: 869 ms
+第71次读取 91总用时: 964 ms
+第72次读取 38总用时: 838 ms
+第73次读取 73总用时: 915 ms
+第74次读取 8总用时: 875 ms
+第75次读取 96总用时: 827 ms
+第76次读取 98总用时: 826 ms
+第77次读取 95总用时: 892 ms
+第78次读取 36总用时: 843 ms
+第79次读取 44总用时: 872 ms
+第80次读取 89总用时: 863 ms
+第81次读取 24总用时: 883 ms
+第82次读取 89总用时: 804 ms
+第83次读取 49总用时: 876 ms
+第84次读取 81总用时: 873 ms
+第85次读取 72总用时: 914 ms
+第86次读取 68总用时: 861 ms
+第87次读取 73总用时: 893 ms
+第88次读取 4总用时: 880 ms
+第89次读取 3总用时: 987 ms
+第90次读取 76总用时: 896 ms
+第91次读取 16总用时: 1010 ms
+第92次读取 73总用时: 903 ms
+第93次读取 83总用时: 933 ms
+第94次读取 52总用时: 945 ms
+第95次读取 48总用时: 901 ms
+第96次读取 26总用时: 942 ms
+第97次读取 37总用时: 883 ms
+第98次读取 44总用时: 866 ms
+第99次读取 89总用时: 921 ms
+第100次读取 61总用时: 896 ms
+</code></pre>
+<h2 id="MinIO"><a href="#MinIO" class="headerlink" title="MinIO"></a>MinIO</h2><p><strong>写</strong></p>
+<pre><code class="bash">数据导入成功！
+第1次写入总用时: 956 ms
+第2次写入总用时: 912 ms
+第3次写入总用时: 1241 ms
+第4次写入总用时: 1564 ms
+第5次写入总用时: 942 ms
+第6次写入总用时: 3666 ms
+第7次写入总用时: 1629 ms
+第8次写入总用时: 1712 ms
+第9次写入总用时: 977 ms
+第10次写入总用时: 1515 ms
+第11次写入总用时: 911 ms
+第12次写入总用时: 1009 ms
+第13次写入总用时: 1024 ms
+第14次写入总用时: 1206 ms
+第15次写入总用时: 984 ms
+第16次写入总用时: 943 ms
+第17次写入总用时: 954 ms
+第18次写入总用时: 1033 ms
+第19次写入总用时: 1008 ms
+第20次写入总用时: 1121 ms
+第21次写入总用时: 963 ms
+第22次写入总用时: 949 ms
+第23次写入总用时: 889 ms
+第24次写入总用时: 1066 ms
+第25次写入总用时: 1289 ms
+第26次写入总用时: 1125 ms
+第27次写入总用时: 1111 ms
+第28次写入总用时: 953 ms
+第29次写入总用时: 964 ms
+第30次写入总用时: 1125 ms
+第31次写入总用时: 998 ms
+第32次写入总用时: 1993 ms
+第33次写入总用时: 926 ms
+第34次写入总用时: 920 ms
+第35次写入总用时: 926 ms
+第36次写入总用时: 1169 ms
+第37次写入总用时: 1325 ms
+第38次写入总用时: 1170 ms
+第39次写入总用时: 1074 ms
+第40次写入总用时: 1011 ms
+第41次写入总用时: 931 ms
+第42次写入总用时: 984 ms
+第43次写入总用时: 1563 ms
+第44次写入总用时: 905 ms
+第45次写入总用时: 944 ms
+第46次写入总用时: 1147 ms
+第47次写入总用时: 1429 ms
+第48次写入总用时: 934 ms
+第49次写入总用时: 1133 ms
+第50次写入总用时: 912 ms
+第51次写入总用时: 953 ms
+第52次写入总用时: 1127 ms
+第53次写入总用时: 1065 ms
+第54次写入总用时: 1323 ms
+第55次写入总用时: 1003 ms
+第56次写入总用时: 1489 ms
+第57次写入总用时: 1377 ms
+第58次写入总用时: 940 ms
+第59次写入总用时: 1317 ms
+第60次写入总用时: 912 ms
+第61次写入总用时: 898 ms
+第62次写入总用时: 934 ms
+第63次写入总用时: 1005 ms
+第64次写入总用时: 1729 ms
+第65次写入总用时: 983 ms
+第66次写入总用时: 1684 ms
+第67次写入总用时: 908 ms
+第68次写入总用时: 895 ms
+第69次写入总用时: 1171 ms
+第70次写入总用时: 1372 ms
+第71次写入总用时: 1261 ms
+第72次写入总用时: 1024 ms
+第73次写入总用时: 1048 ms
+第74次写入总用时: 904 ms
+第75次写入总用时: 941 ms
+第76次写入总用时: 928 ms
+第77次写入总用时: 1806 ms
+第78次写入总用时: 1052 ms
+第79次写入总用时: 1030 ms
+第80次写入总用时: 1092 ms
+第81次写入总用时: 1117 ms
+第82次写入总用时: 950 ms
+第83次写入总用时: 933 ms
+第84次写入总用时: 928 ms
+第85次写入总用时: 935 ms
+第86次写入总用时: 1908 ms
+第87次写入总用时: 994 ms
+第88次写入总用时: 1097 ms
+第89次写入总用时: 930 ms
+第90次写入总用时: 1052 ms
+第91次写入总用时: 1119 ms
+第92次写入总用时: 958 ms
+第93次写入总用时: 987 ms
+第94次写入总用时: 973 ms
+第95次写入总用时: 2036 ms
+第96次写入总用时: 891 ms
+第97次写入总用时: 954 ms
+第98次写入总用时: 951 ms
+第99次写入总用时: 1044 ms
+第100次写入总用时: 1366 ms
+</code></pre>
+<p><strong>随机读</strong></p>
+<pre><code class="bash">第1次读取 46总用时: 40 ms
+第2次读取 8总用时: 36 ms
+第3次读取 28总用时: 26 ms
+第4次读取 80总用时: 10 ms
+第5次读取 77总用时: 13 ms
+第6次读取 27总用时: 49 ms
+第7次读取 86总用时: 20 ms
+第8次读取 0总用时: 45 ms
+第9次读取 54总用时: 34 ms
+第10次读取 24总用时: 153 ms
+第11次读取 78总用时: 29 ms
+第12次读取 0总用时: 17 ms
+第13次读取 91总用时: 56 ms
+第14次读取 5总用时: 99 ms
+第15次读取 23总用时: 138 ms
+第16次读取 37总用时: 120 ms
+第17次读取 40总用时: 156 ms
+第18次读取 88总用时: 41 ms
+第19次读取 76总用时: 32 ms
+第20次读取 49总用时: 102 ms
+第21次读取 20总用时: 179 ms
+第22次读取 40总用时: 68 ms
+第23次读取 6总用时: 215 ms
+第24次读取 36总用时: 197 ms
+第25次读取 37总用时: 30 ms
+第26次读取 68总用时: 154 ms
+第27次读取 14总用时: 314 ms
+第28次读取 27总用时: 91 ms
+第29次读取 51总用时: 255 ms
+第30次读取 66总用时: 166 ms
+第31次读取 86总用时: 140 ms
+第32次读取 29总用时: 374 ms
+第33次读取 96总用时: 235 ms
+第34次读取 68总用时: 72 ms
+第35次读取 74总用时: 264 ms
+第36次读取 11总用时: 334 ms
+第37次读取 55总用时: 316 ms
+第38次读取 31总用时: 287 ms
+第39次读取 93总用时: 233 ms
+第40次读取 44总用时: 499 ms
+第41次读取 26总用时: 312 ms
+第42次读取 76总用时: 33 ms
+第43次读取 11总用时: 31 ms
+第44次读取 86总用时: 191 ms
+第45次读取 96总用时: 217 ms
+第46次读取 20总用时: 145 ms
+第47次读取 1总用时: 772 ms
+第48次读取 69总用时: 477 ms
+第49次读取 9总用时: 320 ms
+第50次读取 46总用时: 42 ms
+第51次读取 34总用时: 823 ms
+第52次读取 76总用时: 115 ms
+第53次读取 62总用时: 635 ms
+第54次读取 99总用时: 596 ms
+第55次读取 64总用时: 657 ms
+第56次读取 66总用时: 97 ms
+第57次读取 18总用时: 461 ms
+第58次读取 91总用时: 247 ms
+第59次读取 46总用时: 147 ms
+第60次读取 12总用时: 702 ms
+第61次读取 79总用时: 545 ms
+第62次读取 47总用时: 956 ms
+第63次读取 17总用时: 853 ms
+第64次读取 97总用时: 771 ms
+第65次读取 74总用时: 368 ms
+第66次读取 84总用时: 790 ms
+第67次读取 72总用时: 866 ms
+第68次读取 82总用时: 742 ms
+第69次读取 93总用时: 313 ms
+第70次读取 57总用时: 917 ms
+第71次读取 61总用时: 1185 ms
+第72次读取 66总用时: 162 ms
+第73次读取 5总用时: 168 ms
+第74次读取 68总用时: 275 ms
+第75次读取 43总用时: 1108 ms
+第76次读取 74总用时: 281 ms
+第77次读取 65总用时: 955 ms
+第78次读取 22总用时: 1169 ms
+第79次读取 88总用时: 501 ms
+第80次读取 80总用时: 1685 ms
+第81次读取 92总用时: 1286 ms
+第82次读取 89总用时: 1680 ms
+第83次读取 30总用时: 1537 ms
+第84次读取 41总用时: 1576 ms
+第85次读取 2总用时: 2193 ms
+第86次读取 52总用时: 1817 ms
+第87次读取 8总用时: 323 ms
+第88次读取 81总用时: 1409 ms
+第89次读取 40总用时: 577 ms
+第90次读取 88总用时: 598 ms
+第91次读取 19总用时: 2324 ms
+第92次读取 75总用时: 2275 ms
+第93次读取 29总用时: 668 ms
+第94次读取 77总用时: 2773 ms
+第95次读取 62总用时: 484 ms
+第96次读取 84总用时: 883 ms
+第97次读取 32总用时: 2945 ms
+第98次读取 44总用时: 884 ms
+第99次读取 66总用时: 631 ms
+第100次读取 38总用时: 2739 ms
+</code></pre>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>非常奇怪的是<code>MinIO</code>整体性能略优于<code>SSDB</code>但是理论上不太应该，<code>SSDB</code>怎么说也是半内存半硬盘的NoSQL不应该比纯硬盘的<code>MinIO</code>性能要差，有可能是<code>SSDB</code>写到一定数据量后把本机内存写爆了，导致读写非常慢。但这变相验证了<code>SSDB</code>在极端情况下的不稳定。</p>
+<p>我的博客即将同步至腾讯云+社区，邀请大家一同入驻：<a href="https://cloud.tencent.com/developer/support-plan?invite_code=32sl2sdd0b40c" target="_blank" rel="noopener">https://cloud.tencent.com/developer/support-plan?invite_code=32sl2sdd0b40c</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+            </ul>
+            
+            
+            
+            <div id="vcomments"></div>
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">76 <p>文章</p></a></li>
+                    <li><a href="/categories">14 <p>分类</p></a></li>
+                    <li><a href="/tags">71 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#起"><span class="toc-number">1.</span> <span class="toc-text">起</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#压测配置"><span class="toc-number">2.</span> <span class="toc-text">压测配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#读写测试"><span class="toc-number">3.</span> <span class="toc-text">读写测试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SSDB"><span class="toc-number">3.1.</span> <span class="toc-text">SSDB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MinIO"><span class="toc-number">3.2.</span> <span class="toc-text">MinIO</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2021
+        <span class="gradient-text">
+            EwdAger
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script> <script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script> <script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script> <script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>   <link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Farewell,good hunter.May you find your worth in the waking world.', '再见，善良的猎人。愿你能在清醒的世界中找到自己的价值。'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+ <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  var valine = new Valine();
+
+  function initValine(path) {
+    if (!path) path = window.location.pathname;
+    let language = 'zh-CN';
+    if (!language) {
+      language = 'en';
+    } else {
+      language = language.toLowerCase();
+    }
+    valine.init({
+      el: '#vcomments',
+      appId: 'ChQ4z1dCRpWqCOD43kU6cGmM-gzGzoHsz',
+      appKey: 'pFaAS3aumHDM572YbXkzc3fO',
+      notify: 'false',
+      verify: 'false',
+      avatar: 'retro',
+      placeholder: '留下你的评论~',
+      visitor: 'true',
+      path: path,
+      lang: language,
+    });
+  }
+
+  $(document).ready(function () {
+    initValine();
+  });
+</script>
+
+
+
+</html>

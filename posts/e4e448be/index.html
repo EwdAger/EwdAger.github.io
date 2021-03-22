@@ -1,0 +1,571 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LSTM原理及Keras中实现 - Gvoidy</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="EwdAger gvoidy 机器学习,"> 
+    <meta name="description" content="LSTM 原理LSTM(Long Short-Term Memory) 即长短期记忆，适合于处理和预测时间序列中间隔和延迟非常长的重要事件。其中的内部机制就是通过四个门调节信息流，了解序列中哪些数据,"> 
+    <meta name="author" content="EwdAger"> 
+    <link rel="alternative" href="atom.xml" title="Gvoidy" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+</html>
+
+<body class="loading">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Gvoidy</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://gvoidy.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">LSTM原理及Keras中实现</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/LSTM.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/深度学习笔记"><b>「
+                    </b>深度学习笔记<b> 」</b></a>
+                
+                十二月 07, 2019
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/posts/e4e448be/" title="LSTM原理及Keras中实现">LSTM原理及Keras中实现</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    9.8k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    9 mins.
+                </span>
+                
+                
+                <span id="/posts/e4e448be/" class="leancloud_visitors" data-flag-title="LSTM原理及Keras中实现">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span class="leancloud-visitors-count">1000000</span>
+                </span>
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Keras/">Keras</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/LSTM/">LSTM</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h1 id="LSTM-原理"><a href="#LSTM-原理" class="headerlink" title="LSTM 原理"></a>LSTM 原理</h1><p>LSTM(Long Short-Term Memory) 即长短期记忆，适合于处理和预测时间序列中间隔和延迟非常长的重要事件。其中的内部机制就是通过四个门调节信息流，了解序列中哪些数据需要保留或丢弃。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-e4f9851cad426dfe4ab1c76209546827_hd.jpg" alt="Long Short-Term Memory"></p>
+<h2 id="通俗的原理"><a href="#通俗的原理" class="headerlink" title="通俗的原理"></a>通俗的原理</h2><p>假设你在网上查看淘宝评论，以确定你是否想购买生活物品。你将首先阅读评论，然后确定是否有人认为它是好的或是否是坏的。</p>
+<p><img src="https://miro.medium.com/max/1664/1*YHjfAgozQaghcsEvsBEu2g.png" alt="某麦片评论"></p>
+<p>当你阅读评论时，你的大脑下意识地只会记住重要的关键词。你会选择“惊人”和“完美均衡的早餐”这样的词汇。你不太关心“this”，“give”，“all”，“should”等。如果你的朋友第二天问你评论说什么，你不可能一字不漏地记住它。但你可能还记得主要观点，比如“肯定会再次购买”。其他的话就会从记忆中逐渐消失。</p>
+<p>这基本上就是LSTM或GRU的作用。它可以学习只保留相关信息来进行预测，并忘记不相关的数据。在这种情况下，你记住的词让你判断它是好的。</p>
+<h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><p><img src="https://gvoidy-1251878576.cos.ap-chengdu.myqcloud.com/LSTM.jpg" alt="LSTM原理"></p>
+<p>LSTM 的核心概念是细胞状态，三个门和两个激活函数。细胞状态充当高速公路，在序列链中传递相关信息。门是不同的神经网络，决定在细胞状态上允许那些信息。有些门可以了解在训练期间保持或忘记那些信息。</p>
+<h3 id="激活函数-Tanh"><a href="#激活函数-Tanh" class="headerlink" title="激活函数 Tanh"></a>激活函数 Tanh</h3><p><img src="https://miro.medium.com/max/950/1*iRlEg1GBKRzGTre5aOQUCg.gif" alt="Tanh squishes值介于-1和1之间"></p>
+<p>用于调节流经神经网络的值，限制在-1和1之间，防止梯度爆炸</p>
+<p><img src="https://miro.medium.com/max/950/1*LgbEFcGiUpseZ--M7wuZhg.gif" alt="没有tanh函数的变换"></p>
+<p><img src="https://miro.medium.com/max/950/1*gFC2bTg3uihp1klknWU0qg.gif" alt="经过tanh函数的变换"></p>
+<h3 id="激活函数-Sigmoid"><a href="#激活函数-Sigmoid" class="headerlink" title="激活函数 Sigmoid"></a>激活函数 Sigmoid</h3><p><img src="https://miro.medium.com/max/950/1*rOFozAke2DX5BmsX2ubovw.gif" alt="Sigmoid squishes值介于0和1之间"></p>
+<p>与激活函数 Tanh不同，他是在0和1之间取值。这有助于更新或忘记数据，因为任何数字乘以0都是0，这会导致值小时或被”遗忘”。而任何数字乘1都是相同的值。网络可以通过这种方法了解那些数据不重要或那些数据重要。</p>
+<h3 id="遗忘门"><a href="#遗忘门" class="headerlink" title="遗忘门"></a>遗忘门</h3><p>遗忘门决定应该丢弃或保留那些信息。来自先前隐藏状态的信息和来自当前输入的信息通过sigmoid函数传递。值接近0和1之间，越接近0意味着忘记，越接近1意味着要保持。</p>
+<p><img src="https://miro.medium.com/max/950/1*GjehOa513_BgpDDP6Vkw2Q.gif" alt="遗忘门操作"></p>
+<h3 id="输入门"><a href="#输入门" class="headerlink" title="输入门"></a>输入门</h3><p>输入门可以更新细胞状态，将先前的隐藏状态和当前输入分别传递sigmoid函数和tanh函数。然后将两个函数的输出相乘。</p>
+<p><img src="https://miro.medium.com/max/950/1*TTmYy7Sy8uUXxUXfzmoKbA.gif" alt="输入门"></p>
+<h3 id="细胞状态"><a href="#细胞状态" class="headerlink" title="细胞状态"></a>细胞状态</h3><p>细胞状态逐点乘以遗忘向量（遗忘门操作得到），然后与输入门获得的输出进行逐点相加，将神经网络发现的新值更新为细胞状态。</p>
+<p><img src="https://miro.medium.com/max/950/1*S0rXIeO_VoUVOyrYHckUWg.gif" alt="细胞状态"></p>
+<h3 id="输出门"><a href="#输出门" class="headerlink" title="输出门"></a>输出门</h3><p>输出门可以决定下一个隐藏状态应该是什么，并且可用于预测。首先将先前的隐藏状态和当前的输入传给sigmoid函数，然后将新修改的细胞状态传递给tanh函数，最后就结果相乘。输出的是隐藏状态，然后将新的细胞状态和新的隐藏状态移动到下一个时间序列中。</p>
+<p><img src="https://miro.medium.com/max/950/1*VOXRGhOShoWWks6ouoDN3Q.gif" alt="输出门"></p>
+<h2 id="数学描述"><a href="#数学描述" class="headerlink" title="数学描述"></a>数学描述</h2><p>从上述图解操作，我们可以轻松的理解LSTM的数学描述。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-556c74f0e025a47fea05dc0f76ea775d_hd.jpg" alt="数学描述"></p>
+<ol>
+<li><p>$c^t = z^f \odot c^{t-1} + z^i \odot z$</p>
+<p> 其中$c^t$为当前细胞状态，$z^f$为遗忘门，$z^i$和$z$为输入门中两个操作。表示LSTM的<strong>遗忘阶段</strong>，对上一节点传进来的输入进行选择性忘记。</p>
+</li>
+<li><p>$h^t = z^o \odot tanh (c^t)$</p>
+<p> 其中$h^t$表示当前隐藏状态，$z^o$表示输出门中前一操作。表示LSTM的<strong>选择记忆阶段</strong>，对输入的$x^t$进行选择记忆。哪些重要则着重记录下来，哪些不重要，则少记一些。</p>
+</li>
+<li><p>$y^t = \sigma (W^ \prime h^t)$</p>
+<p> 表示LSTM的<strong>输出阶段</strong>，通过当前隐藏状态$h^t$一些变化得到。</p>
+</li>
+</ol>
+<h1 id="Keras-中-LSTM-的实现"><a href="#Keras-中-LSTM-的实现" class="headerlink" title="Keras 中 LSTM 的实现"></a>Keras 中 LSTM 的实现</h1><h2 id="加载依赖库"><a href="#加载依赖库" class="headerlink" title="加载依赖库"></a>加载依赖库</h2><pre><code class="python">from keras.models import Sequential
+from keras.layers.core import Dense, Activation, Dropout
+from keras.layers.recurrent import LSTM
+</code></pre>
+<ul>
+<li><code>models</code> 是 Keras 神经网络的核心。这个对象代表这个我们所定义的神经网络：它有层、激活函数等等属性和功能。我们进行训练和测试也是基于这个<code>models</code>。 <code>Sequetial</code> 表示我们将使用层堆叠起来的网络，这是Keras中的基本网络结构。</li>
+<li><code>Dense, Activation, Dropout</code> 这些是神经网络里面的核心层，用于构建整个神经网络。<code>Dense</code> 实际上就是 Fully-connected 层；<code>Activation</code>是激活函数，它会通过Relu, Softmax 等函数对上一层产生的结果进行修改；当神经元过多的时候，可能效果并不好，因为容易导致过拟合的现象，<code>Dropout</code>是将上一层神经元进行随机丢弃，有助于解决过拟合的问题。</li>
+<li><code>LSTM</code> 是经典的RNN神经网络层。</li>
+</ul>
+<h2 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h2><p>因为 LSTM 是预测时间序列，即比如通过前19个数据去预测第20个数据。所有每次喂给LSTM的数据也必须是一个滑动窗口。</p>
+<p><img src="http://resuly.me/img/in_post/2017/08/Rnn_blog_sequence.png" alt="滑动窗口"></p>
+<p>而这其中的19个数据就是我们训练集X的一个样本，第20个为训练集Y样本。也就是说，我们用前19个值，去预测第20个值，然后对比预测至与第20个的真实值。通过这样的误差不断的优化我们模型。</p>
+<pre><code class="python">for index in range(len(data) - sequence_length):
+        result.append(data[index: index + sequence_length])
+    result = np.array(result)
+</code></pre>
+<p>当然这是一维样本的情况，如果我们的数据如下。</p>
+<table>
+<thead>
+<tr>
+<th>x1</th>
+<th>x2</th>
+<th>x3</th>
+<th>x4</th>
+<th>y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.363986149</td>
+<td>0.333333333</td>
+<td>0.713178295</td>
+<td>0.724661696</td>
+<td>191</td>
+</tr>
+<tr>
+<td>0.411312043</td>
+<td>0.333333333</td>
+<td>0.666666667</td>
+<td>0.731013532</td>
+<td>190</td>
+</tr>
+<tr>
+<td>0.357445171</td>
+<td>0.166666667</td>
+<td>0.627906977</td>
+<td>0.621375311</td>
+<td>189</td>
+</tr>
+<tr>
+<td>0.166602539</td>
+<td>0.333333333</td>
+<td>0.573643411</td>
+<td>0.662386081</td>
+<td>188</td>
+</tr>
+<tr>
+<td>0.402077722</td>
+<td>0.416666667</td>
+<td>0.589147287</td>
+<td>0.704501519</td>
+<td>187</td>
+</tr>
+<tr>
+<td>0.330511735</td>
+<td>0.25</td>
+<td>0.651162791</td>
+<td>0.652720243</td>
+<td>186</td>
+</tr>
+</tbody>
+</table>
+<p>那么滑动窗口将是一个矩阵形式。假设滑动窗口为3行，则训练集X的第一个样本是</p>
+<table>
+<thead>
+<tr>
+<th>x1</th>
+<th>x2</th>
+<th>x3</th>
+<th>x4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.363986149</td>
+<td>0.333333333</td>
+<td>0.713178295</td>
+<td>0.724661696</td>
+</tr>
+<tr>
+<td>0.411312043</td>
+<td>0.333333333</td>
+<td>0.666666667</td>
+<td>0.731013532</td>
+</tr>
+<tr>
+<td>0.357445171</td>
+<td>0.166666667</td>
+<td>0.627906977</td>
+<td>0.621375311</td>
+</tr>
+</tbody>
+</table>
+<p>去预测的是第4行的y。然后对比预测至与第4行y的真实值。通过这样的误差不断的优化我们模型。</p>
+<h2 id="创建模型"><a href="#创建模型" class="headerlink" title="创建模型"></a>创建模型</h2><pre><code class="python">model = Sequential()
+model.add(LSTM(units=100, input_shape=(30, 40), return_sequences=True))
+model.add(Dropout(0.2))
+
+model.add(LSTM(units=50, return_sequences=False))
+model.add(Dropout(0.2))
+
+model.add(Dense(units=1))
+model.add(Activation(&quot;linear&quot;))
+model.compile(loss=&quot;mse&quot;, optimizer=&quot;adam&quot;, metrics=[&#39;mae&#39;, &#39;mape&#39;])
+</code></pre>
+<p>实例化模型后我们添加了两层隐含层（LSTM层）和一个输出期望（Dense层），激活函数设置为线性（linear)，其中每完成一层计算丢弃20%的数据（Dropout层）防止过拟合。最后我们使用 MSE 进行误差计算，优化函数选择 adam，评价指标为 mae 和 mape</p>
+<h2 id="参数介绍"><a href="#参数介绍" class="headerlink" title="参数介绍"></a>参数介绍</h2><h3 id="return-sequences-True-False"><a href="#return-sequences-True-False" class="headerlink" title="return_sequences=True/False"></a><code>return_sequences=True/False</code></h3><p><img src="http://resuly.me/img/in_post/2017/08/2f64696167732e6a706567.jpg" alt="return_sequence"></p>
+<p><code>return_sequence=True</code>为多对多的关系（上图第5种情况），<code>return_sequence=False</code>为多对一的关系（上图第3种情况）</p>
+<p>我们这里建立了两层LSTM，第一层因为我们希望把每一次的输出信息都输入到下一层LSTM作为训练数据（箭头向上），也同时也将信息传给下一个自己作为输入数据（箭头向右）。而第二层连接Dense层，只期望一个输出。所以第一层为多对多的关系，第二层为多对一的关系。</p>
+<h3 id="input-shape"><a href="#input-shape" class="headerlink" title="input_shape"></a><code>input_shape</code></h3><p>LSTM 的输入是一个三维数组，尽管他的<code>input_shape</code>为二维，但我们的输入必须也是(批次大小, 时间步长, 单元数)即每批次输入LSTM的样本数，时间步长，训练集的列数。</p>
+<p><img src="https://pic4.zhimg.com/50/v2-e9b2e0e4a6ba9bc48a6b660fd5b56f44_hd.webp" alt="输入演示"></p>
+<p><code>input_shape=(time_steps, input_dim)</code>只接受时间步长和单元数是因为可以自动切分批次大小，如果需要固定批次大小，可以通过<code>batch_input_shape=(batch_size，time_steps，input_dim)</code>参数实现。</p>
+<h3 id="units"><a href="#units" class="headerlink" title="units"></a><code>units</code></h3><p>指设置的细胞单元数量，也可当做输出维度（因为在不考虑细胞状态输出的情况下，每一个细胞单元只有一个隐藏关系的输出）。比如，我们这里设置的输入为<code>input_shape=(30, 40)</code>,而我们设置的单元数为100，那么我们最终输出就是(100,4)了。</p>
+<h3 id="Dense"><a href="#Dense" class="headerlink" title="Dense"></a><code>Dense</code></h3><p><code>Dense</code>层接受上一层传递过来的输出数据，然后与激活函数结合真实值进行loss计算和优化等操作，设置的单元数<code>units</code>同上也可当做输出维度。</p>
+<h2 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h2><pre><code class="python">fit_result = model.fit(trainX, trainY, epochs=100, batch_size=200)
+</code></pre>
+<p>跟机器学习算法一样，也是输入训练集X、Y，<code>epochs</code>为循环训练次数，<code>batch_size</code>为单次训练的样本数。</p>
+<h2 id="预测结果"><a href="#预测结果" class="headerlink" title="预测结果"></a>预测结果</h2><pre><code class="python">predicted = model.predict(testX)
+</code></pre>
+<p>与训练模型时喂数据一致，输入一个testX数组，testX[0]为一个滑动窗口所有的样本，例如一维数组前19个，预测的结果是第20个。那么predicted[0]就为预测的第20个结果。</p>
+<p>同理，predicted就返回了一个与testY一样大的数组。</p>
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a href="https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21" target="_blank" rel="noopener">Illustrated Guide to LSTM’s and GRU’s: A step by step explanation</a><br><a href="https://yq.aliyun.com/articles/647550?utm_content=m_1000017933" target="_blank" rel="noopener">一文了解LSTM和GRU背后的秘密（绝对没有公式）</a><br><a href="https://zhuanlan.zhihu.com/p/32085405" target="_blank" rel="noopener">人人都能看懂的LSTM</a><br><a href="http://resuly.me/2017/08/16/keras-rnn-tutorial/" target="_blank" rel="noopener">使用Keras中的RNN模型进行时间序列预测</a><br><a href="https://zhuanlan.zhihu.com/p/36455374" target="_blank" rel="noopener">用「动图」和「举例子」讲讲 RNN</a><br><a href="https://medium.com/@shivajbd/understanding-input-and-output-shape-in-lstm-keras-c501ee95c65e" target="_blank" rel="noopener">Understanding Input and Output shapes in LSTM | Keras</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+            </ul>
+            
+            
+            
+            <div id="vcomments"></div>
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>EwdAger</p>
+                    <span>Farewell,good hunter.May you find your worth in the waking world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/EwdAger" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/Ewd_Ager" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">76 <p>文章</p></a></li>
+                    <li><a href="/categories">14 <p>分类</p></a></li>
+                    <li><a href="/tags">71 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LSTM-原理"><span class="toc-number">1.</span> <span class="toc-text">LSTM 原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#通俗的原理"><span class="toc-number">1.1.</span> <span class="toc-text">通俗的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#核心概念"><span class="toc-number">1.2.</span> <span class="toc-text">核心概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#激活函数-Tanh"><span class="toc-number">1.2.1.</span> <span class="toc-text">激活函数 Tanh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#激活函数-Sigmoid"><span class="toc-number">1.2.2.</span> <span class="toc-text">激活函数 Sigmoid</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遗忘门"><span class="toc-number">1.2.3.</span> <span class="toc-text">遗忘门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入门"><span class="toc-number">1.2.4.</span> <span class="toc-text">输入门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#细胞状态"><span class="toc-number">1.2.5.</span> <span class="toc-text">细胞状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出门"><span class="toc-number">1.2.6.</span> <span class="toc-text">输出门</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数学描述"><span class="toc-number">1.3.</span> <span class="toc-text">数学描述</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Keras-中-LSTM-的实现"><span class="toc-number">2.</span> <span class="toc-text">Keras 中 LSTM 的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#加载依赖库"><span class="toc-number">2.1.</span> <span class="toc-text">加载依赖库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据准备"><span class="toc-number">2.2.</span> <span class="toc-text">数据准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建模型"><span class="toc-number">2.3.</span> <span class="toc-text">创建模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参数介绍"><span class="toc-number">2.4.</span> <span class="toc-text">参数介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#return-sequences-True-False"><span class="toc-number">2.4.1.</span> <span class="toc-text">return_sequences=True/False</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#input-shape"><span class="toc-number">2.4.2.</span> <span class="toc-text">input_shape</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#units"><span class="toc-number">2.4.3.</span> <span class="toc-text">units</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dense"><span class="toc-number">2.4.4.</span> <span class="toc-text">Dense</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#训练模型"><span class="toc-number">2.5.</span> <span class="toc-text">训练模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#预测结果"><span class="toc-number">2.6.</span> <span class="toc-text">预测结果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文章"><span class="toc-number">3.</span> <span class="toc-text">参考文章</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2021
+        <span class="gradient-text">
+            EwdAger
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script> <script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script> <script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script> <script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>  <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>   <link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Farewell,good hunter.May you find your worth in the waking world.', '再见，善良的猎人。愿你能在清醒的世界中找到自己的价值。'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+ <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  var valine = new Valine();
+
+  function initValine(path) {
+    if (!path) path = window.location.pathname;
+    let language = 'zh-CN';
+    if (!language) {
+      language = 'en';
+    } else {
+      language = language.toLowerCase();
+    }
+    valine.init({
+      el: '#vcomments',
+      appId: 'ChQ4z1dCRpWqCOD43kU6cGmM-gzGzoHsz',
+      appKey: 'pFaAS3aumHDM572YbXkzc3fO',
+      notify: 'false',
+      verify: 'false',
+      avatar: 'retro',
+      placeholder: '留下你的评论~',
+      visitor: 'true',
+      path: path,
+      lang: language,
+    });
+  }
+
+  $(document).ready(function () {
+    initValine();
+  });
+</script>
+
+
+
+</html>
